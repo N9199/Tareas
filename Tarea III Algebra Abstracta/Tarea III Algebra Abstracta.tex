@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+    \usepackage[spanish]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[margin=1in]{geometry}          
+    \usepackage{graphicx}
+    \usepackage{amsthm, amsmath, amssymb}
+    \usepackage{mathtools}
+    \usepackage{setspace}\onehalfspacing
+    \usepackage[loose,nice]{units} 
+    \usepackage{enumitem}
+    \usepackage{hyperref}
+    \hypersetup{
+        colorlinks,
+        citecolor=black,
+        filecolor=black,
+        linkcolor=black,
+        urlcolor=black
+    }
+    
+    \setcounter{secnumdepth}{0}
+    
+    \title{Tarea III}
+    \author{Nicholas Mc-Donnell}
+    \date{2do semestre 2017}
+    
+    \renewcommand{\thesection}{}
+    \renewcommand{\thesubsection}{}
+
+    \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+    \renewcommand{\vec}[1]{\mathbf{#1}}
+    \newcommand{\set}[1]{\mathbb{#1}}
+    \newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+    \newcommand{\contr}{\rightarrow\leftarrow}
+    
+    
+    \newtheorem{thm}{Teorema}[section]
+    \newtheorem{lem}[thm]{Lema}
+    \newtheorem{prop}[thm]{Proposición}
+    \newtheorem*{cor}{Corolario}
+    
+    \theoremstyle{definition}
+    \newtheorem{defn}{Definición}[section]
+    \newtheorem{obs}{Observación}[section]
+    \newtheorem{ejm}[thm]{Ejemplo:}
+
+    \pagenumbering{gobble}
+
+    \begin{document}
+        \maketitle
+        \newpage
+
+        \pagenumbering{arabic}
+        \tableofcontents
+        \newpage
+
+        Quiero dar una disculpa, ya que hay multiples ejercicios a medio terminar. Los cuales no alcance, ni borrar, ni terminar.
+        \section{1. Operaciones de un grupo en si mismo}
+        \subsection{1.1}
+        Does the rule $g,x\mapsto xg^{-1}$ define an operation of $G$ on itself?\\
+        Si
+        \begin{proof}
+            Tomemos $g'=g^{-1}$
+            \[\therefore g,x\mapsto xg'\]
+            Lo cual es multiplicación por la derecha, lo cual sabemos que define una operación.
+        \end{proof}
+        \subsection{1.7}
+        Let $F=\set{F}_5$. Determine the order of the conjugacy class of $\begin{bmatrix}
+            1 &   \\
+              & 2
+        \end{bmatrix}$ in $GL_n(\set{F}_5)$
+        \begin{proof}
+            Sea $A$ un elemento de $GL_2(\set{F}_5)$ el conjuga a $\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}$ tal que
+            \[A\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}A^{-1}=\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}\]
+            En otras palabras, $A$ pertenece al estabilizador.
+            \[\therefore A\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}=\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}A\]
+            Tomamos los siguiente:
+            \[A=\begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}\]
+            \[\implies \begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}=\begin{bmatrix}
+                1 &   \\
+                  & 2
+            \end{bmatrix}\begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}\]
+            \[\therefore\begin{bmatrix}
+                a & 2b \\
+                c & 2d
+            \end{bmatrix}=\begin{bmatrix}
+                a & b \\
+                2c & 2d
+            \end{bmatrix}\]
+            Por lo que
+            \[2b\equiv b\mod 5\]
+            \[2c\equiv c\mod 5\]
+            Lo que implica que $b\equiv c\equiv 0\mod 5$.
+            \[\implies A=\begin{bmatrix}
+                a &   \\
+                  & d
+            \end{bmatrix}\]
+            Esto implica que el estabilizador tiene 16 elementos. ($|GL_2(\set{F}_5)|=480$ (24 opciones para el primer vector y 20 para el segundo))
+            \[\implies |C|=30\qedhere\]
+        \end{proof}
+        \subsection{1.9}
+        Let $G$ be a group of order $n$, and let $F$ be any field. Prove that $G$ is isomorphic to a subgroup of $GL_n(F)$
+        \begin{proof}
+            Por Teo de Cayley sabemos que cada grupo de orden n, es isomorfo a un subgrupo de $S_n$. Recordemos la existencia de la matrices de permutaciones (subgrupo de $GL_n(F)$), y notamos que podemos hacer un isomorfismo entre estas matrices y $S_n$. Por lo que, cada grupo de orden n es isomorfo a un subgrupo de las matrices de permutaciones, las cuales son un subgrupo de $GL_n(F)$. Lo que implica que todo grupo de orden n es isomorfo a un subgrupo de $GL_n(F)$
+        \end{proof}
+
+        \subsection{1.15}
+        Let $G$ be a group of order 35.
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item Suppose that $G$ operates nontrivially on a set of five elements. Prove that $G$ has a normal subgroup of order 7.
+
+            \item Prove that every group of order 35 is cyclic.
+        \end{enumerate}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item \begin{proof}
+                Sea $S$ tal que $|S|=5$, luego sabemos que $G\circlearrowright S$ no trivialmente.
+                \[\therefore \sum_{\textrm{Órbitas de }S}|O|=5\]
+                Pero también sabemos que esta suma no es de la forma:
+                \[1+1+1+1+1=5\]
+                Por lo que tiene que ser de la siguiente forma:
+                \[5=5\]
+                Lo que implica que $G$ tiene un subgrupo $H$ de orden $7$ (el estabilizador). Luego, tomamos $G/H$ y operamos sobre el con $H$.\\
+                Notamos que $H$ solo puede actuar trivialmente ($[G:H]=5,|H|=7$), por lo que $H$ estabiliza todas las clases laterales.
+                \[h\in H\implies h(gH)=gH\quad\forall g\in G\]
+                Esto se puede ver como un homomorfismo:
+                \[\varphi:G\rightarrow G/H\]
+                \[g'\mapsto g'(gH)\]
+                Por lo que $H=\ker \varphi\quad\forall g$. Por lo que
+            \end{proof}
+
+            \item \begin{proof}
+                Notamos que solo es necesario demostrar que existe un subgrupo normal de orden 5 o un subgrupo normal de orden 7 ($NH=HN$ de orden 35). Por (a) sabemos que si un grupo de orden 35 actúa no trivialmente, entonces tiene un subgrupo normal de orden 7.
+            \end{proof}
+        \end{enumerate}
+
+        \section{3. Operaciones en un subconjunto}
+        \subsection{3.7}
+        Let $H$ be a subgroup of a group $G$. Prove or disprove: The normalizer $N(H)$ is a normal subgroup of the group $G$.
+        \begin{proof}
+            Veamos el caso $G=S_3$, tomamos $H=<x>$ con $x^2=e$
+            \[N(H)=\{g\in G:gH=Hg\}\]
+            \[\implies N(H)=H\]
+            Por lo que $H\ntriangleleft G$, pero al mismo tiempo
+            \[N(H)\ntriangleleft G\qedhere\]
+        \end{proof}
+        \subsection{3.9}
+        Prove that the subgroup of $B$ of upper triangular matrices in $GL_n(\set{R})$ is conjugate to the group $L$ of lower triangular matrices.
+        \begin{proof}
+            Notamos que la matriz que la siguiente matriz cumple lo pedido:
+            \[P=\begin{bmatrix}
+                0 & 0 & \cdots & 0 & 1\\
+                0 & 0 & \cdots & 1 & 0\\
+                \vdots & \vdots & \ddots & \vdots & \vdots\\
+                0 & 1 & \cdots & 0 & 0\\
+                1 & 0 & \cdots & 0 & 0
+            \end{bmatrix}\]
+            Por lo que las matrices triangulares superiores son conjugadas de las matrices triangulares inferiores.
+        \end{proof}
+        \subsection{3.13}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item Let $H$ be a normal subgroup of $G$ of order 2. Prove that $H$ is in the center of $G$
+
+            \item Let $H$ be a normal subgroup of prime order $p$ in a finite group $G$. Suppose that $p$ is the smallest prime dividing $|G|$. Prove that $H$ is in the center $Z(G)$.
+        \end{enumerate}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item \begin{proof}
+                Sea $H\triangleleft G$ tal que $|H|=2$.
+                \[\therefore \forall g\in G\quad gH=Hg\]
+                \[\implies \{g,gh\}=\{g,hg\}\]
+                \[\implies gh=hg\quad\forall g\in G\]
+                \[\therefore h\in Z(G)\]
+                \[\implies H\subseteq Z(G)\qedhere\]
+            \end{proof}
+
+            \item \begin{proof}
+                Sea $H\triangleleft G$ con $|H|=p$ el menor primo que divide a $|G|$.
+                \[\therefore gHg^{-1}=H\quad\forall g\in G\]
+                \[\implies \{e,ghg^{-1},gh^2g^{-1},...,gh^{p-1}g^{-1}\}=\{e,h,h^2,...,h^{p-1}\}\quad\forall g\in G\]
+            \end{proof}
+        \end{enumerate}
+
+        \section{4. Teoremas de Sylow}
+        \subsection{4.1}
+        How many elements of order 5 are contained in a group of order 20?
+        \begin{proof}
+            Por el tercer Teorema de Sylow, la cantidad de p-subgrupos, $s$, divide al orden de $G$ y $s\equiv 1\mod p$.\\
+            Veamos que $s=1,2,4,5,10,20$, pero que solo $1\equiv 1\mod 5$.\\
+            Por lo que
+            \[\phi(5)=\textrm{\# de elementos de orden 5}=4\]
+            Lo que implica que hay 4 elementos de orden 5 en $G$
+        \end{proof}
+        \subsection{4.3}
+        Prove that no group of order $p^2q$, where $p$ and $q$ are prime, is simple.
+        \subsection{4.13}
+        Prove that if $G$ has order $n=p^ea$ where $1\leq a<p$ and $e\geq 1$, then $G$ has a proper normal subgroup.
+        \begin{proof}
+            Notemos que los grupos $\set{Z}_p$ tienen orden $p=p^1\cdot 1$, pero sus únicos subgrupos son los subgrupos triviales, por lo que hay grupos que no tienen subgrupos normales propios.
+        \end{proof}
+
+        \section{5. Grupos de orden 12}
+        \subsection{5.3}
+        Let $G$ be a group of order 30.
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item Prove that either the Sylow 5-subgroup $K$ or the Sylow 3-subgroup $H$ is normal.
+
+            \item Prove that $HK$ is a cyclic subgroup of $G$
+
+            \item Classify groups of order 30
+        \end{enumerate}
+
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item \begin{proof}
+                
+            \end{proof}
+
+            \item \begin{proof}
+                Ya que $H$ o $K$ es subgrupo normal
+                \[HK=KH\]
+                Ademas, por ser Sylow p, con p distinto
+                \[H\cap K=\{e\}\]
+                \[\implies |HK|=|H|\cdot|K|\]
+                También
+                \[\exists x\in HK:|x|=|HK|\]
+                Por lo que $HK$ es subgrupo cíclico
+            \end{proof}
+        \end{enumerate}
+
+        \section{6. Cálculo de los grupos simétricos}
+        \subsection{6.3}
+        Let $p,q$ be permutations. Prove that the products $pq$ and $qp$ have cycles of equal sizes.
+        \begin{proof}
+            Sea 
+        \end{proof}
+        \subsection{6.7}
+        Is the cyclic subgroup $H$ of $S_n$ generated by the cycle (\textbf{1 2 3 4 5}) a normal subgroup?
+
+        \section{7. El grupo libre}
+        \subsection{7.3}
+        We may define a \textit{closed word} in $S'$ to be the oriented loop obtained by joining the ends of a word. Thus %Insert image
+        represents a closed word, if we read it clockwise. Establish a bijective correspondance between reduced closed words and conjugacy classes in the free group.
+    \end{document}

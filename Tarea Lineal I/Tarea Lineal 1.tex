@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}          
+\usepackage{graphicx}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{multirow}
+\usepackage{setspace}\onehalfspacing
+\usepackage[loose,nice]{units}
+
+\title{Tarea Algebra Lineal}
+\author{Nicholas Mc-Donnell}
+
+\begin{document}
+\maketitle
+
+Sea $\mathbb{F}^\infty=\{(x_n)_{n\in\mathbb{N}}|x_n\in\mathbb{F}$ $\forall n\in\mathbb{N}\}$\\
+Sea  $\delta_k\in\mathbb{F}^\infty$ con $k\in\mathbb{N}$, donde\\
+\[
+\delta_{k,n}= \left\{\begin{array}{@{}lr@{}}
+        \multirow{1}{*}{0,} & \text{si }n\neq k\\
+        1, & \text{si }n=k
+        \end{array}\right\}
+\]
+
+Demostrar que:
+\[
+\sideset{}{<\delta_k>}\bigoplus_{k\in\mathbb{N}}\neq\mathbb{F}^\infty
+\]
+
+Para esto, notemos que:
+\[
+\{x_n=1,\forall n\in\mathbb{N}\}\notin\sideset{}{<\delta_k>}\bigoplus_{k\in\mathbb{N}}
+\]
+Esto se debe a como esta definido $\oplus$, esto es, la suma directa de finitas cosas, lo que implica que solo se puede haber una cantidad finita de elementos distintos de $0$ en cada elemento del subespacio vectorial que definimos. Por ende, $(x_n)_{n\in\mathbb{N}}$ no pertenece a este subespacio vectorial.
+\end{document}

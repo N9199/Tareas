@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+
+\title{A}
+\begin{document}
+\maketitle
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-4.,-4.) grid (4.,4.);
+\draw[->,color=black] (-4.,0.) -- (4.,0.);
+\foreach \x in {-4.,-3.,-2.,-1.,1.,2.,3.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-4.) -- (0.,4.);
+\foreach \y in {-4.,-3.,-2.,-1.,1.,2.,3.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-4.,-4.) rectangle (4.,4.);
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--1.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-0.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-1.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--2.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--3.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--4.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--5.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--6.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(--7.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-2.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-3.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-4.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-5.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-6.-1.*\x)/-1.});
+\draw [line width=1.2pt,domain=-4.:4.] plot(\x,{(-7.-1.*\x)/-1.});
+\begin{scriptsize}
+\draw[color=black] (-2.657809645955142,-3.718363548324898) node {$$};
+\draw[color=black] (-3.655759341960794,-3.718363548324898) node {$$};
+\draw[color=black] (-4.665449622625336,-3.718363548324898) node {$$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,451 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}          
+\usepackage{graphicx}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{setspace}\onehalfspacing
+\usepackage[loose,nice]{units} 
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\setcounter{secnumdepth}{0}
+
+\title{Tarea II}
+\author{Nicholas Mc-Donnell}
+\date{2do semestre 2017}
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathbb{#1}}
+\newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+\newcommand{\contr}{\rightarrow\leftarrow}
+
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem*{cor}{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definición}[section]
+\newtheorem{obs}{Observación}[section]
+\newtheorem{ejm}[thm]{Ejemplo:}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\section{Capítulo 2}
+\subsection{Grupos Cocientes}
+\subsubsection{10.5}
+Identify the quotient group $\set{R}^\times/P$, where $P$ denotes the subgroup of positive real numbers.
+\begin{proof}
+    Por el primer teorema de isomorfismos, dado un homomorfismo $\func{\varphi}{G}{H}{}{}$, la imagen de $\varphi$ es isomorfa a $G/\ker\varphi$. Por esto solo es necesario encontrar un morfismo que cumpla las condiciones.\\
+    Sea $\varphi$ tal que $\varphi(x)=\frac{x}{|x|}$.
+    \[\therefore \ker\varphi=\set{R}^\times\]
+    \[\therefore \varphi(G)=\{\pm 1\}\]
+    \[\implies G/\set{R}\simeq \{\pm 1\}\qedhere\]
+\end{proof}
+\subsubsection{10.7}
+Find all normal subgroups $N$ of the quaternion group $H$, and identify the quotients $H/N$.
+\begin{proof}
+    Queremos encontrar todos los $N\triangleleft H$. Primero, veamos que: 
+    \[\forall a\in H\setminus<\bar{e}>:<a>=<\bar{a}>\]
+    \[\implies <i>=<\bar{i}>,<j>=<\bar{j}>,<k>=<\bar{k}>\]
+    Ahora notemos que por la siguiente propiedad:
+    \[ijk=i^2=j^2=k^2\]
+    Los grupos generados por más de uno de los siguientes elementos es $H$
+    \[ij=k^{-1}\in <i,j>\implies <i,j>=H\]
+    El argumento es análogo para los otros grupos generados. Esto nos hace notar que solo hay 6 subgrupos de los cuaterniones.\\
+    Luego podemos ver que ambos subgrupos triviales son normales. Y que $<\bar{e}>$ tambien lo es. Por lo que solo nos queda ver si los generados de $i,j,k$ son normales.
+    \[ijk=i^2=j^2=k^2\implies ij=k, ji=\bar{k}\]
+    Luego por la siguiente propiedad:
+    \[\bar{i}=\bar{e}i=i\bar{e}\]
+    Notamos que:
+    \[\bar{i}j=ji, ij=j\bar{i}\]
+    Similarmente:
+    \[\bar{i}k=ki, ik=k\bar{i}\]
+    De esto podemos concluir que $h<i>=<i>h, \forall h\in H$, ya que 
+    \[<i>=\{e,\bar{e},\bar{i},i\}\]
+    \[h<i>=\{h,\bar{h},h\bar{i},hi\}=\{h,\bar{h},ih,\bar{i}h\}=<i>h, h\in H\]
+    Ánalogamente
+    \[h<j>=<j>h, h<k>=<k>h\quad\forall h\in H\]
+    Por lo que todos los subgrupos de $H$ son normales. Ahora hay que identificar los grupos cocientes.
+    \[H/H\simeq <e>\]
+    \[H/<e>\simeq H\]
+    Trivialmente se nota lo anterior. Y podemos darnos cuenta de lo siguiente:
+    \[H/<i>\simeq H/<j>\simeq H/<k>\]
+    Ya que $<i>\simeq <j>\simeq <k>$. Luego usando el primer teorema de isomorfismos, tomamos el siguiente morfismo:
+    \[\func{\varphi}{H}{<\bar{e}>}{}{}\]
+    \[\varphi(x)=\begin{cases}
+        e & \textrm{si }x\in<i>\\
+        \bar{e} & \textrm{si } x\notin<i>
+    \end{cases}\]
+    Notemos que la función es morfismo:
+    \[a,b\in<i>\implies \varphi(a)=e=\varphi(b), \varphi(ab)=e=\varphi(a)\varphi(b)\]
+    Por clausura.
+    \[a\notin<i>,b\in<i>\implies\varphi(a)=\bar{e},\varphi(b)=e\]
+    \[\implies \varphi(a)\varphi(b)=\bar{e}\]
+    Notemos que $ab\notin<i>$, por clausura.
+    \[\implies\varphi(ab)=\bar{e}=\varphi(a)\varphi(b)\]
+    $a\in<i>,b\notin<i>$ es ánalogo al caso anterior.
+    \[a,b\notin<i>\implies ab\in<i>\]
+    Ya que $H\setminus<i>=\{j,\bar{j},k,\bar{k}\}$, por lo que notamos lo siguiente:
+    \[k\bar{k}=j\bar{j}=e\quad jk=\bar{i}=\bar{e}kj\]
+    \[\therefore\varphi(ab)=e=\varphi(a)\varphi(b)\]
+    \[\implies \varphi(ab)=\varphi(a)\varphi(b)\]
+    Luego, vemos que el kernel de $\varphi$ es $<i>$, por lo que:
+    \[H/<i>\simeq <\bar{e}>\]
+    \[\implies H/<j>\simeq<\bar{e}>\simeq H/<k>\simeq\set{Z}_2\]
+    Por último veamos el siguiente morfismo:
+    \[\func{\tau}{H/<\bar{e}>}{<\bar{e}>}{}{}\]
+    \[a\mapsto a^2\]
+    \[\therefore\tau(e)=e=\tau(\bar{e})\]
+    \[\tau(j)=\tau(\bar{j})=\tau(k)=\tau(\bar{k})=\tau(i)=\tau(\bar{i})=\bar{e}\]
+    Esto claramente es un morfismo. Y vemos que el kernel es $<\bar{e}>$
+    \[\implies H/<\bar{e}>\simeq <\bar{e}>\simeq\set{Z}_2\]
+    Con eso vemos lo siguiente:
+    \[N\triangleleft H\implies H/N\simeq\set{Z}_2\vee H/N\simeq H\vee H/N\simeq \{e\}\qedhere\]
+\end{proof}
+
+\subsubsection{10.11}
+Prove that the groups $\set{R}^+/\set{Z}^+$ and $\set{R}^+/2\pi\set{Z}^+$ are isomorphic
+\begin{proof}
+    Notar que $\set{R}^+/\set{Z}^+$ esta dado por la siguiente relación de equivalencia:
+    \[a\sim b\iff a-b\in\set{Z}\]
+    Luego, similarmente $\set{R}^+/2\pi\set{Z}^+$ esta dado por la siguiente relación de equivalencia:
+    \[a\sim b\iff \frac{a-b}{2\pi}\in\set{Z}\]
+    Se toma el siguiente morfismo
+    \[\func{\varphi}{\set{R}^+/\set{Z}^+}{\set{R}^+/2\pi\set{Z}^+}{}{}\]
+    \[x\mod 1\mapsto 2\pi x\mod 2\pi\]
+    Este es morfismo, por lo siguiente:
+    \[\varphi(a+b)=2\pi(a+b)\]
+    \[\varphi(a)+\varphi(b)=2\pi a+2\pi b=2\pi (a+b)\]
+    \[\implies \varphi(a+b)=\varphi(a)+\varphi(b)\]
+    Luego se toma $\func{\tau}{\set{R}^+/2\pi\set{Z}^+}{\set{R}^+/\set{Z}^+}{}{}$ tal que
+    \[x\mod 2\pi\mapsto \frac{x}{2\pi}\mod 2\pi\]
+    Se ve la siguiente composición:
+    \[\varphi\circ\tau(a)=\varphi\left(\frac{a}{2\pi}\right)=\frac{2\pi a}{2\pi}=a\]
+    \[\tau\circ\varphi(a)=\tau(2\pi)=\frac{2\pi a}{2\pi}=a\]
+    \[\implies \varphi\circ\tau=Id=\tau\circ\varphi\]
+    Lo que implica que $\varphi$ es biyectiva, por lo que $\set{R}^+/\set{Z}^+$ y $\set{R}^+/2\pi\set{Z}^+$ son isomorfos.
+\end{proof}
+\section{Capítulo 5}
+\subsection{Simetrías the figuras planas}
+\subsubsection{1.1}
+Prove that the set of symmetries of a figure $F$ in the plane form a group.
+\begin{proof}
+    Para esta demostración se denotara a $S_F$ como el conjunto de las simetrías de $F$.
+    Las simetrías de una figura son las transformaciones lineales isométricas, estas pueden ser rotaciones, traslaciones, relfexiones o "glides". Estas ademas cumplen que $T(F)=F, \forall T\in S_F$, en otras palabras, todas las simetrias mapean todos los elementos de $F$ a $F$. Esta última puede verse como la propiedad más importante de los elementos de $S_F$, esto es, si una transformación lineal isométrica cumple esto, esta tiene que pertenecer a $S_F$.
+    \begin{enumerate}
+        \item Clausura: Sean $\varphi, \tau\in S_F$
+        \[\therefore \func{\varphi}{\set{R}^2}{\set{R}^2}{}{},\func{\tau}{\set{R}^2}{\set{R}^2}{}{}\]
+        Ademas cumplen lo siguiente:
+        \[\varphi(F)=\tau(F)=F\]
+        \[\therefore\func{\varphi\circ\tau}{\set{R}^2}{\set{R}^2}{}{}\wedge\func{\tau\circ\varphi}{\set{R}^2}{\set{R}^2}{}{}\]
+        Por lo que tambien cumplen:
+        \[\tau\circ\varphi(F)=\varphi\circ\tau(F)=F\]
+        \[\implies \tau\circ\varphi\in S_F\]
+
+        \item Asociatividad: Las transformaciones lineales son funciones, por ende se hereda de la composición de funciones.
+
+        \item Identidad: La identidad cumple que $Id(F)=F$, ya que mapea todo elemento a si mismo.
+
+        \item Invertibilidad: Las transformaciones lineales isométricas son biyectivas, y su inversa tambien es una transformación lineal isométrica, por ende existe un inverso, por lo que solo hay que demostrar que este pertenece a $S_F$.
+        \[\varphi\in S_F\implies \exists \varphi^{-1}\]
+        \[\varphi(F)=F,\wedge\varphi^{-1}\circ\varphi(F)=Id(F)=F\]
+        \[\therefore \varphi^{-1}(\varphi(F))=\varphi^{-1}(F)=F\]
+        \[\implies \varphi^{-1}\in S_F\qedhere\]
+    \end{enumerate}
+\end{proof}
+\subsubsection{1.3}
+List all symmetries of the following figures:
+\begin{enumerate}[label=(\alph*)]
+    \item (1.4)
+
+    \item (1.5)
+
+    \item (1.6)
+
+    \item (1.7)
+\end{enumerate}
+Simetrías:
+\begin{enumerate}[label=(\alph*)]
+    \item Esta figura tiene multiples simetrías traslacionales, donde hay una traslación fundamental y todas son parte del  generado de la traslación fundamental. Tambien tiene múltiples "glides" los cuales al igual que las traslaciones, tienen un "glide" fundamental, y todos pertenecen al generado de este.
+
+    \item $S_F$ esta generado por dos traslaciones independientes.
+
+    \item Esta figura tiene dos tipos de simetría, rotacional, y traslacional. La simetría rotacional puede ser respecto a múltiples puntos en la linea central de la figura.
+
+    \item Esta figura tiene solo simetrías traslacionales y "glides". Pero tiene infinitas de ellas con una fundamental de cada tipo.
+\end{enumerate}
+
+\subsection{Simetría Abstracta: Operaciones de Grupos}
+\subsubsection{5.3}
+Let $S$ be the set on which $G$ operates. Prove that the relation $s\sim s'\iff s'=gs$ for some $g\in G$, is an equivalence relation.
+\begin{proof}
+    Veamos las propiedades de una relación de equivalencia:
+    \begin{enumerate}
+        \item Refleja: Sea $s\in S$
+        \[s=es\]
+        \[\implies s\sim s\]
+
+        \item Simétrica: Sean $s,s'\in S$ tal que $s\sim s'$
+        \[\therefore\exists g\in G: s'=gs/g^{-1}\cdot\]
+        \[\implies g^{-1}s'=s\]
+        Sea $g^{-1}=g'\in G$
+        \[\implies s=g's'\implies s'\sim s\]
+
+        \item Transitiva: Sean $s,s',s''\in S$ tal que $s\sim s',s'\sim s''$
+        \[\implies \exists g,g'\in G: gs=s', g's'=s''\]
+        \[\therefore g'gs=s''\]
+        Notar que $g'g\in G$ por clausura.
+        \[\implies s\sim s''\]
+    \end{enumerate}
+    Por ende es relación de equivalencia.
+\end{proof}
+\subsubsection{5.5}
+Let $G=D_4$ be the dihedral group of symmetries of the square
+\begin{enumerate}[label=(\alph*)]
+    \item What is the stabilizer of a vertex? an edge?
+
+    \item $G$ acts on the set of two elements consisting of the diagonal lines. What is the stabilizer of the diagonal?
+\end{enumerate}
+\begin{proof}
+    Tomando $\square ABCD$, sobre el cual actúa $G$.
+    \begin{enumerate}[label=(\alph*)]
+        \item El estabilizador de un vértice es de la forma:
+        \[\{e,r^{2n-1}x\}\]
+        Donde $r$ son rotaciones horarias (como el reloj) y $x$ reflexión respecto a al eje de simetría que es paralelo a la recta $AB$. Y el $n$ se fija dependiendo del vértice en cuestión. Por ejemplo, tomando $A$
+        \[G_A=\{e,rx\}\]
+        El estabilizador de un lado es similar al de un vértice:
+        \[\{e,r^{2n}x\}\]
+        Usando la misma notación que antes. Por ejemplo, para el lado $AB$
+        \[G_{AB}=\{e,r^2x\}\]
+
+        \item Ahora buscamos $G_{AC}$ y $G_{BD}$, notemos que $G_A=G_B\implies G_A=G_{AB}$, similarmente $G_{BD}=G_B$ 
+    \end{enumerate}
+\end{proof}
+\subsubsection{5.7}
+Let $G$ be a discrete subgroup of $M$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that the stabilizer $G_p$ of a point $p$ is finite.
+
+    \item Prove that the orbit $O_p$ of a point $p$ is a discrete set, that is, that there is a number $\epsilon>0$ so that the distance between points in the orbit is at least $\epsilon$.
+
+    \item Let $B,B'$ be two bounded regions in the plane. Prove that there are only finitely many elements $g\in G$ so that $gB\cap B'\neq\emptyset$.
+\end{enumerate}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{proof}
+        Primero, hay que notar que $G_p$ solo puede contener rotaciones respecto al mismo punto $p$. Por lo que solo hay que demostrar que el subgrupo discreto de rotaciones es finito.\\
+        Para efectos de esta demostración se usara lo siguiente:
+        \begin{itemize}
+            \item Cada rotación se identificara de la siguiente forma: $r_\theta$, donde $\theta$ es el ángulo de la rotación.
+            
+            \item Una rotación completa se medira con un "ángulo" 1.
+
+            \item Los ángulos de las rotaciones pertenecen a los números reales, pero se trabajara en mod 1 ($\set{R}/\set{Z}$), ya que componer rotaciones con ángulos mayores a 1, es equivalente a componer una rotación con el mismo ángulo en mod 1.
+        \end{itemize}
+        Notemos que el subgrupo discreto de rotaciones solo puede contener rotaciones con ángulos racionales. Si no, uno puede generar rotaciones con ángulos arbitrariamente pequeños componiendo la rotación con ángulo irracional.\\
+        Ejemplo:\\
+        Tomando $<r_{\sqrt{2}-1}>$, este subgrupo de rotaciones no es finito, por que los números irracionales no son periódicos (tienen expansión decimal infinita no periódica), por lo que no hay un número de veces que se pueda componer tal que $k\sqrt{2}\equiv 0 \mod 1\quad (\nexists k\in\set{Z})$
+        \[\implies \forall n\in\set{Z}\setminus\{0\}\quad r_{\sqrt{2}-1}^n\neq Id\]
+        Ádemas hay que ver que si el subgrupo de rotaciones no es finito, esto implica que no es discreto. Por lo que asumamos que el subgrupo no es finito. Y trabajemos con los ángulo de este subgrupo. Podemos tomar los siguientes intervalos:
+        \[[0,0.5),[0.5,1)\]
+        Sabemos por palomar que en uno de ellos hay infinitos elementos del subgrupo, sin perdida de generalidad asumimos que es $[0,0.5)$, y repetimos el mismo argumento, pero con:
+        \[[0,0.25),[0.25,0.5]\]
+        Y el argumento se puede repetir inductivamente, siempre tomando el intervalo que tiene infinitos elementos del subgrupo en él. Por esto podemos encontrar ángulos en intervalos arbitrariamente pequeños, los cuales uno puede usar para construir un ángulo arbitrariamente pequeño componiendo las rotaciones de estos ángulos.
+        \[\contr\]
+        Por lo que el subgrupo tiene que ser finito.
+    \end{proof}
+
+    \item \begin{proof}
+        
+    \end{proof}
+
+    \item \begin{proof}
+        
+    \end{proof}
+\end{enumerate}
+
+\subsubsection{5.11}
+\begin{enumerate}[label=(\alph*)]
+    \item Describe the orbit and the stabilizer of the matrix $\begin{bmatrix}
+        1 && 0 \\
+        0 && 2
+    \end{bmatrix}$ under conjugation in $GL_n(\set{R})$
+
+    \item Interpreting the matrix in $GL_2(\set{F}_3)$, find the order (the number of elements) of the orbit.
+\end{enumerate}
+\begin{proof}
+    \
+    \begin{enumerate}[label=(\alph*)]
+        \item El estabilizador de la matriz son las matrices que cumplen lo siguiente:
+        \[A=\begin{bmatrix}
+            a && b \\
+            c && d
+        \end{bmatrix}\]
+        \[\det(A)\neq 0, A\begin{bmatrix}
+            1 && 0 \\
+            0 && 2
+        \end{bmatrix}A^{-1}=\begin{bmatrix}
+            1 && 0 \\
+            0 && 2
+        \end{bmatrix}\]
+        Por lo que estas matrices tienen que cumplir lo siguiente:
+        \[\begin{bmatrix}
+            \frac{ad-2bc}{ad-bc} && \frac{ab}{ad-bc}\\
+            -\frac{cd}{ad-bc} && \frac{2ad-bc}{ad-bc}
+        \end{bmatrix}=\begin{bmatrix}
+            1 && 0 \\
+            0 && 2
+        \end{bmatrix}\]
+        \[\implies ab=0=-cd,bc=0\]
+        Recordemos que $\det(A)=ad-bc\neq 0$
+        \[\implies ad\neq 0\]
+        \[\implies a\neq 0\neq d\]
+        \[\implies b=c=0\]
+        Esto implica que las matrices que cumplen lo pedido son de la siguiente forma:
+        \[\begin{bmatrix}
+            a && 0 \\
+            0 && b
+        \end{bmatrix}\quad a,b\in\set{R}\setminus\{0\}\]
+        La órbita del elemento es la siguiente:
+        \[\left\{A\in GL_n(\set{R}):A=\begin{bmatrix}
+            \frac{ad-2bc}{ad-bc} && \frac{ab}{ad-bc}\\
+            -\frac{cd}{ad-bc} && \frac{2ad-bc}{ad-bc}
+        \end{bmatrix}\right\}\]
+
+        \item Usando el teorema de órbita-estabilizador, se sabe que:
+        \[|G|=|O_s||G_s|\]
+        Tambien se sabe que $|G|=48$, por lo que se puede deducir el orden de $O_s$.
+        \[G_s=\left\{\begin{bmatrix}
+        a && 0 \\
+        0 && b
+        \end{bmatrix}:a,b\in\set{F}_3\setminus\{0\}\right\}\]
+        $a,b$ solo tienen dos posibles valores cada uno por lo que:
+        \[|G_s|=4\]
+        \[\implies |O_s|=12\]
+    \end{enumerate}
+\end{proof}
+\subsection{Operaciones en clases laterales}
+\subsubsection{6.3}
+\begin{enumerate}[label=(\alph*)]
+    \item Exhibit the bijective map (6.4) explicitly, when $G$ is the dihedral group $D_4$ and $S$ is the of vertices of a square.
+
+    \item Do the same for $D_n$ and the vertices of regular n-gon.
+\end{enumerate}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{proof}
+        Tenemos $\square ABCD$, luego definimos $S=\{A,B,C,D\}$
+    \end{proof}
+\end{enumerate}
+\subsubsection{6.5}
+Describe all the ways in which $S_3$ can operate on a set of four elements.
+\begin{proof}
+    Sabemos que $|G|=6$ ($G=S_3$), y que $|S|=4$ lo que implica que
+    \[\forall s\in S:6=|G_s||O_s|\]
+    \[\therefore |O_s|\in\{1,2,3\}\implies |G_s|\in\{2,3,6\}\]
+    Luego vemos que están los siguientes casos
+    \[|S|=1+1+1+1=1+1+2=2+2=1+3\]
+    El primero de los casos es la acción trivial. Donde $|O_1|=|O_2|=|O_3|=|O_4|=1$.
+    \[G_1=G_2=G_3=G_4=S_3\]
+    El siguiente caso es $|O_1|=|O_2|=1,|O_3|=2$, por lo que
+    \[|G_1|=|G_2|=6\]
+    \[|G_3|=3\]
+    \[\implies G_3=\{e,(123),(132)\}\]
+    El tercer caso:
+    \[|O_1|=|O_2]=2\]
+    \[|G_1|=|G_2|=3\]
+    Por lo que
+    \[G_1=G_2=\{e,(123),(132)\}\]
+    Y el último caso, donde $|O_1|=1,|O_2|=3$
+    \[\implies |G_1|=6,|G_2|=2\]
+    Por lo que, como en los casos anteriores $G_1=S_3$. Y ademas $G_2$ es uno de los subgrupos de orden 2.\\
+    Con esto se toman todos los posibles casos.
+\end{proof}
+\subsubsection{6.7}
+A map $S\rightarrow S'$ of $G-$sets is called a $homomorphism$ of $G-$sets if $\varphi(gs)=g\varphi(s)$ for all $s\in S$ and $g\in G$. Let $\varphi$ be such a homomorphism. Prove the following:
+\begin{enumerate}[label=(\alph*)]
+    \item The stabilizer $G_{\varphi(s)}$ contains the stabilizer $G_s$.
+
+    \item The orbit of an element $s\in S$ maps onto the orbit of $\varphi(s)$.
+\end{enumerate}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{proof}
+        Sea $g\in G_s$.
+        \[\therefore gs=s\]
+        \[\implies\varphi(gs)=\varphi(s)\]
+        Pero ádemas
+        \[\implies \varphi(gs)=g\varphi(s)=\varphi(s)\]
+        \[\implies g\in G_{\varphi(s)}\]
+        Por lo que:
+        \[G_s\subseteq G_{\varphi(s)}\qedhere\]
+    \end{proof}
+
+    \item \begin{proof}
+        Sea $o\in O_s$
+        \[\implies \exists g\in G: o=gs\]
+        \[\therefore \varphi(o)=\varphi(gs)=g\varphi(s)\in O_{\varphi(s)}\]
+        Por lo que todo elemento de la órbita de $s$ se mapea a la órbita de $\varphi(s)$.
+    \end{proof}
+\end{enumerate}
+\subsection{La formula para contar}
+\subsubsection{7.1}
+Use the counting formula to determine the orders of the group of rotational symmetries of a cube and of the group of rotational symmetries of a tetrahedron.
+\begin{proof}
+    Tomemos $G\circlearrowright S$, con $S=\{\textrm{Caras de un cubo}\}$ y $G$ isometrías de un cubo dadas por rotaciones.
+    \[\therefore|S|=6\]
+    Notemos que $G$ actúa transitivamente en $S$.
+    \[\implies |O_s|=|S|=6\]
+    Luego vemos que el estabilizador de cada cara tiene orden $4$, ya que las rotaciones que fijan una cara son de $\frac{\pi}{2}$ radianes, y hay cuatro de ellas.
+    \[\implies |G|=4\cdot 6=24\]
+    Similarmente, podemos ver para el caso del tetraedro donde $S=\{\textrm{Caras de un tetraedro}\}$ y $G$ las isometrías de un tetraedro dado por rotaciones.
+    \[\therefore |G|=|O_s||G_s]=4\cdot 3=12\qedhere\]
+\end{proof}
+\subsubsection{7.5}
+Let $K\subset H\subset G$ be groups. Prove that the formula $[G:K]=[G:H][H:K]$ without the assumption that $G$ is finite.
+\begin{proof}
+    Primero, notar que si dos de los grupos son finitos, el tercero tambien lo es.
+    \[\bigsqcup_{i\in I}Ha_i=G\quad\textrm{con }|I|=[G:H]\]
+    \[\bigsqcup_{j\in J}Kb_j=H\quad\textrm{con }|J|=[H:K]\]
+    \[\implies\bigsqcup_{i\in I}\left(\bigsqcup_{j\in J}Kb_j\right)a_i=\bigsqcup_{(i,j)\in I\times J}Kb_ja_i\]
+    Luego, esto nos dice que:
+    \[[G:K]=|I\times J|=|I||J|=[G:H][H:K]\qedhere\]
+\end{proof}
+\subsection{Representaciones de permutaciones}
+\subsubsection{8.1}
+Determine all the ways in which the tetrahedral group (see (9.1)) can operate on a set of two elements.
+\begin{proof}
+    Tomamos a $S$ tal que $|S|=2$, luego $G$ es el grupo tetraédrico. Sabemos que la suma de las cardinalidades de las órbitas es la cardinalidad de $S$, por lo que tenemos dos posibilidades:
+    \[|S|=|O_1|=2\vee|S|=|O_1|+|O_2|=1+1=2\]
+    El segundo caso es el caso de la acción trivial, donde todo elemento fija:
+    \[|G_1|=|G_2|=12\]
+    En el primer caso, la mitad de los elementos fija:
+    \[|G|=|O_1||G_1|=2|G_1|=12\implies |G_1|=6\]
+    Pero sabemos que no subgrupo de $G$ de orden 6, y $G_1$ tiene que ser subgrupo. Lo que implica que solo puede ser la acción trivial.
+\end{proof}
+\subsubsection{8.5}
+A group $G$ operates faithfully on a set $S$ of five elements, and there are two orbits, one of order 3 and one of order 2. What are the possibilities for $G$.
+\begin{proof}
+    Notamos que $|S|=5$, y que $|O_1|=2, |O_2|=3$
+    \[\therefore |G|=2|G_1|=3|G_2|\]
+    Tomando los candidatos más pequeños, $S_3$ y $\set{Z}_2\times\set{Z}_3$, notamos que ambos tienen los mismos subgrupos no triviales $\set{Z}_2$ y $\set{Z}_3$. Sabemos que, un grupo opera fielmente en un conjunto si $\forall g\in G\exists s\in S: gs\neq s$. Esto se puede ver como que la intersección de todos los estabilizadores es solo la identidad. Vemos que los grupos mencionados cumplen. Por lo que estos son los posibles candidatos.
+\end{proof}
+\end{document}

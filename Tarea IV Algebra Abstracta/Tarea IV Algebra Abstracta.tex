@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}
+    \usepackage[spanish]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[margin=1in]{geometry}          
+    \usepackage{graphicx}
+    \usepackage{amsthm, amsmath, amssymb}
+    \usepackage{mathtools}
+    \usepackage{setspace}\onehalfspacing
+    \usepackage[loose,nice]{units} 
+    \usepackage{enumitem}
+    \usepackage{hyperref}
+    \hypersetup{
+        colorlinks,
+        citecolor=black,
+        filecolor=black,
+        linkcolor=black,
+        urlcolor=black
+    }
+    
+    \setcounter{secnumdepth}{0}
+    
+    \title{Tarea IV}
+    \author{Nicholas Mc-Donnell}
+    \date{2do semestre 2017}
+    
+    \renewcommand{\thesection}{}
+    \renewcommand{\thesubsection}{}
+
+    \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+    \renewcommand{\vec}[1]{\mathbf{#1}}
+    \newcommand{\set}[1]{\mathbb{#1}}
+    \newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+    \newcommand{\contr}{\rightarrow\leftarrow}
+    
+    \DeclareMathOperator{\Ima}{Im}
+    
+    \newtheorem{thm}{Teorema}[section]
+    \newtheorem{lem}[thm]{Lema}
+    \newtheorem{prop}[thm]{Proposición}
+    \newtheorem*{cor}{Corolario}
+    
+    \theoremstyle{definition}
+    \newtheorem{defn}{Definición}[section]
+    \newtheorem{obs}{Observación}[section]
+    \newtheorem{ejm}[thm]{Ejemplo:}
+
+    \pagenumbering{gobble}
+
+    \begin{document}
+        \maketitle
+        \newpage
+
+        \pagenumbering{arabic}
+        \tableofcontents
+        \newpage
+        \section{1. Definiciones de un Anillo}
+        \subsection{3}
+        Let $\alpha=\frac{1}{2}i$. Prove that the elements of $\set{Z}[\alpha]$ form a dense subset of the complex plane.
+        \begin{proof}
+            Recordemos que $a\in\set{Z}[\alpha]\implies a=\sum^n_{i=0}a_i\alpha^i\quad a_i\in\set{Z}$. Notemos que los siguientes elementos pertenecen a $\set{Z}[\alpha]$
+            \[\frac{1}{2^n}\textrm{ y }\frac{1}{2^n}i\]
+            Estos elementos se construyen de la siguiente forma:
+            \[k=\left\lfloor\frac{n}{4}\right\rfloor+1\]
+            \[\therefore\frac{1}{2^{4k}}=\alpha^{4k}\]
+            Luego $n=4k-l, 1\leq l\leq 4$
+            \[\implies\frac{1}{2^n}=\frac{1}{2^{4k}}\cdot2^l\]
+            Similarmente:
+            \[\frac{1}{2^n}i=\frac{1}{2^{4k+1}}i\cdot 2^{l+1}\]
+            Por lo que:
+            \[\set{Z}[\alpha]=\{a+bi:a,b\in\set{Z}[1/2]\}\]
+            Recordemos que $\set{Z}[\frac{1}{2}]$ es denso en $\set{R}$, por lo que $\set{Z}[\alpha]$ es denso en $\set{C}$.
+
+        \end{proof}
+
+        \subsection{5}
+        Prove that for all integers $n$, $\cos(2\pi/n)$ is an algebraic number.
+        \begin{proof}
+            Consideremos el siguiente polinomio en $\set{Z}[x]$:
+            \[x^n-1\]
+            Notamos que tiene la siguiente raíz:
+            \[\cos(2\pi/n)+i\sin(2\pi/n)\]
+            Por lo que también tiene la siguiente raíz:
+            \[\cos(2\pi/n)-i\sin(2\pi/n)\]
+            Sabemos que la suma de dos números algebraicos es un  número algebraico.
+            \[\implies 2\cos(2\pi/n)\textrm{ es algebraico}\]
+            Por lo que $\cos(2\pi/n)$ es algebraico
+        \end{proof}
+
+        \subsection{11}
+        Describe the group of units in each ring.
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item $\set{Z}/12\set{Z}$
+
+            \item $\set{Z}/7\set{Z}$
+
+            \item $\set{Z}/8\set{Z}$
+
+            \item $\set{Z}/n\set{Z}$
+        \end{enumerate}
+        \begin{proof}
+            Recordamos que por Intro a Algebra en $\set{Z}/n\set{Z}$ los únicos elementos con inverso multiplicativo son los que son coprimos a $n$.
+        \end{proof}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item $\{1,5,7,11\}$
+
+            \item $\{1,2,3,4,5,6\}$
+
+            \item $\{1,3,5,7\}$
+
+            \item $\{a\in\set{Z}:0\leq a<n,\textrm{mcd}(a,n)=1\}$
+        \end{enumerate}
+        \subsection{13}
+        An element $x$ of a ring $R$ is called \textit{nilpotent} if some power of $x$ is zero. Prove that if $x$ is nilpotent, then $1+x$ is a unit in $R$.
+        \begin{proof}
+            Notamos que es suficiente construir el inverso:
+            \[a=\sum^{n-1}_{i=0}(-1)^ix^i\]
+            Donde $x^n=0$, notemos lo siguiente:
+            \[a\cdot (1+x)=a+ax\]
+            \[a\cdot (1+x)=\sum^{n-1}_{i=0}(-1)^ix^i+\sum^{n-1}_{i=0}(-1)^ix^{i+1}=1+x^n+\sum^{n-1}_{i=1}(-1)^ix^i+(-1)^{i-1}x^i\]
+            Por lo que:
+            \[a\cdot (1+x)=1+x^n=1\qedhere\]
+        \end{proof}
+
+        \subsection{14}
+        Prove that the product set $R\times R'$ of two rings is a ring with component-wise addition and multiplication:
+        \[(a,a')+(b,b')=(a+b,a'+b')\textrm{ and }(a,a')(b,b')=(ab,a'b')\]
+        \begin{proof}
+            Primero recordemos que el producto de grupos es un grupo, por lo que $R^+\times R'^+$ es un grupo con la suma. Luego veamos las propiedades de la multiplicación.
+            \[(a,a'),(b,b'),(c,c')\in R\times R'\]
+            \[\therefore ((a,a')(b,b'))(c,c')=(ab,a'b')(c,c')\]
+            \[((a,a')(b,b'))(c,c')=(abc,a'b'c')\]
+            \[((a,a')(b,b'))(c,c')=(a,a')(bc,b'c')\]
+            \[\implies ((a,a')(b,b'))(c,c')=(a,a')((b,b')(c,c'))\]
+            Por lo que es asociativa.
+            \[(1_R,1_{R'})\in R\times R'\]
+            \[(1_R,1_{R'})(a,a')=(1_Ra,1_{R'}a')=(a,a')\]
+            \[(a,a')(1_R,1_{R'})=(a1_R,a'1_{R'})=(a,a')\]
+            \[\implies (1_R,1_{R'})=1_{R\times R'}\]
+            Por lo tiene una identidad. Ahora, veamos la distributividad.
+            \[(a,a'),(b,b'),(c,c')\in R\times R'\]
+            \[\left((a,a')+(b,b')\right)(c,c')=(a+b,a'+b')(c,c')\]
+            \[\left((a,a')+(b,b')\right)(c,c')=(ac+bc,a'c'+b'c')\]
+            \[\left((a,a')+(b,b')\right)(c,c')=(ac,a'c')+(bc,b'c')\]
+            Similarmente:
+            \[(c,c')\left((a,a')+(b,b')\right)=(ca,c'a')+(cb,c'b')\]
+            Por lo que se cumple la distributividad. Lo que concluye esta demostración.
+        \end{proof}
+
+        \section{2. Construcción formal de los enteros y los polinomios}
+        \subsection{7}
+        Prove that the units of the polynomial ring $\set{R}[x]$ are the nonzero constant polynomials.
+        \begin{proof}
+            Recordemos que una unidad es un elemento $a$ de un anillo $R$, tal que existe $b$ que cumple $ab=ba=1_R$. Para el caso de $\set{R}[x]$ estos elementos serian:
+            \[a,b\in\set{R}[x]:ab=ba=1_{\set{R}[x]}\]
+            Sabemos que para todo elemento en $\set{R}[x]$ su grado es mayor igual a 0, y específicamente las constantes son de grado 0.
+            \[\implies gr(a)+gr(b)=0\]
+            Por lo mencionado anteriormente
+            \[gr(a)=gr(b)=0\]
+            Luego notamos que:
+            \[\{a\in\set{R}[x]:gr(a)=o\}=\set{R}\]
+            Sabemos que todos los números reales, excepto el cero, tienen inverso. Por lo que los únicas unidades de $\set{R}[x]$ son las constantes no cero.
+        \end{proof}
+
+        \section{3. Homomorfismos e Ideales}
+        \subsection{1}
+        Show that the inverse of a ring isomorphism $\varphi:R\rightarrow R'$ is an isomorphism.
+        \begin{proof}
+            Sean $\varphi(a)=a',\varphi(b)=b'$ donde $a,b\in R$
+            \[a'+b'=\varphi(a)+\varphi(b)=\varphi(a+b)\]
+            \[\therefore \varphi^{-1}(a'+b')=a+b=\varphi^{-1}(a')+\varphi^{-1}(b')\]
+            También:
+            \[a'\cdot b'=\varphi(a)\cdot\varphi(b)=\varphi(a\cdot b)\]
+            \[\therefore \varphi^{-1}(a'\cdot b')=a\cdot b=\varphi^{-1}(a')\cdot\varphi^{-1}(b')\]
+            Y por último:
+            \[\varphi(1_R)=1_{R'}\implies \varphi^{-1}(1_{R'})=1_R\]
+            Por lo que $\varphi^{-1}$ es un isomorfismo.
+        \end{proof}
+
+        \subsection{7}
+        Prove that every nonzero ideal in the ring of Gauss integers contains a nonzero integer.
+        \begin{proof}
+            Sea $n=a+bi$ con $a,b\in\set{Z}$ y $n\in I$
+            \[\therefore \bar{n}=a-bi\]
+            Entonces tomamos lo siguiente:
+            \[\bar{n}n=(a-bi)(a+bi)=a^2+b^2\in\set{Z}\wedge a^2+b^2\in I\]
+            Por lo que todo ideal no cero contiene un entero no cero.
+        \end{proof}
+
+        \subsection{10}
+        Describe the kernel of the homomorphism $\varphi:\set{C}[x,y,z]\rightarrow\set{C}[t]$ defined by $\varphi(x)=t,\varphi(y)=t^2,\varphi(z)=t^3$.
+        \begin{proof}
+            \[\ker\varphi=\{\alpha\in\set{C}[x,y,z]:\varphi(\alpha)=0\}\]
+            Luego
+            \[\varphi(x^2-y)=\varphi(x)^2-\varphi(y)=t^2-t^2=0\]
+            \[\varphi(x^3-z)=\varphi(x)^3-\varphi(z)=t^3-t^3=0\]
+            \[\varphi(y^3-z^2)=\varphi(y)^3-\varphi(z)^2=t^6-t^6=0\]
+            Mas generalmente, $\forall a,b,c\in\set{C}[x,y,z]$ y $n,k,m\in\set{N}$
+            \[\varphi(a(x^{2n}-y^n)+b(x^{3k}-z^k)+c(y^{3m}-z^{2m}))=0\]
+            Ya que:
+            \[\varphi(a(x^{2n}-y^n)+b(x^{3k}-z^k)+c(y^{3m}-z^{2m}))=\varphi(a)(\varphi(x^2)^n-\varphi(y)^n)+\varphi(b)(\varphi(x^3)^k-\varphi(z)^k)+\varphi(c)(\varphi(y^3)^m-\varphi(z^2)^m)\]
+            \[\varphi(a(x^{2n}-y^n)+b(x^{3k}-z^k)+c(y^{3m}-z^{2m}))=\varphi(a)(t^{2n}-t^{2n})+\varphi(b)(t^{3k}-t^{3k})+\varphi(t^{6m}-t^{6m})\]
+            \[\implies\varphi(a(x^{2n}-y^n)+b(x^{3k}-z^k)+c(y^{3m}-z^{2m}))=0\]
+            Por lo que el kernel de $\varphi$ son los elementos de la siguiente forma:
+            \[a(x^{2n}-y^n)+b(x^{3k}-z^k)+c(y^{3m}-z^{2m})\quad a,b,c\in\set{C}[x,y,z]\quad k,m,n\in\set{N}\qedhere\]
+        \end{proof}
+
+        \subsection{19}
+        Let $R$ be a ring of characteristic $p$. Prove that the map $R\rightarrow R$ defined by $x\mapsto x^p$ is a ring homomorphism. This map is called the \textit{Frobenius homomorphism.}
+        \begin{proof}
+            Denotaremos $\varphi$ a la función.
+            \[\varphi(1_R)=1_R^p=1_R\]
+            \[\varphi(ab)=(ab)^p=a^pb^p=\varphi(a)\varphi(b)\]
+            \[\varphi(a+b)=(a+b)^p=\sum^p_{n=0}\binom{p}{n}a^nb^{p-n}\]
+            Notamos que $p$ primo $\implies \forall 1<n<p: n\nmid p$. Por lo que
+            \[(a+b)^p=a^p+b^p=\varphi(a)+\varphi(b)\]
+            Por lo que es un homomorfismo.
+        \end{proof}
+
+        \subsection{23}
+        Let $R$ be a ring of characteristic $p$. Prove that if $a$ is nilpotent then $1+a$ is \textit{unipotent}, that is, some power of $1+a$ is equal to 1.
+        \begin{proof}
+            Sea $a^k=0$, tomamos $N$ tal que es múltiplo de $(k-1)!p$.
+            \[\implies (1+a)^N=\sum^N_{i=0}\binom{N}{i}a^i=\sum^{k-1}_{i=0}\binom{N}{i}a^i\]
+            \[\therefore \binom{N}{i}=\frac{N!}{(N-i)!i!}=\frac{N(N-1)(N-2)...(N-i-1)}{i!}\]
+            Sabemos que $p\mid N$, y que $\forall i<k-1:i!\mid (k-1)!$
+            \[\implies(1+a)^N=1\]
+        \end{proof}
+
+        \subsection{33}
+        Prove or disprove. If $a^2=a$ for all $a$ in a ring $R$, then $R$ has characteristic 2
+        \begin{proof}
+            Sea $a\in R\setminus\{0\}$ (Se asume que $R$ tiene mas de un elemento), y se toma el homomorfismo de $\set{Z}$ a $R$.
+            \[\therefore a^2=a\]
+            \[a^2-a=0\]
+            \[a(a-1)=0\]
+            \[\varphi(n(n-1))=0\]
+            Tomamos $n-1$
+            \[\varphi((n-1)(n-2))=0\]
+            \[\therefore \varphi(n^2-n)-\varphi(n^2-3n+2)=0\]
+            \[\varphi(2n-2)=0\]
+            \[\varphi(2)\varphi(n-1)=0\]
+            Tomamos $n=2$
+            \[\varphi(2)\varphi(1)=0\implies\varphi(2)=0\]
+            Esto implica que $R$ tiene característica 2.
+        \end{proof}
+
+        \section{4. Anillos cocientes y relaciones en Anillos}
+        \subsection{3}
+        Describe each of the following rings
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item $\set{Z}[x]/(x^2-3,2x+4)$
+
+            \item $\set{Z}[i]/(2+i)$
+        \end{enumerate}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item \begin{proof}
+                Queremos probar que $\set{Z}[x]/(x^2-3,2x+4)\simeq\set{F}_2[\sqrt{3}]$. Para esto vamos a operar dentro del anillo:
+                \[2x+4\equiv 0\]
+                \[2(x+2)\equiv 0\]
+                \[2(x+2)(x-2)\equiv 0\]
+                \[2(x^2-4)\equiv 0\]
+                \[\therefore -2\equiv 0\]
+                Lo que es equivalente a: $2\equiv 0$. También vemos lo siguiente:
+                \[x^2-3\equiv0\]
+                \[\therefore x\equiv\sqrt{3}\]
+                Por lo visto
+                \[\implies \set{Z}[x]/(x^2-3,2x+4)\simeq \set{F}_2[\sqrt{3}]\]
+                Que es lo que queríamos.
+            \end{proof}
+
+            \item \begin{proof}
+                Queremos probar que $\set{Z}[i]/(2+i)\simeq\set{Z}/5\set{Z}$, para esto usaremos el primer teorema de isomorfismo.
+                \[\varphi:\set{Z}\rightarrow \bar{R}\]
+                Queremos que:
+                \[\ker\varphi=5\set{Z}\]
+                Y que:
+                \[\Ima\varphi=\bar{R}\]
+                Primero notamos que en $\bar{R}$:
+                \[-2=i\]
+                Por lo que el resto de $a+bi$ es el mismo que el de $a-2b$. Lo que implica que $\Ima\varphi=\bar{R}$.\\
+                Tomemos un elemento $n\in\ker\varphi$.
+                \[n=(a+bi)(2+i)\]
+                \[n=(2a-b)+i(2b+a)\]
+                Como $n$ es un entero $-2b=a$
+                \[n=-5b\]
+                O sea:
+                \[n\in5\set{Z}\]
+                Ahora notamos que $5=(2+i)(2-i)$, por lo que $5\in\ker\varphi$
+                \[\implies \ker\varphi=5\set{Z}\]
+                Por lo que $\set{Z}[i]/(2+i)\simeq\set{Z}/5\set{Z}$.
+            \end{proof}
+        \end{enumerate}
+
+        \subsection{7}
+        Let $I,J$ be ideals of a ring $R$ such that $I+J=R$
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item Prove that $IJ=I\cap J$.
+
+            \item Prove the \textit{Chinese Remainder Theorem:} for any pair $a,b$ of elements of $R$, there is an element $x$ such that $x\equiv a\quad(\textrm{modulo }I)$ and $x\equiv b\quad(\textrm{modulo }J)$. [The notation $x\equiv a\quad(\textrm{modulo }I)$ means that $x-a\in I$]
+        \end{enumerate}
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item \begin{proof}
+                \underline{$\subseteq|$}
+                \[a\in IJ\implies a=rsn=srn\quad r\in I,s\in J,n\in R\]
+                \[\therefore a\in I\cap J\]
+                \underline{$\supseteq|$} Para esto necesitamos ver que la suma de elementos en $IJ$ esta en $IJ$.
+                \[n\in IJ\iff n=\sum_i \lambda_iI_iJ_i\quad I_i\in I,J_i\in J\]
+                Luego sean $a,b\in IJ$
+                \[a=\sum_i\lambda_iI_iJ_i\]
+                \[b=\sum_j\lambda'_jI_jJ_j\]
+                \[a+b=\sum_i\lambda_iI_iJ_i+\sum_j\lambda'_jI_jJ_j=\sum_k\lambda''_kI_kJ_k\]
+                \[\implies a+b\in IJ\]
+                Ahora, sea $x\in I\cap J$ y sea $1_R=r+s$ tal que $r\in I, s\in J$
+                \[\therefore x=x\cdot 1_R=x\cdot (r+s)=xr+xs\]
+                \[xr,xs\in IJ\]
+                \[\implies xr+xs\in IJ\implies x\in IJ\]
+                Por lo que $IJ=I\cap J$
+            \end{proof}
+
+            \item \begin{proof}
+                Sean $r+s=1_R$ y $r\in I, s\in J$, definimos $x$ de la siguiente manera:
+                \[x=ar+bs\]
+                \[\therefore x=ar+b-br\]
+                \[x-b=(a-b)r\in I\]
+                Similarmente:
+                \[x-a=(b-a)s\in J\]
+                \[\implies x\equiv b\mod I\wedge x\equiv a\mod J\]
+                Por lo que existe un $x$ que cumple lo pedidos
+            \end{proof}
+        \end{enumerate}
+    \end{document}

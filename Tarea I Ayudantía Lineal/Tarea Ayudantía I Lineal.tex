@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}          
+\usepackage{graphicx}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{setspace}\onehalfspacing
+\usepackage[loose,nice]{units} 
+\usepackage{enumitem}
+
+\title{Ayudantía I}
+\author{Nicholas Mc-Donnell}
+\date{2do semestre 2017}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\begin{document}
+\maketitle
+
+\subsection*{3. Determine si los siguientes son espacios vectoriales para esto de una demostración o un contraejemplo.}
+
+3. a) Si $b\in\mathbb{F}$, el conjunto $S=\left|\{(x_1,x_2,x_3,x_4)\in\mathbb{F}^4:x_3=5x_4+b\right\}$\\
+Dem:\\
+Digamos que $b\neq 0$, luego sea $\vec{x}\in S$.\\
+Notar que $\vec{0}\neq\vec{x}$, ya que $x_3\neq x_4$, pero en el caso de $\vec{0},x_3=x_4=0$.\\
+Por lo que para $b\neq 0$, $S$ no es espacio vectorial.\\
+Luego, si $b=0$, por lo anterior $x_3=x_4=0$ lo que implica que $\vec{0}\in S$\\
+Sea $\vec{u},\vec{v}\in S$, luego $\vec{u}+\vec{v}=(u_1+v_1,u_2+v_2,5u_4+5v_4,u_4+v_4)=(u_1+v_1,u_2+v_2,5(u_4+v_4),u_4+v_4)=\vec{v}+\vec{u}$, lo que implica que la suma esta bien definida como operación y es conmutativa.\\
+Sea $\vec{v}\in S$:\\
+$\vec{v}=(v_1,v_2,5v_4,v_4)$\\
+Tomemos $(-v_1,-v_2,-5v_4,-v_4)=\vec{u}$
+$\therefore \vec{v}+\vec{u}=\vec{0}$\\
+Por lo que existe el inverso\\
+Lo que implica que $(S,+)$ es grupo abeliano\\
+Luego, sea $\vec{v}\in S$\\
+$1\vec{v}=(1v_1,1v_2,1(5v_4),1v_4)=(v_1,v_2,5v_4,v_4)=\vec{v}$\\
+Y por último, sean $a,d\in \mathbb{F}, b,c\in S$:\\
+$a(b+c)=a(b_1+c_1,b_2+c_2,5(b_4+c_4),b_4+c_4)=(a(b_1+c_1),a(b_2+c_2),a(5(b_4+c_4)),a(b_4+c_4))=(ab_1+ac_1,ab_2+ac_2,5(ab_4+ac_4),ab_4+ac_4)=ab+ac$\\
+Similarmente: $(a+d)b=ab+db$\\
+Esto implica que $S$ es un espacio vectorial\\
+\\
+3.b) Sea $A\in\mathbb{R}^{m\times n}$, el conjunto $S$ de las soluciones de $A\vec{x}=\vec{0}$\\
+Dem:\\
+Primero notar que $A\vec{0}=\vec{0}$ por definición de operatoria con $\vec{0}$, lo que implica que $\vec{0}\in S$.\\
+Luego los vectores son un grupo abeliano con la suma, por lo que se hereda esta propiedad.\\
+Por propiedad de vector $1\vec{x}=\vec{x}$
+De nuevo los vectores cumplen la propiedad distrubitiva, por lo que esta se hereda.\\
+Por ende $S$ es espacio vectorial.\\
+\\
+3.c) El conjunto S de funciones $f:\mathbb{R}\rightarrow\mathbb{R}$ que son diferenciables\\
+Dem:\\
+Primero notar que la función $f(x)=0$ es diferenciable, y que para toda función $g$, $g+f=g$, además recordar que el conjunto de funciones $f:\mathbb{R}\rightarrow\mathbb{R}$ ($\mathbb{R}^\mathbb{R}$) es un espacio vectorial, por lo que todas las propiedades se heredan.\\
+Luego sea $\lambda\in\mathbb{R}, f,g\in S$\\
+\[
+\left(\lambda f+g\right)'=\left(\lambda f\right)'+\left(g\right)'=\lambda\left( f\right)'+\left(g\right)'
+\]
+$f$ y $g$ son diferenciables, lo que implica que $\lambda f+g$ es diferenciable, por lo que $S$ es un subespacio vectorial y por lo mismo un espacio vectorial.\\
+\\
+3.d) $\mathbb{C}$ sobre $\mathbb{R}$\\
+Dem:\\
+Notar que $\mathbb{C}$ se puede ver como $\mathbb{R}^2$, donde $z=x+iy$, $\Im (z)=y,\Re (z)=x$, y $\vec{u}=(x,y)$\\
+Como $\mathbb{R}^2$ es un espacio vectorial sobre $\mathbb{R}$, $\mathbb{C}$ es un espacio vectorial sobre $\mathbb{R}$\\
+\\
+3.e) Sea $A\in\mathbb{R}^{m\times n}$, el conjunto $S$ de las soluciones de $A\vec{x}=\vec{b}$, donde $\vec{b}\neq\vec{0}$\\
+Dem:\\
+Notar que $\vec{0}\notin S$, ya que $A\vec{0}=\vec{0}\neq\vec{b}$\\
+Por lo que $S$ no es espacio vectorial.\\
+\\
+3.f) $\mathbb{R}$ sobre $\mathbb{Q}$\\
+Dem:\\
+Notar que $0\in\mathbb{R}$\\
+Luego se sabe que $(\mathbb{R},+)$ es un grupo abeliano.\\
+$1\cdot x=x$ Por propiedad de la identidad multiplicativa en los reales.\\
+Sean $a,b\in\mathbb{Q},c,d\in\mathbb{R}$ además $a,b\in\mathbb{R}$, por lo que por propiedad de los reales: $a(b+c)=ab+ac$ y $(a+b)c=ac+bc$.\\
+Lo que implica que $\mathbb{R}$ es un espacio vectorial sobre $\mathbb{Q}$.\\
+\subsection*{4. Sea $V$ un espacio vectorial sobre $\mathbb{F}$. Sean $U$ y $W$ dos subespacios vectoriales de $V$. Demuestre que $U\cup W$ es un espacio vectorial de $V$ si y solo si $U\subset W$ o $W\subset U$}
+Dem:\\
+$\impliedby$\\
+Sea $U\subset W$, esto implica que $U\cup W=W$, el cual es subespacio vectorial de $V$, por lo que $U\cup W$ es subespacio vectorial de $V$. Análogamente, si $W\subset U$, $U\cup W$ es subespacio vectorial de $V$.\\
+$\implies$\\
+Sea $\vec{u}\in U,\vec{v}\in W$, entonces por clausura de la suma $\vec{u}+\vec{v}\in U\cup W$, lo que a su vez implica que $\vec{u}+\vec{v}\in U \vee \vec{u}+\vec{v}\in W$, tomando el primer caso:\\
+$\vec{u}+\vec{v}\in U$, se sabe que $-\vec{u}\in U$ por lo que $(\vec{u}+\vec{v})+(-\vec{u})\in U$, expresión que es equivalente a $\vec{v}\in U$ por asociatividad y conmutatividad, lo que implica que $W\subset U$.\\
+El otro caso es analogo, por lo que en resumen: $U\cup W$ espacio vectorial $\iff$ $U\subset W$ o $W\subset U$.
+
+\end{document}
