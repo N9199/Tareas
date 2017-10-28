@@ -65,23 +65,46 @@
         Describe the ring obtained fro $\set{Z}/12\set{Z}$ by adjoining an inverse of $2$
         \begin{proof}
             Se sabe que adjuntar un inverso a un anillo es equivalente a cocientar de la siguiente forma:
-            \[R'=R[x]/(ax-1)\]
-            Donde $a$ es el inverso del elemento en cuestión. Para este caso en especifico es el inverso de $2$
+            \[R[a]=R[x]/(2x-1)\]
+            Donde $a$ es el inverso del elemento en cuestión. Para este caso en especifico es el inverso de $2$.
+            \[\implies\set{Z}_{12}[a]=\set{Z}_{12}[x]/(2x-1)\]
+            Usando las propiedades del anillo:
+            \[12x\equiv 0\]
+            \[x\equiv a\]
+            \[\therefore 12a\equiv 0\]
+            Pero notamos lo siguiente:
+            \[12=6\cdot 2\implies 6\equiv 0\]
+            Mas aun:
+            \[3\equiv 0\]
+            Observamos que $2\cdot 2=4=3+1\equiv 1$
+            \[\implies 2\equiv a\]
+            Esto nos lleva a que $\set{Z}_{12}[a]\simeq\set{Z}_3$
         \end{proof}
 
         \subsection{10.6 Dominio de Enteros y Cuerpos Fraccionarios}
         \subsubsection{1}
         Prove that the subring of an integral domain is an integral domain.
+        \begin{proof}
+            Sea $R'\subset R$ anillo, y R dominio.
+            \[a,b\in R': ab=0\]
+            \[\therefore a,b\in R\implies(a=0\vee b=0)\]
+            Lo que implica que $R'$ es dominio.
+        \end{proof}
 
         \subsubsection{3}
         Let $R$ be an integral domain. Prove that the polynomial ring $R[x]$ is an integral domain.
+        \begin{proof}
+            Sean $a,b\in R[x]$
+            \[\therefore a=\sum^n_{i=0}\alpha_ix^i\quad \forall i:\alpha_i\in R\]
+            \[\therefore b=\sum^k_{j=0}\beta_jÇx^j\quad \forall i:\beta_i\in R\]
+        \end{proof}
 
         \subsubsection{5}
         Is there an integral domain containing exactly 10 elements?
         \begin{proof}
             Hay dos grupos de orden 10, el dihedral y $\set{Z}_{10}$, notamos que solo $\set{Z}_{10}$ es un grupo abeliano. Vemos los siguientes elementos de $\set{Z}_{10}$:
             \[2\cdot 5=10=0\]
-            \[\implies \textrm{No hay dominio de orden 10}\]
+            \[\implies \textrm{No hay dominio de orden 10}\qedhere\]
         \end{proof}
 
         \subsection{10.7 Ideales Máximos}
