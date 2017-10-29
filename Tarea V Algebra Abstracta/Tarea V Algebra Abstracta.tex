@@ -57,9 +57,20 @@
         \subsection{10.5}
         \subsubsection{1}
         Describe the ring obtained from $\set{Z}$ by adjoining an element$\alpha$ satisfying the two relations $2\alpha-6=0$ and $\alpha-10=0$
+        \begin{proof}
+            Primero recordemos que $\set{Z}[\alpha]\simeq\set{Z}[x]/(x-10,2x-6)$, y con esto veremos algunas propiedades del anillo.
+            \[x\equiv 10\quad2(x-3)\equiv0\]
+            \[\implies 10\equiv 3\implies 7\equiv 0\]
+            Por lo que podemos ver que usando el primer teorema de isomorfismos, se concluye que $\set{Z}[\alpha]\simeq\set{Z}_7$
+        \end{proof}
 
         \subsubsection{7}
         Analyze the ring obtained from $\set{Z}$ by adjoining an element $\alpha$ which satisfies the pair of relations $\alpha^3+\alpha^2+1=0$ and $\alpha^2+\alpha=0$
+        \begin{proof}
+            Lo primero que notamos es que $\set{Z}[\alpha]\simeq\set{Z}[x]/(x^3+x^2+1,x^2+x)$, con esto se pueden ver algunas de las propiedades del anillo en cuestión.
+            \[x^2\equiv-x\]
+            \[\implies -x^2+x^2+1\equiv 0\implies 1\equiv 0\]
+        \end{proof}
 
         \subsubsection{9}
         Describe the ring obtained fro $\set{Z}/12\set{Z}$ by adjoining an inverse of $2$
@@ -78,7 +89,7 @@
             \[3\equiv 0\]
             Observamos que $2\cdot 2=4=3+1\equiv 1$
             \[\implies 2\equiv a\]
-            Esto nos lleva a que $\set{Z}_{12}[a]\simeq\set{Z}_3$
+            Esto nos lleva a que concluir $\set{Z}_{12}[a]\simeq\set{Z}_3$, usando el primer teorema de isomorfismos.
         \end{proof}
 
         \subsection{10.6 Dominio de Enteros y Cuerpos Fraccionarios}
@@ -96,7 +107,10 @@
         \begin{proof}
             Sean $a,b\in R[x]$
             \[\therefore a=\sum^n_{i=0}\alpha_ix^i\quad \forall i:\alpha_i\in R\]
-            \[\therefore b=\sum^k_{j=0}\beta_jÇx^j\quad \forall i:\beta_i\in R\]
+            \[\therefore b=\sum^k_{j=0}\beta_ix^j\quad \forall j:\beta_j\in R\]
+            Asumamos que $ab=0$ y que $a\neq 0,b\neq 0$ ($\exists i,j:\alpha_i\neq 0,\beta_j\neq 0$)
+            \[\therefore \left(\sum^n_{i=0}\alpha_ix^i\right)\cdot\left(\sum^k_{j=0}\beta_ix^j\right)=0\]
+            \[\left(\sum^n_{i=0}\alpha_ix^i\right)\cdot\left(\sum^k_{j=0}\beta_ix^j\right)=\sum^n_{i=0}\sum^k_{j=0}\alpha_i\beta_j x^{i+j}\]
         \end{proof}
 
         \subsubsection{5}
@@ -142,6 +156,14 @@
         \subsection{11.1 Factorización de Enteros y Polinomios}
         \subsubsection{3}
         Prove that if $d$ is the greatest common divisor of $a_1,...,a_n$ then the greatest common divisor of $a_1/d,...,a_n/d$ is $1$.
+        \begin{proof}
+            Asumamos que el gcd de $a_1/d,...,a_n/d$ es $k$, donde $k\neq 1$
+            \[\therefore a_i/d=km_i\forall i\]
+            \[\implies a_i=kdm_i\forall i\]
+            \[\implies gcd(a_1,...,a_n)=kd=d\]
+            \[\contr\]
+            Esto finaliza la demostración.
+        \end{proof}
 
         \subsubsection{5}
 
