@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1509374063 "/Users/nicholas/Tareas/Tarea V Algebra Abstracta/Tarea V Algebra Abstracta.tex" "Tarea V Algebra Abstracta.pdf" "Tarea V Algebra Abstracta" 1509374064
-  "/Users/nicholas/Tareas/Tarea V Algebra Abstracta/Tarea V Algebra Abstracta.tex" 1509374063 9499 f9916bd4bc8759e7e54d19d5514ad044 ""
+["pdflatex"] 1509408719 "/Users/nicholas/Tareas/Tarea V Algebra Abstracta/Tarea V Algebra Abstracta.tex" "Tarea V Algebra Abstracta.pdf" "Tarea V Algebra Abstracta" 1509408720
+  "/Users/nicholas/Tareas/Tarea V Algebra Abstracta/Tarea V Algebra Abstracta.tex" 1509408719 14978 6a3cad6e867a49d5dc5f86c406626e0b ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1480098698 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -100,13 +100,13 @@
   "/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1495593472 2350277 a699055bee05bf8a40b0504752487295 ""
   "/usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1495593487 4129592 0e6cfee100d68e6d96b92c0258f2ff73 ""
   "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
-  "Tarea V Algebra Abstracta.aux" 1509374063 2545 3b57272152264c50255fe0349966eb93 ""
-  "Tarea V Algebra Abstracta.out" 1509374063 1219 6391396105d1e01f36eb15e172ce5802 ""
-  "Tarea V Algebra Abstracta.tex" 1509374063 9499 f9916bd4bc8759e7e54d19d5514ad044 ""
-  "Tarea V Algebra Abstracta.toc" 1509374063 1274 ec9db35add750659ce8af50e6083805f ""
+  "Tarea V Algebra Abstracta.aux" 1509408720 2545 e4057c1675f758005cbbadfd85c87e3f ""
+  "Tarea V Algebra Abstracta.out" 1509408720 1219 6391396105d1e01f36eb15e172ce5802 ""
+  "Tarea V Algebra Abstracta.tex" 1509408719 14978 6a3cad6e867a49d5dc5f86c406626e0b ""
+  "Tarea V Algebra Abstracta.toc" 1509408720 1274 2098f0f950e86c79afbb150da45c75ab ""
   (generated)
-  "Tarea V Algebra Abstracta.aux"
-  "Tarea V Algebra Abstracta.pdf"
   "Tarea V Algebra Abstracta.toc"
-  "Tarea V Algebra Abstracta.out"
   "Tarea V Algebra Abstracta.log"
+  "Tarea V Algebra Abstracta.pdf"
+  "Tarea V Algebra Abstracta.out"
+  "Tarea V Algebra Abstracta.aux"
