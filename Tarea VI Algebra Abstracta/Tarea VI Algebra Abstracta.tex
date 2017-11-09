@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+    \usepackage[spanish]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[margin=1in]{geometry}          
+    \usepackage{graphicx}
+    \usepackage{amsthm, amsmath, amssymb}
+    \usepackage{mathtools}
+    \usepackage{setspace}\onehalfspacing
+    \usepackage[loose,nice]{units} 
+    \usepackage{enumitem}
+    \usepackage{hyperref}
+    \hypersetup{
+        colorlinks,
+        citecolor=black,
+        filecolor=black,
+        linkcolor=black,
+        urlcolor=black
+    }
+    
+    \setcounter{secnumdepth}{0}
+    
+    \title{Tarea VI}
+    \author{Nicholas Mc-Donnell}
+    \date{2do semestre 2017}
+    
+    \renewcommand{\thesection}{}
+    \renewcommand{\thesubsection}{}
+
+    \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+    \renewcommand{\vec}[1]{\mathbf{#1}}
+    \newcommand{\set}[1]{\mathbb{#1}}
+    \newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+    \newcommand{\contr}{\rightarrow\leftarrow}
+    
+    \DeclareMathOperator{\Ima}{Im}
+    
+    \newtheorem{thm}{Teorema}[section]
+    \newtheorem{lem}[thm]{Lema}
+    \newtheorem{prop}[thm]{Proposición}
+    \newtheorem*{cor}{Corolario}
+    
+    \theoremstyle{definition}
+    \newtheorem{defn}{Definición}[section]
+    \newtheorem{obs}{Observación}[section]
+    \newtheorem{ejm}[thm]{Ejemplo:}
+
+    \pagenumbering{gobble}
+
+    \begin{document}
+        \maketitle
+        \newpage
+        
+        \clearpage\null\newpage
+
+        \pagenumbering{arabic}
+        \tableofcontents
+        \newpage
+
+        \clearpage\null\newpage
+    \section{2. Dominios de factorización única, Dominios de Ideales Principales y Dominios Euclidianos}
+    \subsection{1}
+    Prove or disprove the following.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item The polynomial ring $\set{R}[x,y]$ in two variables is a Euclidean domain.
+
+        \item The ring $\set{Z}[x]$ is a principal ideal domain.
+    \end{enumerate}
+
+    \subsection{3}
+    Give an example showing that division with remainder need not be unique in a Euclidean domain.
+
+    \subsection{9}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item Prove that $2,3,1\pm\sqrt{-5}$ are irreducible elements of the ring $R=\set{Z}[\sqrt{-5}]$ and that the units of this ring are $\pm 1$.
+
+        \item Prove that the existence of factorization is true for this ring.
+    \end{enumerate}
+
+    \subsection{13}
+    If $a,b$ are integers and if $a$ divides $b$ in the ring of Gauss integers, then $a$ divides $b$ in $\set{Z}$
+
+    \section{3. Lema de Gauss}
+    \subsection{1}
+    Let $a,b$ be elements of a field $F$, with $a \neq 0$. Prove that the polynomial $f(x)\in F[x]$ is irreducible if and only if $f(ax+b)$ is irreducible.
+
+    \subsection{3}
+    Let $f$ be an irreducible polynomial in $\set{C}[x,y]$, and let $g$ be another polynomial. Prove that if the variety of zeros of $g$ in $\set{C}^2$ contains the variety of zeros of $f$, then $f$ divides $g$.
+
+    \subsection{9}
+    Prove that the kernel of the homomorphism $\set{Z}[x]\rightarrow \set{R}$ sending $x\mapsto 1+\sqrt{2}$ is a principal ideal, and find a generator for this ideal.
+
+    \section{4. Factorización explicita de polinomios}
+    \subsection{1}
+    Prove that the following polynomials are irreducible in $\set{Q}[x]$.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $x^2+27x+213$
+
+        \item $x^3+6x+12$
+
+        \item $8x^3-6x+1$
+
+        \item $x^3+6x^2+7$
+
+        \item $x^5-3x^4+3$
+    \end{enumerate}
+
+    \subsection{3}
+    Factor $x^3+x+1$ in $\set{F}_p[x]$, when $p=2,3,5$.
+
+    \subsection{7}
+    Factor the following polynomials into irreducible factors in $\set{Q}[x]$.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $x^3-3x-2$
+
+        \item $x^3-3x+2$
+
+        \item $x^9-6x^6+9x^3-3$
+    \end{enumerate}
+
+    \section{5. Primos en el anillo de Enteros de Gauss}
+    \subsection{1}
+    Prove that every Gauss prime divides exactly one integer prime.
+
+    \subsection{3}
+    Factor the following into Gauss primes.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $1-3i$
+
+        \item $10$
+
+        \item $6+9i$
+    \end{enumerate}
+
+    \subsection{7}
+    Describe the residue ring $\set{Z}[i]/(p)$ in each case.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $p=2$
+
+        \item $p\equiv 1\quad(\text{modulo} 4)$
+
+        \item $p\equiv 3 \quad(\text{modulo} 4)$
+    \end{enumerate}
+    \end{document}
