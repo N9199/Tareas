@@ -65,9 +65,24 @@
 
         \item The ring $\set{Z}[x]$ is a principal ideal domain.
     \end{enumerate}
-
+    \begin{proof}
+        \
+        \begin{enumerate}[label=\textbf{(\alph*)}]
+            \item Tomamos el ideal $(x,y)$ y notamos que no es un ideal principal, por lo que concluimos que $\set{R}[x,y]$ no es un dominio Euclidiano.
+    
+            \item Recordamos que si un anillo $R$ es DIP, entonces $R/(a)$ es un cuerpo, si tomamos $\set{Z}[x]/(x)\simeq \set{Z}$ vemos que no es cuerpo, por lo que $\set{Z}[x]$ no es DIP.
+        \end{enumerate}
+    \end{proof}
+    
     \subsection{3}
     Give an example showing that division with remainder need not be unique in a Euclidean domain.
+    \begin{proof}
+        Tomamos los enteros de Gauss con los siguientes elementos: $b/a=x, b=1+i, a=2$
+        \[2*0+1+i=1+i\]
+        \[2*1-1+i=1+i\]
+        \[\sigma(1+i)=\sigma(1-i)\]
+        Por lo que no necesariamente es única.
+    \end{proof}
 
     \subsection{9}
     \begin{enumerate}[label=\textbf{(\alph*)}]
@@ -75,9 +90,64 @@
 
         \item Prove that the existence of factorization is true for this ring.
     \end{enumerate}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item \begin{proof}
+            Comenzamos por demostrar que las únicas unidades de este anillo son $\pm1$. Asumiremos que existe alguna unidad $u$.
+            \[\therefore (u)=(1)\]
+            \[\implies \exists r\in R: ur=1\]
+            Notamos que $\bar{u}\bar{r}=1$. ($\overline{a+b\sqrt{-5}}=a-b\sqrt{-5}$)
+            \[\implies (u\bar{u})=(1)\]
+            \[u\bar{u}\in\set{Z}^+\]
+            \[\therefore u\bar{u}=1\vee u\bar{u}>1\]
+            Si $u\bar{u}>1$
+            \[(u\bar{u})^2>u\bar{u}\]
+            \[\implies (u\bar{u})\neq(1)\]
+            \[\implies (u)\neq(1)\]
+            \[\contr\]
+            Si $u\bar{u}=1$, con $u=a+b\sqrt{-5}$.
+            \[u\bar{u}=a^2+5b^2=1\]
+            \[\implies b=0\quad a^2=1\]
+            \[\implies u=\pm1\]
+            Que es lo que queríamos demostrar. Para demostrar la irreductibilidad de $2,3,1\pm\sqrt{-5}$ definiremos una función $\func{\sigma}{R\setminus\{0\}}{\set{Z}}{}{}$.
+            \[\sigma(a+b\sqrt{-5})=a^2+5b^2\]
+            Sean $u,v\in R$
+            \[\sigma(uv)=\sigma((a+b\sqrt{-5})(c+d\sqrt{-5}))=\sigma(ac-5bd+(ad+bc)\sqrt{-5})=(ac-5bd)^2+5(ad+bc)^2\]
+            \[\sigma(u)\sigma(v)=(a^2+5b^2)(c^2+5d^2)=a^2c^2+25b^2d^2+5b^2c^2+5a^2d^2\]
+            \[\sigma(u)\sigma(v)=a^2c^2+25b^2d^2+5b^2c^2+5a^2d^2+10abcd-10abcd=(ac-5bd)^2+5(ad+bc)^2\]
+            \[\implies\sigma(uv)=\sigma(u)\sigma(v)\]
+            Notamos que $u\in R$ unidad $\iff\sigma(u)=1$, sean $a,b\in R: a\mid b$.
+            \[\therefore b=ar\quad r\in R\]
+            \[\implies \sigma(b)=\sigma(a)\sigma(r)\]
+            \[\implies \sigma(a)\mid\sigma(b)\]
+            Asumamos que $2,3,1\pm\sqrt{-5}$ no son irreducibles.
+            \[\therefore \exists a\in R: a\mid 2\]
+            \[\implies\sigma(a)\mid\sigma(2)\]
+            \[\sigma(a)\mid 4\]
+            Pero notamos que el único divisor no trivial es $2$, pero $\forall x\in R:\sigma(r)\neq 2$. Similarmente $\forall x\in R:\sigma(x)\neq 3$, vemos que $\sigma(3)=9,\sigma(1\pm\sqrt{-5)}=-4$, por lo que $\nexists x\in R\setminus\{1,2\}:\sigma(x)\mid \sigma(2)$, y análogamente se ven los otros casos, pero esto es una contradicción. Por lo que $2,3,1\pm\sqrt{-5}$ son irreducibles.
+        \end{proof}
+
+        \item \begin{proof}
+            Para simplificar la demostración, sin perder generalidad, no se tomara los asociados en cuenta.\\
+            Sean $a,b\in R:a\mid b$, y sea $\sigma$ la función definida anteriormente.
+            \[\therefore \sigma(a)\mid\sigma(b)\]
+            Sabemos que $1<\sigma(a)<\sigma(b)$ o $\sigma(a)=\sigma(b)$, lo segundo implica que son elementos asociados, por lo que no es un caso a considerar. El primero se divide en dos casos, $a$ irreducible, o $\exists c\in R: c\mid a$, por lo mismo que antes:
+            \[1<\sigma(c)<\sigma(a)\]
+            Entonces notamos que $b$ solo puede tener finitos divisores (sin considerar unidades y elementos asociados), ya que la secuencia de divisores $\sigma(a_n)$ es estrictamente decreciente, pero es mayor a $1$.
+        \end{proof}
+    \end{enumerate}
 
     \subsection{13}
     If $a,b$ are integers and if $a$ divides $b$ in the ring of Gauss integers, then $a$ divides $b$ in $\set{Z}$
+    \begin{proof}
+        Usando $\func{\sigma}{\set{Z}[i]\setminus\{0\}}{\set{Z}}{}{}$ tal que:
+        \[\sigma(a+bi)=a^2+b^2\]
+        La cual sabemos que cumple lo mismo que la función denotada en el ejercicio anterior. Ahora, sean $a,b\in R:a\mid b$ enteros.
+        \[\therefore \sigma(a)\mid\sigma(b)\]
+        \[\sigma(a)=a^2,\sigma(b)=b^2\]
+        \[\implies a^2\mid b^2\]
+        \[\implies a\mid b\]
+        Que es lo que queríamos demostrar.
+    \end{proof}
 
     \section{3. Lema de Gauss}
     \subsection{1}
@@ -115,29 +185,5 @@
         \item $x^3-3x+2$
 
         \item $x^9-6x^6+9x^3-3$
-    \end{enumerate}
-
-    \section{5. Primos en el anillo de Enteros de Gauss}
-    \subsection{1}
-    Prove that every Gauss prime divides exactly one integer prime.
-
-    \subsection{3}
-    Factor the following into Gauss primes.
-    \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item $1-3i$
-
-        \item $10$
-
-        \item $6+9i$
-    \end{enumerate}
-
-    \subsection{7}
-    Describe the residue ring $\set{Z}[i]/(p)$ in each case.
-    \begin{enumerate}[label=\textbf{(\alph*)}]
-        \item $p=2$
-
-        \item $p\equiv 1\quad(\text{modulo} 4)$
-
-        \item $p\equiv 3 \quad(\text{modulo} 4)$
     \end{enumerate}
     \end{document}
