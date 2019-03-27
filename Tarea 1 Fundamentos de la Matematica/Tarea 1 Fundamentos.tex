@@ -54,7 +54,7 @@
                   F        & F       & V                     & V                     & V                 & V                                                          \\
                   \hline
               \end{tabular}
-        \item
+        \item 
     \end{enumerate}
 \end{sol}
 
@@ -85,7 +85,7 @@
         \varphi_4 & = (\neg \alpha \implies (c \implies \neg \alpha))\implies (\neg \alpha \implies \neg \alpha)                                                                                & (MP) \\
         \varphi_5 & = (\neg \alpha \implies (c \implies \neg \alpha))                                                                                                                           & (A1) \\
         \varphi_6 & = (\neg \alpha \implies \neg \alpha)                                                                                                                                        & (MP) \\
-        \varphi_7 & = (\neg \alpha \implies \neg \alpha) \implies (\alpha \implies \neg \neg \alpha)                                                                                            & (A9) \\
+        \varphi_7 & = ((\neg \alpha \implies \neg \alpha) \implies (\alpha \implies \neg \neg \alpha))                                                                                            & (A9) \\
         \varphi_8 & = (\alpha \implies \neg \neg \alpha)                                                                                                                                        & (MP) \\
         \varphi_9 & = \neg \neg \alpha                                                                                                                                                          & (MP)
     \end{align*}
@@ -101,25 +101,25 @@
     Dado $\neg\neg\alpha$
     \begin{align*}
         \varphi_1    & = \neg\neg\alpha                                                                                                                                 \\
-        \varphi_2    & = \neg\neg\alpha\implies((x\implies x)\implies \neg\neg\alpha)                                                                           & (A1)  \\
-        \varphi_3    & = (x\implies x)\implies\neg\neg\alpha                                                                                                    & (MP)  \\
-        \varphi_4    & = ((x\implies x)\implies\neg\neg\alpha)\implies(\neg\alpha\implies\neg(x\implies x))                                                     & (A9)  \\
-        \varphi_5    & = \neg\alpha\implies\neg(x\implies x)                                                                                                    & (MP)  \\
-        \varphi_6    & = \neg(x\implies x)\implies\alpha                                                                                                        & (A10) \\
-        \varphi_7    & = (\neg(x\implies x)\implies\alpha)\implies(\neg\alpha\implies(\neg(x\implies x)\implies\alpha))                                         & (A1)  \\
-        \varphi_8    & = \neg\alpha\implies(\neg(x\implies x)\implies\alpha)                                                                                    & (MP)  \\
-        \varphi_9    & = (\neg\alpha\implies(\neg(x\implies x)\implies\alpha))\implies((\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha)) & (A2)  \\
-        \varphi_{10} & = (\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha)                                                                & (MP)  \\
-        \varphi_{11} & = \neg\alpha\implies\alpha                                                                                                               & (MP)  \\
-        \varphi_{12} & = \alpha\vee\neg\alpha                                                                                                                   & (A11) \\
+        \varphi_2    & = (\neg\neg\alpha\implies((x\implies x)\implies \neg\neg\alpha))                                                                           & (A1)  \\
+        \varphi_3    & = ((x\implies x)\implies\neg\neg\alpha)                                                                                                    & (MP)  \\
+        \varphi_4    & = (((x\implies x)\implies\neg\neg\alpha)\implies(\neg\alpha\implies\neg(x\implies x)))                                                     & (A9)  \\
+        \varphi_5    & = (\neg\alpha\implies\neg(x\implies x))                                                                                                    & (MP)  \\
+        \varphi_6    & = (\neg(x\implies x)\implies\alpha)                                                                                                        & (A10) \\
+        \varphi_7    & = ((\neg(x\implies x)\implies\alpha)\implies(\neg\alpha\implies(\neg(x\implies x)\implies\alpha)))                                         & (A1)  \\
+        \varphi_8    & = (\neg\alpha\implies(\neg(x\implies x)\implies\alpha))                                                                                    & (MP)  \\
+        \varphi_9    & = ((\neg\alpha\implies(\neg(x\implies x)\implies\alpha))\implies((\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha))) & (A2)  \\
+        \varphi_{10} & = ((\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha))                                                                & (MP)  \\
+        \varphi_{11} & = (\neg\alpha\implies\alpha)                                                                                                               & (MP)  \\
+        \varphi_{12} & = (\alpha\vee\neg\alpha)                                                                                                                   & (A11) \\
         \varphi_{13} & = ((\alpha\implies\alpha)\implies((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha)))                             & (A5)  \\
-        \varphi_{14} & = \alpha\implies((c\implies\alpha)\implies\alpha)                                                                                        & (A1)  \\
+        \varphi_{14} & = (\alpha\implies((c\implies\alpha)\implies\alpha))                                                                                        & (A1)  \\
         \varphi_{15} & = (\alpha\implies((c\implies\alpha)\implies\alpha))\implies((\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha))             & (A2)  \\
-        \varphi_{16} & = (\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha)                                                                        & (MP)  \\
+        \varphi_{16} & = ((\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha))                                                                        & (MP)  \\
         \varphi_{17} & = (\alpha\implies(c\implies\alpha))                                                                                                      & (A1)  \\
-        \varphi_{18} & = \alpha\implies\alpha                                                                                                                   & (MP)  \\
+        \varphi_{18} & = (\alpha\implies\alpha)                                                                                                                   & (MP)  \\
         \varphi_{19} & = ((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha))                                                             & (MP)  \\
-        \varphi_{20} & = (\alpha\vee\neg\alpha)\implies\alpha                                                                                                   & (MP)  \\
+        \varphi_{20} & = ((\alpha\vee\neg\alpha)\implies\alpha)                                                                                                   & (MP)  \\
         \varphi_{21} & = \alpha                                                                                                                                 & (MP)
     \end{align*}
 \end{sol}
