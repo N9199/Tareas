@@ -1,0 +1,126 @@
+\input{../Templates/template_group}
+
+\title{Tarea 1}
+\author{Nicholas Mc-Donnell, Maximiliano Norbu}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+    \includegraphics[width=2cm]{../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+    \begin{flushleft}
+        \raggedright
+        {
+            \noindent
+            {\sc Pontificia Universidad Católica de Chile\\
+                Facultad de Matemáticas\\
+                Departamento de Matemática} \smallskip \\
+            Primer Semestre de 2019\\
+        }
+    \end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf Tarea 1}}
+{\large \centerline{Fundamentos de la Matemática - MAT 2405}}
+\centerline{Fecha de Entrega: 2019/03/27}
+
+\begin{flushright}
+    Integrantes del grupo:\\
+    Nicholas Mc-Donnell, Maximiliano Norbu
+\end{flushright}
+
+\section*{Problemas}
+
+\begin{prob}[15 pts]
+    \
+    \begin{enumerate}[label=(\alph*)]
+        \item (5 pts) Dadas oraciones $\alpha$ y $\beta$, muestre que $(\alpha \iff \beta)$ y $((\alpha \implies \beta) \wedge (\beta \implies \alpha))$ son lógicamente equivalentes.
+        \item (10 pts) Demuestre por inducción en oraciones que toda oración es lógicamente equivalente a alguna oración que no tiene el símbolo $\iff$.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item Viendo la siguiente tabla con todas las valuaciones posibles se nota que son lógicamente equivalentes pues ambas siempre tienen el mismo valor de verdad.\\
+              \begin{tabular}{|c|c|c|c|c|c|}
+                  \hline
+                  $\alpha$ & $\beta$ & $\alpha\implies\beta$ & $\beta\implies\alpha$ & $\alpha\iff\beta$ & $((\alpha \implies \beta) \wedge (\beta \implies \alpha))$ \\
+                  \hline
+                  \hline
+                  V        & V       & V                     & V                     & V                 & V                                                          \\
+                  V        & F       & F                     & V                     & F                 & F                                                          \\
+                  F        & V       & V                     & F                     & F                 & F                                                          \\
+                  F        & F       & V                     & V                     & V                 & V                                                          \\
+                  \hline
+              \end{tabular}
+        \item
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}[10 pts]
+    \
+    \begin{enumerate}[label=(\alph*)]
+        \item (5 pts) Demuestre que si $\Sigma$ es un conjunto no vacío de oraciones que cumple ambos $\Sigma \models \varphi$ y $\Sigma \models \neg \varphi$, entonces $\Sigma$ no es satisfacible.
+        \item (5 pts) ¿Es el conjunto vacío $\phi$ satisfacible? ¿Se cumplen $\phi \models \varphi$ y/o $\phi \models \neg \varphi$?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item Se asume que $\Sigma$ es satisfacible, entonces existe una valuación $\mathcal{V}$ tal que toda oración en $\Sigma$ sea verdad. Pero si $\varphi$ es verdad, entonces $\neg\varphi$ es falso, ahora $\Sigma\models\neg\varphi$, por lo que $\neg\varphi$ es verdad, pero una oración no puede ser verdadera y falsa ya que una valuación solo puede dar un valor para cada oración. Con esto se concluye que $\Sigma$ no es satisfacible.
+        \item Por definición, ya que $\emptyset$ no tiene oraciones se cumple que para toda valuación \underline{todas} las oraciones de $\emptyset$ son verdad. Ahora si $\emptyset\models\varphi$, significa que para toda valuación
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}[5 pts]
+    Sea $\alpha$ oración. Encuentre una derivación $\neg \neg \alpha$ a partir del conjunto $\Delta=\{\alpha\}$ utilizando los axiomas y regla de deducción vistas en clase.
+\end{prob}
+
+\begin{sol}
+    \begin{align*}
+        \varphi_1 & = \alpha                                                                                                                                                                           \\
+        \varphi_2 & = (\neg \alpha \implies ((c \implies \neg \alpha )\implies \neg \alpha))                                                                                                    & (A1) \\
+        \varphi_3 & = (\neg \alpha \implies ((c \implies \neg \alpha)\implies \neg \alpha))\implies ((\neg \alpha \implies (c \implies \neg \alpha))\implies(\neg \alpha \implies \neg \alpha)) & (A2) \\
+        \varphi_4 & = (\neg \alpha \implies (c \implies \neg \alpha))\implies (\neg \alpha \implies \neg \alpha)                                                                                & (MP) \\
+        \varphi_5 & = (\neg \alpha \implies (c \implies \neg \alpha))                                                                                                                           & (A1) \\
+        \varphi_6 & = (\neg \alpha \implies \neg \alpha)                                                                                                                                        & (MP) \\
+        \varphi_7 & = (\neg \alpha \implies \neg \alpha) \implies (\alpha \implies \neg \neg \alpha)                                                                                            & (A9) \\
+        \varphi_8 & = (\alpha \implies \neg \neg \alpha)                                                                                                                                        & (MP) \\
+        \varphi_9 & = \neg \neg \alpha                                                                                                                                                          & (MP)
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    Bonus
+    \\
+    Encuentre una derivación de la oración $\beta$  partir del conjunto $\{\neg \neg \beta\}$ utilizando los axiomas y regla de deducción vistas en clase.
+\end{prob}
+
+\begin{sol}
+    Dado $\neg\neg\alpha$
+    \begin{align*}
+        \varphi_1    & = \neg\neg\alpha                                                                                                                                 \\
+        \varphi_2    & = \neg\neg\alpha\implies((x\implies x)\implies \neg\neg\alpha)                                                                           & (A1)  \\
+        \varphi_3    & = (x\implies x)\implies\neg\neg\alpha                                                                                                    & (MP)  \\
+        \varphi_4    & = ((x\implies x)\implies\neg\neg\alpha)\implies(\neg\alpha\implies\neg(x\implies x))                                                     & (A9)  \\
+        \varphi_5    & = \neg\alpha\implies\neg(x\implies x)                                                                                                    & (MP)  \\
+        \varphi_6    & = \neg(x\implies x)\implies\alpha                                                                                                        & (A10) \\
+        \varphi_7    & = (\neg(x\implies x)\implies\alpha)\implies(\neg\alpha\implies(\neg(x\implies x)\implies\alpha))                                         & (A1)  \\
+        \varphi_8    & = \neg\alpha\implies(\neg(x\implies x)\implies\alpha)                                                                                    & (MP)  \\
+        \varphi_9    & = (\neg\alpha\implies(\neg(x\implies x)\implies\alpha))\implies((\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha)) & (A2)  \\
+        \varphi_{10} & = (\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha)                                                                & (MP)  \\
+        \varphi_{11} & = \neg\alpha\implies\alpha                                                                                                               & (MP)  \\
+        \varphi_{12} & = \alpha\vee\neg\alpha                                                                                                                   & (A11) \\
+        \varphi_{13} & = ((\alpha\implies\alpha)\implies((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha)))                             & (A5)  \\
+        \varphi_{14} & = \alpha\implies((c\implies\alpha)\implies\alpha)                                                                                        & (A1)  \\
+        \varphi_{15} & = (\alpha\implies((c\implies\alpha)\implies\alpha))\implies((\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha))             & (A2)  \\
+        \varphi_{16} & = (\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha)                                                                        & (MP)  \\
+        \varphi_{17} & = (\alpha\implies(c\implies\alpha))                                                                                                      & (A1)  \\
+        \varphi_{18} & = \alpha\implies\alpha                                                                                                                   & (MP)  \\
+        \varphi_{19} & = ((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha))                                                             & (MP)  \\
+        \varphi_{20} & = (\alpha\vee\neg\alpha)\implies\alpha                                                                                                   & (MP)  \\
+        \varphi_{21} & = \alpha                                                                                                                                 & (MP)
+    \end{align*}
+\end{sol}
+\end{document}
