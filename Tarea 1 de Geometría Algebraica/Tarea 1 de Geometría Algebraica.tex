@@ -1,0 +1,140 @@
+\input{../Templates/template}
+
+\title{Tarea I}
+\date{1er semestre 2019}
+\author{Nicholas Mc-Donnell}
+
+\pagenumbering{gobble}
+\begin{document}
+\maketitle
+
+\clearpage\newpage
+
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\section*{Notas}
+En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
+
+\begin{prob}{1.2}
+    Sea $R$ un DFU, $K$ cuerpo cociente de $R$. Muestre que todo elemento $z$ de $K$ puede ser escrito $z=a/b$, donde $a,b$ no tiene factores en común; este representante es único salvo unidades de $R$.
+\end{prob}
+
+\begin{sol}{1.2}
+    Dado un $z\in K$, se sabe que $\exists c,d\in R: z=c/d$, y ya que $R$ es un DFU $c,d$ tienen factorización única. Si $c=u_1\cdot p_1^{\alpha_1}\cdot...\cdot p_n^{\alpha_n}, d=u_2\cdot q_1^{\beta_1}\cdot...\cdot q_k^{\beta_k}$, se pueden ver los factores en común ($r_1^{\gamma_1}\cdot...\cdot r_m^{\gamma_m}$) y escribir $c=u_1\cdot a\cdot r_1^{\gamma_1}\cdot...\cdot r_m^{\gamma_m}, d=u_2\cdot b\cdot r_1^{\gamma_1}\cdot...\cdot r_m^{\gamma_m}$, luego $c/d=\frac{u_1}{u_2}\cdot\frac{a}{b}\cdot\frac{r_1^{\gamma_1}\cdot...\cdot r_m^{\gamma_m}}{r_1^{\gamma_1}\cdot...\cdot r_m^{\gamma_m}}=u_3\cdot\frac{a}{b}$, donde los $u_i$ son unidades, con esto tenemos lo pedido.
+\end{sol}
+
+\begin{prob}{1.4}
+    Sea $k$ un cuerpo infinito, $F\in k[x_1,...,x_n]$. Suponga que $F(\overline(a))=0$ para todo $\overline(a)\in k^n$. Muestre que $F=0$ (\textit{Hint:} Escriba $F=\sum F_ix_n^i\in k[x_1,...,x_{n_1}]$. Use inducción en $n$, y el hecho que $F(x_1,...,x_n)$ solo tiene una cantidad finita de raíces si algún $F_i(a_1,...,a_{n-1})\neq 0$)
+\end{prob}
+\begin{sol}{1.2}
+    Por inducción sobre $n$.\\
+    Para $n=1$, sea $F\in k[x]$ tal que $F(a)=0$ $\forall a\in k$, pero se sabe que un polinomio no trivial en una variable solo puede tener a lo más finitos ceros, por lo que $F=0$.\\
+    Para $n$, se sabe que $k[x_1,...,x_{n-1},x_n]=k[x_1,...,x_{n-1}][x_n]$, dado esto y un polinomio $F\in k[x_1,...,x_n]$ que cumple que $F(\overline(a))=0$ $\forall\overline{a}\in k^n$, se escribe $F$ de la siguiente forma:
+    \[
+        F(x_1,..,x_n)=\sum_{i=0}^m F_i\cdot x_n^i\text{ donde }F_i\in k[x_1,...,x_{n-1}]
+    \]
+    Evaluando $F$ en $\overline{a}\in k^{n-1}$ se tiene lo siguiente:
+    \[
+        F(\overline{a},x_n)=\sum_{i=0}^m F_i(\overline{a})\cdot x_n^i
+    \]
+    Se nota que $F(\overline{a},x_n)\in k[x_n]$, con lo que sabemos que $F(\overline{a},x_n)$ es el polinomio cero, o tiene finitas raíces, como para todo $a_n\in k$ se cumple que $F(\overline{a},a_n)=0$, se cumple que todos los $F_i(\overline{a})$ son cero, pero recordamos que $\overline{a}$ es arbitrario, por lo que por hipótesis inductiva los $F_i$ también son cero. Con lo que $F$ es cero.
+\end{sol}
+
+\begin{prob}{1.6}
+    Muestre que todo cuerpo algebraicamente cerrado es infinito. (\textit{Hint:} Los polinomios irreducibles mónicos son $x-a,a\in k$)
+\end{prob}
+
+\begin{sol}{1.6}
+    Por contradicción, se tiene un cuerpo algebraicamente cerrado $k$ tal que $\abs{k}=n<\infty$. Se cuentan los polinomios mónicos de grado $2$, usando que $k$ es algebraicamente cerrado se sabe lo siguiente:
+    \begin{align*}
+        x^2+ax+b                    & =(x-c)(x-d)                    \\
+        \#\{x^2+ax+b:(a,b)\in k^2\} & =\#\{(x-c)(x-d):(c,d)\in k^2\}
+    \end{align*}
+    Lo primero claramente es $n^2$ y lo segundo es la cantidad de pares no ordenados con distintos elementos ($\binom{n}{2}$), más la cantidad de pares con el mismo elemento ($n$)
+    \begin{align*}
+        n^2 & =\binom{n}{2}+n   \\
+        n^2 & =\frac{n(n-1)}2+n \\
+        n^2 & =\frac{n(n+1)}2
+    \end{align*}
+    Claramente $n^2\neq \frac{n(n+1}2$, excepto para $n=0,1$ pero no hay cuerpos de cero o un elemento. Por lo que no hay cuerpos finitos algebraicamente cerrados.
+\end{sol}
+
+\begin{prob}{1.8}
+    Muestre que los conjuntos algebraicos de $\set{A}_k^1$ son solo los conjuntos finitos con el mismo $\set{A}_k^1$.
+\end{prob}
+
+\begin{sol}{1.8}
+    Se asume que existe algún conjunto algebraico $X\nsubseteq\set{A}_k^1$ que es infinito. Luego existe algún conjunto finito de polinomios $S$ tal que $V(S)=X$, sea $p\in S\subset k[x]$, sabemos que $p$ tiene finitos ceros. Definimos $S'=\{\deg p:p\in S\}$, como $S$ es finito, $S'$ tiene un máximo $s$, por lo que se puede acotar $\#V(S)\leq \#S\cdot s\in\set{N}$, pero $X$ es infinito con lo que tenemos una contradicción.
+\end{sol}
+
+\begin{prob}{1.12}
+    Suponga $C$ es una curva afín en el plano, y $L$ es una linea en $\set{A}^2_k,L\nsubseteq C$. Suponga $C=V(F)$, $F\in k[x,y]$ un polinomio de grado $n$. Muestre que $L\cap C$ es un conjunto finito de no más que $n$ puntos. (\textit{Hint:} Suponga que $L=V(y-(ax+b))$, y considere $F(x,ax+b)\in k[x]$.)
+\end{prob}
+
+\begin{sol}{1.12}
+    Ya que $L$ es una linea (recta), existe $p(x,y)=ax+by+c:V(p)=L$, se nota que si $b\neq 0$ entonces $q(x,y)=a/bx+y+c/b$ tiene los mismos ceros que $p$ y se puede escribir como $q(x,y)=y-(-a/bx-c/b)$. En caso de que $b=0$ sabemos que $a\neq 0$, si no $V(p)=\emptyset\vee V(p)=\set{A}_k^2$. Con esto notamos que existe $q\in k[x,y]:q(x,y)=y-(a'x+b')\wedge V(q)=L$ (si no existe $q(x,y)=x-(a''y+b'')$ que cumple lo mismo). Con esto se analiza $F(x,a'x+b')$, se puede notar que $V(F(x,a'x+b'))=V(F)\cap L$. Se ve que $F(x,a'x+b')\in k[x]$, por lo que tiene finitos ceros. Con esto se tiene que $V(F)\cap L$ tiene finitos elementos.
+\end{sol}
+
+\begin{prob}{1.14}
+    Sea $F$ un polinomio no constante en $k[x_1,...,x_n]$, $k$ algebraicamente cerrado. Muestre que $\set{A}_k^n\setminus V(F)$ es infinito si $n\geq1$, y $V(F)$ es infinito si $n\geq2$. Concluya que el complemento de un conjunto algebraico es infinito. (\textit{Hint:} Ver el problema 1.4)
+\end{prob}
+
+\begin{sol}{1.14}
+    Se nota que $V(F)\nsubseteq\set{A}_k^n$, ya que por el problema 1.4 se sabe que si $\forall\overline{a}\in\set{A}_k^n:F(\overline{a})=0\implies F(\overline{x})=0$, pero $F$ es no constante. Supongamos que $\set{A}_k^n\setminus V(F)$ es finito, luego sean $\overline{a}_i$ sus elementos, se pueden construir los polinomios $p_i(\overline{x})=\prod^n_{j=1}(x_j-a_j)$. Con estos se construye $G=F\cdot\prod_{i=1}^mp_i$, claramente $V(G)=\set{A}_k^n$, por lo que $G=0$, pero $p_i\neq 0$, lo que implica que $F=0$ una contradicción. Con esto se tiene que $\set{A}_k^n\setminus V(F)$ es infinito para $n\geq 1$.\\
+    Dado $F\in k[x_1,...,x_n]$ no constante, y $V(F)$, se asume que $V(F)$ es finito. Se sabe que $F$ se puede escribir de la siguiente manera:
+    \[
+        F(\overline{x},x_n)=\sum_{i=0}^mg_i(\overline{x})x_n^i\quad q_i\in k[x_1,...,x_{n-1}]
+    \]
+    Como $V(F)$ es finito, $n\geq2$ y $k$ es algebraicamente cerrado (es infinito por problema 1.6) existe $\overline{a}\in\set{A}_k^{n-1}:F(\overline{a},x_n)\neq 0\forall x_n\in k$, luego, se ve evalúa $\overline{a}$ en el polinomio:
+    \[
+        F(\overline{a},x_n)=\sum_{i=0}^mg_i(\overline{a})x_n^i
+    \]
+    Se puede notar que $F(\overline{a},x_n)$ es un polinomio en $k[x_n]$, por lo que tiene que sea una raíz, pero elegimos $\overline{a}$ tal que no tuviera raíces. Con esto tenemos una contradicción. Por lo que $V(F)$ es infinito.
+\end{sol}
+
+\begin{prob}{1.16}
+    Sea $V, W$ un conjunto algebraico en $\set{A}_k^n$. Muestre que $V=W$ ssi $I(V)=I(W)$.
+\end{prob}
+
+\begin{sol}{1.16}
+    Sean $V,W$ conjuntos algebraicos, trivialmente se nota que $I(V)=I(W)$ si $V=W$. Para la otra implicancia, sean $I(V)=I(W)$, y sea $\overline{a}\in V$, y $p\in I(V)=I(W)$, luego $p(\overline{a})=0$, por lo que $\overline{a}\in W$. Análogamente, se consigue la otra contención.
+\end{sol}
+
+\begin{prob}{1.18}
+    Sea $I$ un ideal en un anillo $R$. Si $a^n, b^m\in I$, muestre que $(a+b)^{n+m}$. Muestre $\rad(I)$ es un ideal, de hecho un ideal radical. Muestre que un ideal primo es radical.
+\end{prob}
+
+\begin{sol}{1.18}
+    Sabemos que $(a+b)^{n+m}=\sum_{i=0}^{n+m}\binom{n+m}{i}a^ib^{m+n-i}$, dado un termino de esta sumatoria $a^ib^{m+n-i}$ tenemos dos casos $i\geq n$ e $i<n$. En el primer caso escribimos lo siguiente $a^ib^{m+n-i}=a^n\cdot a^{n-i}b^{m+n-i}$, como $a^n\in I$ entonces $a^ib^{m+n-i}\in I$. En el segundo caso notamos que si $n>i$ entonces $m+n-i>m$, por lo que se puede usar el mismo argumento anterior, pero con $b^m$. Con esto se concluye que todos los términos de $(a+b)^{n+m}$ pertenecen a $I$, y por la aditividad $(a+b)^{n+m}\in I$.
+\end{sol}
+
+\begin{prob}{1.20}
+    Muestre que para cualquier ideal $I$ en $R=k[x_1,...,x_n]$, $V(I)=V(\rad(I))$, y $\rad(I)\subset I(V(I))$.
+\end{prob}
+
+\begin{sol}{1.20}
+    Claramente $\rad(I)\subseteq I$, por lo que $V(\rad(I))\supseteq V(I)$. Sea $\overline{a}\in V(\rad(I))$, entonces $\exists m\in\set{N}, p\in I: p^m\in I\wedge p(\overline{a})=0$ por lo que $p^m(\overline{a})=0\implies \overline{a}\in V(I)$, con esto se concluye que $V(I)=V(\rad(I))$. Ahora dado $p\in\rad(I)$, y un $\overline{a}\in\set{A}_k^n:p(\overline{a})=0$ como $V(I)=V(\rad(I))$, entonces $\overline{a}\in V(I)$, por lo que $p\in I(V(I))$. Con esto se concluye que $\rad(I)\subseteq I(V(I))$.
+\end{sol}
+
+\begin{prob}{1.22}
+    Se $I$ un ideal en un anillo $R$, $\pi:R\rightarrow R/I$ el homorfismo natural.
+    \begin{enumerate}[label=(\alph*)]
+        \item Muestre que para cualquier ideal $J'$ de $R/I$, $\pi^{-1}(J')=J$ es un ideal de $R$ que contiene a $I$, y para cada ideal $J$ en $R$ que contiene $I$, $\pi(J)=J'$ es un ideal de $R/I$. Esto arma un correspondencia uno-a-uno natural entre \{ideales de $R/I$\}$=\mathcal{I}'$ y \{ideales de $R$ que contienen $I$\}$=\mathcal{I}$.
+        \item Muestra que $J'$ es ideal radical ssi $J$ es radical. Similarmente para ideales primos y maximales.
+        \item Muestre que $J'$ es finitamente generado si $J$ lo es. Concluya que $R/I$ es Noetheriano si $R$ es Noetheriano. Todo anillo de la forma $k[x_1,...,x_n]/I$ es Noetheriano.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{1.22}
+    \begin{enumerate}[label=(\alph*)]
+        \item Sea $J'$ un ideal, luego $0\in J=\pi^{-1}(J')$, ya que $\pi^{-1}(\{0\})=I$ se sabe que $I\subseteq \pi^{-1}(J')=J$. Sean $a,b\in J$, entonces $\pi(a),\pi(b)\in J'$, luego $\pi(a)+\pi(b)=\pi(a+b)\in J'$ con lo que $a+b\in \pi^{-1}(J')=J$. Sea $a\in J, r\in R$, de esto se nota que $\pi(a)\in J', \pi(r)\in R/I$, por lo que $\pi(r)\pi(a)=\pi(ra)\in J'$ con lo cual se sabe que $ra\in\pi^{-1}(J')=J$. Con esto se concluye que $J\supseteq I$ es ideal.\\
+        Sea $J\supseteq I$ un ideal, entonces $0\in J'=\pi(J)$, ya que $\pi(I)=\{0\}$. Sean $a',b'\in J'$, luego $\exists a,b\in J: \pi(a)=a',\pi(b)=b'$, con esto se ve que $a'+b'=\pi(a)+\pi(b)=\pi(a+b)\in J'$. Sean $a'\in J', r'\in R/I$, se puede ver que $\exists a\in J, r\in R:\pi(a)=a',\pi(r)=r'$, por lo que $r'a'=\pi(r)\pi(a)=\pi(ra)\in J'$. Por lo que se puede concluir que $J'$ es un ideal.
+        \item Sea $J$ ideal radical, y sea $b^m\in J'$. Luego, existe $a\in R:\pi(a)=b$, dado eso $\pi(a^m)=b^m\in J'$, por lo que $a^m\in J$, y ya que $J$ es radical $a\in J$, con esto $\pi(a)=b\in J'$ por lo que $J'$ es radical. Similarmente si $J'$ radical, $a^m\in J$ luego $\pi(a)^m\in J'$, por lo que $\pi(a)\in J'$ con lo que $\pi(a)\in J'$ por lo que $a\in J$, lo significa que $J$ es radical.\\
+        Sea $J$ ideal primo, luego sean $a',b'\in R/I: a'b'\in J'$, se sabe que existen $a,b\in R: \pi(a)=a', \pi(b)=b'$, con esto se ve que $ab\in J$ y como $J$ ideal primo $a\in J\vee b\in J\implies \pi(a)=a'\in J'\vee\pi(b)=b'\in J'$. Entonces $J'$ ideal primo. Ahora, sea $J'$ ideal primo, y sean $a,b\in R: ab\in J$, entonces $\pi(a)\pi(b)=\pi(ab)\in J'$ y ya que $J'$ primo $\pi(a)\in J'\vee \pi(a)\in J'\implies a\in J\vee b\in J$. Por lo que $J$ es ideal primo.\\
+        Sea $J'$ ideal maximal, y supongamos que $\pi^{-1}(J')=J\supseteq I$ ideal no maximal, luego existe ideal $M\supseteq J$. Se ve que $J'=\pi(J)\subseteq\pi(M)=M'$ lo que es una contradicción. Por lo que $J$ es ideal maximal. Ahora, sea $J$ ideal maximal y su imagen $\pi(J)=J'$ es no maximal, por lo que existe $M'\supseteq J'$, sea $M=\pi^{-1}(M')\supseteq \pi^{-1}(J')=J$, pero $J$ es maximal, una contradicción. Por lo que $J'$ es maximal.
+        \item Sea $J$ finitamente generado, y sea $a'\in J'$, entonces existe $a\in J:\pi(a)=a'$, como $J$ es finitamente generado $J=(a_1,...,a_n)$ y $\exists r_i\in R: a=\sum_{i=1}^nr_i\cdot a_i$, luego $\pi(a)=\sum_{i=1}^n\pi(r_i)\pi(a_i)$, como $a'$ es un elemento arbitrario de $J'$, $(\pi(a_1),...,\pi(a_n))$ genera $J'$, por ende $J'$ es finitamente generado. Con esto se concluye directamente que si todo $J$ es finitamente generado, todo $J'$ es finitamente generado. Por lo que si $R$ Noetheriano $R/I$ es Noetheriano. Como corolario directo $k[x_1,..,x_n]/I$ es Noetheriano.
+    \end{enumerate}
+\end{sol}
+\end{document}
