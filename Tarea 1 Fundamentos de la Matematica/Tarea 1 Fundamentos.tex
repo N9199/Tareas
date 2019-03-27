@@ -40,7 +40,7 @@
     \end{enumerate}
 \end{prob}
 
-\begin{sol}
+\begin{sol}]
     \begin{enumerate}[label=(\alph*)]
         \item Viendo la siguiente tabla con todas las valuaciones posibles se nota que son lógicamente equivalentes pues ambas siempre tienen el mismo valor de verdad.\\
               \begin{tabular}{|c|c|c|c|c|c|}
@@ -54,7 +54,25 @@
                   F        & F       & V                     & V                     & V                 & V                                                          \\
                   \hline
               \end{tabular}
-        \item 
+        \item Sabemos que a partir de oraciones base, hay 6 tipos de oraciones que se pueden armar (incluyendo a la oración en sí). Sean $\alpha$ y $\beta$ oraciones cualesquiera, los tipos de oraciones que se pueden armar con estas son:
+              \begin{enumerate}[label=\arabic*)]
+                  \item $\alpha$
+                  \item $\neg \alpha$
+                  \item $\alpha \wedge \beta$
+                  \item $\alpha \vee \beta$
+                  \item $\alpha \implies \beta$
+                  \item $\alpha \iff \beta$
+              \end{enumerate}
+              Como la base del lenguaje son las letras propocicionales y estas no tienen equivalencias, asumiré que ni $\alpha$ ni $\beta$ tienen equivalencias (esto para ver que podemos construir todo a partir de algo que no tiene equivalencias). Sabemos que si $\alpha$ y $\beta$ no tienen equivalencias, entonces las oraciones del tipo 1 al tipo 5 tampoco tienen equivalencias. Ahora, llamemos $\gamma$ una oración de tipo 1 a 5 cualquiera. Esta es lógicamente equivalente a $\neg \neg \gamma$ pues, sea $\mathcal{V}$ una valuación cualquiera: \\
+              si $\mathcal{V}(\gamma) = V\\
+                  \implies \mathcal{V}(\neg \gamma) = F\\
+                  \implies \mathcal{V}(\neg \neg \gamma) = V$\\
+              y si $\mathcal{V}(\gamma) = F\\
+                  \implies \mathcal{V}(\neg \gamma) = V\\
+                  \implies \mathcal{V}(\neg \neg \gamma) = F$\\
+              Por ende, $\gamma$ y $\neg \neg \gamma$ son lógicamente equivalentes. Como $\neg \neg \gamma$ es solo agregarle signos ``$\neg$'' a $\gamma$, sabemos que $\neg \neg \gamma$ no contiene equivalencias.\\
+              Ahora, llamemos $\kappa$ una oración de tipo 6, digamos, $\alpha \iff \beta$ donde $\alpha$ y $\beta$ son oraciones sin equivalencias. Por el ejercicio 1.a $\kappa$ es lógicamente equivalente a $((\alpha \implies \beta) \wedge (\beta \implies \alpha))$, oración que no tiene equivalencias. \\
+              Por inducción de oraciones, esto se puede extender a toda oración constructible del lenguaje, por ende toda oración es lógicamente equivalente a otra que no contiene equivalencias.
     \end{enumerate}
 \end{sol}
 
@@ -69,7 +87,7 @@
 \begin{sol}
     \begin{enumerate}[label=(\alph*)]
         \item Se asume que $\Sigma$ es satisfacible, entonces existe una valuación $\mathcal{V}$ tal que toda oración en $\Sigma$ sea verdad. Pero si $\varphi$ es verdad, entonces $\neg\varphi$ es falso, ahora $\Sigma\models\neg\varphi$, por lo que $\neg\varphi$ es verdad, pero una oración no puede ser verdadera y falsa ya que una valuación solo puede dar un valor para cada oración. Con esto se concluye que $\Sigma$ no es satisfacible.
-        \item Por definición, ya que $\emptyset$ no tiene oraciones se cumple que para toda valuación \underline{todas} las oraciones de $\emptyset$ son verdad. Ahora si $\emptyset\models\varphi$, significa que para toda valuación
+        \item Por definición, ya que $\emptyset$ no tiene oraciones se cumple que para toda valuación \underline{todas} las oraciones de $\emptyset$ son verdad. Ahora si $\emptyset\models\varphi$, significa que toda valuación que satisface $\emptyset$ también satisface $\varphi$, pero como toda valuación satisface $\emptyset$, en particular hay una tal que $\varphi$ sea falso, análogamente con $\neg\varphi$.
     \end{enumerate}
 \end{sol}
 
@@ -79,15 +97,15 @@
 
 \begin{sol}
     \begin{align*}
-        \varphi_1 & = \alpha                                                                                                                                                                           \\
-        \varphi_2 & = (\neg \alpha \implies ((c \implies \neg \alpha )\implies \neg \alpha))                                                                                                    & (A1) \\
+        \varphi_1 & = \alpha                                                                                                                                                                             \\
+        \varphi_2 & = (\neg \alpha \implies ((c \implies \neg \alpha )\implies \neg \alpha))                                                                                                      & (A1) \\
         \varphi_3 & = ((\neg \alpha \implies ((c \implies \neg \alpha)\implies \neg \alpha))\implies ((\neg \alpha \implies (c \implies \neg \alpha))\implies(\neg \alpha \implies \neg \alpha))) & (A2) \\
         \varphi_4 & = ((\neg \alpha \implies (c \implies \neg \alpha))\implies (\neg \alpha \implies \neg \alpha))                                                                                & (MP) \\
-        \varphi_5 & = (\neg \alpha \implies (c \implies \neg \alpha))                                                                                                                           & (A1) \\
-        \varphi_6 & = (\neg \alpha \implies \neg \alpha)                                                                                                                                        & (MP) \\
+        \varphi_5 & = (\neg \alpha \implies (c \implies \neg \alpha))                                                                                                                             & (A1) \\
+        \varphi_6 & = (\neg \alpha \implies \neg \alpha)                                                                                                                                          & (MP) \\
         \varphi_7 & = ((\neg \alpha \implies \neg \alpha) \implies (\alpha \implies \neg \neg \alpha))                                                                                            & (A9) \\
-        \varphi_8 & = (\alpha \implies \neg \neg \alpha)                                                                                                                                        & (MP) \\
-        \varphi_9 & = \neg \neg \alpha                                                                                                                                                          & (MP)
+        \varphi_8 & = (\alpha \implies \neg \neg \alpha)                                                                                                                                          & (MP) \\
+        \varphi_9 & = \neg \neg \alpha                                                                                                                                                            & (MP)
     \end{align*}
 \end{sol}
 
@@ -100,7 +118,7 @@
 \begin{sol}
     Dado $\neg\neg\alpha$
     \begin{align*}
-        \varphi_1    & = \neg\neg\alpha                                                                                                                                 \\
+        \varphi_1    & = \neg\neg\alpha                                                                                                                                   \\
         \varphi_2    & = (\neg\neg\alpha\implies((x\implies x)\implies \neg\neg\alpha))                                                                           & (A1)  \\
         \varphi_3    & = ((x\implies x)\implies\neg\neg\alpha)                                                                                                    & (MP)  \\
         \varphi_4    & = (((x\implies x)\implies\neg\neg\alpha)\implies(\neg\alpha\implies\neg(x\implies x)))                                                     & (A9)  \\
@@ -112,15 +130,15 @@
         \varphi_{10} & = ((\neg\alpha\implies\neg(x\implies x))\implies(\neg\alpha\implies\alpha))                                                                & (MP)  \\
         \varphi_{11} & = (\neg\alpha\implies\alpha)                                                                                                               & (MP)  \\
         \varphi_{12} & = (\alpha\vee\neg\alpha)                                                                                                                   & (A11) \\
-        \varphi_{13} & = ((\alpha\implies\alpha)\implies((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha)))                             & (A5)  \\
+        \varphi_{13} & = ((\alpha\implies\alpha)\implies((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha)))                               & (A5)  \\
         \varphi_{14} & = (\alpha\implies((c\implies\alpha)\implies\alpha))                                                                                        & (A1)  \\
         \varphi_{15} & = ((\alpha\implies((c\implies\alpha)\implies\alpha))\implies((\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha)))             & (A2)  \\
         \varphi_{16} & = ((\alpha\implies(c\implies\alpha))\implies(\alpha\implies\alpha))                                                                        & (MP)  \\
-        \varphi_{17} & = (\alpha\implies(c\implies\alpha))                                                                                                      & (A1)  \\
+        \varphi_{17} & = (\alpha\implies(c\implies\alpha))                                                                                                        & (A1)  \\
         \varphi_{18} & = (\alpha\implies\alpha)                                                                                                                   & (MP)  \\
-        \varphi_{19} & = ((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha))                                                             & (MP)  \\
+        \varphi_{19} & = ((\neg\alpha\implies\alpha)\implies((\alpha\vee\neg\alpha)\implies\alpha))                                                               & (MP)  \\
         \varphi_{20} & = ((\alpha\vee\neg\alpha)\implies\alpha)                                                                                                   & (MP)  \\
-        \varphi_{21} & = \alpha                                                                                                                                 & (MP)
+        \varphi_{21} & = \alpha                                                                                                                                   & (MP)
     \end{align*}
 \end{sol}
 \end{document}
