@@ -12,8 +12,7 @@
 \end{minipage}
 \begin{minipage}{13cm}
     \begin{flushleft}
-        \raggedright
-        {
+        \raggedright{
             \noindent
             {\sc Pontificia Universidad Católica de Chile\\
                 Facultad de Matemáticas\\
@@ -24,24 +23,28 @@
 \end{minipage}
 
 \vspace{2ex}
-{\Large \centerline{\bf \thetitle}
-{\large \centerline{Introducción a la Geometría Algebraica - MAT 2335}}
-\centerline{\normalsize Fecha de Entrega: \thedate}
+{\Large \centerline{\bf \thetitle}}
+{\large \centerline{Introducción a la Geometría Algebraica --- MAT 2335}}
+{\normalsize \centerline{ Fecha de Entrega: \thedate}}
 \vfill
 
 \begin{flushright}
-    \large\theauthor
+    {\large\theauthor}
 \end{flushright}
 \newpage
+\normalsize
 \pagenumbering{arabic}
 \tableofcontents
 \newpage
 
 \section*{Notas}
-En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
+En esta tarea se usará la notación \(\overline{a}=(a_1,...,a_n)\)
 
 \begin{prob}{1.25}
-
+    \begin{enumerate}[label= (\alph*)]
+        \item Muestre que \(V(y-x^2)\subset\set{A}_\set{C}^2\) es irreducible; en efecto, \(I(V(y-x^2))=I(y-x^2)\)
+        \item Separe \(V(y^4-x^2,y^4-x^2y^2+xy^2-x^3)\subset\set{A}_\set{C}^2\) en componentes irreducibles.
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.25}
@@ -49,7 +52,7 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.29}
-
+    Muestre que \(\set{A}_k^n\) es irreducible si $k$ es infinito.
 \end{prob}
 
 \begin{sol}{1.29}
@@ -57,7 +60,11 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.30}
-
+    Sea \(k=\set{R}\)
+    \begin{enumerate}[label= (\alph*)]
+        \item Muestre que \(I(V(x^2+y^2+1))=(1)\)
+        \item Demuestre que todo subconjunto algebraico de \(\set{A}_\set{R}^2\) es igual a \(V(F)\) para algún \(F\in\set{R}[x,y]\)
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.30}
@@ -65,7 +72,10 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.31}
-
+    \begin{enumerate}[label= (\alph*)]
+        \item Encuentre los componentes irreducibles de \(V(y^2-xy-x^2y+x^3)\) en \(\set{A}_\set{R}^2\) y también en \(\set{A}_\set{C}^2\)
+        \item Haga lo mismo para \(V(y^2-x(x^2-1))\), y para \(V(x^3+x-x^2y-y)\)
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.31}
@@ -73,7 +83,10 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.33}
-
+    \begin{enumerate}[label= (\alph*)]
+        \item Separe \(V(x^2+y^2-1,x^2-z^2-1)\subset\set{A}_\set{C}^3\) en componentes irreducibles.
+        \item Sea \(V=\{(t,t^2,t^3)\in\set{A}_\set{C}^3:t\in\set{C}\}\). Encuentre \(I(V)\), y demuestre que es irreducible.
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.33}
@@ -81,7 +94,7 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.37}
-
+    Sea \(k\) un cuerpo cualquiera, \(F\in k[x]\) un polinomio de grado \(n>0\). Muestre que los residuos \(\overline{1},\overline{x},...,\overline{x}^{n-1}\) forman una base de \(k[x]/(F)\) sobre \(k\).
 \end{prob}
 
 \begin{sol}{1.37}
@@ -89,7 +102,12 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.45}
-
+    Sea \(R\) un subanillo de \(S\), \(S\) un subanillo de \(T\).
+    \begin{enumerate}
+        \item Si \(S=\sum Rv_i,T=\sum Sw_j\), muestre que \(T=\sum Rv_iw_j\).
+        \item Si \(S=R[v_1,...,v_n],T=S[w_1,...,w_m]\), muestre que \(T=R[v_1,...,v_n,w_1,...,w_m]\).
+        \item Si \(R,S,T\) son cuerpos, y \(S=R(v_1,...,v_n),T=S(w_1,...,w_m)\), demuestre que \(T=R(v_1,...,v_n,w_1,...,w_m)\).
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.45}
@@ -97,7 +115,11 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.49}
-
+    Sea \(k\) un cuerpo, \(L=k(x)\) el cuerpo de funciones racionales en una variable sobre \(k\).
+    \begin{enumerate}
+        \item Muestre que todo elemento de \(L\) que es integral sobre \(k[x]\) ya esta en \(k[x]\). (Hint: Si \(z^n+a_1z^{n-1}+...=0\), tome \(z=F/G\), con \(F,G\) coprimos. Entonces \(F^n+a_1F^{n-1}+...=0\), por lo que \(G\) divide a \(F\).)
+        \item Muestre que hay un elemento no cero \(F\in k[x]\) tal que para todo \(z\in L\), \(F^nz\) es integral sobre \(k[x]\) para algún \(n>0\).
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.49}
@@ -105,7 +127,13 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.51}
-
+    Sea \(k\) un cuerpo, \(F\in k[x]\) un polinomio irreducible mónico de grado \(n>0\).
+    \begin{enumerate}[label= (\alph*)]
+        \item Muestre que \(L=k[x]/(F)\) es un cuerpo, y si \(a\) es el residuo de \(x\) en \(L\), entonces \(F(a)=0\).
+        \item Suponga que \(L'\) es una extensión de cuerpo de \(k\), \(y\in L'\) tal que \(F(y)=0\). Demuestre que el homorfismo de \(k[x]\) a \(L'\) que toma \(x\) a \(y\), induce un isomorfismo de \(L\) con \(k(y)\).
+        \item Con \(L'\), \(y\) como en (b), suponga que \(G\in k[x]\) y \(G(y)=0\). Muestre que \(F\) divide a \(G\).
+        \item Muestre que \(F=(x-a)F_1,F_1\in L[x]\)
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.51}
@@ -113,7 +141,11 @@ En esta tarea se usará la notación $\overline{a}=(a_1,...,a_n)$
 \end{sol}
 
 \begin{prob}{1.54}
-
+    Sea \(R\) un dominio con \(K\) su cuerpo cociente, y sea \(L\) una extensión finita y algebraica de \(K\)
+    \begin{enumerate}
+        \item Para todo \(v\in L\), demuestre que existe \(a\in R\) distinto a cero tal que \(av\) es integral sobre \(R\)
+        \item Muestre que hay una base \(v_1,...,v_n\) para \(L\) sobre \(K\) (como un espacio vectorial) tal que cada \(v_i\) es integral sobre \(R\).
+    \end{enumerate}
 \end{prob}
 
 \begin{sol}{1.54}
