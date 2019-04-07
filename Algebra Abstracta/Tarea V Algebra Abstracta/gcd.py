@@ -13,5 +13,7 @@ def gcd(a,b):
         print("Resto:$",b%a,"$")
         return gcd(a,b%a)
 
-print("gcd(1456,235):",gcd(1456,235))
-print("gcd(123456789,135792468):",gcd(123456789,135792468))
+a,b = input().split()
+a=int(a)
+b=int(b)
+print(gcd(a,b))œ

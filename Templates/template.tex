@@ -1,0 +1,50 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{mathtools}
+\usepackage{setspace}\onehalfspacing
+\usepackage[loose,nice]{units}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\set}[1]{\mathbb{#1}}
+\newcommand{\func}[5]{#1:#2\xrightarrow[#5]{#4}#3}
+\newcommand{\contr}{\rightarrow\leftarrow}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\mcm}{\text{mcm }}
+\newcommand{\BigO}[2][]{O_{#1}\paren{#2}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cis}{\text{cis }}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\rad}{rad}
+
+\newenvironment{prob}[1]{
+	\section{\textbf{Problema #1:}}
+}{}
+
+\newenvironment{sol}[1]{\par\medskip
+	\noindent \textbf{Solución problema #1:} \rmfamily}{\begin{flushright}
+		$\blacksquare$
+	\end{flushright}
+}
