@@ -7,7 +7,7 @@
 \usepackage{mathtools}
 \usepackage{setspace}\onehalfspacing
 \usepackage[loose,nice]{units}
-\usepackage{enumitem}
+\usepackage{enumitem}\setlist[enumerate]{label= (\alph*)}
 \usepackage{hyperref}
 \usepackage{titling}
 
@@ -40,7 +40,7 @@
 \DeclareMathOperator{\rad}{rad}
 
 \newenvironment{prob}[1]{
-	\section{\textbf{Problema #1:}}
+	{\large\raggedleft\textbf{Problema #1:}}\addcontentsline{toc}{section}{Problema #1}\par\addvspace{-\parskip}\noindent
 }{}
 
 \newenvironment{sol}[1]{\par\medskip
