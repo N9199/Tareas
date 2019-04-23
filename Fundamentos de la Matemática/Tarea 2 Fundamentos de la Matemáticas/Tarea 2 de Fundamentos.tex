@@ -37,7 +37,7 @@
 \end{prob}
 
 \begin{sol}
-    
+
 \end{sol}
 
 \begin{prob}
@@ -49,7 +49,25 @@
 \end{prob}
 
 \begin{sol}
-    
+    \begin{enumerate}[label=(\alph*)]
+        \item Sea \(\varphi\) la siguiente \(\mathcal{L}\)-fórmula con variable libre \(x\):
+              \[(f(x)=x)\wedge(\forall y\neg(x+y=y))\]
+              Se puede notar que si \(x\) cumple \(f(x)=x\), entonces es su propio cuadrado en \(\set{Z}/p\set{Z}\), se recuerda que es cuerpo\footnote{\cite{artin2011algebra}}, por lo que no hay divisores de \(0\), entonces \(x^2-x=x(x-\overline{1})=0\) y como es un cuerpo se sabe que \(x=\overline{1}\) ó \(x=\overline{0}\). Luego \(\overline{1}+y\neq y\), para cualquier \(y\), pero \(\overline{0}+y=y\), para cualquier \(y\), por lo que solo \(\overline{1}\) satisface \(\varphi\). Con lo que \(A\) es definible.
+        \item Se nota que si existe \(\varphi_n\) \(\mathcal{L}\)-fórmula tal que solo \(n\) lo satisface, entonces un conjunto finito \(A=\{a_1,...,a_k\}\) es definible por la siguiente \(\mathcal{L}\)-fórmula:
+              \[
+                  \bigvee_{i=1}^k\varphi_{a_i}
+              \]
+              Se puede notar que \(\varphi_0\) sería la \(\mathcal{L}\)-fórmula  con variable libre \(b\) \(\forall x (x+b=x)\). Luego, se considera la siguiente \(\mathcal{L}\)-fórmula con variable libre \(a\)
+              \[
+                  \forall x,y ((x+y=a)\implies((\neg(x=y))\wedge(((a=x)\wedge\varphi_0(y|b))\vee((a=y)\wedge\varphi_0(x|b)))))
+              \]
+              Se va a notar que esta es \(\varphi_1\), ya que solo \(1\) cumple que la única forma de escribirlo en forma de suma es tomándose a si mismo y sumándole el \(0\), también se consideran ambas posibilidades con el orden\footnote{La suma es conmutativa.}. %Explicar de nuevo
+              Con estas \(\mathcal{L}\)-fórmulas se tiene lo suficiente para construir \(\varphi_n\) con variable libre \(x\):
+              \begin{align*}
+                  \exists y ((\underbrace{((\dots(y+y)+\dots)+y)}_{\text{``\(n\)'' \(y\)}}=x)\wedge \varphi_1(y|a))
+              \end{align*}
+              Esto es suficiente ya que para cada \(\varphi_n\) el \(n\) es fijo, y \(n\) es único número natural que cumple que es la suma de \(n\) unos. Ya construido \(\varphi_n\) por lo mencionado al comienzo, se tiene que todo subconjunto finito \(A\) de \(\set{N}_0\) es definible.
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}[Bonus]
@@ -57,7 +75,14 @@
 \end{prob}
 
 \begin{sol}
-    
+    Se recuerda la definición de conjunto consistente \(M\), esto es; para toda oración \(\varphi\) se cumple solo una de las siguientes:
+    \[
+        M\vdash \varphi\text{ ó }M\vdash\neg\varphi
+    \]
+    Se considera el conjunto \(A\) de las letras proposicionales, se sabe que solo tiene una valuación \(V\) que la satisface, la valuación donde toda letra proposicional es verdad. Luego, es consistente ya que por correctitud, todo \(\varphi\) tal que \(A\vdash\varphi\) además cumple \(A\models\varphi\), y si además \(A\vdash\neg\varphi\), entonces \(A\models\neg\vdash\), pero entonces \(V(\varphi)=T=V(\neg\varphi)\), pero eso implicaría que alguna letra proposicional tiene ambos valores de verdad. Este argumento se puede extender a conjuntos consistentes que contienen \(A\), es decir todo conjunto que contiene \(A\) solo tiene una posible valuación \(V\). Ahora sea, \(M\) un conjunto consistente maximal que contiene \(A\) y sea \(N\) otro conjunto consistente maximal que contiene \(A\). Ambos son maximales por lo que, ó \(M=N\), ó \(M\neq N\) donde ninguno esta contenido en el otro. Para el segundo caso se nota que existe algún \(\varphi\in M\setminus N\), entonces \(M\vdash\varphi\) y \(N\vdash\neg\varphi\), ya que ambos son consistentes maximales.
 \end{sol}
+
+\bibliographystyle{apacite}
+\bibliography{Tarea}
 
 \end{document}
