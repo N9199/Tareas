@@ -75,11 +75,7 @@
 \end{prob}
 
 \begin{sol}
-    Se recuerda la definición de conjunto consistente \(M\), esto es; para toda oración \(\varphi\) se cumple solo una de las siguientes:
-    \[
-        M\vdash \varphi\text{ ó }M\vdash\neg\varphi
-    \]
-    Se considera el conjunto \(A\) de las letras proposicionales, se sabe que solo tiene una valuación \(V\) que la satisface, la valuación donde toda letra proposicional es verdad. Luego, es consistente ya que por correctitud, todo \(\varphi\) tal que \(A\vdash\varphi\) además cumple \(A\models\varphi\), y si además \(A\vdash\neg\varphi\), entonces \(A\models\neg\vdash\), pero entonces \(V(\varphi)=T=V(\neg\varphi)\), pero eso implicaría que alguna letra proposicional tiene ambos valores de verdad. Este argumento se puede extender a conjuntos consistentes que contienen \(A\), es decir todo conjunto que contiene \(A\) solo tiene una posible valuación \(V\). Ahora sea, \(M\) un conjunto consistente maximal que contiene \(A\) y sea \(N\) otro conjunto consistente maximal que contiene \(A\). Ambos son maximales por lo que, ó \(M=N\), ó \(M\neq N\) donde ninguno esta contenido en el otro. Para el segundo caso se nota que existe algún \(\varphi\in M\setminus N\), entonces \(M\vdash\varphi\) y \(N\vdash\neg\varphi\), ya que ambos son consistentes maximales.
+    Sean \(\Delta_1\) y \(\Delta_2\) dos conjuntos consistentes maximales que contienen \(A\). Luego, pasa una de los opciones \(\Delta_1\neq\Delta_2\) ó \(\Delta_1=\Delta_2\). Viendo el primer caso, existe \(\varphi\in\Delta_1\setminus\Delta_2\), luego ya que \(\Delta_2\) es consistente maximal y \(\varphi\notin\Delta_2\), \(\neg\varphi\in\Delta_2\). Sea \(B\subset A\) las letras proposicionales en \(\varphi\), luego \(B\cup\{\varphi\}\subset\Delta_1\) y \(B\cup\{\neg\varphi\}\subset\Delta_2\). Ahora, claramente \(B\cup\{\varphi\}\vdash\varphi\) y por correctitud \(B\cup\{\varphi\}\models\varphi\), similarmente para \(B\cup\{\neg\varphi\}\) entonces existen valuaciones \(V_1,V_2\) que satisfacen cada uno correspondientemente, entonces particularmente satisfacen \(B\) y como \(\varphi\) esta compuesta por los elementos de \(B\) se cumple que \(V_1(\varphi)=V_2(\varphi)\), pero si esto es una contradicción. Con esto se tiene que \(\Delta_1=\Delta_2\) por lo que solo hay un conjunto consistente maximal que contiene \(A\).
 \end{sol}
 
 \bibliographystyle{apacite}
