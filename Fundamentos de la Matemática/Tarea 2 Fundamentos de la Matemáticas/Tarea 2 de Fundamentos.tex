@@ -37,6 +37,52 @@
 \end{prob}
 
 \begin{sol}
+    Debemos probar que, dado $b \in M$: \begin{enumerate}
+        \item $\mathfrak{M}'_b \models \varphi (\hat{x}|x)$
+        \item $(\mathfrak{M},i_b)\models\varphi$, donde $i_b$: \{$x$\} $\rightarrow M$ es la asignación $i_b(x)=b$
+    \end{enumerate}
+    son equivalentes.\\
+    Para esto basta demostrar el caso de términos y luego (inductivamente) extenderlo a todas las fórmulas posibles.\\
+    Para un término t cualquiera, como t tiene solo la variable libre x (enunciado):\begin{enumerate}
+        \item t($\hat{x}|x$) no tiene variables libres. Su interpretación en $\mathfrak{M}'_b$ (donde $\mathfrak{M}'_b$ es una $\mathcal{L}'$-estructura y donde $\mathcal{L}'$ es una extensión del lenguaje $\mathcal{L}$ que solo agrega una constante b la cual interpreto de manera natural) está bien definida, pues $t^{\mathfrak{M}'_b} \in M$
+        \item Podemos usar $i_b$ para interpretar $x$ y $t^{(\mathfrak{M},i_b)}\in M$
+
+    \end{enumerate}
+    Es importante notar que $t^{(\mathfrak{M},i_b)} = t^{\mathfrak{M}'_b}$, o sea, son el mismo elemento en $M$.\\
+    Por esto, para el caso de términos, se cumple lo propuesto.\\
+    Ahora extenderemos este caso a las fórmulas atómicas. \\
+    Si $\varphi$ fuera una fórmula atómica $Rt_1,...,t_n$ ($R$ siendo una relación n-aria y $t_j$ siendo términos con solo una variable libre $x$), entonces dado $b$ $\in M$, de las definiciones obtenemos: \begin{enumerate}
+        \item $\mathfrak{M}'_b \models \varphi (\hat{x}|x)$ si y sólo si $(t_1^{\mathfrak{M}'_b},...,t_n^{\mathfrak{M}'_b}) \in R^{\mathfrak{M}'_b}$
+        \item $(\mathfrak{M},i_b) \models$ si y solo si $(t_1^{(\mathfrak{M},i_b)},...,t_n^{(\mathfrak{M},i_b})) \in R^{\mathfrak{M}}$
+    \end{enumerate}
+    Aquí es importante notar que $R^{\mathfrak{M}'_b} = R^{\mathfrak{M}}$. También notar que las interpretaciones de los términos ($t_j$) son las mismas en ambos casos (viendo término a término) por el caso de términos visto anteriormente. Por estas dos cosas se tiene que $\mathfrak{M}'_b \models \varphi (\hat{x}|x)$ si y solo si $(\mathfrak{M},i_b) \models \varphi$.\\
+    Ahora, si $\psi$ fuera fórmula y $\varphi = \neg \psi$, claramente $Free(\psi)=Free(\neg \psi)=Free(\varphi)=x$, $t^{\mathfrak{M}'_b}=t^{(\mathfrak{M},i_b)}=b \in M$.\\
+    Con esto tenemos: \begin{enumerate}
+        \item $\mathfrak{M}'_b \models \varphi (\hat{x}|x) = \neg \psi (\hat{x}|x)$ si y solo si $\mathfrak{M}'_b \nvDash \psi (\hat{x}|x)$
+        \item $(\mathfrak{M},i_b) \models \varphi = \neg \psi$ si y solo si $(\mathfrak{M},i_b) \nvDash \psi$
+    \end{enumerate}
+    Por el paso inductivo tenemos $\mathfrak{M}'_b \models \psi (\hat{x}|x)$ si y solo si $(\mathfrak{M},i_b) \models \psi$ por lo que:\\
+    $\mathfrak{M}'_b \models \varphi (\hat{x}|x) = \neg \psi (\hat{x}|x)$ si y solo si $(\mathfrak{M},i_b) \models \varphi = \neg \psi$.\\
+    Ahora, sean $\psi$ y $\sigma$ fórmulas con unica variable libre $x$ y sea $\varphi = \psi * \sigma$ con $*$ conectivo binario, claramente $Free(\varphi)=x$. $t^{\mathfrak{M}'_b}=t^{(\mathfrak{M},i_b)}=b \in M$. Con esto tenemos: \begin{enumerate}
+        \item $\mathfrak{M}'_b \models \varphi (\hat{x}|x) =  \psi * \sigma (\hat{x}|x)$ si y solo si $\mathfrak{M}'_b \models \psi(\hat{x}|x) * \mathfrak{M}'_b \models \sigma (\hat{x}|x)$
+        \item $(\mathfrak{M},i_b) \models \varphi = \psi * \sigma$ si y solo si $(\mathfrak{M},i_b) \models \psi *(\mathfrak{M},i_b) \models \sigma$
+    \end{enumerate}
+    Por ejemplo, si $\mathfrak{M}'_b \models \varphi (\hat{x}|x) =  \psi \vee \sigma (\hat{x}|x)$ si y solo si $\mathfrak{M}'_b \models \psi(\hat{x}|x)$ o $\mathfrak{M}'_b \models \sigma (\hat{x}|x)$.\\
+    También $(\mathfrak{M},i_b) \models \varphi = \psi \vee \sigma$ si y solo si $(\mathfrak{M},i_b) \models \psi$ o $(\mathfrak{M},i_b) \models \sigma$.\\
+    O sea, $\mathfrak{M}'_b \models \varphi (\hat{x}|x) =  \psi \vee \sigma (\hat{x}|x)$ si y solo si $(\mathfrak{M},i_b) \models \varphi = \psi \vee \sigma$.
+    Por paso inductivo tenemos $\mathfrak{M}'_b \models \varphi (\hat{x}|x) =  \psi * \sigma (\hat{x}|x)$ si y solo $(\mathfrak{M},i_b) \models \varphi = \psi * \sigma$ se cumple pa todos los conectores binarios.\\
+    Ahora, sea $\psi$ fórmula, $y$ variable y $\varphi = \mathbb{Q}y\psi$ con $\mathbb{Q}$ cuantificador. Hay dos casos. Caso 1: si $y \notin Free(\psi)$:\\
+    Tenemos: \begin{enumerate}
+        \item $\mathfrak{M}'_b \models \phi(\hat{x}|x) = \mathbb{Q}y\psi (\hat{x}|x)$ si y solo si $\mathfrak{M}'_b \models \psi(\hat{x}|x)$
+        \item $(\mathfrak{M},i_b) \models \phi = \mathbb{Q}y\psi$ si y solo si $(\mathfrak{M},i_b) \models \psi$
+    \end{enumerate}
+    Entonces $\mathfrak{M}'_b \models \phi(\hat{x}|x)$ si y solo si $(\mathfrak{M},i_b) \models \phi$\\
+    Caso 2: si $y \in Free(\psi)$. \\
+    Sea $\hat{y}^{\mathfrak{M}''_{bb'}}:=b' \in M$, tenemos $\mathfrak{M}'_b(\hat{y}|y) \models \mathbb{Q}y\psi(\hat{y}|y)$ si y solo si $\mathbb{Q}b' \in M$, $\mathfrak{M}''_{bb'} \models \psi$.\\
+    Luego, $\hat{y}^{\mathfrak{M}'_{b'}}:=b' \in M$, tenemos que $(\mathfrak{M},i_b) \models \mathbb{Q}y\psi$ si y solo si $(\mathfrak{M}'_{b'},i_b) \models \psi$\\
+    Por hipotesis tenemos que $\mathfrak{M}'_b \models \psi$ si y solo si $(\mathfrak{M},i_b) \models \psi$. Además tenemos que dado $b' \in M$ tenemos que $\mathfrak{M}''_{bb'}$ es la misma que $\mathfrak{M}'_b$ con la siguiente modificación:\\
+    $\hat{y}^{\mathfrak{M}''_{bb'}} = \hat{y}^{\mathfrak{M}'_{b'}} = b' \in M$. Esto demuestra que $\mathfrak{M}'_b \models \mathbb{Q}y\psi$ si y solo si $(\mathfrak{M},i_b) \models \mathbb{Q}y\psi$.\\
+    Con todo esto, se cumple para todas las fórmulas y obtenemos lo pedido.
 
 \end{sol}
 
