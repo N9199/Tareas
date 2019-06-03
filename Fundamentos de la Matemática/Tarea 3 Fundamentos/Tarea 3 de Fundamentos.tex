@@ -1,0 +1,88 @@
+\input{../../Templates/template_group}
+
+\title{Tarea 3}
+\author{Nicholas Mc-Donnell, Maximiliano Norbu}
+\date{2019/06/05}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+    \includegraphics[width=2cm]{../../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+    \begin{flushleft}
+        \raggedright{
+            \noindent
+            {\sc Pontificia Universidad Católica de Chile\\
+                Facultad de Matemáticas\\
+                Departamento de Matemática} \smallskip \\
+            Primer Semestre de 2019\\
+        }
+    \end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf \thetitle}}
+{\large \centerline{Fundamentos de la Matemática --- MAT 2405}}
+{\normalsize \centerline{ Fecha de Entrega: \thedate}}
+\vfill
+
+\begin{flushright}
+    {\large Integrantes del grupo:\\
+        \theauthor}
+\end{flushright}
+\newpage
+\normalsize
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\begin{prob}
+    -Dado una relación antisimétrica \(R\neq\emptyset\), muestre que \(R\cap R^{-1}\) es una función.
+\end{prob}
+
+\begin{sol}
+    -Se puede asumir que \(R\cap R^{-1}\neq\emptyset\), si no, es función por vacuidad. Sea \(\angled{x,y},\angled{x,z}\in R\cap R^{-1}\), entonces \(\angled{y,x},\angled{z,x}\in R\cap R^{-1}\), por esto, también \(\angled{y,x},\angled{z,x}\in R\) como \(R\)  antisimétrica,  \(x=y,x=z\), por lo que \(y=z\). En conclusión, o bien \(R\cap R^{-1}\) una relación vacía o bien \(R\cap R^{-1}\) la relación identidad, en ambos casos, \(R\cap R^{-1}\) es función.
+\end{sol}
+
+\begin{prob}
+    -Sea \(A\) un conjunto, y sea \(F=\{\angled{x,\angled{x,x}}:x\in A\}\), muestre que \(F\) es función biyectiva entre \(A\) y \(I_A=\{\angled{y,y}:y\in A\}\).
+\end{prob}
+
+\begin{sol}
+    -Claramente \(F\) es función, se recuerdan las definiciones de inyectividad y de sobreyectividad:
+    \[
+        \forall x\forall y\forall z\forall w\paren{\paren{\paren{\angled{x,y}\in F}\wedge\paren{\angled{z,w}\in F}}\implies\paren{\paren{x=z}\iff\paren{z=w}}}
+    \]
+    \[
+        \forall y\paren{\paren{y\in I_A}\implies\paren{\exists x\paren{\angled{x,y}\in F}}}
+    \]
+    Para la primera, si \(\angled{x,y}\) o \(\angled{z,w}\), no pertenecen a \(F\), no hay problema, ya que la función no está definida en esos casos, entonces no hay problema. Si ambas pertenecen a \(F\) 
+\end{sol}
+
+\begin{prob}
+    -Muestre que dado un conjunto \(A\), un elemento \(a\in A\) y una función
+    \[
+        f:A\times\omega\rightarrow A,
+    \]
+    entonces existe una única función \(h:\omega\rightarrow A\) tal que \(h(0)=a\) y que cumple \(h(n^+)=f(h(n),n)\).
+\end{prob}
+
+\begin{sol}
+    -
+\end{sol}
+
+\begin{prob}[Bonus]
+    -Sea \(\varphi(x)\) una fórmula del lenguaje de la teoría de conjuntos con única variable libre \(x\). Suponga que \(\emptyset\) verifica \(\varphi(x)\) y que para cada \(a\in\omega\) si \(a\) verifica \(\varphi(x)\), entonces \(a^+\) también verifica \(\varphi(x)\). Demuestre que todo \(b\in\omega\) verifica \(\varphi(x)\).
+\end{prob}
+
+\begin{sol}[Bonus]
+    -Se nota que solo es necesario demostrar que el siguiente conjunto es inductivo:
+    \[
+        A=\{a\in\omega:\varphi(a)\}
+    \]
+    Se nota que \(\emptyset\in A\), ya que \(\emptyset\in\omega\) y \(\emptyset\) verifica \(\varphi(x)\). Luego, se sabe que \(\forall a\paren{a\in A\implies a^+\in A}\), ya que si \(a\in A\), se tiene que \(a\) verifica \(\varphi(x)\), por lo que \(a^+\) también verifica \(\varphi(x)\), pero entonces \(a^+\in A\). Con esto se tiene que \(A\) es un conjunto inductivo, por lo que \(\omega\subseteq A\), y por definición de \(A\) se tiene \(A\subseteq\omega\), entonces \(A=\omega\). Con lo que todo \(b\in\omega\) verifica \(\varphi(x)\).
+\end{sol}
+
+\end{document}
