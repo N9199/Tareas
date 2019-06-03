@@ -42,7 +42,7 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 
 \begin{prob}{2.4}
     Sea \(V\subset\set{A}^n\) una variedad no vacía. Muestre que los siguientes son equivalentes:
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label= (\roman*)]
         \item \(V\) es un punto
         \item \(\Gamma(V)=k\)
         \item \(\dim_k\Gamma(V)<\infty\)
@@ -50,7 +50,11 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.4}
-
+    \begin{itemize}
+        \item[\underline{\((I)\implies (II)\)}:] Si \(V=\{(a_1,\dots,a_n)\}\) entonces \(I(V)=(x_1-a_1,\dots,x_n-a_n)\), por lo que \(k[x_1,\dots,x_n]/I(V)=k=\Gamma(V)\).
+        \item[\underline{\((II)\implies(III)\)}:] Ya que \(\Gamma(V)=k\), \(\dim_k\Gamma(V)=1<\infty\).
+        \item[\underline{\((III)\implies(I)\)}:] Se nota que existen \(v_1,\dots,v_m\in\Gamma(V)\) tal que \(k[v_1,\dots,v_m]=\Gamma(V)\). En orden, sea \(R_1=k[v_1]\), se nota que \(\dim_kR_1<\infty\), por lo que existe algún polinomio \(p\in k[x]\) tal que \(p(v_1)=0\), pero se recuerda que \(k=\overline{k}\) con lo que \(v_1\in k\). Ahora, sea \(R_i=k[v_1,\dots,v_i]=R_{i-1}[v_i]\), se asume que \(R_{i-1}=k\), usando el argumento anterior se tiene que \(R_i=k\), por lo que \(\Gamma(V)=k\), pero eso significa que \(I(V)=(x_1-a_1,\dots,x_n-a_n)\), por lo  que \(V=\{\overline{a}\}\). Teniendo lo pedido.
+    \end{itemize}
 \end{sol}
 
 \begin{prob}{2.5}
@@ -66,18 +70,27 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.6}
-
+    Sea \(f\in\mathscr{F}(W,k)\), luego \(\widetilde{\varphi}\circ\widetilde{\psi}(f)=\widetilde{\varphi}(f\circ\psi)=f\circ\psi\circ\varphi=\widetilde{\varphi\circ\psi}(f)\), por lo que son iguales. Sean \(\varphi,\psi\) mapeos polinomiales, entonces existen polinomios \(T_1,\dots,T_n,T_1',\dots,T_m'\) tales que \(\varphi(\overline{a})=(T_1(\overline{a}),T_2(\overline{a}),\dots,T_n(\overline{a}))\), \(\psi(\overline{a})=(T_1'(\overline{a}),T_2'(\overline{a}),\dots,T_m'(\overline{a}))\). Luego se ve lo siguiente:
+    \begin{align*}
+        \varphi\circ\psi(\overline{a}) & =\varphi(\psi(\overline{a}))                                                                               \\
+                                       & =(T_1(\psi(\overline{a})),T_2(\psi(\overline{a})),\dots,T_n(\overline{a}))                                 \\
+                                       & =(T_1(T_1'(\overline{a}),\dots,T_m'(\overline{a})),\dots,T_n(T_1'(\overline{a}),\dots,T_m'(\overline{a})))
+    \end{align*}
+    Claramente \(T_i(T_1'(\overline{a}),\dots,T_m'(\overline{a}))\) es un polinomio en \(\overline{a}\), con lo que sean \(T_i''(\overline{a})=T_i(T_1'(\overline{a}),\dots,T_m'(\overline{a}))\) polinomios, se cumple que \(\varphi\circ\psi\) es un mapeo polinomial.
 \end{sol}
 
 \begin{prob}{2.8}
     \begin{enumerate}
         \item Muestre que \(\{(t,t^2,t^3)\in\set{A}^3:t\in k\}\) es una variedad.
-        \item Muestre que \(V(xz-y^2,yz-x^3,z^2-x^2y)\subset\set{A}_\set{C}^3\) es una variedad. (\textit{Hint:}\(y^3-x^4,z^3-x^5,z^4-y^5\in I(V)\). Encuentre un mapeo polinomial desde \(\set{A}_\set{C}^1\) a \(V\).)
+        \item Muestre que \(V(xz-y^2,yz-x^3,z^2-x^2y)\subset\set{A}_\set{C}^3\) es una variedad. (\textit{Hint:} \(y^3-x^4,z^3-x^5,z^4-y^5\in I(V)\). Encuentre un mapeo polinomial desde \(\set{A}_\set{C}^1\) a \(V\).)
     \end{enumerate}
 \end{prob}
 
 \begin{sol}{2.8}
-
+    \begin{enumerate}
+        \item Por problema 1.33 se tiene que un conjunto algebraico irreducible, en otras palabras una variedad.
+        \item
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}{2.15}
@@ -91,7 +104,24 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.15}
-
+    \begin{enumerate}
+        \item Se nota que \(T=T''\circ T'\) donde \(T'\) es una transformación lineal invertible y \(T''\) una traslación. Luego \(T(P),T(Q)\) claramente son puntos distintos, por lo que hay una única recta \(L'\) que pasa a través de estos puntos. Se recuerda que \(P,Q\) están en \(L\), por lo que \(T(P),T(Q)\) están en \(T(L)\). Por lo que si \(T(L)\) es una recta, es igual \(L'\). Luego sea \(\overline{a}\in L\), entonces \(\exists t\in k:P+t(Q-P)=\overline{a}\):
+              \begin{align*}
+                  T(\overline{a}) & =T''(T'(\overline{a}))                         \\
+                                  & =T''(T'(P+t(Q-P)))                             \\
+                                  & =T''(T'(P)+t(T'(Q)-T'(P)))                     \\
+                                  & =T''(T'(P))+T''(tT'(Q))-T''(tT'(P))            \\
+                                  & =T(P)+tT'(Q)+\overline{b}-tT'(P)-\overline{b}  \\
+                                  & =T(P)+t(T'(Q)-T'(P))                           \\
+                                  & =T(P)+t(T'(Q)+\overline{b}-\overline{b}-T'(P)) \\
+                                  & =T(P)+t(T''(T'(Q))-T''(T'(P)))                 \\
+                                  & =T(P)+t(T(Q)-T(P))
+              \end{align*}
+              Con lo que claramente se ve que \(T(L)\) es una recta, teniendo lo pedido.
+        \item Si \(L\) es una recta, existe un \(T\) natural tal que \(T(L)=\{(t,0,\dots,0):t\in k\}=V(x_2,\dots,x_n)\), por lo que una recta es una subvariedad lineal de dimensión 1. Luego si \(L'\) es una subvariedad lineal de dimensión 1, existe \(T\) tal que \(T(L')=V(x_2,\dots,x_n)=\{(t,0,\dots,0):t\in k\}\), lo último claramente es una recta por lo que por (a) \(L'\) es una recta.
+        \item Por definición, \(V(F)\) es un hiperplano si \(F\) es de grado 1, por lo que es una subvariedad lineal, si \(n=2\) la única dimensión posible para \(V(F)\) es 1, con lo que \(V(F)\) tiene que ser una recta.
+        \item Sean \(P_1\in L_1,P_2\in L_2\) distintos de \(P\), sea \(T_1\) tal que \(T_1(P)=(0,0)\),  \(T_1(P_1)=(1,0)\) y \(T_1(P_2)=(0,1)\). Sean \(P_1'\in L_1',P_2'\in L_2'\) distintos de \(P'\), sea \(T_2\) tal que \(T_2(0,0)=P'\), \(T_2(1,0)=P_1'\) y \(T_2(0,1)=P_2'\), luego \(T_1,T_2\) están claramente bien definidos ya que \(P_1, P_2\) son distintos entre si y \(P_1',P_2'\) también, luego sea \(T=T_2\circ T_1\), esta cumple lo pedido por (a).
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}{2.17}
@@ -111,7 +141,14 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.24}
-
+    \begin{enumerate}
+        \item Se nota que \(x-a\) no tiene inverso, por lo que no es una unidad. Luego, claramente \(x-a\) es el único monomio que cumple que es cero en \(a\). Sea \(p\in\mathcal{O}_a(V)\), entonces \(p(a)\) está bien definido, hay dos casos, es cero o no cero. El primer caso, se tiene que \((x-a)\mid p\), ya que con la función grado se tiene que \(\mathcal{O}_a(V)\) es un dominio euclidiano, ahora sea \(p'=p/(x-a)\), entonces \(p'(a)\) cumple uno de los casos anteriores. El segundo caso, si no es cero, entonces \(p\) tiene inverso, por lo que es una unidad. Con esto se nota que \(t=x-a\) es parámetro de uniformización, ya que \(p=(x-a)^nq\), donde \(n\geq0\) y \(q(a)\neq0\) (\(q\) es unidad).
+        \item Se nota que \(1/x\) no es unidad, ya que \(x=x/1\) y \(\deg(x)>\deg(1)\). Luego, sea \(p\in\mathcal{O}_\infty\), entonces \(p=F/G\), luego sea \(n=\deg(G)-\deg(F)\), claramente se ve lo siguiente:
+              \[
+                  p=\frac{x^n}{x^n}\cdot\frac{F}G=\frac1{x^n}\cdot\frac{x^nF}G
+              \]
+              Se ve que \(\deg(G)=\deg(x^nF)\), por lo que \(\frac{G}{x^nF}\in\mathcal{O}_\infty\), con lo \(\frac{x^n}G\) es unidad, como \(p\) era arbitrario todo \(p\) se puede escribir como \((1/x)^nu\) con \(u\) una unidad. Con lo que se tiene lo pedido.
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}{2.33}
@@ -135,21 +172,21 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
         \item Se nota que un monomio en \(R[x,y]\) es de la forma \(x^iy^j\), por lo que los monomios de grado \(d\) cumplen que \(i+j=d\), claramente \(i\) fija a \(j\), e \(i\) tiene \(d+1\) posibles valores, por lo que hay \(d+1\) monomios de grado \(d\). Similarmente a lo anterior un monomio en \(R[x,y,z]\) es de la forma \(x^iy^jz^k\), donde los monomios de grado \(d\) cumplen \(i+j+k=d\), con \(i,j\) fijando \(k\), también se nota que dado un \(i\) fijo \(j\) tiene \(d+1-i\) posibles valores, por lo que la cantidad de monomios sería \(sum_{i=0}^{d+1}(d+1-i)=\sum_{j=0}^{d+1}j=(d+1)(d+2)/2\).
         \item Sea \(p\in V(d,n)\), como es homogéneo \(p(\overline{x},1)\in k[x_1,\dots ,x_{n-1}]\) y tiene grado \(d\), se sabe que los polinomios de grado a lo más \(d\) son un espacio vectorial sobre \(k\) y cada \(p\in V(d,n)\) tiene un elemento correspondiente en este espacio vectorial, por lo que solo es necesario demostrar clausura. Sean \(p,q\in V(d,n)\) luego \(p(\overline{x},1)+q(\overline{x},1)\in k[x_1,\dots ,x_{n-1}]\) es un polinomio de grado \(d\) ya que \(deg(p+q)=max(\deg(p),\deg(q))\) y \(\deg p=\deg q=d\) con lo que tenemos que \(V(d,n)\) es un e.v. sobre \(k\). Claramente los monomios son l.i., y cada polinomio homogéneo de grado \(d\) se escribe en monomios de grado \(d\). Con lo que tenemos lo pedido.
         \item Se nota que solo es necesario demostrar que los \(A_{ij}\) son l.i., ya que claramente son \(d+1\) y en (b) se vio que la dimensión de \(V(d,2)\) es \(d+1\). Se enumeran los \(A_{ij}\) que cumplen \(i+j=d\) de la siguiente forma \(A_{i(d-i)}\) donde \(i\in\{0,\dots ,d\}\). Por inducción en \(i\), se toma \(A_{0d}\) y \(A_{1(d-1)}\), se asume que son l.d., entonces existe \(\lambda\) tal que:
-        \begin{align*}
-            A_{0d} &= \lambda A_{1(d-1)}\\
-            M_1\dots M_d &= \lambda L_1M_1\dots M_{d-1}
-        \end{align*}
-        Se divide por \(M_1\dots M_{d-1}\), por lo que \(M_1=\lambda L_1\), lo que es una contradicción. Sean \(i=k\), se asume que \(A_{k(d-k)}\) se puede escribir como una combinación lineal de los \(A_{i(d-i)}\) con \(0\leq i<k\):
-        \begin{align*}
-            A_{k(d-k)} & =\sum_{j=0}^{k-1}\alpha_jA_{j(d-j)}\\
-            L_1\dots L_kM_1\dots M_{d-k} & = \sum_{j=0}^{k-1}\alpha_jL_1\dots L_jM_1\dots M_{d-j}
-        \end{align*}
-        Se nota que ambos lados son divisibles por \(M_1\dots M_{d-k}\)\footnote{\(d-j>d-k\)}, y se divide por esto. Se ve que los \(A_{i(d-i)}\) con \(i\in\{0,\dots ,d\}\) son divisibles por \(M_{d-k+1}\), con lo que lo que se tenía antes se puede escribir de la siguiente forma:
-        \begin{align*}
-            L_1\dots L_k &= \sum_{j=0}^{k-1}\alpha_jL_1\dots L_jM_{d-k+1}\dots M_{d-j}\\
-            L_1\dots L_k &= M_{d-k+1}\paren{\sum_{j=0}^{k-1}L_1\dots L_jM_{d-k+2}\dots M_{d-j}}
-        \end{align*}
-        Por lo que \(M_{d-k+1}\mid L_1\dots L_k\), se recuerda que \(M_{d-k+1}\) es lineal por lo que es irreducible, luego \(M_{d-k+1}\mid L_i\) con \(i\in\{1,...,k\}\), pero es no posible por enunciado, por lo que se tiene una contradicción. Con esto se nota que los \(A_{i(d-i)}\) son l.i., con lo que se tiene lo pedido.
+              \begin{align*}
+                  A_{0d}       & = \lambda A_{1(d-1)}          \\
+                  M_1\dots M_d & = \lambda L_1M_1\dots M_{d-1}
+              \end{align*}
+              Se divide por \(M_1\dots M_{d-1}\), por lo que \(M_1=\lambda L_1\), lo que es una contradicción. Sean \(i=k\), se asume que \(A_{k(d-k)}\) se puede escribir como una combinación lineal de los \(A_{i(d-i)}\) con \(0\leq i<k\):
+              \begin{align*}
+                  A_{k(d-k)}                   & =\sum_{j=0}^{k-1}\alpha_jA_{j(d-j)}                    \\
+                  L_1\dots L_kM_1\dots M_{d-k} & = \sum_{j=0}^{k-1}\alpha_jL_1\dots L_jM_1\dots M_{d-j}
+              \end{align*}
+              Se nota que ambos lados son divisibles por \(M_1\dots M_{d-k}\)\footnote{\(d-j>d-k\)}, y se divide por esto. Se ve que los \(A_{i(d-i)}\) con \(i\in\{0,\dots ,d\}\) son divisibles por \(M_{d-k+1}\), con lo que lo que se tenía antes se puede escribir de la siguiente forma:
+              \begin{align*}
+                  L_1\dots L_k & = \sum_{j=0}^{k-1}\alpha_jL_1\dots L_jM_{d-k+1}\dots M_{d-j}          \\
+                  L_1\dots L_k & = M_{d-k+1}\paren{\sum_{j=0}^{k-1}L_1\dots L_jM_{d-k+2}\dots M_{d-j}}
+              \end{align*}
+              Por lo que \(M_{d-k+1}\mid L_1\dots L_k\), se recuerda que \(M_{d-k+1}\) es lineal por lo que es irreducible, luego \(M_{d-k+1}\mid L_i\) con \(i\in\{1,...,k\}\), pero es no posible por enunciado, por lo que se tiene una contradicción. Con esto se nota que los \(A_{i(d-i)}\) son l.i., con lo que se tiene lo pedido.
     \end{enumerate}
 \end{sol}
 
@@ -175,7 +212,7 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.47}
-
+    
 \end{sol}
 
 \begin{prob}{2.49}
@@ -202,19 +239,19 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
     Nota: Para efectos de esta pregunta \(\overline{a}\) es el residuo de \(a\).
     \begin{enumerate}
         \item Sea \(\overline{\varphi}:M/N\rightarrow M'\) tal que \(\overline{x}\mapsto \varphi(x)\), hay que demostrar que es morfismo, o sea que esta bien definido y que \(\overline{\varphi}(\overline{\lambda a+b})=\lambda\overline{\varphi}(\overline{a})+\overline{\varphi}(\overline{b})\). Sean \(a,b\in M\) tal que \(\overline{a}=\overline{b}\), entonces se nota que \(a-b\in N\), por lo que \(\varphi(a-b)=0\), o sea \(\varphi(a)=\varphi(b)\), con lo que tenemos que está bien definida. Ahora se ve lo segundo:
-        \begin{align*}
-            \overline{\varphi}(\overline{\lambda a+b}) &= \varphi(\lambda a+b)\\
-            &=\lambda\varphi(a)+\varphi(b)\\
-            &=\lambda \overline{\varphi}(\overline{a})+\overline{\varphi}(\overline{b})
-        \end{align*}
-        Por lo que \(\overline{\varphi}\) esta bien definida. Falta demostrar que \(\overline{\varphi}\) es único, sean \(\overline{\varphi_1},\overline{\varphi_2}\) tal que \(\varphi=\overline{\varphi_1}\circ\pi=\overline{\varphi_2}\circ\pi\). Se nota que \(\pi\) es sobreyectiva, entonces dado \(y\in M/N\) existe \(x\in M\) tal que \(\pi(x)=y\). Luego \(\overline{\varphi_1}\circ\pi(x)=\overline{\varphi_2}\circ\pi(x)\), específicamente \(\overline{\varphi_1}(y)=\overline{\varphi_2}(y)\), ya que \(y\) es arbitrario, esto se cumple para todo \(y\), con lo que \(\overline{\varphi_1}=\overline{\varphi_2}\). Con lo que se tiene lo pedido.
+              \begin{align*}
+                  \overline{\varphi}(\overline{\lambda a+b}) & = \varphi(\lambda a+b)                                                     \\
+                                                             & =\lambda\varphi(a)+\varphi(b)                                              \\
+                                                             & =\lambda \overline{\varphi}(\overline{a})+\overline{\varphi}(\overline{b})
+              \end{align*}
+              Por lo que \(\overline{\varphi}\) esta bien definida. Falta demostrar que \(\overline{\varphi}\) es único, sean \(\overline{\varphi_1},\overline{\varphi_2}\) tal que \(\varphi=\overline{\varphi_1}\circ\pi=\overline{\varphi_2}\circ\pi\). Se nota que \(\pi\) es sobreyectiva, entonces dado \(y\in M/N\) existe \(x\in M\) tal que \(\pi(x)=y\). Luego \(\overline{\varphi_1}\circ\pi(x)=\overline{\varphi_2}\circ\pi(x)\), específicamente \(\overline{\varphi_1}(y)=\overline{\varphi_2}(y)\), ya que \(y\) es arbitrario, esto se cumple para todo \(y\), con lo que \(\overline{\varphi_1}=\overline{\varphi_2}\). Con lo que se tiene lo pedido.
         \item Se nota que lo que hay que demostrar es que \(\ker\varphi_1=\{0\},\Ima\varphi_1=\ker\varphi_2,\Ima\varphi_2=M/N\) donde \(\varphi_1\) es el morfismo natural de \(N/P\) a \(M/P\) y \(\varphi_2\) es el morfismo natural de \(M/P\) a \(M/N\). En orden, se recuerda que \(N\subset M\), por lo que \(N/P\subset M/P\) por lo que \(\varphi_1\) es la identidad restringida a \(N/P\), con lo que \(\ker\varphi_1=\{0\}\). Para la segunda igual basta notar que \(\Ima\varphi_1=N/P\), ya que si \(\overline{a}\in N/P\) entonces \(a\in N\), por lo que \(\varphi_2(\overline{a})=0\), con lo que \(\ker\varphi_2\supseteq N/P\), ahora si \(\overline{a}=0\) en \(M/N \implies a\in N\), por lo que \(\overline{a}\in N/P\implies \ker\varphi_2=\Ima\varphi_1\). Para la última, claramente \(\Ima\varphi_2\subseteq M/N\), sea \(\overline{a}\in M/N\wedge\overline{a}\neq 0\) entonces \(a\notin N\implies a\notin P\), por lo que \(\overline{a}\neq 0\) en \(M/P\) y claramente es pre-imagen. Con lo que tenemos todo lo pedido.
         \item Se comienza notando que ya que \(V/U\) finito-dimensional \(W/U,V/W\) son finito-dimensionales, luego por (b) se tiene que la siguiente secuencia es exacta:
-        \[0\rightarrow W/U\rightarrow V/U\rightarrow V/W\rightarrow 0\]
-        Luego por proposición vista en clase se tiene lo pedido.
+              \[0\rightarrow W/U\rightarrow V/U\rightarrow V/W\rightarrow 0\]
+              Luego por proposición vista en clase se tiene lo pedido.
         \item Se recuerda que dado un ideal \(I\) de un anillo \(R\), \(R\) se puede ver como un \(I\)-módulo, similarmente para un ideal \(J\subset I\), por lo que por (b) existe la secuencia exacta, donde \(I,R\) son \(J\)-módulos.
         \item Se puede notar que es suficiente mostar que \(\forall n:\mathfrak{m}^{n+1}\subset\mathfrak{m}^n\). Luego por inducción, el caso base es trivial ya que \(\mathfrak{m}\) es maximal. Ahora, sea \(a\in\mathfrak{m}^{n+1}\), entonces \(a=a_1a_2\dots a_{n+1}\) donde \(a_i\in\mathfrak{m}\), luego \(a_{n+1}\in\mathcal{O}\) y \(a_1a_2\dots a_n\in\mathfrak{m}^n\), por lo que por propiedad de ideales \(a\in\mathfrak{m}^n\). Con esto se usa (d) y se tiene lo pedido.
-        
+
     \end{enumerate}
 \end{sol}
 
@@ -223,7 +260,13 @@ En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
 \end{prob}
 
 \begin{sol}{2.55}
-
+    Sea \(X=\{\overline{1},\overline{x},\dots,\overline{x}^{n-1}\}\), luego si \(M_X\) es \(R[x]/(F)\) como \(R\)-módulo, se tiene lo pedido. Por lo que se quiere que \(X\) sea base de \(R[x]/(F)\), se nota que claramente los elementos de \(X\) son l.i. Se ve \(F\) en \(R[x]/(F)\):
+    \begin{align*}
+        F                & =0          \\
+        x^n+a_1x^{n-1}+  & \dots+a_n=0 \\
+        x^n=-(a_1x^{n-1} & +\dots+a_n)
+    \end{align*}
+    Por lo que se nota que \(x^m\) con \(m\geq n\) se puede escribir en base de los elementos de \(X\). Con lo que claramente, \(X\) genera    a \(R[x]/(F)\) como \(R\)-módulo.
 \end{sol}
 
 

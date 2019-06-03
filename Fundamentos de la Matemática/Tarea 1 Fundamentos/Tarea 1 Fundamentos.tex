@@ -85,7 +85,7 @@
 \end{prob}
 
 \begin{sol}
-    \begin{enumerate}[label=(\alph*)]
+    -\begin{enumerate}[label=(\alph*)]
         \item Se asume que $\Sigma$ es satisfacible, entonces existe una valuación $\mathcal{V}$ tal que toda oración en $\Sigma$ sea verdad. Pero si $\varphi$ es verdad, entonces $\neg\varphi$ es falso, ahora $\Sigma\models\neg\varphi$, por lo que $\neg\varphi$ es verdad, pero una oración no puede ser verdadera y falsa ya que una valuación solo puede dar un valor para cada oración. Con esto se concluye que $\Sigma$ no es satisfacible.
         \item Por definición, ya que $\emptyset$ no tiene oraciones se cumple que para toda valuación \underline{todas} las oraciones de $\emptyset$ son verdad. Ahora si $\emptyset\models\varphi$, significa que toda valuación que satisface $\emptyset$ también satisface $\varphi$, pero como toda valuación satisface $\emptyset$, en particular hay una tal que $\varphi$ sea falso, análogamente con $\neg\varphi$.
     \end{enumerate}
@@ -96,7 +96,7 @@
 \end{prob}
 
 \begin{sol}
-    \begin{align*}
+    -\begin{align*}
         \varphi_1 & = \alpha                                                                                                                                                                             \\
         \varphi_2 & = (\neg \alpha \implies ((c \implies \neg \alpha )\implies \neg \alpha))                                                                                                      & (A1) \\
         \varphi_3 & = ((\neg \alpha \implies ((c \implies \neg \alpha)\implies \neg \alpha))\implies ((\neg \alpha \implies (c \implies \neg \alpha))\implies(\neg \alpha \implies \neg \alpha))) & (A2) \\

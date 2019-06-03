@@ -1,0 +1,221 @@
+\input{../../Templates/template}
+
+\title{Tarea 4}
+\author{Nicholas Mc-Donnell}
+\date{2019/05/10}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+    \includegraphics[width=2cm]{../../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+    \begin{flushleft}
+        \raggedright{
+            \noindent
+            {\sc Pontificia Universidad Católica de Chile\\
+                Facultad de Matemáticas\\
+                Departamento de Matemática} \smallskip \\
+            Primer Semestre de 2019\\
+        }
+    \end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf \thetitle}}
+{\large \centerline{Introducción a la Geometría Algebraica --- MAT 2335}}
+{\normalsize \centerline{ Fecha de Entrega: \thedate}}
+\vfill
+
+\begin{flushright}
+    {\large\theauthor}
+\end{flushright}
+\newpage
+\normalsize
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\section*{Notas}
+En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
+
+\begin{prob}{3.1}
+    Prove that in the above examples \(P=(0.0)\) is the only multiple point on the curves C, D, E, and F.
+\end{prob}
+
+\begin{sol}{3.1}
+    Se recuerda que \(C=\{(x,y):y^2-x^3=0\},D=\{(x,y):y^2-x^3-x^2=0\},E=\{(x,y):(x^2+y^2)^2+3x^2y-y^3=0\},F=\{(x,y):(x^2+y^2)^3-4x^2y^2=0\}\). Luego se sabe que si la derivada respecto a \(y\) y la derivada respecto \(x\) es cero en un punto de la curva, entonces es un punto multiple. Viendo cada curva:
+    \begin{itemize}
+        \item[C] La derivada respecto a \(y\) es \(2y\), y respecto a \(x\) es \(-3x^2\), claramente el único punto donde ambas son cero, es el \((0,0)\).
+        \item[D] La derivada respecto a \(y\) es \(2y\), y respecto a \(x\) es \(-3x^2-2x\), claramente los puntos donde ambas son cero, son \((0,0)\) y \((\sqrt{2/3},0)\), se nota que el segundo punto no está en la curva, por lo que se tiene lo pedido.
+        \item[E] La derivada respecto a \(y\) es \(4y(x^2+y^2)+3x^2-3y^2\), y respecto a \(x\) es \(4x(x^2+y^2)+6xy\),
+        \item[F] La derivada respecto a \(y\) es \(6y(x^2+y^2)-8x^2y\), y respecto a \(x\) es \(6x(x^2+y^2)-8xy^2\),
+    \end{itemize}
+\end{sol}
+
+\begin{prob}{3.4}
+    Let P be a double point on a curve F. Show that P is a node if and only if \(F_{xy}(P)^2\neq F_{xx}(P)F_{yy}(P)\)
+\end{prob}
+
+\begin{sol}{3.4}
+
+\end{sol}
+
+\begin{prob}{3.9}
+    Let \(F\in k[x_1,\dots,x_n]\) define a hypersurface \(V(F)\subset\set{A}^n\). Let \(P\in\set{A}^n\).
+    \begin{enumerate}
+        \item Define the multiplicity \(m_P(F)\) of \(F\) at \(P\).
+        \item If \(m_P(F)=1\), define the tangent hyperplane to \(F\)  at \(P\).
+        \item Examine \(F=x^2+y^2-z^2,P=(0,0)\). Is it possible to define tangent hyperplanes at multiple points?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{3.9}
+    \begin{enumerate}
+        \item Para definir la multiplicidad, primero se nota que \(F(P)=0\), donde \(F\) es el polinomio asociado. Por lo que si se aplica la traslación \(T(x)=x-P\), el \(\overline{0}\) en la curva trasladada tendría la misma multiplicidad que \(P\), además el polinomio correspondiente se puede escribir como suma de polinomios homogéneos. Dado esto, naturalmente se define la multiplicidad de \(P\) como el menor grado de los polinomios homogéneos de la curva trasladada.
+        \item Naturalmente se tiene que las rectas tangentes a \(F\) en \(P\) están bien definidas, por lo que estás abarcan todo el hiperplano tangente. Con lo que la definición sería la unión de todos las rectas tangentes en el punto.
+        \item Se nota que \(m_{(0,0)}(F)=2\), por lo que no hay un solo hiperplano tangente en el punto. Ahora, definir hiperplanos tangentes en múltiples puntos es imposible para el caso general, porque a priori no se puede saber si es que dado un punto \(P\) de \(F\) y un hiperplano tangente \(H\) en \(P\), \(\#F\cap H>1\).
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}{3.10}
+    Show that an irreducible plane curve has only finite number of multiple points. Is this true for hypersurfaces?
+\end{prob}
+
+\begin{sol}{3.10}
+
+\end{sol}
+
+\begin{prob}{3.14}
+    Let \(V=V(x^2-y^3,y^2-z^3)\subset\set{A}^3,P=(0,0,0),\mathfrak{m}=\mathfrak{m}_p(V)\). Find \(\dim_k(\mathfrak{m}/\mathfrak{m}^2)\).
+\end{prob}
+
+\begin{sol}{3.14}
+
+\end{sol}
+
+\begin{prob}{3.15}
+    \begin{enumerate}
+        \item Let \(\mathcal{O}=\mathcal{O}_P(\set{A}^2)\) for some \(p\in\set{A}^2,\mathfrak{m}=\mathfrak{m}_P(\set{A}^2)\). Calculate \(\chi(n)=\dim_k(\mathcal{O}/\mathfrak{m}^n)\).
+        \item Let \(\mathcal{O}=\mathcal{O}_P(\set{A}^r(k))\). Show that \(\chi(n)\) es a polynomial of degree \(r\) in \(n\), with leading coefficient \(1/r!\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{3.15}
+
+\end{sol}
+
+\begin{prob}{3.19}
+    A line \(L\) es tangent to a curve \(F\) at a point \(P\) if and only if \(I(P,F\cap L)>m+P(F)\).
+\end{prob}
+
+\begin{sol}{3.19}
+
+\end{sol}
+
+\begin{prob}{3.21}
+    Let \(F\) be an affine plane curve. Let \(L\) be a line that is not a component of \(F\). Suppose \(L=\{(a+tb,c+td):t\in k\}\). Define \(G(T)=F(a+Tb,c+Td)\). Factor \(G(T)=\epsilon\prod(T-\lambda_i)^{e_i}\), \(\lambda_i\) distinct. Show that there is a natural one-to-one correspondence between the \(\lambda_i\) and the points \(P_i\in L\cap F\). Show that under this correspondence, \(I(P_i,L\cap F)=e_i\). In particular, \(\sum I(P,L\cap F)\leq\deg(F)\).
+\end{prob}
+
+\begin{sol}{3.21}
+
+\end{sol}
+
+\begin{prob}{4.1}
+    What points in \(\set{P}^2\) do not belong to two of the three set \(U_1,U_2,U_3\)?
+\end{prob}
+
+\begin{sol}{4.1}
+    Los puntos de \(U_i\) son los \([x_1:x_2:x_3]\) tal que \(x_i\neq 0\), por lo que si \(x\notin U_i\cup U_j\) entonces \(x_i=x_j=0\), por lo que son los puntos \([1:0:0],[0:1:0],[0:0:1]\).
+\end{sol}
+
+\begin{prob}{4.3}
+    \begin{enumerate}
+        \item Show that the definitions of this section carry over without change to the case where \(k\) is an arbitrary field.
+        \item If \(k_0\) is a subfield of \(k\), show that \(\set{P}^n(k_0)\) may be identified with a subset of \(\set{P}^n(k)\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{4.3}
+
+\end{sol}
+
+\begin{prob}{4.4}
+    Let \(I\) be a homogeneous ideal in \(k[x_1,\dots,x_{n+1}]\). Show that \(I\) is prime if and only if the following condition is satisfied; for any forms \(F,G\in k[x_1,\dots,x_{n+1}]\), if  \(FG\in I\), then \(F\in I\) or \(G\in I\).
+\end{prob}
+
+\begin{sol}{4.4}
+    Se nota que si \(I\) es primo las condiciones trivialmente se cumplen. Sea \(I\) homogéneo tal que para polinomios homogéneos \(F,G\in k[x_1,\dots,x_{n+1}]\), si \(FG\in I\) entonces \(F\in I\) o \(G\in I\). Sean \(F,G\) polinomios tales que \(FG\in I\), y \(F,G\notin I\), luego se puede escribir \(F=\sum F_i\) y \(G=\sum G_j\) con los \(F_i,G_j\) polinomios homogéneos, luego \(FG=\sum\sum F_iG_j\) se sabe que la multiplicación de polinomios homogéneos es un polinomio homogéneo, entonces se pueden agrupar los polinomios homogéneos por grado de la siguiente forma:
+    \[
+        FG=\sum_{d=0}^{\deg(FG)}\paren{\sum_{i+j=d}F_iG_j}
+    \]
+    Por lo que se recuerda la definición de ideal homogéneo, con lo que se tiene que \(\ds\sum_{i+j=d}F_iG_j\in I\). Ahora, se tiene la propiedad de que \(I=(P_1,\dots,P_m)\) con \(P_i\) polinomios homogéneos, sean \(\{P_k,\dots,P_l\}\subset\{P_1,\dots,P_m\}\) de grado \(d\), luego se recuerda que los polinomios homogéneos de grado \(d\) son l.i. por lo que \(F_iG_j\in I\), luego sea \(F_i\notin I\), para un \(F_iG_j\in I\), por lo que para todo \(j\) \(G_j\in I\), por lo que \(G\in I\), análogamente, sea \(G_j\notin I\) entonces \(F_iG_j\in I\), por lo que para todo \(i\) \(F_i\in I\), con lo que \(F\in I\). Que es lo que se buscaba.
+\end{sol}
+
+\begin{prob}{4.9}
+    Let \(I\) be homogeneous ideal in \(k[x_1,\dots,x_{n+1}]\), and \(\Gamma=k[x_1,\dots,x_{n+1}]/I\). Show that the forms of degree \(d\) in \(\Gamma\) form a finite-dimensional vector space over \(k\).
+\end{prob}
+
+\begin{sol}{4.9}
+
+\end{sol}
+
+\begin{prob}{4.14}
+    Let \(P_1,P_2,P_3\) (resp. \(Q_1,Q_2,Q_3\)) be three points in \(\set{P}^2\) not lying on a line. Show that there is projective change of coordinates \(T:\set{P}^2\rightarrow\set{P}^2\) such that \(T(P_i)=Q_i,i=1,2,3\). Extend this to \(n+1\) points in \(\set{P}^n\), not lying on a hyperplane.
+\end{prob}
+
+\begin{sol}{4.14}
+
+\end{sol}
+
+\begin{prob}{4.15}
+    Show that any two distinct lines in \(\set{P}^2\) intersect in one point.
+\end{prob}
+
+\begin{sol}{4.15}
+
+\end{sol}
+
+\begin{prob}{4.23}
+    Describe all subvarieties in \(\set{P}^1\) and in \(\set{P}^2\).
+\end{prob}
+
+\begin{sol}{4.23}
+
+\end{sol}
+
+\begin{prob}{4.25}
+    Let \(P=[x:y:z]\in\set{P}^2\).
+    \begin{enumerate}
+        \item Show that \(\{(a,b,c)\in\set{A}^3:ax+by+cz=0\}\) is hyperplane in \(\set{A}^3\).
+        \item Show that for any finite set of points in \(\set{P}^2\), there is a line not passing through any of them.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{4.25}
+    \begin{enumerate}
+        \item Se recuerda la definición de hiperplano; \(V(F)\) es un hiperplano ssi \(\deg F=1\). Luego, sea \(F(a,b,c)=ax+by+cz\), \(F\) es de grado 1 ya que no todos los \(x,y,z\) son iguales a cero. Entonces, claramente \(V(F)=\{(a,b,c)\in\set{A}^3:ax+by+cz=0\}\), por lo que es un hiperplano.
+        \item
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}{4.28}
+    For simplicity of notation, in this problem we let \(x_0,\dots,x_n\) be coordinates for \(\set{P}^n\), \(y_0,\dots,y_m\) coordinates for \(\set{P}^m\), and \(T_{00},T_{01},\dots,T_{0m},T_{10},\dots,T_{nm}\) coordinates for \(\set{P}^N\), where \(N=(n+1)(m+1)-1=n+m+nm)\). Define \(S:\set{P}^n\times\set{P}^m\rightarrow\set{P}^N\) by the formula:
+    \[S([x_0:\dots:x_n],[y_0:\dots:y_m])=[x_0y_0:x_0y_1:\dots:x_ny_m]\]
+    \(S\) is called the \textit{Segre embedding} of \(\set{P}^n\times\set{P}^m\) in \(\set{P}^{n+m+mn}\).
+    \begin{enumerate}
+        \item Show that \(S\) is a well-defined, one-to-one mapping.
+        \item Show that if \(W\) is an algebraic subset of \(\set{P}^N\), then \(S^{-1}(W)\) is an algebraic subset of \(\set{P}^n\times\set{P}^m\).
+        \item Let \(V=V(\{T_{ij}T_{kl}-T_{il}T_{kj}:i,k=0,\dots,n;j,l=0,\dots,m\})\subset\set{P}^N\). Show that \(S(\set{P}^n\times\set{P}^m)=V\). In fact, \(S(U_i\times U_j)=V\cap U_{ij}\), where \(U_{ij}=\{[t]:t_{ij}\neq0\}\).
+        \item Show that \(V\) is a variety.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{4.28}
+    \begin{enumerate}
+        \item Claramente, \(S\) esta bien definido, ya que si todos los \(x_iy_j=0\) entonces \(x_i=0\forall i\) o \(y_j=0\forall j\), ya que la imagen tiene todas las posibles multiplicaciones de pares \((x_i,y_j)\). Sea \(S(a,b)=S(c,d)\) donde \(a,c\in\set{P}^n\) \(b,d\in\set{P}^m\), entonces \(a_ib_j=c_id_j\) donde no todos son cero, por lo que
+    \end{enumerate}
+\end{sol}
+
+\end{document}
