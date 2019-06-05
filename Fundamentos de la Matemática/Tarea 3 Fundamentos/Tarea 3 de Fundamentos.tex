@@ -53,12 +53,12 @@
 \begin{sol}
     -Claramente \(F\) es función, se recuerdan las definiciones de inyectividad y de sobreyectividad:
     \[
-        \forall x\forall y\forall z\forall w\paren{\paren{\paren{\angled{x,y}\in F}\wedge\paren{\angled{z,w}\in F}}\implies\paren{\paren{x=z}\iff\paren{z=w}}}
+        \forall x\forall y\forall z\forall w\paren{\paren{\paren{\angled{x,y}\in F}\wedge\paren{\angled{z,w}\in F}}\implies\paren{\paren{x=z}\iff\paren{y=w}}}
     \]
     \[
         \forall y\paren{\paren{y\in I_A}\implies\paren{\exists x\paren{\angled{x,y}\in F}}}
     \]
-    Para la primera, si \(\angled{x,y}\) o \(\angled{z,w}\), no pertenecen a \(F\), no hay problema, ya que la función no está definida en esos casos, entonces no hay problema. Si ambas pertenecen a \(F\) 
+    Para la primera, si \(\angled{x,y}\) o \(\angled{z,w}\), no pertenecen a \(F\), no hay problema, ya que la función no está definida en esos casos, entonces no hay problema. Si ambas pertenecen a \(F\) entonces \(y=\angled{x,x}\) y \(w=\angled{z,z}\). Claramente si \(x=z\) entonces \(\angled{x,x} = \angled{z,z}\) (por axioma 1)(y, por ende \(y = w\)). Ahora, si \(y = w\), \(\angled{x,x} = \angled{z,z}\), entonces \(x=z\), pues \(\angled{x,x} = \{\{x\}\}\) y \(\angled{z,z} = \{\{z\}\}\) y por axioma 1. Luego para la segunda, si \(y\notin I_A\) no hay problema, ya que no es parte del codominio. Si \(y\in I_A\) entonces \(y=\angled{x,x}\) para algún \(x\in A\), luego por definición \(\angled{x,y}=\angled{x,\angled{x,x}}\in F\), con lo que se tiene que \(F\) sobreyectiva. Entonces se tiene que \(F\) es biyectiva.
 \end{sol}
 
 \begin{prob}
@@ -70,7 +70,25 @@
 \end{prob}
 
 \begin{sol}
-    -
+    -Se puede definir la siguiente función
+    \begin{align*}
+        F: & A\times\omega\rightarrow A\times\omega \\
+           & \angled{b,k}\mapsto\angled{f(b,k),k^+} \\
+    \end{align*}
+    Luego, por el teorema de la recursión, existe \(H\) tal que \(H(0)=\angled{a,0}\) y \(H(n^+)=F(H(n))\). Sea \(h:\omega\rightarrow A\) tal que \(h=\pi_a\circ H\) (siendo \(\pi_a\) la proyección del primer elemento). Ahora falta solo demostrar \(N=\{n\in\omega:H(n)=\angled{h(n),n}\}\) es inductivo. Por enunciado y la definición de H, \(0 \in N\). Ahora,
+    \begin{align*}
+        H(n^+) & =F(H(n))                                           \\
+               & =\angled{f(H(n)),n^+} \text{(por definición de H)}
+    \end{align*}
+    Ahora, como:
+    \begin{align*}
+        h(n^+) & = \pi_a\circ H(n^+)        \\
+               & = \pi_a\circ (f(H(n)),n^+) \\
+               & =f(H(n))
+    \end{align*}
+    Entonces se tiene que \(H(n^+)=\angled{f(H(n),n^+}=\angled{h(n^+),n^+}\), por lo que \(N\) es inductivo. 
+    Ahora veremos que \(h\) es unico. Asumamos que existe otro, sea \(g\) tal que \(g(0)=a\) y \(g(n^+)=f(g(n),n)\). Entonces \(N'=\{n\in\omega:h(n)=g(n)\}\) y eso es inductivo pues \(0 \in N'\) y la otra parte sale de que si \(n \in N'\), entonces \(g(n)=h(n)\) pero \(g(n^+)=f(g(n),n)=f(h(n),n)=h(n^+)\). Por ende \(\omega\) es inductivo, \(g=h\) y \(h\) es única.
+
 \end{sol}
 
 \begin{prob}[Bonus]
