@@ -1,0 +1,184 @@
+\input{../../Templates/template}
+
+\title{Tarea 5}
+\author{Nicholas Mc-Donnell}
+\date{2019/05/31}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+    \includegraphics[width=2cm]{../../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+    \begin{flushleft}
+        \raggedright{
+            \noindent
+            {\sc Pontificia Universidad Católica de Chile\\
+                Facultad de Matemáticas\\
+                Departamento de Matemática} \smallskip \\
+            Primer Semestre de 2019\\
+        }
+    \end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf \thetitle}}
+{\large \centerline{Introducción a la Geometría Algebraica --- MAT 2335}}
+{\normalsize \centerline{ Fecha de Entrega: \thedate}}
+\vfill
+
+\begin{flushright}
+    {\large\theauthor}
+\end{flushright}
+\newpage
+\normalsize
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\section*{Notas}
+En esta tarea se usará la notación \(\overline{a}=(a_1,\dots ,a_n)\)\\
+
+
+\begin{prob}{5.1}
+    Let \(F\) be a projective plane curve. Show that a point \(P\) is a multiple point if and only if \(F(P)=F_x(P)=F_y(P)=F_z(P)=0\).
+\end{prob}
+
+\begin{sol}{5.1}
+    Se nota que deshomogenizar \(F\) y después derivar respecto a \(x\), \(y\) o \(z\), es equivalente a derivar y después deshomogenizar, mientras que no sé deshomogenice por la variable respecto a la cual se deriva. También se recuerda que por definición la multiplicidad de \(P\) en una CPP \(F\) es la multiplicidad de \(P\) en \(F_*\), para cualquier deshomogenización. Dado esto se puede ver que \(P\) es punto multiple de \(F\) ssi \(\overline{P}\) es punto multiple \(F_*\). Con eso se tiene que si \(F(P)=F_x(P)=F_y(P)=f_z(P)=0\), entonces \(P\) es punto multiple. Ahora, con eso se recuerda que para curvas planas afines se tiene que \(P\) es un punto multiple de \(G\) si y solo si \(G(P)=G_x(P)=G_y(P)=0\), por lo que sí \(P\) es punto multiple de \(F\), \(\overline{P}\) es punto multiple de \(F_*\), por lo que \(F_*(\overline{P})=F_{*x}(\overline{P})=F_{*y}(\overline{P})=0\), con lo que \(F(\overline{P})=F_x(\overline{P})=F_y(\overline{P})\), pero se recuerda que no importa que deshomogenización se usa, por lo que también se tiene que \(F_z(P)=0\).
+\end{sol}
+
+\begin{prob}{5.4}
+    Let \(P\) be a simple point of \(F\). Show that the tangent line to \(F\) at \(P\) has the equation \(F_x(P)x+F_y(P)y+F_z(P)z=0\).
+\end{prob}
+
+\begin{sol}{5.4}
+    Se sabe que la tangente afín a \(F_*\) en \(\overline{P}\) es \(F_{*x}(\overline{P})(x-x_0)+F_{*x}(\overline{P})(y-y_0)=(F_{*x}(\overline{P})x+F_{*y}(\overline{P})y-(F_{*x}(\overline{P})x_0+F_{*y}(\overline{P})y_0)\), ahora \(P\in F\) por lo que \(0=nF(P)=x_0F_x(P)+y_0F_y(P)+z_0F_z(P)\), se puede tomar \(z_0=1\), por lo que \(F_{x}({P})x_0+F_{y}({P})y_0=-F_z(P)\), con lo que se tiene que la recta tangente proyectiva es \(F_x(P)x+F_y(P)y+F_z(P)z\).
+\end{sol}
+
+\begin{prob}{5.6}
+    For any \(F,P\in F\), show that \(m_P(F_x)\geq m_P(F)-1\).
+\end{prob}
+
+\begin{sol}{5.6}
+    Como \(nF=xF_x+yF_y+zF_z\), entonces \(nF_*=xF_{*x}+yF_{*y}+F_{z*}\), por lo que \(xF_{*x}=nF_*-yF_{*y}-F_{z*}\). Y con esto y su descomposición en polinomios homogéneos, es claro que \(m_P(F_{*x})\geq m_P(F_*)-1\).
+\end{sol}
+
+\begin{prob}{5.7}
+    Show that two plane curves with no common components intersect in a finite number of points.
+\end{prob}
+
+\begin{sol}{5.7}
+    Se nota que por Bezout se tiene esto inmediatamente.
+\end{sol}
+
+\begin{prob}{5.18}
+    Show that there is only one conic passing through the five points \([0:0:1],[0:1:0],[1:0:0],[1:1:1]\), and \([1:2:3]\); show that is nonsingular.
+\end{prob}
+
+\begin{sol}{5.18}
+    Sea \(C\) cónica tal que los puntos están en ella. Ya que \([0:0:1],[0:1:0],[1:0:0]\in C\) se tiene que \(C=axy+byz+xz\), y usando los otros puntos se tiene que \(C=3xy+yz-4xz\). Se ve \(\nabla C=(3y-4z,3x+z,y-4x)\), y se nota que \(\nabla C=0\) ssi \(x=y=z=0\), por lo que C es no singular.
+\end{sol}
+
+\begin{prob}{5.19}
+    Consider the nine points \([0:0:1],[0:1:1],[1:0:1],[1:1:1],[0:2:1],[2:0:1],[1:2:1].[2:1:1],\) and \([2:2:1]\in\set{P}^2\) (Sketch). Show that there are an infinite number of cubics passing through these points.
+\end{prob}
+
+\begin{sol}{5.19}
+
+\end{sol}
+
+\begin{prob}{5.21}
+    Show that every nonsingular projective plane curve is irreducible. Is this true for affine curves?
+\end{prob}
+
+\begin{sol}{5.21}
+    Por contradicción, se asume que \(F\) es una CPP no-singular reducible, entonces existen \(R,S\) tal que \(F=RS\), con \(\deg R,\deg S\geq 1\), luego por Bezout se tiene que existe un punto \(p\in R\cap S\), con lo que \(m_p(F)>1\), por lo que \(F\) es singular en \(p\), lo que es una contradicción. En el caso afín esto no necesariamente es verdad, ya que dado dos curvas \(R,S\) su intersección puede ser vacía.
+\end{sol}
+
+\begin{prob}{5.22}
+    Let \(F\) be an irreducible curve of degree \(n\). Assume \(F_x\neq0\). Apply Corollary 1 to \(F\) and \(F_x\), and conclude that \(\sum m_P(F)(m_P(F)-1)\leq n(n-1)\). In particular, \(F\) has at most \(\frac12n(n-1)\) multiple points. (See Problems 5.6, 5.8.)
+\end{prob}
+
+\begin{sol}{5.22}
+    Se nota que \(\deg F_x=\deg F-1=n-1\),luego por coralario 1, \(\sum m_P(F)m_P(F_x)\leq n(n-1)\). Se recuerda que \(m_P(F_x)\geq m_P(F)-1\), por lo que \(\sum m_P(F)m_P(F_x)\geq\sum m_P(F)(m_P(F)-1)\). Con ambas desigualdades se tiene que \(\sum m_P(F)(m_P(F)-1)\leq n(n-1)\). Se nota que en caso que \(P\) sea un punto simple de \(F\) entonces \(m_P(F)(m_P(F)-1)=0\), y si \(P\) es un punto multiple \(m_P(F)\geq2\), por lo que \(2\cdot\#\{P\in F:m_P(F)\geq2\}\leq\sum m_P(F)(m_P(F)-1)\leq n(n-1)\), por lo que \(\#\{P\in F:m_P(F)\geq2\}\leq\frac12n(n-1)\).
+\end{sol}
+
+\begin{prob}{5.28}
+    (char\((k)=p>0\)) \(F=x^{p+1}-y^pz, P=[0:1:0]\). Find \(L\cap F\) for all lines \(L\) passing through \(P\). Show that every line that is tangent to \(F\) at a simple points passes through \(P\)!
+\end{prob}
+
+\begin{sol}{5.28}
+    Sea \(L\) tal que \([0:1:0]\in L\), entonces \(L=x+az\), luego \(L\cap F=V(z((az)^p-y^p),x+az)=V(z(az-y)^p,x+az)\). Se nota que \([0:1:0]\in L\cap F\), ahora sea \([-a:b:1]\in L\cap F\), entonces \(b=a\) ya que \((a-y)^p=0\). Con esto se tiene que \(L\cap F=\{[0:1:0],[-a:a:1]\}\). Sea \(L\) tangente a \(F\) en \(P\) un punto simple, se sabe que \(L=F_x(P)x+F_y(P)y+F_z(P)z\), viendo \(F_y=0\), y que \(P\) es simple, se tiene que \(F_z(P)\neq0\) o \(F_x(P)\neq0\), si \(F_z(P)\neq0\) se tiene que \(F_z(P)=y_0^p\neq0\implies(z_0=0\iff x_0=0)\), y si \(F_x(P)=x_0^p\neq0\implies y_0^pz_0\neq0\implies(z_0\neq0\wedge y_0\neq0)\), por lo que \(P=[0:1:0]\) o \(P=[x_0:y_0:z_0]\), donde todos son distintos de cero. Se toma \(P=[x_0:y_0:z_0]\) con todos distintos de cero, luego \(L=x_0^px+y_0^pz\), pero \([0:1:0]\in L\). Con lo que se tiene lo pedido.
+\end{sol}
+
+\begin{prob}{6.9}
+    Let \(X=\set{A}^2\setminus\{(0,0)\}\), an open subvariety of \(\set{A}^2\). Show that \(\Gamma(X)=\Gamma(\set{A}^2)=k[x,y]\)
+\end{prob}
+
+\begin{sol}{6.9}
+    Se nota que \(\Gamma(\set{A}^2)\subseteq k(x,y)\), luego si \(p/q\in\Gamma(\set{A}^2)\) entonces \(V(q)\cap\set{A}^2=\emptyset\), pero \(V(q)\subset\set{A}^2\), por lo que \(V(q)=\emptyset\). Esta dice que \(q\) es una constante, por lo que \(\Gamma(\set{A}^2)=k[x,y]\). Similarmente \(\Gamma(\set{A}^2)\subseteq\Gamma(X)\), luego sea \(p/q\in\Gamma(X)\), entonces \(V(q)\cap X=\emptyset\), se asume que \(q\) no constante, por lo que \(V(q)=\{(0,0)\}\), pero \(q\) es un polinomio no constante en el plano, entonces \(V(q)\) no puede ser finito por lo que tiene infinitos elementos, lo que es una contradicción, con esto se tiene que \(q\) es constante, por lo que \(\Gamma(X)\subseteq k[x,y]=\Gamma(\set{A}^2)\). Con lo que se tiene lo pedido.
+\end{sol}
+
+\begin{prob}{6.14}
+    Let \(X,Y\) be varieties, \(f:X\rightarrow Y\) a mapping. Let \(X=\bigcup_\alpha U_\alpha,Y=\bigcup_\alpha V_\alpha\), with \(U_\alpha,V_\alpha\) open subvarieties, and suppose \(f(U_\alpha)\subset V_\alpha\) for all \(\alpha\).
+    \begin{enumerate}
+        \item Show that \(f\) is a morphism if only if each restriction \(f_\alpha:U_\alpha\rightarrow V_\alpha\) of \(f\) is a morphism.
+        \item If each \(U_\alpha,V_\alpha\) is affine, \(f\) is a morphism if only if each \(\tilde f(\Gamma(V_\alpha))\subset\Gamma(U_\alpha)\)
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{6.14}
+    \begin{enumerate}
+        \item \(\implies\): Ya que \(f\) es continua, \(f_\alpha\) la restricción también lo es. La segunda parte también se tiene, ya que como \(V_\alpha\subset Y\), específicamente se tiene la propiedad para los subconjuntos abiertos \(U\) de \(V_\alpha\).\\
+        \(\impliedby\): Para la continuidad de \(f\) basta notar que como es continua en cada \(U_\alpha\), entonces es continua en la unión de estás.
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}{6.23}
+    Let \(P,Q\in X\), \(X\) a variety. Show that there is an affine open set \(V\) on \(X\) that contains \(P\) and \(Q\). (\textit{Hint:} See the proof of the Corollary to Proposition 5, and use Problem 1.17(c).)
+\end{prob}
+
+\begin{sol}{6.23}
+
+\end{sol}
+
+\begin{prob}{6.26}
+    \begin{enumerate}
+        \item Let \(f:X\rightarrow Y\) be a morphism of varieties such that \(f(X)\) is dense in \(Y\). Show that the homorphism \(\tilde f:\Gamma(Y)\rightarrow\Gamma(X)\) is one-to-one.
+        \item If \(X\) and \(Y\) are affine, show that \(f(X)\) is dense in \(Y\) if and only if \(\tilde f:\Gamma(Y)\rightarrow\Gamma(X)\) is one-to-one. Is this true if \(Y\) is not affine.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{6.26}
+
+\end{sol}
+
+\begin{prob}{6.31}
+    (Theorem of the Primitive Element) Let \(K\) be a field of characteristic zero. \(L\) a finite (algebraic) extension of \(K\). Then there is a \(z\in L\) such that \(L=K(z)\). \textit{Outline of Proof:}
+    \begin{enumerate}[label=(Step \roman*)]
+        \item Suppose \(L=K(\alpha, \beta)\). Let \(p\) and \(q\) be monic and irreducible polynomials in \(k[x]\) such that \(p(\alpha)=0,q(\beta)=0\). Let \(L'\) be a field in which \(p=\prod^n_{i=1}(x-\alpha_i),q=\prod^m_{j=1}(x-\beta_j),\alpha=\alpha_1,\beta=\beta_1,L'\supset L\) (see Problems 1.52, 1.53). Choose \(\lambda\neq0\) in \(K\) so that \(\lambda\alpha+\beta\neq\lambda\alpha_i+\beta_j\) for all \(i\neq1,j\neq1\). Let \(z=\lambda\alpha+\beta,K'=K(z)\). Set \(h(x)=q(z-\lambda x)\in K'[x]\). Then \(h(\alpha)=0,h(\alpha_i)\neq0\) if \(i>1\). Therefore \((h,p)=(x-\alpha)\in K'[x]\). Then \(\alpha\in K'\), so \(\beta\in K'\), so \(L=K'\).
+        \item If \(L=K(x_1,\dots,x_n)\), use induction on \(n\) to find \(\lambda_1,\dots,\lambda_n\in k\) such that \(L=K(\sum\lambda_ix_i)\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{6.31}
+    Para la primera parte, se toma \(L=K(\alpha,\beta)\), con \(p,q\) los polinomios minimales correspondientes. Sea \(L'\) una extensión de \(K\) tal que \(p,q\) sean factorizables en monomios, de otra forma, \(L'\) es una extensión separable de \(L\). Sean \(p=\prod(x-\alpha_i),q=\prod(x-\beta_j)\) factorizados en \(L'\), donde \(\alpha=\alpha_1,\beta=\beta_1\). Se puede elegir \(\lambda\neq0\) tal que \(\lambda\alpha+\beta\neq\lambda\alpha_i+\beta_j\) para todo \(i\neq1,j\neq1\), ya que hay finitos \(\lambda\) tales que \(-\lambda(\alpha-\alpha_i)=\beta-\beta_j\). Ahora sea \(K'=K(z)\) con \(z=\lambda\alpha+\beta\), se toma el polinomio \(h(x)=q(z-\lambda x)\in K'[x]\), claramente \(h(\alpha_i)=0\iff i=1\). Luego \(L=K(\alpha,\beta)=K(\alpha,z)=K'(\alpha)\), por lo que sí \([K'(\alpha):K']=1\) se tiene lo pedido. Sea \(q'\) polinomio minimal de \(\alpha\) en \(K'\), como \(h(\alpha)=0\) se tiene que \(q'\mid h\), y además \(q'\mid q\), pero \((q,h)=(x-\alpha)\), por lo que \(q'(x)=x-\alpha\), y se tiene lo pedido.\\
+    Para el caso general, se nota que si funciona para \(n\) elementos (\(\exists\gamma:K(\gamma)=K(x_1,\dots,x_n)\)), para \(n+1\) se reduce a \(K(\gamma,x_{n+1})\), lo cual cumple lo pedido por la primera parte.
+\end{sol}
+
+\begin{prob}{6.43}
+    Let \(C\) be a projective curve, \(P\in C\). Then there is birational morphism \(f:C\rightarrow C'\), \(C'\) a projective curve, such that \(f^{-1}(f(P))=\{P\}\). We outline the proof:
+    \begin{enumerate}
+        \item We can assume: \(C\subset\set{P}^{n+1}\). Let \(t,x_1,\dots,x_n, z\) be coordinates for \(\set{P}^{n+1}\); Then \(C\cap V(t)\) is finite; \(C\cap V(t,z)=\emptyset\); \(P=[0:\dots:0:1]\); and \(k(C)\) is algebraic over \(k(u)\), where \(u=\overline{t}/\overline{z}\in k(C)\).
+        \item For each \(\lambda=(\lambda_1,\dots,\lambda_n)\in k^n\), let \(\varphi_\lambda:C\rightarrow\set{P}^2\) be defined by the formula \(\varphi([t:x_1:\dots:x_n:z])=[t:\sum\lambda_ix_i:z]\). Then \(\varphi_\lambda\) is well-defined morphism, and \(\varphi_\lambda(P)=[0:0:1]\). Let \(C'\) be the closure of \(\varphi_\lambda(C)\).
+        \item The variable \(\lambda\) can be chosen so \(\varphi_\lambda\) is a birational morphism from \(C\) to \(C'\) and \(\varphi^{-1}_\lambda([0:0:1])=\{P\}\). (Use problem 6.32 and the fact that \(C\cap V(T)\) is finite).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}{6.43}
+
+\end{sol}
+
+\end{document}
