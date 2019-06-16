@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Artin%
+}{%
+Artin%
+}{%
+{\protect \APACyear {2011}}%
+}]{%
+artin2011algebra}
+\APACinsertmetastar {%
+artin2011algebra}%
+\begin{APACrefauthors}%
+Artin, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2011}.
+\newblock
+\APACrefbtitle {Algebra} {Algebra}.
+\newblock
+\APACaddressPublisher{}{Pearson Prentice Hall}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

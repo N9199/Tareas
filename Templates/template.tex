@@ -28,6 +28,7 @@
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
 \newcommand{\paren}[1]{\left(#1\right)}
 \newcommand{\mcm}{\text{mcm }}
 \newcommand{\BigO}[2][]{O_{#1}\paren{#2}}
@@ -40,12 +41,15 @@
 \DeclareMathOperator{\Ima}{Im}
 \DeclareMathOperator{\rad}{rad}
 
-\newenvironment{prob}[1]{
-	{\large\raggedleft\textbf{Problema #1:}}\addcontentsline{toc}{section}{Problema #1}\par\addvspace{-\parskip}\noindent
+\newcounter{prob}[section]
+\newcounter{sol}[section]
+
+\newenvironment{prob}[1][]{
+	{\large\raggedleft\textbf{Problema \ifx&#1&\refstepcounter{prob}\theprob\else#1\fi:}}\addcontentsline{toc}{section}{Problema \ifx&#1&\theprob\else#1\fi}\par\addvspace{-\parskip}\noindent
 }{}
 
-\newenvironment{sol}[1]{\par\medskip
-	\noindent \textbf{Solución problema #1:} \rmfamily}{\begin{flushright}
+\newenvironment{sol}[1][]{\par\medskip
+	\noindent \textbf{Solución problema \ifx&#1&\refstepcounter{sol}\thesol\else#1\fi: } \rmfamily}{\begin{flushright}
 		$\blacksquare$
 	\end{flushright}
 }

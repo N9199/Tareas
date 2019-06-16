@@ -1,0 +1,106 @@
+\input{../Templates/template}
+
+\title{Tarea 4}
+\author{Nicholas Mc-Donnell}
+\date{2019/06/19}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\begin{minipage}{2.5cm}
+    \includegraphics[width=2cm]{../figures/logo1.jpg}
+\end{minipage}
+\begin{minipage}{13cm}
+    \begin{flushleft}
+        \raggedright{
+            \noindent
+            {\sc Pontificia Universidad Católica de Chile\\
+                Facultad de Matemáticas\\
+                Departamento de Matemática} \smallskip \\
+            Primer Semestre de 2019\\
+        }
+    \end{flushleft}
+\end{minipage}
+
+\vspace{2ex}
+{\Large \centerline{\bf \thetitle}}
+{\large \centerline{Análisis Real --- MAT 2515}}
+{\normalsize \centerline{ Fecha de Entrega: \thedate}}
+\vfill
+
+\begin{flushright}
+    {\large\theauthor}
+\end{flushright}
+\newpage
+\normalsize
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\begin{prob}
+    Sea \(X\) el espacio de funciones continuas en \([0,1]\) a \(\set{R}\) con la norma \(\norm{f}=\paren{\int_0^1\abs{f(x)}^2\d{x}}^{1/2}\). Demostrar que los polinomios son densos en \(X\).
+\end{prob}
+
+\begin{sol}
+    Se comenzará demostrando un pequeño lema:\\
+    \textbf{Lema 1:} \textit{Sea \(X\) un espacio métrico completo, y sea \(g:X\rightarrow\set{R}\) una función continua e inyectiva. Luego, el álgebra generada\footnote{Como anillo, donde se toman todas las sumas y multiplicaciones entre elementos del álgebra y elementos de \(\set{R}\).} \(<g>\) es densa en \(C(X,\set{R})\)\footnote{Se asume la norma del supremo.}}
+    \begin{proof}
+        Por Stone-Weiestrass, \(X\) es un espacio métrico completo, \(<g>\) es un subálgebra de \(C(X,\set{R})\), y \(\set{R}\subset<g>\), luego como \(g\) es inyectiva dado \(x,y\in X\) se tiene que si \(x\neq y\) entonces \(g(x)\neq g(y)\). Por lo que \(<g>\) es denso en \(C(X,\set{R})\).
+    \end{proof}
+    \noindent Se nota que los polinomios son el álgebra generada por la función identidad, y que la identidad es inyectiva. Además se recuerda que \([0,1]\) es completo, por lo que los polinomios son densos en \(C[0,1]\). Ahora, ya que todas las \(\ell_p-\)normas son equivalentes, específicamente la norma del supremo es equivalente a \(\ell_2-\)norma. Luego, sea \(f\in C[0,1]\), ya que \(<x>\) es denso en \(C[0,1]\), existe una sucesión \(p_n\) tal que \(p_n\rightarrow f\) bajo la norma del supremo, por definición de norma equivalente \(p_n\) también converge bajo la \(\ell_2-\)norma, y además en ayudantía se vio que tiene que converger a lo mismo, por lo que \(p_n\rightarrow f\) bajo la \(\ell_2-\)norma, como \(f\) era arbitrario se tiene que \(<x>\) es denso en \(X\).
+\end{sol}
+
+\begin{prob}
+    Sea \(g:[0,1]\rightarrow\set{R}\) una función continua y estrictamente creciente. Demostrar que si \(f:[0,1]\rightarrow\set{R}\) es una función continua, tal que \(\int_0^1f(x)\d{x}=0\) y \(\int_0^1f(x)g^n(x)\d{x}=0\) para todo \(n\) natural, entonces \(\int_0^1f^2(x)\d{x}=0\).
+\end{prob}
+
+\begin{sol}
+    Se sabe que \([0,1]\) es un espacio métrico completo, y que como \(g\) es estrictamente creciente es inyectiva. Luego el álgebra generado \(<g>\) es densa \(C[0,1]\) por lema 1. Se nota que todo elemento de \(<g>\) se puede escribir como un polinomio en \(g\), de otra forma, para todo \(h\in<g>\) existe \(p\in\set{R}[x]\) tal que \(p(g)=h\). Dado esto, se define \(F:C[0,1]\rightarrow\set{R}\) de la siguiente forma:
+    \[
+        h(x)\mapsto\int_0^1f(x)h(x)\d{x}
+    \]
+    Se nota que si \(F\) es continua, se tiene lo pedido, ya que al ser \(<g>\) denso en \(C[0,1]\) existe un sucesión \(p_n\) que converge a \(f\), y esta cumple que \(F(p_n)=0\quad\forall n\in\set{N}\) por linealidad de la integral y porque \(\int_0^1f(x)g^n(x)\d{x}=0\quad\forall n\in\set{N}\).
+    \begin{align*}
+        \abs{F(h)} & =\abs{\int_0^1f(x)h(x)\d{x}} \\
+                   & \leq 1\cdot\norm{f}\cdot\norm{h}\\
+    \end{align*}
+    Como \(\norm{f}\) es una constante se tiene lo pedido.
+\end{sol}
+
+\begin{prob}
+    Sea \(X\) el espacio de las funciones diferenciables en \(\paren{-1,1}\) con \(\norm{f}=\sup_{x\in\paren{-1,1}}\abs{f(x)}\). Estudiar cuales de las siguientes funciones definidas en \(X\) es un funcional lineal acotado. En caso de serlo calcular su norma.
+    \begin{enumerate}
+        \item \(T_1(f)=f(0)\)
+        \item \(T_2(f)=\int_{-1}^1f(x)x^2\d{x}\)
+        \item \(T_3(f)=f'(0)\)
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Sean \(f,g\in X\) y \(\lambda\in\set{R}\), luego \(T_1(\lambda f+g)=\lambda f(0)+g(0)=\lambda T_1(f)+T_1(g)\), por lo que es un funcional lineal. Luego se nota que \(\abs{f(0)}\leq\norm{f}\), por lo que \(T_1\) esta acotado, luego sea \(f(x)=1\) la función constante, \(\abs{T_1(f)}=\norm{f}=1\), por lo que \(\norm{T_1}=1\).
+        \item Sean \(f,g\in X\) y \(\lambda\in\set{R}\), luego \(T_2(\lambda f+g)=\int_{-1}^1\paren{\lambda f(x)+g(x)}x^2\d{x}=\lambda\int_{-1}^1f(x)x^2\d{x}+\int_{-1}^1g(x)x^2\d{x}=\lambda T_2(f)+T_2(g)\), por lo que es un funcional lineal. Para ver si \(T_2\) es acotado se nota lo siguiente:
+        \[\abs{\int_{-1}^1f(x)x^2\d{x}}\leq\int_{-1}^1\abs{f(x)}x^2\d{x}\leq\int_{-1}^1\sup_{x\in\paren{-1,1}}\abs{f(x)}x^2\d{x}=\norm{f}\cdot\frac23\]
+        Con lo que se tiene que \(\norm{T_2(f)}\leq\frac23\norm{f}\), tomando la función constante \(f(x)=1\), se tiene la igualdad, por lo que \(\norm{T_2}=\frac23\).
+        \item Sean \(f,g\in X\) y \(\lambda\in\set{R}\), luego \(T_3(\lambda f+g)=\lambda f'(0)+g'(0)=\lambda T_3(f)+T_3(g)\), por lo que es un funcional lineal. Para revisar si es acotada es suficiente tomar la función \(f(x)=\sin(nx)\), ya que \(\norm{f}=1\), pero \(\norm{T_3(f)}=n\), con lo que \(T_3\) no es acotada.
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Sea \(X\) el espacio vectorial \(X=\{\{a_n\}|a_n\in\set{R}\text{ y }\sum_{n=1}^\infty\abs{a_n}<\infty\}\) con la norma \(\norm{\{a_n\}}=\sum_{n=1}^\infty\abs{a_n}\).
+
+    Si \(M\) es el subespacio \(M=\{\{a_n\}\in X|a_n=0\text{ si }n\geq3\}\) definamos \(T:M\rightarrow\set{R}\) por \(T(\{a_n\})=a_1+a_2\)
+    \begin{enumerate}
+        \item Calcular \(\norm{T}\).
+        \item Si \(M_1=\{\{a_n\}\in X|a_n\text{ si }n\geq4\}\) describir TODAS las funciones lineales \(T_1:M_1\rightarrow\set{R}\) tales que \(T_1(\{a_n\})=T(\{a_n\})\) si \(\{a_n\}\in M\) y \(\norm{T_1}=\norm{T}\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Se nota que \(\norm{T(\{a_n\})}=\abs{a_1+a_2}\leq\abs{a_1}+\abs{a_2}=\sum_{n=1}^\infty\abs{a_n}=\norm{\{a_n\}}\), y se nota que se llega a la igualdad con \(a_1=0\) o con \(a_2=0\), por lo que \(\norm{T}=1\).
+        \item Por propiedad de transformaciones lineales, se nota que \(T_1\) está caracterizada por como actúa sobre la base de \(M_1\), luego \(M<M_1\) más específicamente \(B=\{b_1,b_2\}\) es base de \(M\) donde \(b_i\) es \(1\) en la \(i\)-ésima coordenada, y extendiendo \(B\) con \(b_3\) se tiene \(M_1\). Luego, \(T_1\mid_M=T\) por lo que \(T_1(\{a_n\})=a_1+a_2+\lambda a_3\). Ahora se necesita que \(\norm{T_1}=\norm{T}\), por lo que se necesita que \(\abs{a_1+a_2+\lambda a_3}\leq\abs{a_1}+\abs{a_2}+\abs{a_3}\), más específicamente \(\abs{\lambda}\leq 1\), dado esto, se nota que se tiene la igualdad con \(a_3=0\), y con \(a_2=0\) o \(a_1=0\), por lo que se tiene que \(\norm{T_1}=\norm{T}\). Dado esto \(T_1(\{a_n\})=a_1+a_2+\lambda a_3\) donde \(\abs{\lambda}\leq 1\).
+    \end{enumerate}
+\end{sol}
+
+\end{document}
