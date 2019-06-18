@@ -47,7 +47,7 @@
     \begin{proof}
         Por Stone-Weiestrass, \(X\) es un espacio métrico completo, \(<g>\) es un subálgebra de \(C(X,\set{R})\), y \(\set{R}\subset<g>\), luego como \(g\) es inyectiva dado \(x,y\in X\) se tiene que si \(x\neq y\) entonces \(g(x)\neq g(y)\). Por lo que \(<g>\) es denso en \(C(X,\set{R})\).
     \end{proof}
-    \noindent Se nota que los polinomios son el álgebra generada por la función identidad, y que la identidad es inyectiva. Además se recuerda que \([0,1]\) es completo, por lo que los polinomios son densos en \(C[0,1]\). Ahora, ya que todas las \(\ell_p-\)normas son equivalentes, específicamente la norma del supremo es equivalente a \(\ell_2-\)norma. Luego, sea \(f\in C[0,1]\), ya que \(<x>\) es denso en \(C[0,1]\), existe una sucesión \(p_n\) tal que \(p_n\rightarrow f\) bajo la norma del supremo, por definición de norma equivalente \(p_n\) también converge bajo la \(\ell_2-\)norma, y además en ayudantía se vio que tiene que converger a lo mismo, por lo que \(p_n\rightarrow f\) bajo la \(\ell_2-\)norma, como \(f\) era arbitrario se tiene que \(<x>\) es denso en \(X\).
+    \noindent Se nota que los polinomios son el álgebra generada por la función identidad, y que la identidad es inyectiva. Además se recuerda que \([0,1]\) es completo, por lo que los polinomios son densos en \(C[0,1]\). Ahora, ya que todas las \(\ell_p-\)normas son equivalentes, específicamente la norma del supremo es más fina que \(\ell_2-\)norma. Luego, sea \(f\in C[0,1]\), ya que \(<x>\) es denso en \(C[0,1]\), existe una sucesión \(p_n\) tal que \(p_n\rightarrow f\) bajo la norma del supremo, por definición de norma más fina \(p_n\) también converge bajo la \(\ell_2-\)norma, y además en ayudantia se vio que tiene que converger a lo mismo, por lo que \(p_n\rightarrow f\) bajo la \(\ell_2-\)norma, como \(f\) era arbitrario se tiene que \(<x>\) es denso en \(X\).
 \end{sol}
 
 \begin{prob}
@@ -59,7 +59,7 @@
     \[
         h(x)\mapsto\int_0^1f(x)h(x)\d{x}
     \]
-    Se nota que si \(F\) es continua, se tiene lo pedido, ya que al ser \(<g>\) denso en \(C[0,1]\) existe un sucesión \(p_n\) que converge a \(f\), y esta cumple que \(F(p_n)=0\quad\forall n\in\set{N}\) por linealidad de la integral y porque \(\int_0^1f(x)g^n(x)\d{x}=0\quad\forall n\in\set{N}\).
+    Se nota que si \(F\) es continua, se tiene lo pedido, ya que al ser \(<g>\) denso en \(C[0,1]\) existe un sucesión \(p_n\) que converge a \(f\), y esta cumple que \(F(p_n)=0\quad\forall n\in\set{N}\) por linealidad de la integral y porque \(\int_0^1f(x)g^n(x)\d{x}=0\quad\forall n\in\set{N}\). Luego para ver la continuidad de
     \begin{align*}
         \abs{F(h)} & =\abs{\int_0^1f(x)h(x)\d{x}} \\
                    & \leq 1\cdot\norm{f}\cdot\norm{h}\\
@@ -92,7 +92,7 @@
     Si \(M\) es el subespacio \(M=\{\{a_n\}\in X|a_n=0\text{ si }n\geq3\}\) definamos \(T:M\rightarrow\set{R}\) por \(T(\{a_n\})=a_1+a_2\)
     \begin{enumerate}
         \item Calcular \(\norm{T}\).
-        \item Si \(M_1=\{\{a_n\}\in X|a_n\text{ si }n\geq4\}\) describir TODAS las funciones lineales \(T_1:M_1\rightarrow\set{R}\) tales que \(T_1(\{a_n\})=T(\{a_n\})\) si \(\{a_n\}\in M\) y \(\norm{T_1}=\norm{T}\).
+        \item Si \(M_1=\{\{a_n\}\in X|a_n=0\text{ si }n\geq4\}\) describir TODAS las funciones lineales \(T_1:M_1\rightarrow\set{R}\) tales que \(T_1(\{a_n\})=T(\{a_n\})\) si \(\{a_n\}\in M\) y \(\norm{T_1}=\norm{T}\).
     \end{enumerate}
 \end{prob}
 
