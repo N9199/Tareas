@@ -1,5 +1,7 @@
 \documentclass{homework}
 \usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+
 
 \title{Tarea 1}
 \date{2019-08-30}
@@ -172,6 +174,11 @@
         \begin{equation*}
             x(t)=\sqrt{\frac\gamma\tau-\paren{\frac\gamma\tau-x_0^2}\exp\paren{-\frac{\tau\cdot t}2}}
         \end{equation*}
+        Similarmente para \(x_0<0\), se tiene la siguiente solución:\begin{equation*}
+            x(t)=\sqrt{-\frac\gamma\tau+\paren{\frac\gamma\tau+x_0^2}\exp\paren{-\frac{\tau\cdot t}2}}
+        \end{equation*}
+        \item Como la EDO no es lipschitz cerca de \(0\), se tiene que cada vez que una solución tenga una intersección con el \(0\) esta se puede extender de variadas formas, por lo que no hay unicidad de solución, esto no contradice Picard-Lindelöf ya que no es lipschitz cerca de \(0\). Para ver el intervalo máximo de definición hay notar que dado \(x_0>0\), se necesita que \(y(t)\geq0\), lo cual se cumple para todo \(T_-<t\), donde \(T_-<0\) es un valor dependiente de \(x_0,\gamma\) y \(\tau\). Similarmente, para \(x_0<0\) se tiene que \(t<T_+\), donde \(T_+>0\) es un valor que depende de \(x_0,\gamma\) y \(\tau\).
+        \item Como se vio anteriormente si \(x_0>0\), \(x(t)\) esta bien definida para todo \(t\) positivo, luego, viendo las soluciones es claro que cuando \(t\rightarrow\infty\) entonces \(x(t)\rightarrow\sqrt{\frac\gamma\tau}\).
     \end{enumerate}
 \end{sol}
 \begin{prob}
@@ -180,11 +187,11 @@
             \dot{x}=f(t,x) & (t,x)\in J\times\set{R},\quad f\in C(J\times\set{R}) \\
             x(t_0)=x_0
         \end{cases}\]
-    tiene una solución \(C^1\) definida localmente en tiempo para todos datos iniciales \((t_0,x_0)\in J\times\set{R}\). Demuestre que si el intervalo máximo de definición de una solución \(x(t)\) es \((T_-,T_+)\subseteq J\), entonces \(\lim_{x\downarrow T_-}\abs{x(t)}=\infty\) y \(\lim_{x\uparrow T_+}\abs{x(t)}=\infty\). (\textit{Sugerencia}: Argumente por contradicción. Primero demuestre que si hay dos sucesiones \(\{a_i\}\) y \(\{b_j\}\) con \(a_i\uparrow T_+\) y \(b_j\uparrow T_+\) tales que \(x(a_i)\rightarrow x_1\) y \(x(b_j)\rightarrow x_2\), entonces \(x_1=x_2\). Úselo para probar que \(x(t)\) se puede extender como una solución después del momento \(T_+\)).
+    tiene una solución \(C^1\) definida localmente en tiempo para todos datos iniciales \((t_0,x_0)\in J\times\set{R}\). Demuestre que si el intervalo máximo de definición de una solución \(x(t)\) es \((T_-,T_+)\subseteq J\), entonces \(\lim_{t\downarrow T_-}\abs{x(t)}=\infty\) y \(\lim_{t\uparrow T_+}\abs{x(t)}=\infty\). (\textit{Sugerencia}: Argumente por contradicción. Primero demuestre que si hay dos sucesiones \(\{a_i\}\) y \(\{b_j\}\) con \(a_i\uparrow T_+\) y \(b_j\uparrow T_+\) tales que \(x(a_i)\rightarrow x_1\) y \(x(b_j)\rightarrow x_2\), entonces \(x_1=x_2\). Úselo para probar que \(x(t)\) se puede extender como una solución después del momento \(T_+\)).
 \end{prob}
 
 \begin{sol}
-
+    Se nota que la demostración para ambos límites es equivalente, por lo que se toma el caso de \(t\uparrow T_+\), y se asume que el límite no es infinito. Ahora sean, \(\{a_i\}\) y \(\{b_j\}\) sucesiones tal que \(a_i\uparrow T_+\) y \(b_j\uparrow T_+\), y además \(x(a_i)\rightarrow x_1\) y \(x(b_j)\rightarrow x_2\). Si \(x_1\neq x_2\), sea \(\varepsilon_n=\frac1n\), se pueden encontrar \(a_i,a_k\) y \(b_j\), tal que \(a_i<b_j<a_k\) y \(x_1-x(a_k)<x_2-x(b_j)<x_1-x(a_i)<\varepsilon_n\), ahora por TVM existen \(t_{n,1}\in(a_i,b_j)\) y \(t_{n,2}\in(b_j,a_k)\) tal que \(\frac{x(b_j)-x(a_i)}{b_j-a_i}=\dot{x}(t_{n,1})\) y \(\frac{x(a_k)-x(b_j)}{a_k-b_j}=\dot{x}(t_{n,2})\). Se nota que desde un \(n\) suficientemente grande se tiene que \(\dot{x}(t_{n,2})>0\) y \(\dot{x}(t_{n,1})<0\), o \(\dot{x}(t_{n,2})<0\) y \(\dot{x}(t_{n,1})>0\), pero la diferencia entre \(t_{n,1}\) y \(t_{n,2}\) disminuye para un \(n\) cada más grande, lo implicaría que \(\dot{x}\) no es continua cerca de \(T_+\), pero \(x\) es \(C^1\). Por ende, \(x_1=x_2\), con lo que para todo sucesión \(c_k\uparrow T_+\) se tiene que \(\lim_{k\rightarrow\infty}x(c_k)=x_1\), por lo que se puede extender \(x(t)\) a \(T_+\), lo que contradice que que el intervalo máximo es \((T_-,T_+)\).
 \end{sol}
 
 \begin{prob}
@@ -194,14 +201,30 @@
             x(0)=\xi
         \end{cases}\]\
     \begin{enumerate}
-        \item Identifique y dibuje la 0-isoclina de la ecuación.
+        \item Identifique y dibuje las 0-isoclinas de la ecuación.
         \item Demuestre que para \(\xi\in[0,1]\), la solución \(x(t)\) está definida para todos \(t\geq0\), y que \(\lim_{t\rightarrow\infty}x(t)=0\).
         \item Pruebe que cuando \(\xi\geq K\) es suficientemente grande, \(x(t)\) explota en tiempo finito. (\textit{Sugerencia}: Construya una subsolución de la forma \(y(t)=\exp(t^2)g(t)\) que explota en tiempo finito).
     \end{enumerate}
 \end{prob}
 
 \begin{sol}
-
+    \begin{enumerate}
+        \item Las 0-isoclinas se calculan de la siguiente manera:
+        \begin{equation*}
+            x^2(x-\exp(t^2))=0
+        \end{equation*}
+        Con lo que se ven dos 0-isoclinas:
+        \begin{center}
+            \includegraphics{Isoclines.png}
+        \end{center}
+        Donde \(\textcolor{OliveGreen}{f(t)=\exp(t^2)}\) y \(\textcolor{blue}{g(t)=0}\)
+        \item Dado la condición inicial es suficiente demostrar que \(x(t)\) es decreciente para que este definida para todo \(t\geq0\). Sea \(x\in[0,1]\), entonces la siguiente desigualdad se cumple:
+        \begin{equation*}
+            \dot{x}=x^3-\exp(t^2)x^2=x^2(x-\exp(t^2))\leq1-\exp(t^2)\leq0
+        \end{equation*}
+        Por lo que para \(x\in[0,1]\) \(x(t)\) es decreciente. Ahora, como \(x(t)\) es decreciente y acotada inferiormente\footnote{Por la solución y 0-isoclina \(x(t)\equiv0\)} se tiene que existe el límite \(lim_{t\rightarrow\infty}x(t)\), se llamará \(k\) a este límite. Si \(k=0\) se tiene lo pedido, por lo que se considerará \(k>0\)
+        \item Para demostrar esto, sea \(y(t)=\exp(t^2)\frac1{\paren{x-1/2}^2}\), esta es una subsolución que explota en tiempo finito, por lo que se tiene lo pedido.
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}
