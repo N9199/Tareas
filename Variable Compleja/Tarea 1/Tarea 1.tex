@@ -1,7 +1,7 @@
 \documentclass{homework}
-\usepackage{multicol}
+\usepackage{float}
 \usepackage[dvipsnames]{xcolor}
-
+\usepackage{tikz}
 
 \title{Tarea 1}
 \date{2019-09-06}
@@ -32,9 +32,22 @@
 \begin{sol}
     \begin{enumerate}[label=(\alph*)]
         \item Se muestran los gráficos:
-              \begin{enumerate}[label=(\roman*)]
-                  \item
-              \end{enumerate}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=6cm, height=6cm]{Circle1a1.png}\caption{}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=6cm, height=6cm]{Circle1a2.png}\caption{}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=6cm, height=6cm]{Circle1a3.png}\caption{Con \(z_0=0.2\)}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=6cm, height=6cm]{Line1a4.png}\caption{Con \(\theta=0.6\)}
+            \end{figure}
         \item Sea \(f:\set{C}\rightarrow\set{S}^2\) la proyección estereográfica, y \(\rho:\set{S}^2\rightarrow\set{S}^2\) la rotación en \(\pi\) radianes respecto el eje \(x\). Se pide que \(\rho\circ f=f\circ\frac1z\). Se recuerdan las matrices de rotación, y se representa \(\rho\) como una:
               \[\rho=\begin{bmatrix}
                       1 & 0         & 0          \\
