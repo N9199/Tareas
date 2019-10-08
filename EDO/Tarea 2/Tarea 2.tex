@@ -1,0 +1,140 @@
+\documentclass{homework}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+
+
+\title{Tarea 1}
+\date{2019-08-30}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Ecuaciones Diferenciales Ordinarias - MAT2500}
+
+
+\begin{document}
+\maketitle
+\thanks{Maximiliano Norbu, Agustín Oyarce, Paulina Vega, Luciano Sciaraffia}
+\pagenumbering{roman}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Sean \(\phi_1(t),\phi_2(t),\dots,\phi_{n-1}(t)\) soluciones del sistema homogéneo \(\dot{x}=A(t)x\), y sea \(x\) una solución del sistema no homogéneo \(\dot{x}=A(t)x+g(t)\), donde \(A(t)\) y \(g(t)\) son continuas sobre el intervalo \(I\). Pruebe que \(Z=\det\paren{\phi_1,\phi_2,\dots,\phi_{n-1},x}\) satisface la \textit{Formula no homogénea de Abel}
+    \[\dot{Z}=\tr(A(t))Z+\det\paren{\phi_1,\phi_2,\dots,\phi_{n-1},g}\]
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Sea \(A\) la matriz constante asociada a la EDO homogénea de orden \(n\):
+    \[x^{(n)}+q_{n-1}x^{(n-1)}+\dots+q_1\dot{x}+q_0x=0\]
+    (tal que el sistema equivalente de primer orden es \(\dot{y}=Ay\), donde \(y=(x,\dot{x},\dots,x^{(n-1)})^T\)).
+    \begin{enumerate}[label=(\alph*)]
+        \item Demuestre que el polinomio característico de \(A\) es
+        \[\chi(z):=\det(zI-A)=z^n+q_{n-1}z^{n-1}+\dots+q_1z+q_0\]
+        \item Pruebe que la multiplicidad geométrica de cada valor propio de \(A\) es 1, i.e. cada valor propio de \(A\) es asociado con sólo un bloque de Jordan.
+        \item Demuestre que la ecuación, o equivalentemente, el sistema \(\dot{y}=Ay\) es estable si y sólo si todos los valores propios tienen parte real no positiva, y todos los valores propios imaginarios son simples.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Considere el sistema lineal homogéneo \(\dot{x}=A_bx\), donde \(\ds A_b=\begin{pmatrix}
+        b & 3\\-3 & 2
+    \end{pmatrix}\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Encuentre la solución general del sistema cuando \(b=-4\) y \textit{dibuje} el retrato de fase.
+        \item Determine los valores de \(b\) para los cuales el origen es, respectivamente, una fuente, una fuente espiral, un sumidero, un sumidero espiral, una silla y un centro.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Encuentre la solución general de
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\dot{x}=Ax\), donde \(\ds A=\begin{pmatrix}
+            5&2&4\\0&1&0\\-8&-1&-7
+        \end{pmatrix}\);
+        \item \(\ddot{x}+x=2\sin(2t)\)
+        \item \(\ddot{x}-2\dot{x}=-x+t-1+2\exp(t)\)
+        \item \(t\ddot{x}-2(t+1)\dot{x}+(t+2)x=0\), \(\phi_1(t)=\exp(t)\)
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Considere el sistema lineal homogéneo \(\dot{x}=A(t)x\), para \(t>0\), donde
+    \[A(t)=\begin{pmatrix}
+        3/t&-1\\2/t^2&-1/t
+    \end{pmatrix}\]
+    \begin{enumerate}[label=(\alph*)]
+        \item Verifique que
+        \[x_1(t)=\begin{pmatrix}
+            t^2\\t
+        \end{pmatrix}\]
+        resuelve el sistema para \(t>0\).
+        \item Sea \(x_2(t)\) otra solución, tal que el Wronskiano \(W(t):=\det\paren{x_1,x_2}\) satisface \(W(1)=1\). Encuentre \(W(t)\).
+        \item Use el de conocimiento de \(W(t)\) para determinar una posible solución \(x_2\).
+        \item Resuelva el problema de valor inicial
+        \[\dot{x}=A(t)x+\begin{pmatrix}
+            0\\-2t
+        \end{pmatrix},\quad t>0\quad\text{ con }\quad x(1)=\begin{pmatrix}
+            1\\1
+        \end{pmatrix}\]
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    \begin{enumerate}[label=(\alph*)]
+        \item Dado el sistema \(\dot{x}=A(t)x\), donde \(A(t)\) es continua y periódica con periodo \(T\). Demuestre que la transformación \(y(t)=P(t,t_0)^{-1}x(t)\) traduce el sistema a uno con coeficientes constantes:
+        \[\dot{y}=Q(t_0)y\]
+        Donde \(\Pi(t,t_0)=P(t,t_0)\exp((t-t_0)Q(t_0))\), 
+        \item Considere la EDO no homogénea
+        \[\dot{x}=A(t)x+g(t)\]
+        donde \(A(t)\) y \(g(t)\) son periódicas de periodo \(T\). Muestre que esta EDO tiene una solución periódica única de periodo \(T\) si y solo si \(1\) no es un valor propio de la matriz de monodronía \(M(t_0)\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Considere el sistema homogéneo \(\dot{x}=A(t)x\), donde
+    \[A(t)=\begin{pmatrix}
+        a(t)&b(t)\\c(t)&d(t)
+    \end{pmatrix}\]
+    y \(a,b,c,d\) son funciones reales continuas con periodo \(1\). Suponga que \(a(t)>0\) y \(d(t)>0\). Demuestre que para todo entero \(k>2\) el sistema no puede tener una solución periódica \(x(t)\) con periodo mínimo igual a \(k\).
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Demuestre que la ecuación lineal
+    \[\ddot{x}+(1+\exp(-t))x=0\]
+    es estable, es decir, que todas sus soluciones permanecen acotadas para \(t\geq0\)
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\end{document}
