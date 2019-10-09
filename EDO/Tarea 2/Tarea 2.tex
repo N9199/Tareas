@@ -12,7 +12,7 @@
 
 \begin{document}
 \maketitle
-\thanks{Maximiliano Norbu, Agustín Oyarce, Paulina Vega, Luciano Sciaraffia}
+\thanks{Maximiliano Norbu, Agustín Oyarce, Paulina Vega, Darwin Sanhueza, Francisco Monardes, Luciano Sciaraffia}
 \pagenumbering{roman}
 \newpage
 \tableofcontents
@@ -20,12 +20,21 @@
 \pagenumbering{arabic}
 
 \begin{prob}
-    Sean \(\phi_1(t),\phi_2(t),\dots,\phi_{n-1}(t)\) soluciones del sistema homogéneo \(\dot{x}=A(t)x\), y sea \(x\) una solución del sistema no homogéneo \(\dot{x}=A(t)x+g(t)\), donde \(A(t)\) y \(g(t)\) son continuas sobre el intervalo \(I\). Pruebe que \(Z=\det\paren{\phi_1,\phi_2,\dots,\phi_{n-1},x}\) satisface la \textit{Formula no homogénea de Abel}
-    \[\dot{Z}=\tr(A(t))Z+\det\paren{\phi_1,\phi_2,\dots,\phi_{n-1},g}\]
+    Sean \(\phi_1(t),\phi_2(t),\dots,\phi_{n-1}(t)\) soluciones del sistema homogéneo \(\dot{x}=A(t)x\), y sea \(x\) una solución del sistema no homogéneo \(\dot{x}=A(t)x+g(t)\), donde \(A(t)\) y \(g(t)\) son continuas sobre el intervalo \(I\). Pruebe que \(Z=\det\paren{\phi_1,\dots,\phi_{n-1},x}\) satisface la \textit{Formula no homogénea de Abel}
+    \[\dot{Z}=\tr(A(t))Z+\det\paren{\phi_1,\dots,\phi_{n-1},g}\]
 \end{prob}
 
 \begin{sol}
-    
+    Dado la definición de \(Z\), y la multilinealidad del determinante se tiene lo siguiente:
+    \begin{align*}
+        \dot{Z}&=\det\paren{\dot{\phi_1},\dots,\phi_{n-1},x}+\dots+\det\paren{\phi_1,\dots,\phi_{n-1},\dot{x}}\\
+        &=\det\paren{A(t)\phi_1,\dots,\phi_{n-1},x}+\dots+\det\paren{\phi_1,\dots,\phi_{n-1},A(t)x+g(t)}\\
+        &=\det\paren{A(t)\phi_1,\dots,\phi_{n-1},x}+\dots+\det\paren{\phi_1,\dots,\phi_{n-1},A(t)x}+\det\paren{\phi_1,\dots,\phi_{n-1},g(t)}
+    \end{align*}
+    Por propiedades del determinante se tiene la siguiente identidad para cualquier conjunto de vectores \(v_1,\dots,v_n\):
+    \[\det\paren{A(t)v_1,\dots,v_n}+\dots+\det\paren{v_1,\dots,A(t)v_n}=c\cdot\det\paren{v_1,\dots,v_n}\footnotemark\]\footnotetext{El \(c\) no depende del conjunto de vectores}
+    Ahora, tomando la base canónica, claramente se ve que \(c=\tr(A(t))\), ya que \(A(t)e_i=A_{i,i}(t)\). Con esto se llega a lo siguiente:
+    \[\dot{Z}=\tr(A(t))z+\det\paren{\phi_1,\dots,\phi_{n-1},g}\]
 \end{sol}
 
 \begin{prob}
@@ -55,7 +64,29 @@
 \end{prob}
 
 \begin{sol}
-    
+    \begin{enumerate}[label=(\alph*)]
+        \item Se calcula el polinomio característico \( p_{A_{-4}}(\lambda)=(\lambda+1)^2\), con lo que se tiene que la matriz de Jordan es la siguiente:
+        \[J=\begin{pmatrix}
+            -1&1\\0&-1
+        \end{pmatrix}\]
+        Como \(A_{-4}\) es una matriz constante se tiene que la solución general del sistema es la siguiente:
+        \[x(t)=S\exp(tJ)S^{-1}x_0\]
+        Donde \(x_0\) es la condición inicial y donde \(S\) es la matriz tal que \(A_{-4}=SJS^{-1}\). Luego por lo que se vio en el Teschl se tiene que \(\exp(J)=\begin{pmatrix}
+            1/e&1/e\\0&1/e
+        \end{pmatrix}\), y calculando \(S=\begin{pmatrix}
+            1&-\frac13\\1&0
+        \end{pmatrix}\) se tiene que la solución general es de la siguiente manera:
+        \begin{equation*}
+            x(t)=\exp(t)\begin{pmatrix}
+                -\frac2e&\frac3e\\-\frac3e&\frac4e
+            \end{pmatrix}
+        \end{equation*}
+        \item Se ve el polinomio característico \(p_{A_b}(t)=\lambda^2-\lambda(b+2)+9+2b\), se nota que solo si \(b=-2\) se tiene que los valores propios son completamente imaginarios, por lo que el origen es un centro. Para los otros casos se verá cuando los valores propios son completamente reales y cuando son complejos, para esto se verá el signo del discriminante del polinomio característico:
+        \begin{equation*}
+            \Delta=(b+2)^2-4\cdot(9+2b)=(b+4)(b-8)
+        \end{equation*}
+        Por lo que para \(b\in(-4,8)\) se tiene que \(\Delta<0\), y en otro caso \(\Delta\geq0\), además se quiere ver cuando la parte real es positiva o negativa, lo cual tiene dos casos, si \(\sqrt{\Delta}\) es imaginario o si es real. Comenzando por el primer caso, se nota que se depende del signo de \(b+2\). En el segundo caso, se nota que si \(b\geq 8\) ambos valores propios son siempre positivos\footnote{\(b+2>\sqrt{\Delta}\)}
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}
@@ -71,7 +102,9 @@
 \end{prob}
 
 \begin{sol}
-    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}
@@ -124,7 +157,7 @@
 \end{prob}
 
 \begin{sol}
-    
+    Usando el cambio de coordenadas del problema 6(a) se nota que el periodo de una solución depende del periodo de \(P(t,t_0)\), pero por el corolario 3.16 y por el teorema de Floquet, se tiene que el periodo de \(P(t,t_0)\) es el mismo o el doble que el de \(A(t)\), por lo que el sistema no puede tener una solución periódica con periodo mayor a \(2\).
 \end{sol}
 
 \begin{prob}
@@ -134,7 +167,17 @@
 \end{prob}
 
 \begin{sol}
-    
+    Se nota que la EDO se puede escribir de esta forma \((\ddot{x}+x)+\exp(-t)x=0\), más específicamente denotando \(x=\begin{pmatrix}
+        x\\y
+    \end{pmatrix}\) se tiene lo siguiente:
+    \begin{equation*}
+        \dot{x}=\begin{pmatrix}
+            0&1\\-1&0
+        \end{pmatrix}x+\begin{pmatrix}
+            0&0\\\exp(-t)&0
+        \end{pmatrix}x
+    \end{equation*}
+    Tomando \(A(t)\) como la primera matrix y \(B(t)\) como la segunda, se nota que \(\norm{B(t)}=\exp(-t)\) y que los valores propios de \(A(t)\) son \(\pm i\), como \(A(t)\in M_{2\times 2}\) todas las multiplicidades de los valores propios son iguales, específicamente son \(1\). Notando que \(\int_0^\infty\norm{B(t)}\d{t}=1<\infty\), por el corolario 3.24 se tiene que toda solución del sistema es estable, por lo que se tiene lo pedido.
 \end{sol}
 
 \end{document}
