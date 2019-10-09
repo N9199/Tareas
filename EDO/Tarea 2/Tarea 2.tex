@@ -50,7 +50,25 @@
 \end{prob}
 
 \begin{sol}
-    
+    \begin{enumerate}[label=(\alph*)]
+        \item Usando la fórmula de Laplace se tiene lo siguiente:
+        \begin{align*}
+            \det\paren{zI-A}&=\begin{vmatrix}
+                z&-1&\dots&0\\
+                0&z&\dots&0\\
+                \vdots&\vdots&\ddots&\vdots\\
+                q_{0}&q_{1}&\dots&z+q_{n-1}
+            \end{vmatrix}\\
+            &=qq_0(-1)^{n+1}(-1)^{n-1}+z^{n-1}(z+q_{n-1})+\sum_{k=1}^{n-2}q_k(-1)^{k+n}\det{M_{n,k}}\\
+            &=q_0+z^n+z^{n-1}q_{n-1}+\sum_{k=1}^{n-2}q_k(-1)^{k+n}\det M_{n,k}
+        \end{align*}
+        Se nota que \(\det M_{n,k}=z^k(-1)^{n-k}\), por lo que se tiene la siguiente igualdad:
+        \begin{align*}
+            \det\paren{zI-A}&=q_0+z^n+z^{n-1}q_{n-1}+\sum_{k=1}^{n-2}q_k(-1)^{k+n}(-1)^{n-k}z^k\\
+            &=q_0+z^n+z^{n-1}q_{n-1}+\sum_{k=1}^{n-2}q_kz^k(-1)^{2n}\\
+            &=z^n+q_{n-1}z^{n-1}+\dots+q_1z+q_0
+        \end{align*}
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}
@@ -103,7 +121,49 @@
 
 \begin{sol}
     \begin{enumerate}[label=(\alph*)]
-        \item 
+        \item Se sabe que para matrices constantes la solución general de este sistema es de la forma:
+        \begin{equation*}
+            x=\exp(tA)x_0
+        \end{equation*}
+        Para calcular esta solución se ve el polinomio característico \(p_A(\lambda)=(\lambda-1)^2(\lambda-3)\) y se calcula la forma de Jordan:
+        \begin{equation*}
+            J=\begin{pmatrix}
+                -3&0&0\\
+                0&1&1\\
+                0&0&1
+            \end{pmatrix}
+        \end{equation*}
+        Además se calcula \(S\) tal que \(A=SJS^{-1}\):
+        \begin{equation*}
+            S=\begin{pmatrix}
+                -1&-1&-\frac1{12}\\
+                0&0&-\frac13\\
+                2&1&0
+            \end{pmatrix}
+        \end{equation*}
+        Juntando todo se tiene que la solución general es de la siguiente forma:
+        \begin{equation*}
+            x=\exp(t)\begin{pmatrix}
+                \frac{-1+2 e^4}{e^3} & \frac{1+11 e^4}{4 e^3} & \frac{-1+e^4}{e^3} \\
+ 0 & e & 0 \\
+ -\frac{2 \left(-1+e^4\right)}{e^3} & \frac{-1-5 e^4}{2 e^3} & \frac{2-e^4}{e^3} \\
+            \end{pmatrix}x_0
+        \end{equation*}
+        \item Se nota que \(-\frac23\sin(2t)\) es solución particular. Además se ve que la matriz correspondiente al sistema homogéneo tiene polinomio característico \(\lambda^2+1\), junto con que la matriz es de \(2\times2\) se tiene que la solución general es de la siguiente forma:
+        \begin{equation*}
+            x=c_1\sin(t)+c_2\cos(t)-\frac23\sin(2t)
+        \end{equation*}
+        \item Se reescribe la EDO, \(\ddot{x}-2\dot{x}+x=t-1+2\exp(t)\), 
+        \item Ya que se tiene una solución, \(\phi_1\), se elige la siguiente función \(\phi_2=v\cdot \phi_1\) para una posible solución:
+        \begin{align*}
+            t(\ddot{v}\phi_1+2\dot{v}\dot{\phi_1}+v\ddot{\phi_1})-2(t+1)(\dot{v}\phi_1+v\dot{\phi_1})+(t+2)(v\phi_1)&=t(\ddot{v}\phi_1+2\dot{v}\dot{\phi_1})-2(t+1)\dot{v}\phi_1\\
+            &=0
+        \end{align*}
+        Esto nos da una nueva EDO sobre de orden 1 sobre \(\dot{v}\), pero es una EDO separable, por lo que su solución es la siguiente:
+        \begin{equation*}
+            \dot{v}=\frac1{t^2}
+        \end{equation*}
+        Por lo que \(v=-\frac1t\), con lo que se ve que \(\phi_2=-\frac1t\exp(t)\) es solución, y la solución general a la EDO es de la forma \(x=c_1\phi_1+c_2\phi_2\).
     \end{enumerate}
 \end{sol}
 
@@ -130,7 +190,60 @@
 \end{prob}
 
 \begin{sol}
-    
+    \begin{enumerate}[label=(\alph*)]
+        \item Se ve la siguiente igualdad:
+        \begin{equation*}
+            A(t)x_1=\begin{pmatrix}
+                3/t&-1\\2/t^2&-1/t
+            \end{pmatrix}\begin{pmatrix}
+                t^2\\t
+            \end{pmatrix}=\begin{pmatrix}
+                3t-t\\2-1
+            \end{pmatrix}=\begin{pmatrix}
+                2t\\1
+            \end{pmatrix}=\dot{x_1}
+        \end{equation*}
+        \item Se sabe que \(W(t)=W(t_0)\exp(\int_{t_0}^t\tr(A(t))\d{t})\), se calcula la traza \(\tr(A(t))=\frac2t\) y se toma \(t_0=1\). Con lo anterior se llega a que \(w(t)=t^2\)
+        \item Considerando el siguiente cambio de variable:
+        \begin{align*}
+            y(t)=M^{-1}(t)x(t)
+        \end{align*}
+        Donde 
+        \[M(t)=\begin{pmatrix}
+            t^2&0\\t&1
+        \end{pmatrix}\]
+        Se ve el sistema después del cambio:
+        \begin{align*}
+            \dot{y}&=M^{-1}\paren{AM-\dot{M}}y\\
+            &=M^{-1}A\begin{pmatrix}
+                0&0\\0&1
+            \end{pmatrix}y\\
+            &=\begin{pmatrix}
+                0&-1/t^2\\0&0
+            \end{pmatrix}y
+        \end{align*}
+        Dado esto se ve que \(\dot{y_1}=-1/t^2y_2\) y \(\dot{y_2}=0\), por lo que \(y_2=c\), por ende \(y_1=\frac{c}t\). Con esto se tiene lo siguiente:
+        \begin{equation*}
+            x=\begin{pmatrix}
+                t^2&0\\t&1
+            \end{pmatrix}\begin{pmatrix}
+                \frac{c}t\\c
+            \end{pmatrix}=\begin{pmatrix}
+                tc\\2c
+            \end{pmatrix}
+        \end{equation*}
+        Juntando esto con la otra solución, y con el Wronskiano, se tiene lo siguiente:
+        \begin{align*}
+            w(t)&=\begin{vmatrix}
+                t^2&tc\\t&2c
+            \end{vmatrix}\\
+            &=t^2c\\
+            &=t^2\quad\text{Por 5b}
+        \end{align*}
+        Con lo anterior se tiene que \(c=1\), con eso se tiene la otra solución \(x_2=\begin{pmatrix}
+            t\\2
+        \end{pmatrix}\)
+    \end{enumerate}
 \end{sol}
 
 \begin{prob}
