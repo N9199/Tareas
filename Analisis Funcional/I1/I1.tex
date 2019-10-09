@@ -1,0 +1,142 @@
+\documentclass{homework}
+
+\title{I1}
+\date{2019-09-26}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Analisis Funcional - MAT2555}
+
+\newcommand{\LP}{\ensuremath{L^2(]-\pi,\pi[)} }
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+Se denotará \(\mathcal{B}\) a \(\{f_0\}\cup\{f_k\}_{k=1}^\infty\cup\{e_k\}_{k=1}^\infty\)
+
+\begin{sol}[1.a]
+    Para ver que \(S_n\) está bien definido es suficiente y necesario ver que para toda \(f\in\LP\) se tiene \(S_n f\in\LP\).
+    \begin{align*}
+        \norm{S_n f}&=\norm{\angled{f_0,f}f_0(s)+\sum_{k=1}^n\angled{f_k,f}f_k(s)+\sum_{k=1}^n\angled{e_k,f}e_k(s)}\\
+        &\leq\abs{\angled{f_0,f}}\norm{f_0}+\sum_{k=1}^n\abs{\angled{f_k,f}}\norm{f_k}+\sum_{k=1}^n\abs{\angled{e_k,f}}\norm{e_k}\\
+        &\leq\norm{f}\paren{\norm{f_0}^2+\sum_{k=1}^n\norm{f_k}^2+\sum_{k=1}^n\norm{e_k}^2}=\norm{f}\paren{2n+1}
+    \end{align*}
+    Como \(f\in\LP\) inmediatamente se tiene que \(\norm{S_n f}<\infty\), más aún se tiene que \(S_n\) es acotado, como claramente \(S_n\) es lineal, \(S_n\) es continua. Ahora, para ver que \(S_n\) es proyección falta que \(S_n^2=S_n\) y que \(\angled{S_n g,f}=\angled{g,S_n f}\). Para lo primero se ve lo siguiente:
+    \begin{align*}
+        \angled{f_0,S_n f}&=\angled{f_0,\angled{f_0,f}f_0(s)+\sum_{k=1}^n\angled{f_k,f}f_k(s)+\sum_{k=1}^n\angled{e_k,f}e_k(s)}\\
+        &=\angled{f_0,f}\angled{f_0,f_0}+\sum_{k=1}^n\angled{f_k,f}\angled{f_0,f_k}+\sum_{k=1}^n\angled{e_k,f}\angled{f_0,e_k}\\
+        &=\angled{f_0,f}
+    \end{align*}
+    Lo último es porque \(\mathcal{B}\) es ortonormal, similarmente se nota lo mismo para cada elemento en \(\mathcal{B}\) con \(n\) fijo, por lo que \(S_n(S_n(f))=S_n(f)\). Para lo último, sean \(g_1,g_2\in\LP\)
+    \begin{align*}
+        \angled{S_n g_1,g_2}&=\angled{\angled{f_0,g_1}f_0(s)+\sum_{k=1}^n\angled{f_k,g_1}f_k(s)+\sum_{k=1}^n\angled{e_k,g_1}e_k(s),g_2}\\
+        &=\angled{f_0,g_1}\angled{f_0,g_2}+\sum_{k=1}^n\angled{f_k,g_1}\angled{f_k,g_2}+\sum_{k=1}^n\angled{e_k,g_1}\angled{e_k,g_2}\\
+        &=\angled{g_1,\angled{f_0,g_2}f_0(s)+\sum_{k=1}^n\angled{f_k,g_2}f_k(s)+\sum_{k=1}^n\angled{e_k,g_2}e_k(s)}
+        &=\angled{g_1,S_n g_2}
+    \end{align*}
+    Con lo que se tiene lo pedido.
+\end{sol}
+\begin{sol}[1.b]
+    Se quiere demostrar las siguientes igualdades\footnote{i.e. \(S_n f\) es la convolución de \(f\) y de \(D_n\)}:
+    \begin{equation}
+        (S_n f)(s)=\int_{-\pi}^\pi f(t)D_n(s-t)\d{t}\label{eq1}
+    \end{equation}
+    \begin{equation}
+        \int_{-\pi}^\pi f(t)D_n(s-t)\d{t}=\int_{-\pi}^\pi f(s-t)D_n(t)\d{t}\label{eq2}
+    \end{equation}
+    Comenzando por \eqref{eq2}, se usa la siguiente sustitución \(u=s-t\), con lo que se llega a lo siguiente:
+    \begin{align*}
+        \int_{-\pi}^\pi f(t)D_n(s-t)\d{t}&=-\int_{s+\pi}^{s-\pi}f(s-u)D_n(u)\d{u}\\
+        &=\int_{s-\pi}^{s+\pi}f(s-u)D_n(u)\d{u}
+    \end{align*}
+    Ahora, como \(f\in\mathcal{C}_{2\pi}^1(\set{R})\) y como \(s+\pi-(s-\pi)=2\pi\) se tiene que
+    \begin{equation*}
+        \int_{s-\pi}^{s+\pi}f(s-u)D_n(u)\d{u}=\int_{-\pi}^{\pi}f(s-u)D_n(u)\d{u}
+    \end{equation*}
+    Con lo que se tiene \eqref{eq2}, para \eqref{eq1} se usará la siguiente igualdad
+    \begin{equation}
+        \angled{f_k,f}f_k(s)+\angled{e_k,f}e_k(s)=\int_{-\pi}^\pi f(t)\cdot\frac1\pi\cos(k(s-t))\label{eq3}
+    \end{equation}
+    Esta aparece desarrollando la expresión:
+    \begin{align*}
+        \angled{f_k,f}f_k(s)+\angled{e_k,f}e_k(s)&=f_k(s)\int_{-\pi}^\pi\frac1{\sqrt{\pi}}\cos(kt)f(t)\d{t}+e_k(s)\int_{-\pi}^\pi\frac1{\sqrt{\pi}}\sin(kt)f(t)\d{t}\\
+        &=\int_{-\pi}^\pi \frac{f(t)}\pi\big[\cos(ks)\cos(kt)+\sin(ks)\sin(kt)\big]\d{t}\\
+        &=\int_{-\pi}^\pi f(t)\cdot\frac1\pi\cos(ks-kt)\d{t}
+    \end{align*}
+    Usando \eqref{eq3}, que \(\angled{f_0,f}f_0=\int_{-\pi}^\pi \frac{f(t)}{2\pi}\d{t}\) y recordando que \(D_n(s)=\frac1{2\pi}+\frac1\pi\sum_{k=1}^n\cos(ks)\) se tiene \eqref{eq1}
+\end{sol}
+\begin{sol}[1.c]
+    Dado \(s\in\set{R}\) fijo se quiere que \((S_n f)(s)\rightarrow f(s)\), para esto se verá que la siguiente expresión tiende a \(0\).
+    \begin{equation}
+        f(s)-(S_n f)(s)\label{eq4}
+    \end{equation}
+    Para esto, se reescribirá usando lo siguiente:
+    \begin{align*}
+        f(s)-(S_n f)(s)&=f(s)-\int_{-\pi}^\pi D_n(t)f(s-t)\d{t}\quad\text{ Por \eqref{eq2}}\\
+        &=f(s)\int_{-\pi}^\pi D_n(t)\d{t}-\int_{-\pi}^\pi D_n(t)f(s-t)\d{t}\\
+        &=\int_{-\pi}^\pi D_n(t)(f(s)-f(s-t))\d{t}
+    \end{align*}
+    Luego tomando, \(\phi_n(t)=\sin((n+1/2)t)/\sqrt{\pi}\) y \(g_s(t)=\frac{f(s)-f(s-t)}{2\sqrt{\pi}\sin(t/2)}\), se quiere que \(\{\phi_n(t)\}_{n\in\set{N}}\) sea una familia ortonormal, que \(g_s\) sea medible y \(g_s\in\LP\). Se nota que, dado las condiciones anteriores, se tiene que \(f(s)-(S_n f)(s)\rightarrow 0\), ya que \(\infty>\norm{g_s}^2\geq\sum_{k=1}^\infty\abs{\angled{\phi_k,g_s}}^2\) por la desigualdad de Parseval, con lo que se tiene que \(\abs{\angled{\phi_n,g_s}}^2\rightarrow 0\), más específicamente \(\abs{\angled{\phi_n,g_s}}\rightarrow 0\), o sea, \(\int_{-\pi}^\pi\phi_n(t)g_s(t)\d{t}\rightarrow 0\).\\
+    Para demostrar que \(\{\phi_n\}_{n\in\set{N}}\) es una familia ortonormal, sean \(n,k\in\set{N}\) distintos entre sí, luego se ve \(\angled{\phi_n,\phi_k}\):
+    \begin{align*}
+        \int_{-\pi}^\pi\phi_n(t)\phi_k(t)\d{t}&=\int_{-\pi}^\pi\sin((n+1/2)t)\sin((k+1/2)t)/\pi\d{t}\\
+        &=\int_{-\pi}^\pi\frac1{2\pi}\cdot\paren{\cos(t(n-k))-\cos(t(n+k+1))}\d{t}\\
+        &=\frac1{2\pi}\paren{\frac{\sin(t(n-k))}{n-k}-\frac{\sin(t(n+k+1))}{n+k+1}}\Bigg|_{-\pi}^\pi
+    \end{align*}
+    Se recuerda que \(n,k\in\set{N}\), por lo que \(\angled{\phi_n,\phi_k}=0\). Ahora, si es que \(n=k\), se tiene lo siguiente:
+    \begin{align*}
+        \angled{\phi_n,\phi_n}&=\int_{-\pi}^\pi\frac1{2\pi}\paren{1-\cos(t(2n+1))}\d{t}\\
+        &=1-\frac1{2\pi}\int_{-\pi}^\pi\cos(t(2n+1))\d{t}\\
+        &=1
+    \end{align*}
+    Por lo que \(\{\phi_n\}\) es una familia ortonormal. Ahora, para que \(g_s\) sea medible es suficiente que las discontinuidades que aparezcan por \(\sin(t/2)\) sean removibles\footnote{i.e. si \(g_s\) discontinua en \(x_0\) que exista \(\lim_{x\rightarrow x_0}g_s(x)\)}. Para esto se nota que sus únicas posibles discontinuidades son en \(t=2\pi k\) con \(k\in\set{Z}\), y ya que \(f\) es periódica, se ve que es suficiente que la discontinuidad en \(t=0\) sea removible.
+    \begin{align*}
+        \lim_{t\rightarrow 0}\frac{f(s)-f(s-t)}{2\sqrt{\pi}\sin(t/2)}=\lim_{t\rightarrow 0}\frac{f'(s-t)}{\sqrt{\pi}\cos(t/2)}=\frac{f'(s)}{\sqrt{\pi}}
+    \end{align*}
+    Con lo que se tiene que \(\norm{g_s}<\infty\) y más aún, \(g_s\) es medible.
+\end{sol}
+\begin{sol}[1.d]
+    Se quiere que \(\angled{f_k,f}=-\frac1k\angled{e_k,f'}\) y que \(\angled{e_k,f}=\frac1k\angled{f_k,f'}\). Para el primero se escribe la integral y se usa integración por partes:
+    \begin{align*}
+        \angled{f_k,f}&=\int_{-\pi}^\pi\frac1{\sqrt{\pi}}\cos(ks)f(s)\d{s}\\
+        &=\frac1{\sqrt{\pi}}\paren{\frac{\sin(ks)}k\cdot f(s)}\Bigg\vert_{-\pi}^\pi-\int_{-\pi}^\pi\frac1{k\sqrt{\pi}}f'(s)\sin(ks)\d{s}\\
+        &=\frac1{\sqrt{\pi}}\paren{\frac{\sin(ks)}k\cdot f(s)}\Bigg\vert_{-\pi}^\pi-\frac1k\angled{e_k,f'}
+    \end{align*}
+    Como \(k\in\set{N}\) se tiene que \(\sin(k\pi)=0\) y \(\sin(-k\pi)=0\), por lo que \(\angled{f_k,f}=\frac1k\angled{e_k,f}\). Similarmente:
+    \begin{align*}
+        \angled{e_k,f}&=\int_{-\pi}^\pi\frac1{\sqrt{\pi}}\sin(ks)f(s)\d{s}\\
+        &=-\frac1{\sqrt{\pi}}\paren{\frac{\cos(ks)}k\cdot f(s)}\Bigg\vert_{-\pi}^\pi+\int_{-\pi}^\pi\frac1{k\sqrt{\pi}}f'(s)\cos(ks)\d{s}\\
+        &=-\frac1{\sqrt{\pi}}\paren{\frac{\cos(ks)}k\cdot f(s)}\Bigg\vert_{-\pi}^\pi+\frac1k\angled{f_k,f'}
+    \end{align*}
+    Como \(k\in\set{N}\) se tiene que \(\cos(k\pi)=1\) y \(\cos(-k\pi)=1\), junto con que \(f(-\pi+2\pi)=f(\pi)\) se tiene que \(\angled{e_k,f}=\frac1k\angled{f_k,f'}\). Además se pide demostrar que \(S_n f\) es una sucesión de Cauchy, para esto, sean \(n,m\in\set{N}\) y s.p.d.g. sea \(n>m\), entonces:
+    \begin{equation*}
+        (S_n f-S_m f)(s)=\sum_{k=m+1}^n\angled{f_k,f}f_k+\angled{e_k,f}e_k=\sum_{k=m+1}^n\frac1k(\angled{f_k,f'}e_k-\angled{e_k,f'}f_k)
+    \end{equation*}
+    Ahora, se desarrolla cada termino de la siguiente manera:
+    \begin{align*}
+        \angled{f_k,f'}e_k(t)-\angled{e_k,f'}f_k(t)&=\frac1\pi\paren{\sin(kt)\int_{-\pi}^\pi\cos(ks)f'(s)\d{s}-\cos(kt)\int_{-\pi}^\pi\sin(ks)f'(s)\d{s}}\\
+        &=\frac1\pi\int_{-\pi}^\pi f'(s)\paren{\sin(kt)\cos(ks)-\cos(kt)\sin(ks)}\d{s}\\
+        &=\frac1\pi\int_{-\pi}^\pi f'(s)\sin(k(t-s))\d{s}\\
+        &=\frac1\pi\angled{f',\sin(k(t-s))}\\
+        &=\frac1\pi\angled{f',\sin(ks)}
+    \end{align*}
+    Con esto se llega a lo siguiente:
+    \begin{equation*}
+        (S_n f-S_m f)(t)=\frac1\pi\angled{f'(s),\sum_{k=m+1}^n\frac{\sin(ks)}k}
+    \end{equation*}
+    Ahora, se usa la desigualdad de Cauchy-Schwarz y se tiene que
+    \[\abs{(S_n f-S_m f)(s)}\leq\frac1\pi\norm{f'}\norm{\sum_{k=m+1}^n\frac{\sin(ks)}k}=C_{n,m}\]
+    Como \(\sum_{k=1}^\infty\frac{\sin(ks)}k\) es una serie de funciones convergente, se tiene que existe \(N\in\set{N}\) tq \(n,m>N\implies C_{n,m}<\varepsilon\), por lo que se tiene que \(S_n f\) es una sucesión de Cauchy. Por lo que se tiene que \(S_n f\) converge uniformemente a \(f\) en \(\set{R}\).
+\end{sol}
+\begin{sol}[1.e]
+    Se quiere que \(\mathcal{B}\) sea una base ortonormal completa, en otras palabras que si para \(f\in\LP\) se tiene que \(\forall b\in\mathcal{B}\angled{f,b}=0\) entonces \(f=0\). Para esto, se nota que es suficiente que para \(f\in\LP\) se tenga \(\norm{f-S_nf}\rightarrow 0\), ya que si \(\angled{f,b}=0\) para todo \(b\in\mathcal{B}\) entonces \(S_n f=0\) para todo \(n\in\set{N}\), por lo que \(\norm{f}\rightarrow 0\), pero esto implicaría que \(f=0\). Ahora, para demostrar que \(\norm{f-S_nf}\rightarrow 0\) recordamos que por la pregunta anterior se tiene que si \(g\in\mathcal{C}_{2\pi}^1(\set{R})\) entonces \(\sup\abs{g-S_n g}\rightarrow 0\), por lo que específicamente \(\norm{g-S_n g}\rightarrow 0\). Usando lo anterior, y que \(\mathcal{C}_{2\pi}^1(\set{R})\) es denso en \LP, se tiene que existe \(g\in\mathcal{C}_{2\pi}^1(\set{R})\) y \(n\in\set{N}\) tal que
+    \begin{align*}
+        &\norm{f-g}<\frac\varepsilon3 &\norm{g-S_n g}<\frac\varepsilon3
+    \end{align*}
+    Se nota además que, como \(S_n\) es proyección ortogonal, \(\norm{S_n}\leq 1\)\footnote{\(\norm{S_n f}^2=\angled{S_n f, S_n f}=\angled{S_n^2 f, f=\angled{S_n, f}\leq\norm{S_n}\norm{f}}\implies\norm{S_n}\leq\norm{f}\)} por lo que \(\norm{S_n f-S_n g}\leq\norm{S_n}\norm{f-g}<\frac\varepsilon3\). Juntando las tres expresiones se tiene lo siguiente:
+    \begin{equation*}
+        \norm{f-S_n f}\leq\norm{f-g}+\norm{g-S_n g}+\norm{S_n g-S_n f}<3\cdot\frac\varepsilon3=\varepsilon
+    \end{equation*}
+    Con lo que se tiene que \(\norm{f-S_n f}\rightarrow 0\), consiguiendo lo pedido.
+\end{sol}
+\end{document}
