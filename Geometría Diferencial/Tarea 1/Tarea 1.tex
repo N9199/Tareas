@@ -1,0 +1,170 @@
+\documentclass{homework}
+
+\title{Tarea 1}
+\date{2020-03-26}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Geometría Diferencial - MAT2305}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+
+\begin{prob}
+    Un disco de radio 1 en el plano \(xy\) rueda sin deslizarse a lo largo del eje \(x\). La figura que describe un punto de la circunferencia del disco se llama cicloide.
+    \begin{enumerate}
+        \item Encuentre una curva parametrizada cuya traza sea la cicloide, y determine sus puntos críticos.
+        \item Calcule la longitud del arco de la cicloide correspondiente a una vuelta del disco.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Sea \(\theta\) el ángulo como el reloj de giro del círculo respecto al eje \(y\), entonces el centro del círculo está en \((\theta,1)\) y el punto en la circunferencia está en \((\theta,1)+(\cos(\theta-\pi/2),\sin(\theta-\pi/2))\), lo cual se puede expresar como \((\theta+\sin(\theta),1+\cos(\theta))\).
+        \item Usando la formula para calcular la longitud de arco se llega a la siguiente integral \(\int_0^{2\pi}\norm{\paren{\theta+\sin(\theta),1+\cos(\theta)}'}\d{\theta}\) la cual se desarrolla de la siguiente forma
+              \begin{align*}
+                  \int_0^{2\pi}\norm{\paren{\theta+\sin(\theta),1+\cos(\theta)}'}\d{\theta} & =\int_0^{2\pi}\norm{\paren{1+\cos(\theta),-\sin(\theta)}}\d{\theta} \\
+                                                                                            & =\int_0^{2\pi}\sqrt{(1+\cos(\theta))^2+\sin^2(\theta)}\d{\theta}    \\
+                                                                                            & =\int_0^{2\pi}\sqrt{2+2\cos(\theta)}\d{\theta}                      \\
+                                                                                            & =\int_0^{2\pi}2\sqrt{\cos^2(\theta/2)}\d{\theta}                    \\
+                                                                                            & =4\int_0^\pi\cos(\theta/2)\d{\theta}                                \\
+                                                                                            & =8
+              \end{align*}
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    Sea \(\alpha:(-1,\infty)\rightarrow\set{R}^2\) dada por
+    \begin{equation*}
+        \alpha(t)=\paren{\frac{3at}{1+t^3},\frac{3at^2}{1+t^3}}
+    \end{equation*}
+    demuestre que:
+    \begin{enumerate}
+        \item En \(t=0\), \(\alpha\) es tangente al eje \(x\).
+        \item Cuando \(t\rightarrow \infty\), \(\alpha(t)\rightarrow(0,0)\) y \(\alpha'(t)\rightarrow(0,0)\)
+        \item Cuando \(t\rightarrow-1\), \(\alpha\) y su tangente tienden a la recta \(x+y+a=0\).
+        \item El arco con \(t\in(0,\infty)\) es simétrico con respecto a la recta \(y=x\).
+    \end{enumerate}
+    La figura que se obtiene completando la traza para que sea simétrica con respecto a la recta \(y=x\) en todo punto se denomina el \textit{folium de Descartes}.
+\end{prob}
+
+\begin{sol}
+    Se nota que \(\alpha'(t)=\paren{3a\frac{1 - 2 t^3}{(1 + t^3)^2},-3a\frac{t (-2 + t^3)}{(1 + t^3)^2}}\)
+    \begin{enumerate}
+        \item Se ve que \(\alpha(0)=(0,0)\) y que \(\alpha'(t)=(1,0)\), por lo que se tiene lo pedido.
+        \item Se nota que \(\alpha(t)=3a\paren{\frac{t}{1+t^3},\frac{t^2}{1+t^3}}\), y se nota que \(\alpha(t)=3a\paren{\frac{p_x(t)}{q_x(t)},\frac{p_y(t)}{q_y(t)}}\) donde \(\deg p_i<\deg q_i\) para \(i=x,y\), por lo que se tiene que \(\lim_{t\rightarrow\infty}\alpha(t)=(0,0)\). Similarmente se cumple lo mismo para \(\alpha'\), por lo que de nuevo \(\lim_{t\rightarrow\infty}\alpha'(t)=(0,0)\).
+        \item Se nota que \(\frac{3at}{1+t^3}+\frac{3at^2}{1+t^3}=\frac{3at}{t^2-t+1}\), por lo que cuando \(t\rightarrow-1\) se tiene que \(\alpha\) tiene a \(x+y+a=0\). Más aún, se nota que \(\alpha_x'(t)+\alpha_y'(t)=3a\frac{1-t^2}{(t^2-t+1)^2}\), por lo que \(\alpha'\) tambien tiende a \(x+y+a\).
+        \item Aplicando la reflexión respecto la recta \(y=x\) y además usando la transformación \(t\mapsto \frac1t\) la cual es una biyección entre \((0,\infty)\) y el mismo intervalo que cambia la dirección (i.e. \(t\rightarrow0^+\implies\frac1t\rightarrow\infty\) y \(t\rightarrow\infty\implies\frac1t\rightarrow0\)), usando esto se nota que al aplicar ambos se tiene la curva original.
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    (Líneas rectas son las más cortas.) Sea \(\alpha:[a,b]\rightarrow \set{R}^3\) una curva parametrizada con \(\alpha(a)=p\) y \(\alpha(b)=q\).
+    \begin{enumerate}
+        \item Demuestre que para cualquier vector unitario \(v\) se cumple
+              \begin{equation*}
+                  (q-p)\cdot v=\int_a^b\alpha'(t)\cdot v\d{t} \leq\int_a^b\norm{\alpha'(t)}\d{t}
+              \end{equation*}
+        \item Use lo anterior para demostrar que
+              \begin{equation*}
+                  \norm{\alpha(b)-\alpha(a)}\leq\int_a^b\norm{\alpha'(t)}\d{t}
+              \end{equation*}
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Descomponiendo en la base canónica se nota que dado un vector \(v\) se tiene que
+              \begin{equation*}
+                  (q-p)\cdot v=q\cdot v-p\cdot v=\alpha(b)\cdot v-\alpha(a)\cdot v=\int_a^b\alpha'(t)\cdot v\d{t}
+              \end{equation*}
+              Ahora si \(v\) es unitario además se tiene lo siguiente
+              \begin{equation*}
+                  (q-p)\cdot v\leq\abs{(q-p)\cdot v}=\abs{\int_a^b\alpha'(t)\cdot v\d{t}}\leq\int_a^b\abs{\alpha'(t)\cdot v}\d{t}\leq\int_a^b\norm{\alpha'(t)}\d{t}
+              \end{equation*}
+        \item Sea \(v=\frac{q-p}{\norm{q-p}}\) un vector unitario, luego \((q-p)\cdot\paren{\frac{q-p}{\norm{q-p}}}=\norm{q-p}\), por lo que usando la desigualdad anterior se tiene lo pedido.
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    Demuestre que si todos los planos normales a una curva pasan por un punto fijo entonces la curva está contenida en una esfera.
+\end{prob}
+
+\begin{sol}
+    Sea \(p\) el punto donde se intersectan todos los planos normales de una curva \(\gamma\), s.p.d.g. \(p=\vec{0}\), luego se tiene que \(n(t)=\frac{\gamma'(t)}{\norm{\gamma'(t)}}\), y se sabe que un plano con vector normal \(n\) y \(p\) un punto del plano, entonces la ecuación del plano está dada por \(n\cdot((x,y,z)-p)=0\), con lo que se sabe que \(\gamma\) cumple lo siguiente
+    \begin{equation*}
+        n(t)\cdot\gamma(t)=0
+    \end{equation*}
+    Luego usando eso y la definición de \(n(t)\), se tiene que \(\frac{\gamma(t)\cdot\gamma'(t)}{\norm{\gamma'(t)}}=0\), específicamente \(\gamma(t)\cdot\gamma'(t)=0\). Integrando la expresión anterior en el intervalo \([t_0,T]\) se tiene lo siguiente
+    \begin{align*}
+        \int_{t_0}^T\gamma'(t)\cdot\gamma(t)\d{t}  & =\int_{t_0}^T0\d{t}   \\
+        \int_{t_0}^T2\gamma'(t)\cdot\gamma(t)\d{t} & =2\cdot 0             \\
+        \norm{\gamma(T)}^2-\norm{\gamma(t_0)}^2    & =0                    \\
+        \norm{\gamma(T)}^2                         & =\norm{\gamma(t_0)}^2
+    \end{align*}
+    Se nota que \(\norm{\gamma(t_0)}^2\) es una constante positiva por lo que se puede reescribir como \(r^2\), y se tiene que \(\norm{\gamma(T)}^2=r^2\), que en el caso de \(\set{R}^3\) corresponde a ser una curva en una esfera.
+\end{sol}
+
+
+\begin{prob}
+    Sea \(\alpha:I\rightarrow\set{R}^3\) una curva parametrizada regular (no necesariamente arcoparametrizada) y sean \(s=s(t)\) su longitud de arco y \(t=t(s)\) la inversa de este. Denotamos \(()'\) a las derivadas respecto a \(t\). Demuestre que:
+    \begin{enumerate}
+        \item \begin{equation*}
+                  \frac{\d{t}}{\d{s}}=\frac1{\norm{\alpha'}}\text{ y }\frac{\d{^2t}}{\d{s^2}}=-\frac{a'\cdot\alpha''}{\norm{a'}^4}
+              \end{equation*}
+        \item La curvatura de \(\alpha\) en \(t\) es
+              \begin{equation*}
+                  \kappa(t)=\frac{\norm{\alpha'\wedge\alpha''}}{\norm{a'}^3}
+              \end{equation*}
+        \item La torsión de \(\alpha\) en \(t\) es
+              \begin{equation*}
+                  \tau(t)=-\frac{(\alpha'\wedge\alpha'')\cdot\alpha'''}{\norm{\alpha'\wedge\alpha''}^2}
+              \end{equation*}
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Sea \(\beta:J\rightarrow\set{R}^3\) una curva parametrizada por \(s\) tal que \(\beta=\alpha\circ t\), con esto se tiene que \(1=\norm{\frac{\d{\beta}}{\d{s}}}=\norm{\alpha'(t)\paren{\frac{\d{t}}{\d{s}}}}\), lo que nos da \(\frac{\d{t}}{\d{s}}=\frac1{\norm{\alpha'}}\). Usando lo anterior y la siguiente identidad \(\norm{\gamma}'=\frac{\gamma'\cdot \gamma}{\norm{\gamma}}\) se desarrolla lo siguiente
+              \begin{align*}
+                  \frac{\d{}^2t}{\d{s}^2} & =\frac{\d{}}{\d{s}}\frac1{\norm{\alpha'}}                                               \\
+                                          & =-\frac1{\norm{\alpha'}^2}\frac{\d{}}{\d{s}}\norm{\alpha'}                              \\
+                                          & =-\frac1{\norm{\alpha'}^2}\frac{\alpha''\cdot \alpha'}{\norm{\alpha'}}\frac{d{t}}{d{s}} \\
+                                          & =-\frac{\alpha''\cdot \alpha'}{\norm{\alpha'}^4}
+              \end{align*}
+        \item Se recuerda que \(T\) es el vector tangente a \(\alpha\) en \(t\) y se nota que \(\ds\alpha'=\frac{\d{}s}{\d{t}}T\), con \(\frac{\d{}s}{\d{t}}=\norm{\alpha'}\). Dado lo anterior se ve lo siguiente:
+              \begin{align*}
+                  \alpha''                     & =\frac{\d{}^2s}{\d{t}^2}T+\paren{\frac{\d{s}}{\d{t}}}^2T'                                                  \\
+                  \alpha'\wedge\alpha''        & =\frac{\d{}^2s}{\d{t}^2}(\alpha'\wedge T)+\paren{\frac{\d{s}}{\d{t}}}^2(\alpha'\wedge T')                  \\
+                                               & =\frac{\d{}^2s}{\d{t}^2}\cdot\frac{\d{s}}{\d{t}}(\alpha'\wedge \alpha')+\norm{\alpha'}^2(\alpha'\wedge T') \\
+                                               & =\frac{\d{}^2s}{\d{t}^2}\cdot\frac{\d{s}}{\d{t}}\vec{0}+\norm{\alpha'}^2(\alpha'\wedge T')                 \\
+                  \norm{\alpha'\wedge\alpha''} & =\norm{\alpha'}^2\norm{\alpha'}\norm{T'}                                                                   \\
+                                               & =\norm{\alpha'}^3\kappa(t)
+              \end{align*}
+              Reescribiendo la última linea se llega a lo pedido.
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    Sea \(\alpha:I\rightarrow\set{R}^3\) una curva arcoparametrizada regular con \(k(s)\neq0\) en todo \(I\). Demuestre que:
+    \begin{enumerate}
+        \item El plano osculador es el límite de los planos que pasan por \(\alpha(s),\alpha(s+h_1)\) y \(\alpha(s+h_2)\) cuando \(h_1,h_2\rightarrow0\).
+        \item El límite de los círculos que pasan por \(\alpha(s),\alpha(s+h_1)\) y \(\alpha(s+h_2)\) cuando \(h_1,h_2\rightarrow0\) es un círculo en el plano osculador con centro en la recta normal y radio el radio curvatura de \(\alpha,r=1/\kappa(s)\). Este círculo se conoce como el círculo osculador de \(\alpha\) en \(s\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item
+    \end{enumerate}
+\end{sol}
+
+
+\end{document}
