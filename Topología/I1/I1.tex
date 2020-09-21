@@ -1,0 +1,54 @@
+\documentclass{homework}
+
+\title{I1}
+\date{2020-04-17}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Topología - MAT2545}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Considere una colección \((A_x)_{x\in\set{R}}\) de conjuntos conexos de espacios topológicos indexados por los reales. Suponga que para todo \(n\in\set{Z}\) y \(x,y\in [n,n+1)\), \(A_x\cap A_y\neq\emptyset\). Establezca si \(\bigcup_{x\in\set{R}}A_x\) es o no es conexo.
+\end{prob}
+
+\begin{sol}
+    Primero se demostrará un caso más simple. Sean \(A,B\) conjuntos conexos tal que \(A\cap B\neq\emptyset\), entonces \(A\cup B\) es conexo. Para demostrar esto supongamos que no, entonces existen \(Z_1,Z_2\) abiertos, disjuntos, no vacíos tal que \(Z_1\cup Z_2=A\cup B\), ahora s.p.d.g. \(Z_1\cap A\neq\emptyset\) y \(Z_2\cap A\neq\emptyset\), si no fuera así, significa que s.p.d.g. \(Z_1\cap A=\emptyset\), entonces \(Z_1=B\setminus A\) y \(Z_2=A\), con lo que \(Z_2\cap B=A\cap B\neq \emptyset\). Dado lo anterior se tiene lo siguiente:
+    \begin{align*}
+        A&=A\cap(A\cup B)\\
+        &=A\cap(Z_1\cup Z_2)\\
+        &=(A\cap Z_1)\cup(A\cap Z_2)
+    \end{align*}
+    Pero esto último es un contradicción ya que significa que existen dos abiertos, disjuntos y no vacíos tales que su unión es \(A\), pero \(A\) es conexo.\\
+    Ahora, para el caso general se asume lo contrario, y se tiene que existen \(Z_1, Z_2\) abiertos, disjuntos y no vacíos, tales que \(Z_1\cup Z_2=\bigcup_\alpha X_\alpha\), ahora sea \(I_X:=\{\alpha\in\set{R}:X\cap A_\alpha \neq\emptyset\}\). Se nota que \(I_{Z_1}\cup I_{Z_2}=\set{R}\) y que \(I_{Z_1}\cap I_{Z_2}=\emptyset\), y sean \(x\in I_{Z_1},y\in I_{Z_2}\) tales que \(\exists n\in\set{Z}:x,y\in [n,n+1)\) entonces \(A_x\cup A_y\) es conexo por la demostración anterior, pero esto es una contradicción. Por ende, para cada \(n\in\set{Z}\) se tiene que \([n,n+1)\subset I_{Z_i}\) con \(i=1,2\).\\
+    Dado el desarrollo anterior, se toma que \(A_x=(0,1)\) para todo \(x\notin [0,1)\) y \(A_x=(1,2)\) si \(x\in [0,1)\), esto cumple que todos los \(A_x\) son conexos y que \(\forall n\in\set{Z}\) \(\forall x,y\in[n,n+1)\) \(A_x\cap A_y\neq\emptyset\), pero la unión es \((0,1)\cup (1,2)\), lo cual claramente es disconexo.
+\end{sol}
+
+
+\begin{prob}
+    Sea \((X_\alpha)_{\alpha\in J}\) una  colección de espacios topológicos. Demuestre que la Topología producto en \(\prod_\alpha X_\alpha\) es la topología más pequeña tal que todas las proyecciones \(\pi_\beta:\prod X_\alpha\rightarrow X_\beta\), \(\beta\in J\), son continuas.
+\end{prob}
+
+\begin{sol}
+    Sea \(\paren{\prod_\alpha x_\alpha,\tau}\) un espacio topológico tal que todas las proyecciones son continuas. Luego, sea \(\pi_\beta\) una proyección y \(A_\beta\) un abierto en \(X_\beta\), entonces se tiene que \(\pi_\beta^{-1}(A_\beta)=A_\beta\times\prod_{\alpha\neq\beta}X_\alpha\)\footnote{Por comodidad se escribe en ese orden, pero se entendería que el \(A_\beta\) reemplazaría al \(X_\beta\) en la posición coorrespondiente del producto.}. Ahora, se nota que los \(\pi_\beta^{-1}(A_\beta)\) forman una subbase de la topología producto, por ende, la topología producto está contenida en \(\tau\), por ende como la topología producto está contenida en toda topología que hace que las proyecciones sean continuas, está es la topología más pequeña tal que las proyecciones sean continuas.
+\end{sol}
+
+
+\begin{prob}
+    Sea \(\sim\) una relación de equivalencia en un conjunto \(X\). Sea \(X^*\) el conjunto de clases de equivalencia definidas por \(\sim\) y \(p:X\rightarrow X^*\) la función que le asigna a cada punto su clase  de equivalencia en \(X^*\). Para cada \(A\subset X\) defina
+    \begin{equation*}
+        C(A)=\{x\in X:\text{existe un }a\in A\text{ tal que }x\sim a\}
+    \end{equation*}
+    Demuestre que para cada \(U\subset X,p(U)\) es abierto en \(X^*\) si y solo si \(C(U)\) es abierto en \(X\).
+\end{prob}
+
+\begin{sol}
+    Se nota que \(p(U)=p(C(U))\), si no \(\exists x\in p(C(U))\setminus p(U)\) y tomamos \(p^{-1}(\{x\})\) que es una clase de equivalencia, luego \(C(U)\cap p^{-1}(\{x\})\neq\emptyset\), por lo que \(\exists  z\in C(U),y\in U\) tal que \(z\in C(U)\cap p^{-1}(\{x\})\) y \(y\sim z\), pero \(p(y)=x\). Por lo que \(p(U)\) es abierto en \(X^*\) si y solo si \(p(C(U))\) es abierto en \(X^*\), ahora se nota que por definición de espacio cuociente se tiene que dado un conjunto \(A\subset X\) se cumple que \(A\) es abierto en \(X\) si y solo si \(p(A)\) es abierto en \(X^*\), como \(C(U)\) es subconjunto de \(X\), se tiene que \(p(C(U))\) es abierto en \(X^*\) si y solo si \(C(U)\) es abierto en \(X\). Con lo que se llega a que \(p(U)\) es abierto en \(X^*\) si y solo si \(C(U)\) es abierto en \(X\).
+\end{sol}
+
+
+\end{document}

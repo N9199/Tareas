@@ -1,0 +1,102 @@
+\documentclass{homework}
+
+\title{Tarea 2}
+\date{2020-09-03}
+\gdate{2do Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Teoría de Autómatas y Lenguajes Formales --- IIC2223}
+
+
+% Comment for final compile
+%\ifx\condition\undefined
+%\def\condition{2}
+%\fi
+
+\ifx\condition\undefined
+\immediate\write18{ pdflatex -synctex=1 --jobname="P1\jobname" "\gdef\string\condition{0} \string\input\space\jobname"} 
+\immediate\write18{ pdflatex -synctex=1 --jobname="P2\jobname" "\gdef\string\condition{1} \string\input\space\jobname"} 
+
+\immediate\write18{rm *.aux *.log *.out}
+
+\expandafter\stop
+\fi
+
+\ifcase\condition
+\includecomment{p1}
+\excludecomment{p2}
+\or
+\excludecomment{p1}
+\includecomment{p2}
+\or
+\includecomment{p1}
+\includecomment{p2}
+\fi
+
+\newcommand{\ddarrow}{\ensuremath{\downarrow\downarrow}}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+\begin{p1}
+    \begin{prob}
+        Para cada lenguaje escriba una expresión regular que lo defina. Explique su respuesta
+        \begin{enumerate}
+            \item Sea \(\Sigma_1=\{0,1\}\). \(L_1\) es el lenguaje de todas las palabras \(w\in\Sigma_1^*\) tal que \(w\notin\mathcal{L}(01^+(011)^*(0+1))\).
+            \item Sea \(\Sigma_2=\{0,1\}\times\{0,1\}\). \(L_2\) es el lenguaje de todas las palabras \(w\in\Sigma_2^*\) tal que para cada par consecutivo \((a,b)\) y \((c,d)\) se tiene que \(b=c\). Por ejemplo, \((0,1)(1,0)\in L_2\) pero \((1,0)(1,0)\notin L_2\).
+        \end{enumerate}
+    \end{prob}
+
+    \begin{sol}
+        \begin{enumerate}
+            \item Viendo los posibles prefijos de las palabras en \(\mathcal{L}(01^+(011)^*(0+1))\) se puede deducir el complemento, para esto sea \(R'=01^+(011)^*(0+1)\)
+            \begin{enumerate}[label=\arabic*)]
+                \item Si \(R\) no comparte `prefijos' con \(R'\), se tiene que \(R\) tiene que ser \(0(0+1)^*\), ya que cualquier palabra en \(\mathcal{L}(R')\) comienza con \(1\).
+                \item Si \(R\) comparte el `prefijo' \(0\) pero nada más tiene que ser \(00(0+1)^*\), ya que toda palabra de \(\mathcal{L}(R')\) comienza con \(0\) y continua con al menos un \(1\).
+                \item Si \(R\) comparte el `prefijo' \(01^+\) hay que notar que además puede compartir el `prefijo' \(01^+0\), ya que si \(w\in\mathcal{L}(01^+)\) y \(w\neq01\) entonces \(w\in\mathcal{L}(01^+(0+1))\), por ende se tiene que \(R=01\) o que \(R=01^+00(0+1)^*\). El primero es ya que \(01\notin\mathcal{L}(R')\), y el segundo es ya que \(01^+0\) es `prefijo', pero \(01^+00\) no lo es.
+                \item Si \(R\) comparte el `prefijo' \(01^+(011)^*\) y nada más, se tiene que \(R=01^+(011)^*\). Esto es ya que para toda \(w\in\mathcal{L}(R')\) se tiene que tienen un carácter después de ese prefijo.
+                \item Si \(R\) comparte el `prefijo' \(01^+(011)^+1\), entonces \(R=01^+(011)^+10(0+1)^*\)\footnote{El caso donde el `prefijo' es \(01^+1\)se ve en el punto 3.}.
+                \item Si \(R\) comparte el `prefijo' \(01^+(011)^*01\), entonces el siguiente carácter tiene que ser un \(0\), pero después no hay restricciones. Con esto se tiene que \(R=c\).
+                \item Si \(R\) comparte el `prefijo' \(01^+(011)^*00\) no hay restricciones. Con esto se tiene que \(R=01^+(011)^+00(0+1)^*\).
+            \end{enumerate}
+            Por ende se junta todo  lo anterior, más la palabra vacía y se tiene lo siguiente
+            \begin{align*}
+                R=&\varepsilon\\
+                +&0(0+1)^*\\
+                +&00(0+1)^*\\
+                +&01\\
+                +&01^+00(0+1)^*\\
+                +&01^+(011)^*\\
+                +&01^+(011)^+10(0+1)^*\\
+                +&01^+(011)^+10(0+1)^*\\
+                +&01^+(011)^*00(0+1)^*
+            \end{align*}
+            \item Se toma la siguiente expresión regular 
+            \begin{align*}
+                &((1,1)+(0,1)+((0,0)+(1,0))(0,0)^*(0,1))\\
+                &((1,1)+(1,0)(0,1)+(1,0)(0,0)^*(0,1))^*\\
+                &((1,0)(0,0)^*+\varepsilon)+\varepsilon
+            \end{align*}
+            Esta expresión regular se puede dividir naturalmente en 4 partes, el `inicio', el `loop', el `final' y el `vacío'. El `vacío' garantiza que se acepta la palabra vacía. El `inicio' garantiza que la primera parte acepta todo comienzo posible que termina en \((a,1)\). El `loop' toma todas las formas posibles de rellenar de tal forma de que comiencen con \((1,a)\) y terminen con \((b,1)\), asi logrando poder `correr' el loop de nuevo. Y por último el `final', que da todos los posibles finales, más específicamente, que termine en \((a,1)\)\footnote{Esto corresponde al \(\varepsilon\)} o \((a,0)\).
+        \end{enumerate}
+    \end{sol}
+\end{p1}
+
+\begin{p2}
+    \begin{prob}
+        Sea \(\Sigma\) un alfabeto finito y sean \(R_1\) y \(R_2\) expresiones regulares sobre \(\Sigma\). Se define el operador:
+        \begin{equation*}
+            R_1\ddarrow R_2
+        \end{equation*}
+        tal que \(w\in\mathcal{L}(R_1\ddarrow R_2)\) si, y solo si, \(w\) se puede descomponer como \(w=u_1v_1u_2v_2\cdots u_kv_k\) para algún \(k\geq1\) y con \(u_i,v_i\in\Sigma^*\) para todo \(i\leq k\) tal que \(u_1,u_2,\cdots,u_k\in\mathcal{L}(R_1)\) y \(v_1,v_2,\cdots,v_k\in\mathcal{L}(R_2)\). Por ejemplo, la expresión \((a^*)\ddarrow(b^*)\) define todas las palabras en \(\{a,b\}^*\).
+
+        Demuestre que para todas expresiones regulares \(R_1\) y \(R_2\), el resultado de \(R_1\ddarrow R_2\) define un lenguaje regular.
+    \end{prob}
+
+    \begin{sol}
+        Se nota que si \(R_1\ddarrow R_2\) es equivalente a \((R_1R_2)^+\), se tiene que \(\mathcal{L}(R_1\ddarrow R_2)\) es un lenguaje regular. Ahora, sea \(w\in\mathcal{L}((R_1R_2)^+)\) se tiene que \(w\in\bigcup_{k=1}^\infty\mathcal{L}(R_1R_2)^k\), por lo que \(w\in\mathcal{L}(R_1R_2)^k\) para algún \(k\geq1\), con lo que se tiene \(w=u_1v_1u_2v_2\cdots u_kv_k\) donde \(u_i\in\mathcal{L}(R_1)\) y \(v_i\in\mathcal{L}(R_2)\), lo que es la definición de \(w\in\mathcal{L}(R_1\ddarrow R_2)\). Se nota que el argumento es prácticamente reversible\footnote{Hay que tener cuidado en la parte de \(w\in\mathcal{L}(R_1R_2)^k\) para algún \(k\geq1\), pero es un detalle menor.} por lo que \(\mathcal{L}(R_1\ddarrow R_2)=\mathcal{L}((R_1R_2)^+)\). Y como el segundo es un lenguaje regular\footnote{Por el teorema de Kleene.} se tiene que el primero es un lenguaje regular.
+    \end{sol}
+\end{p2}
+
+
+\end{document}

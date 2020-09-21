@@ -1,0 +1,35 @@
+\documentclass{homework}
+
+\title{Tarea 1}
+\date{2020-08-24}
+\gdate{2do Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Tópicos Avanzados en Algoritmos, Combinatoria y Optimización}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Show that if \(M\) is a cost minimizing social welfare function, and \(N\) is odd, then for any preference profile \([>]\in L^n\), if a Condorcet winner of \([>]\) exists, then \(M\) will put the Condorcet winner on top of \(M([>])\).
+\end{prob}
+
+\begin{sol}
+    Sea \([>]\) una colección de \(N\) ordenes tales que existe un ganador de Condorcet, llamaremos \(o'\) a este ganador. Además, se denotará \(>\) a \(M([>])\). Dado lo anterior, se demostrará por contradicción lo pedido, se asume que existe un \(o''\in O\) tal que \(o''>o'\), luego se define \(>'\) como \(>\) con la diferencia que \(o'\) cumple que la propiedad de Condorcet. Luego, sea \(>_i\in L\) entonces se tiene que \(d(>',>_i)=d(>,>_i)-\#(a>o'\text{ y }o'>_ia)+\#(o'>a\text{ y }a>_io')\). Se nota que en el caso donde \(>_i\) cumple que la propiedad de Condorcet con \(o'\) se tiene que \(d(>',>_i)=d(>,>_i)-\#(a>o'\text{ y }o'>_ia)\), en caso contrario se tiene que \(d(>',>_i)\leq d(>,>_i)+\#(o'>a\text{ y }a>_io')\). Por lo que se puede ver lo siguiente:
+    \begin{align*}
+        c(>,[>])-c(>',[>])&=\sum_{i=1}^n\#(a>o'\text{ y }o'>_ia)-\sum_{i=1}^n\#(o'>a\text{ y }a>_io')
+    \end{align*}
+    Ahora se nota que la primera sumatoria corresponde a al menos \(k\cdot c\) donde \(k\) es la cantidad de posiciones que `avanzó' \(o'\) entre \(>\) y \(>'\), más formalmente \(k=\#(a>o')\), y \(c\) es la cantidad de \(>_i\) que cumplen la propiedad de Condorcet con \(o'\). Mientras, la segunda sumatoria corresponde a lo más \(k\cdot (N-c)\), ya que hay \(N-c\) ordenes que no cumplen la propiedad de Condorcet con \(o'\), y \(o'\) `avanzó' \(k\) posiciones. Por ende se tiene la siguiente  desigualdad
+    \begin{align*}
+        c(>,[>])-c(>',[>])&\geq k\cdot c-k\cdot (N-c)
+        &\geq k\cdot (2c-N)
+        &\geq k\cdot 1
+        &>0
+    \end{align*}
+    Por lo que \(c(>,[>])>c(>',[>])\), lo que es una contradicción, ya que \(>=M([>])\). Por lo tanto se tiene que no existe un \(o''\in O\) tal que \(o''>o\).
+\end{sol}
+
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass{homework}
+
+\title{I2}
+\date{2019-10-21}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Analisis Funcional - MAT2555}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\newcommand{\e}{\varepsilon}
+
+\begin{sol}
+    Dado \(\e>0\) y \(\zeta\in \overline{B^*_1}\), sea \(\e'=\frac12\min\paren{\norm{\zeta-\frac{\zeta}{\norm{\zeta}}},\e}\), se nota que \(\overline{B^*_{\e'}(\zeta-\e'\cdot\zeta)}\subseteq\overline{B^*_1}\), luego por enunciado existe \(\phi_n\) tal que \(\norm{\paren{\zeta-\e'\cdot\zeta}-\phi_n}<\e'\), ahora \(\phi_n\in\overline{B^*_{\e'}(\zeta)}\), por lo que \(\norm{\phi_n}\leq 1\) y además \(\norm{\zeta-\phi_n}<2\e'\leq\e\). Con esto se tiene que \(\forall\zeta\in\overline{B^*_1}\forall\e>0\) existe \(k\in\set{N}\) tal que \(\norm{\zeta-\phi_k}<\e\) y \(\varphi_n\in\overline{B^*_1}\). Con eso se define a \(\varphi_n\) como \(\phi_n\) si \(\norm{\phi_n}\leq1\) y \(\frac{\phi_n}{\norm{\phi_n}}\) en otro caso. Se nota que \(\varphi_n\) cumple lo pedido.
+\end{sol}
+
+\begin{sol}
+    Hay que demostrar que \(d:E\rightarrow[0,\infty)\) es métrica, se nota que está bien definida ya que \(d(x,y)\leq\norm{x-y}\) y si se cumplen las siguientes propiedades se tiene el resto, dado \(x,y\in E\) si \(d(x,y)=0\) entonces \(x=y\), además dado \(x,y,z\in E\) se tiene que \(d(x,y)\leq d(x,z)+d(z,y)\), y por último dado \(x,y\in E\) se tiene que \(d(x,y)=d(y,x)\).\\
+    Para la primera, sean \(x,y\in E\) tal que \(d(x,y)=0\), entonces se tiene lo siguiente:
+    \begin{equation*}
+        \sum_{n=1}^\infty\frac{\abs{\varphi_n(x-y)}}{2^n}=0
+    \end{equation*}
+    Como cada término de la serie es positivo, se tiene que todos los términos tienen que ser \(0\), por lo que \(\forall n\geq1\) se tiene que \(\varphi_n(x-y)=0\). Sea \(\zeta\in\overline{B_1^*}\), y sea \(\varphi_{n_k}\) una sucesión tal que \(\varphi_{n_k}\rightarrow\zeta\), luego para todo \(\e>0\) existe un \(k_0\in\set{N}\) tal que \(k\geq k_0\implies \norm{\zeta-\varphi_{n_k}}<\e\), luego \(\zeta(x-y)-\varphi_{n_k}(x-y)=(\zeta-\varphi_{n_k})(x-y)\), por lo que \(\abs{\zeta(x-y)}=\abs{\zeta(x-y)-\varphi_{n_k}(x-y)}\leq\norm{x-y}\cdot\e\), como esto se cumple para todo \(\e\), se tiene que \(\zeta(x-y)=0\), y como \(\zeta\) era arbitraria se tiene para todo \(\zeta\in E^*\). Se sabe que todo e.v. tiene una base por el lema de Zorn, luego sea \(\mathcal{B}\) esa base, se tiene que \(x=\sum_{v\in\mathcal{B}}a_v\cdot v,y=\sum_{v\in\mathcal{B}}b_v\cdot v\), se toman los funcionales definidos de la siguiente forma:
+    \begin{equation*}
+        \zeta_v(v)=1, \forall u\in\mathcal{B}\setminus\{v\}\quad\zeta_v(u)=0
+    \end{equation*}
+    Se nota que \(\norm{\zeta_v}=1\), luego \(\zeta_v(x-y)=0\) \(\forall v\in\mathcal{B}\), por lo que se tiene que \(x-y=0\).\\
+    Para la segunda propiedad, se nota que \(\abs{\varphi_n(x-y)}\leq\abs{\varphi_n(x-z)}+\abs{\varphi_n(z-y)}\), por lo que para cada término se tiene la propiedad, y por ende para su suma ponderada también.\\
+    Para la última propiedad, es claro que \(\abs{\varphi_n(x-y)}=\abs{\varphi_nx-\varphi_ny}=\abs{\varphi_ny-\varphi_nx}=\abs{\varphi_n(y-x)}\), por lo que se tiene lo pedido.
+\end{sol}
+
+\begin{sol}
+    Sea \(\zeta\in\overline{B^*_1},\e>0\), ahora sea \(k\in\set{N}\) tq \(\norm{\zeta-\varphi_k}<\frac\e4\), luego se ve lo siguiente:
+    \begin{align*}
+        \abs{\zeta x-\zeta y}&=\abs{\zeta(x-y)}\\
+        &=\abs{\zeta(x-y)+\varphi_k(x-y)-\varphi_k(x-y)}\\
+        &\leq\abs{\varphi_k(x-y)}+\abs{\paren{\zeta-\varphi_k}(x-y)}
+    \end{align*}
+    Para el primer término, notemos que
+    \begin{equation*}
+        2^kd(x,y)=\abs{\varphi_k(x-y)}+\sum_{n=1,n\neq k}^\infty\frac{\abs{\varphi_n(x-y)}}{2^{n-k}}
+    \end{equation*}
+    Por lo que se tiene que \(\abs{\varphi_k(x-y)}\leq2^kd(x,y)\). Para el segundo término, notemos que \(\norm{x-y}\leq2\) y que \(\abs{\paren{\zeta-\varphi_k}(x-y)}\leq\norm{x-y}\cdot\frac\e4\leq\frac\e2\). Ahora tomando \(\delta=\frac\e{2^{k+1}}\), se tiene que \(2^kd(x,y)<\frac\e2\), juntando todo se tiene que \(\abs{\zeta x-\zeta y}<\e\). Para el caso donde \(\norm{\zeta}>1\), se toma \(\zeta'=\frac\zeta{\norm{\zeta}}\in\overline{B_1^*}\), y se toma \(\e'=\frac\e{\norm{\zeta}}\), luego \(\abs{\zeta'(x-y)}<\e'\), por lo que \(\abs{\zeta(x-y)}<\e\).
+\end{sol}
+
+\begin{sol}
+    Sea \(x\in X\), luego se nota que \(V_x=\overline{B_1}\cap\bigcap_{j=1}^m\zeta_j^{-1}((x-\delta_j,x+\delta_j))\), como cada \(\zeta_j\) es uniformemente continuo en \(\overline{B_1}\), se tiene que \(V_x\) es la intersección finita de abiertos, por lo que es un abierto en el espacio métrico \((X,d)\). Para la segunda parte, se recuerda que los abiertos en \(E\) bajo la topología \(\sigma(E,E^*)\) son unión de conjuntos de la siguiente forma:
+    \begin{equation}
+        \{y\in E:\abs{\zeta_j(x-y)}<\delta_j\text{ para }j=1,\dots,m\}
+    \end{equation}
+    Donde \(x\in E,\zeta_j\in E^*\setminus\{0\},\delta_j>0\), como cada \(V_x\) es la intersección de estos abiertos con \(X\) y como \(V_x\) es abierto en \((X,d)\), se tiene que dado un abierto \(V\) en \(\sigma(E,E^*)\) entonces \(V\cap X\) es un abierto en \((X,d)\), ya que es la unión de los abiertos \(V_x\cap X\).
+\end{sol}
+
+\begin{sol}
+    Dado \(x\in X,y\in B_r^d(x)\), se define \(\mu=r-d(x,y)>0\)\footnote{\(\d(x,y)<r\) por definición}, sea \(n_0\) tq \(\sum_{n=n_0}^\infty2^{-k}<\frac\mu2\)\footnote{Se puede ya que \(\sum_{n=1}^\infty2^{-k}=1\)}, además sea \(V_y=\{z\in E:\abs{\varphi_k(y-z)}<\frac\mu2\forall k=1,\dots,n_0\}\). Luego se ven las siguientes desigualdades:
+    \begin{align*}
+        d(x,z)&\leq d(x,y)+d(y,z)\\
+        &\leq d(x,y)+\sum_{k=1}^{n_0}\frac{\abs{\varphi_k(y-z)}}{2^k}+\sum_{k=n_0+1}^\infty\frac{\abs{\varphi_k(y-z)}}{2^k}\\
+        &<d(x,y)+\sum_{k=1}^{n_0}\frac\mu2\cdot\frac1{2^k}+\sum_{k=n_0+1}^\infty\frac{\norm{\varphi_k}\norm{y-z}}{2^k}\\
+        &<d(x,y)+\frac\mu2\sum_{k=1}^{n_0}2^{-k}+\sum_{k=n_0+1}^\infty\frac{\norm{y-z}}{2^k}\footnotemark\\
+        &<d(x,y)+\frac\mu2\sum_{k=1}^\infty2^{-k}+2\sum_{k=n_0+1}^\infty2^{-k}\footnotemark\\
+        &<d(x,y)+\frac\mu2+2\cdot\frac\mu4\\
+        &<d(x,y)+\mu\\
+        &<r\footnotemark
+    \end{align*}
+    \footnotetext{Se nota que \(\varphi_k\in\overline{B_1^*}\)}\footnotetext{\(\norm{y-z}\leq\norm{y}+\norm{z}\leq1+1=2\)}\footnotetext{Se recuerda que \(\mu=r-d(x,y)\)}
+    Con lo anterior se tiene que si \(z\in V_y\cap X\) entonces \(d(x,z)<r\), o sea, \(z\in B_r^d(x)\). Ahora, sea \(V=\bigcap_{y\in B_r^d(x)}V_y\), por el resultado anterior es claro que \(V\cap X\subseteq B_r^d(x)\), más aún por definición de \(V\) se tiene que \(B_r^d(x)\subseteq V\), juntando eso con que \(B_r^d(x)\subseteq X\), se tiene que \(B_r^d(x)=V\cap X\), donde \(V\) es la unión de abiertos en \(\sigma(E,E^*)\). Con todo lo anterior se tiene ahora que \(\tau_d\)\footnote{Los abiertos en \(X\) bajo la métrica \(d\)} es subconjunto de \(\sigma(E,E^*)_X\)\footnote{Los abiertos de la topología inducida por \(\sigma(E,E^*)\) en \(X\)}, eso es todo abierto en \((X,d)\) es abierto en \((X,\sigma(E,E^*)_X)\). Ahora, por la pregunta 4, se tiene que \(\sigma(E,E^*)_X\subseteq\tau_d\), por lo que se tiene que la familia de conjuntos \(\{V\cap X:V\in\sigma(E,E^*)\}\) es exactamente la familia de abiertos de \((X,d)\).
+\end{sol}
+
+\begin{sol}
+    Se sabe que por la compacidad de \(\overline{B_1}\) entonces cada \(\varphi_k(\overline{B_1})\) es compacto, por lo que dado una sucesión \(x_n\) de elementos de \(\overline{B_1}\), se sabe que cada sucesión \(\varphi_k(x_n)\) tiene una subsucesión convergente. Lo anterior se puede usar inductivamente para que para construir una subsucesión convergente para cada \(k\), dado una subsucesión \(x^k_n\) de \(x_n\) tq \(\varphi_k(x^k_n)\) es convergente, se toma una subsucesión \(x^{k+1}_n\) de \(x^k_n\) tq \(\varphi_{k+1}(x^{k+1}_n)\) sea convergente. Sea \(\{y_n\}_{n\in\set{N}}=\bigcap_{k=1}^\infty\{x_n^k\}_{n\in\set{N}}\), sí esta es una sucesión se tiene lo pedido. Se nota que toda sucesión es un conjunto compacto\footnote{Es acotada y cerrada (i.e. tiene solo un punto de acumulación)}, y ya que \(\bigcap_{m=1}^k\{x_n^m\}_{n\in\set{N}}=\{x_n^k\}_{n\in\set{N}}\), entonces es una familia decreciente de conjuntos compactos, por lo que por teorema es no vacío. Ahora, asumiendo que \(\{y_n\}_{n\in\set{N}}\) es tiene finitos elementos, 
+\end{sol}
+
+\begin{sol}
+    Dado una sucesión \(\{x_n\}_{n\in\set{N}}\subset X\), se sabe por el problema 6, que existe una subsucesión \(y_m\) tq para cada \(k\in\set{N}\) la sucesión \(\varphi_k(y_m)\) es de Cauchy en \(\set{C}\). Ahora, sea \(\zeta\in\overline{B_1^*}\), y sea \(\e>0\), existe un \(k\in\set{N}\) tq \(\norm{\zeta-\varphi_k}<\frac\e4\), luego \(\varphi_k(y_m)\) es de Cauchy, por lo que existe \(m_0\in\set{N}\) tq \(p,q\geq m_0\implies\abs{\varphi_k(y_p-y_q)}<\frac\e2\). Además, \(\abs{(\zeta-\varphi_k)(y_p-y_q)}\leq\norm{\zeta-\varphi_k}\cdot\norm{y_p-y_q}\leq\frac\e2\)\footnote{\(y_p,y_q\in X\implies \norm{y_p-y_q}\leq\norm{y_p}+\norm{y_q}\leq2\)}, juntando esto con lo anterior se tiene la siguiente desigualdad:
+    \begin{equation*}
+        \abs{\zeta(y_p-y_q)}\leq\abs{\varphi_k(y_p-y_q)}+\abs{(\zeta-\varphi_k)(y_p-y_q)}<\frac\e2+\frac\e2=\e
+    \end{equation*}
+    Por lo que tomando el \(m_0\) se tiene que \(p,q\geq m_0\implies\abs{\zeta(y_p-y_q)}<\e\), por lo que la sucesión es Cauchy. Ahora, para \(\zeta\) tq \(\norm{\zeta}>1\), sea \(\zeta'=\frac\zeta{\norm{\zeta}}\), entonces existe una subsucesión \(\{y_n\}_{n\in\set{N}}\) de \(\{x_n\}_{n\in\set{N}}\) tq \(\zeta'(y_m)\) sea de Cauchy, luego existe \(m_0\in\set{N}\) tq \(p,q\geq m_0\implies\abs{\zeta'(y_p-y_q)}<\frac\e{\norm{\zeta}}\), por lo que se tiene que \(\zeta(y_m)\) también es de Cauchy.
+\end{sol}
+
+\begin{sol}
+    Sea \(L:E^*\rightarrow\set{C}\), donde \(L(\zeta)=\lim_{m\rightarrow\infty}\zeta(y_m)\) y \(y_m\) es la sucesión de la pregunta 7, por la misma pregunta la sucesión es de Cauchy y como \(\set{C}\) es completo, esta converge, con lo que \(L(\zeta)\) está bien definida. Para la linealidad, se nota que como cada \(L(\zeta)\) existe, por álgebra de límites se tiene \(L(\zeta_1+a\zeta_2)=L(\zeta_1)+aL(\zeta_2)\). Ahora, sean los \(L_m(\zeta)=\zeta(y_m)\) una familia de funcionales lineales, es claro que \(\norm{L_m}\leq1\), por lo que todos son continuos. Ahora se nota que dado \(\zeta\in E^*\) \(\sup_{m\in\set{N}}\abs{L_m(\zeta)}<\infty\) porque \(L_m(\zeta)\rightarrow L(\zeta)\), ya que esto funciona para un \(\zeta\) arbitrario, se tiene para todo \(\zeta\in E\). Con lo anterior y con Banach-Steinhaus se tiene que \(L\) es continuo, por lo que \(L\in E^{**}\), ahora, ya que \(J\) es sobre, existe \(x_L\in E\) tq \(J(x_L)=L\). Con esto, se tiene \(\zeta(x_L)=J(x_L)(\zeta)=L(\zeta)=\lim_{m\rightarrow\infty}\zeta(y_m)\). Ahora, se sabe que existe \(\zeta_L\in\overline{B_1^*}\) tq \(\zeta_L(x_L)=\norm{x_L}\), como ... Dado que \(\lim_{m\rightarrow \infty}\zeta(y_m)=\zeta(x_L)\), se tiene que \(y_m\rightarrow x_L\) en \(\sigma(E,E^*)\). Ahora como se vio en la pregunta 5, \(\tau_d=\sigma(E,E^*)_X\) y como \(x_L\in X\) se tiene que \(y_m\rightarrow x_L\) en \((X,d)\).
+\end{sol}
+
+
+\begin{sol}
+    Se toma la transformación lineal \(T_r:E\rightarrow E\) donde \(T_r(X)=rx\), es claro que continua con inversa continua\footnote{Su inversa es \(T_{r^{-1}}\)}. Ahora si \(X\) es compacto bajo la topología \(\sigma(E,E^*)\), se nota que \(T_r(X)=\overline{B_r}\) es compacta.
+\end{sol}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{sol}
+    
+\end{sol}
+
+\end{document}

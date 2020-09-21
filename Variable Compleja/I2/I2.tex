@@ -1,0 +1,118 @@
+\documentclass{homework}
+
+\title{I2}
+\date{2019-11-12}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Variable Compleja - MAT2705}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Considere \(f(z)=\frac{\sin(\pi z)}{(2z-1)(4z-i)}\) y calcule las siguientes integrales
+    \begin{enumerate}
+        \item \(\int_{\{z:\abs{z}=\frac1{10}\}}f(z)\d{z}\)
+        \item \(\int_{\{z:\abs{z-\frac{i}4}=\frac1{10}\}}f(z)\d{z}\)
+        \item \(\int_{\{z:\abs{z}=1\}}f(z)\d{z}\)
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Notemos que \(f(z)\) es analítica en el disco centrado en \(0\) de radio \(\frac1{10}\), ya que \(sin(\pi z)\) es analítica y \((2z-1)(4z-i)\) es analítica sin ceros en ese disco. Por ende, el valor de la integral es \(0\).
+        \item Se nota que \(g(z)=f(z)(4z-i)\) es analítica en el disco centrado en \(\frac{i}4\) de radio \(\frac1{10}\). Luego, por la formula integral de Cauchy, se tiene que \(2\pi ig(\frac{i}4)\) es el valor de la integral pedida. Esto es fácil de calcular: \(2\pi ig(\frac{i}4)=2\pi i\cdot\frac{i\sinh(\frac\pi4)}{\frac{i}2-i}=2\pi i\cdot-2\sinh(\frac\pi4)=-4\pi i\sinh(\frac\pi4)\).
+        \item Usando la formula integral de Cauchy se nota que la integral se puede escribir como la siguiente suma:
+              \begin{equation*}
+                  \int_{\{z:\abs{z-\frac12}=\frac1{10}\}}f(z)\d{z}+\int_{\{z:\abs{z-\frac{i}4}=\frac1{10}\}}f(z)\d{z}
+              \end{equation*}
+              Se nota que la segunda integral ya fue calculada, y que la primera se puede calcular de forma similar, \(g(z)=(2z-1)f(z)\) es analítica en el area pedida, luego se tiene que \(2\pi ig(\frac12)=2\pi i\cdot\frac{\sin(\frac\pi2)}{2-i}=2\pi i(2+i)/3\). Juntando ambos resultados se llega a lo siguiente:
+              \begin{equation*}
+                  \int_{\{z:\abs{z}=1\}}f(z)\d{z}=\int_{\{z:\abs{z-\frac12}=\frac1{10}\}}f(z)\d{z}+\int_{\{z:\abs{z-\frac{i}4}=\frac1{10}\}}f(z)\d{z}=2\pi i(2+i)/3-4\pi i\sinh(\frac\pi4)
+              \end{equation*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Sea \(f\) una función entera tal que \(\Im(f(z))>0\) para todo \(z\in \set{C}\). Demuestre que \(f\) es constante. \textit{Indicación: Puede usar que \(L(z)=\frac{iz+1}{1-iz}\) mapea el semiplano superior en el disco unitario.}
+\end{prob}
+
+\begin{sol}
+    Se nota que si \(f\) es una función entera entonces \(\exp(if)\) también lo es, pero \(\abs{\exp(if)}=\exp(-\Im(f))<1\), por lo que \(\exp(if)\) es acotada, pero por Liouville se tiene que \(\exp(if)\) es constante, por lo que \(f\) tambien es constante.
+\end{sol}
+
+\begin{prob}
+    Encuentre la seria de potencias en torno a \(z=0\) que representa la función \(f(z)=z\ln(z+1)\). Calcule su radio de convergencia.
+\end{prob}
+
+\begin{sol}
+    Se sabe que
+    \begin{equation}
+        \ln(z+1)=-\sum_{k=1}^\infty\frac{(-1)^kz^k}k\label{ln}
+    \end{equation}
+    por lo que \(f(z)=\sum_{k=1}^\infty\frac{(-1)^{k+1}z^{k+1}}k\), ahora cambiando lo indices se tiene que \(f(z)=\sum_{k=2}^\infty\frac{(-1)^kz^k}{k-1}\). Se recuerda que el radio de convergencia de \eqref{ln} es 1, por lo que el radio de convergencia de la serie encontrada tambien es 1.
+\end{sol}
+
+\begin{prob}
+    Encuentre todas las funciones analíticas en \(\{z:\abs{z}<1\}\) que satisfacen \(f\paren{\frac1n}=\frac1{n^3}\) para todo \(n\in\set{N}\)
+\end{prob}
+
+\begin{sol}
+    Se nota que \(f(z)=z^3\) cumple lo pedido. Ya que \(\frac1n\rightarrow 0\), \(\frac1{n^3}\rightarrow 0\) y \(f\) es continua se tiene que \(f(0)=0\), por lo que \(0\) es un punto de acumulación y por el teorema del principio de unicidad, se tiene que la única función que cumple lo pedido es \(f(z)=z^3\).
+\end{sol}
+
+\begin{prob}
+    El objetivo de esta pregunta es calcular la serie de Laurent de \(f(z)=\frac{z}{(z^2-4)^2}\) en el anillo \(\{0<\abs{z-2}<4\}\) y el orden del polo en \(z=2\). Se sugieren los siguientes pasos:
+    \begin{enumerate}
+        \item Calcule la expansión de \(\frac1{z+2}\) en torno a \(z=2\).
+        \item Encuentre a partir del paso anterior la serie de Laurent de \(\frac1{z^2-4}\) en torno a \(z=2\).
+        \item Utilice lo anterior para calcular la serie de Laurent de \(f(z)=\frac{z}{(z^2-4)^2}\).
+        \item Estudie el orden del polo de \(f\) en \(z=2\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Se escribe la fracción de la siguiente forma, \(\frac1{(z-2)+4}=\frac14\cdot\frac1{1-(-z+2)/4}\), y estos se puede reescribir usando la serie geométrica \(\frac14\cdot\frac1{1-(-z+2)/4}=\frac14\sum_{n=0}^\infty(-\frac14)^n(z-2)^n\), con lo que se tiene la expansión de potencia.
+        \item Se usa fracciones parciales consiguiendo la siguiente identidad \(\frac1{z^2-4}=\frac1{4(z-2)}-\frac1{4(z+2)}\), por lo que la serie de Laurent es la siguiente \(\frac1{z^2-4}=\frac14\paren{\frac1{z-2}+\sum_{n=0}^\infty(-1)^{n+1}2^{-n}(z-2)^n}\).
+        \item Se nota que \(f(z)=-\frac12g'(z)\), donde \(g(z)=\frac1{z^2-4}\), como \(g(z)=\frac14\paren{\frac1{z-2}+\sum_{n=0}^\infty(-1)^{n+1}2^{-n}(z-2)^n}\) se tiene que \(g'(z)=\frac14\paren{\frac1{(z-2)^2}+\sum_{n=1}^\infty(-1)^{n+1}2^{-n}n(z-2)^{n-1}}\), por lo que \(f(z)=-\frac18\paren{\frac1{(z-2)^2}+\sum_{n=1}^\infty(-1)^{n+1}2^{-n}n(z-2)^{n-1}}\).
+        \item Viendo la serie de Laurent es fácil concluir que \(f\) tiene un polo de orden 2 en \(z=2\).
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Demuestre que \(f(z)=\exp(\frac1z)\) tiene una singularidad esencial en \(z=0\).
+\end{prob}
+
+\begin{sol}
+    En la tarea se demostro que dado una función analítica \(f\) con una singularidad aislada no reparable en \(z_0\), entonces \(z_0\) es singularidad esencial de \(\exp(f)\). Dado la anterior, se nota que \(z=0\) es una singularidad no reparable de \(\frac1z\), por lo que es singularidad esencial de \(\exp(\frac1z)\).
+\end{sol}
+
+\begin{prob}
+    En esta pregunta consideraremos la función
+    \begin{equation}
+        N_f(w)=\frac1{2\pi i}\int_{\abs{z-z_0}=\rho}\frac{f'(z)}{f(z)-w}\d{z}\label{func}
+    \end{equation}
+    para \(f:\Omega\subset\set{C}\rightarrow\set{C}\) una función meromorfa y \(w\in\set{C}\) tal que \(f(z)\neq w\) en \(\abs{z-z_0}=\rho\). Asumimos también que \(B_\rho(z_0)=\{z\in\set{C}:\abs{z-z_r}<r\}\).
+    \begin{enumerate}
+        \item Demuestre que si \(f(z)-w_0\) tiene un cero de orden \(m\) en \(z_0\) entonces \(\frac{f'(z)}{f(z)-w_0}\) tiene un polo de orden \(1\) con residuo \(m\) en \(z_0\).
+        \item Demuestre que si \(f(z)-w_0\) tiene un polo de orden \(m\) en \(z_0\) entonces \(\frac{f'(z)}{f(z)-w_0}\) tiene un polo de orden \(1\) con residuo \(-m\) en \(z_0\).
+        \item Suponga que \(\abs{f(z)-w_0}>\delta>0\) para todo \(\abs{z-z_0}=\rho\). Demuestre que existe un \(r>0\) tal que \(N(w))\) es analítica en \(B_r(w_0)\).
+        \item \textit{El teorema de residuos implica que si \(f(z)-w_0\) tiene un cero de orden \(m\) en \(z_0\) y \(f(z)-w_0\neq0\) para \(0<\abs{z-z_0}\leq\rho\) entonces \(N_f(w_0)=m\), más aún \(N)f(w)\in\set{N}\).} \textbf{Puede asumir el resultado anterior}. Demuestre que existe un \(r>0\) tal que \(N_f(w)\) es constante en \(B_r(w_0)\).
+        \item Concluya que si \(f(z_0)=w_0,f'(z_0)\neq0\), entonces existe un \(r>0\) tal que \(N(w)=1\) en \(B_r(w_0)\).
+        \item Explique por qué el item anterior es equivalente a decir que \(f\) es inyectiva en una vecindad de \(z_0\).
+        \item Demuestre que si \(f_n\) es una sucesión de funciones analíticas que convergen uniformemente en a \(f(z)\) en \(\overline{B_R(z_0)}\), entonces \(f\) es analítica en \(B_R(z_0)\).
+        \item Suponga que \(f_n\) es una sucesión de funciones analíticas que convergen uniformemente en \(\overline{B_r(z_0)}\) a \(f(z)\) y \(f_n(z_0)\rightarrow w_0\). Demuestre que existe \(r>0\) tal que \(N_{f_n}(w)\rightarrow N_f(w)\) uniformemente en \(B_r(w_0)\) cuando \(n\rightarrow\infty\).
+        \item Demuestre que si \(f_n\) es una sucesión de funciones analíticas que converge uniformemente en \(\overline{B_R(z_0)}\) a \(f(z)\) y \(f_n\) es inyectiva para todo \(n\), entonces \(f\) es inyectiva.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+\end{sol}
+
+\end{document}

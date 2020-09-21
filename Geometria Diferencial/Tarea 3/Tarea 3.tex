@@ -1,0 +1,108 @@
+\documentclass{homework}
+
+\title{Tarea 1}
+\date{2020-04-30}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Geometría Diferencial - MAT2305}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+
+\begin{prob}
+    Sea \(\varphi:S_1\rightarrow S_2\) un difeomorfismo.
+    \begin{enumerate}
+        \item Demuestre que \(S_1\) es orientable si y solo si \(S_2\) es orientable. (La orientabilidad se preserva bajo difeomorfismo)
+        \item Sea \(S_1\) una superficie orientada. Demuestre que el difeomorfismo \(\varphi\) induce una orientación en \(S_2\).
+        \item Use  el mapa antipodal de la esfera \(S^2\) para demostrar que esta orientación inducida puede ser distinta a la original.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    Por facilidad se usará el resultado de la parte b) para la parte a)
+    \begin{enumerate}
+        \item Se nota que solo es necesario demostrar una de las dos implicancias. Ahora, dado \(S_1\) una superficie orientable se tiene por parte \((b)\) que \(\varphi\) induce una orientación en \(S_2\), y por ende como \(S_2\) tiene una orientación, i.e. \(S_2\) es orientable.
+        \item Dado que \(\varphi\) es difeomorfismo, se tiene que tiene inversa diferenciable, por ende su inversa \(\varphi^{-1}\) también es un difeomorfismo. Ahora, dado \(x:U\rightarrow S_1\)  una parametrización de \(S_1\), sea \(N:S_2\rightarrow S^2\subset\set{R}^3\), definida por \(N(q)=\frac{x_u\wedge x_v}{\norm{x_u\wedge x_v}}(\varphi^{-1}(q))\). Se recuerda que la norma, el producto cruz, \(x_u\), \(x_v\) y \(\varphi^{-1}\) son diferenciables, por lo que \(N\) es diferenciable y da una orientación sobre \(S_2\).
+        \item Sea \(\varphi:S^2\rightarrow S^2\) el mapeo antipodal \(\varphi(x,y,z)=-(x,y,z)\), y sea \(N:S^2\rightarrow S^2\subset\set{R}^2\) la identidad \(N(x,y,z)=(x,y,z)\). Luego, se tiene entonces que la orientación inducida por \(\varphi\) dada la orientación \(N\) de \(S^2\), corresponde a \(N'=N\circ\varphi^{-1}\). Ahora, dado un \(q\in S^2\) se tiene que \(N(q)=q\), y se tiene que \(\varphi=\varphi^{-1}\), por lo que \(N'(q)=N(\varphi^{-1}(q))=N(\varphi(q))==N(-q)=-q\), como \(q\neq -q\)\footnote{A menos que \(q=0\), pero \(0\notin S^2\)} se tiene que \(N'\) es una orientación distinta a \(N\).
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    Describa la región de la esfera que cubre el Mapa de Gauss de las siguientes superficies:
+    \begin{enumerate}
+        \item El paraboloide de revolución \(z=x^2+y^2\).
+        \item El hiperboloide de revolución \(x^2+y^2-z^2=1\).
+        \item El catenoide \(x^2+y^2=\cosh^2(z)\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Se toma \(f(x,y,z)=x^2+y^2-z\), se nota que \(f(x,y,z)=0\) corresponde al paraboloide descrito, ahora, se nota que la normal a la superficie en \(p\) es \(\nabla f(p)\). Por lo que la normal unitaria es
+        \begin{equation*}
+            N(x,y,z)=\frac{(2x,2y,-1)}{\sqrt{4x^2+4y^2+1}}
+        \end{equation*}
+        Dado esto, se nota que \(x\) e \(y\) pueden tomar todos los valores de \(\set{R}\), y que esto determina el valor de \(z\) en el paraboloide descrito. Por ende vemos, que la componente en \(z\) de \(N(p)\) está acotada por \(0\), por lo tanto la región correspondiente es la mitad inferior de la esfera sin el ecuador.
+        \item Se toma \(f(x,y,z)=x^2+y^2-z^2-1\), se nota que \(f(x,y,z)=0\) corresponde al hiperboloide descrito, ahora, de la misma forma que en \((a)\) se ve lo siguiente
+        \begin{equation*}
+            N(x,y,z)=\frac{(x,y,-z)}{\sqrt{x^2+y^2+z^2}}
+        \end{equation*}
+        Usando que \(x^2+y^2=z^2+1\) se tiene que \(N(x,y,z)=\frac{(x,y,-z)}{\sqrt{1+2z^2}}\). Se ve que la componente en \(z\) de \(N(x,y,z)\) es \(-\frac{z}{\sqrt{1+2z^2}}\), por lo que toma valores en \((-\frac{\sqrt{2}}2,\frac{\sqrt{2}}2)\), por ende la región de la esfera correspondiente son los puntos que tienen esta restricción.
+        \item Se toma \(f(x,y,z)=x^2+y^2-\cosh^2(z)\), se nota que \(f(x,y,z)=0\) corresponde al catenoide descrito, ahora, se ve la normal en un punto \(p\) de la misma forma que en \((a)\)
+        \begin{equation*}
+            N(x,y,z)=\frac{(2x,2y, 2\sinh(z)\cosh(z))}{\sqrt{4x^2+4y^2+4\sinh^2(z)\cosh^2(z)}}
+        \end{equation*}
+        Se ve usa que \(x^2+y^2=\cosh^2(z)\) para reescribir \(N\) de la siguiente manera
+        \begin{equation*}
+            N(x,y,z)=\frac{(x,y,\sinh(z)\cosh(z))}{\sqrt{\cosh^2(z)+\sinh^z(z)\cosh^z(z)}}=\frac{(x,y,\sinh(z))}{\sqrt{1+\sinh^2(z)}}
+        \end{equation*}
+        Se nota que la componente en \(z\) tiene el signo de \(z\), pero que la magnitud del numerador es menor estricta a la del denominador, por lo que \(z\neq\pm1\), con esto se tiene que la región correspondiente es la esfera sin los puntos \((0,0,\pm1)\).
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item Demuestre que si en la intersección de una superficie con un plano, todos los vectores normales \(N\) son tangentes al plano, entonces la intersección de estas es una linea de curvatura.
+        \item Demuestre que las lineas de curvatura del paraboloide hiperbólico \(z=y^2-x^2\) que pasan por el origen, son las curvas con coordenadas \(x=0\) y \(y=0\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+
+\end{sol}
+
+
+\begin{prob}
+    Sea \(C\subset S\) una curva regular, contenida en una superficie regular \(S\) con curvatura Gaussiana \(K>0\). Demuestre que la curvatura \(\kappa\) de \(C\) en un punto \(p\) satisface
+    \begin{equation*}
+        \kappa\geq\min(\abs{\kappa_1},\abs{\kappa_2})
+    \end{equation*}
+    donde \(\kappa_1\) y \(\kappa_2\) son las curvaturas principales de \(S\) en \(p\).
+\end{prob}
+
+\begin{sol}
+    Como \(K>0\) se tiene que el signo de \(\kappa_1\) y de \(\kappa_2\) es el mismo, ahora s.p.d.g. se tiene que \(0<\kappa_1\leq\kappa_2\). Luego se tiene por fórmula de Euler \(\kappa=\kappa_1\cos^2\theta+\kappa_2\sin^2\theta\), por lo que se tiene la siguiente desigualdad \(\kappa=\kappa_1\cos^2\theta+\kappa_2\sin^2\theta\geq\kappa_1\cos^2\theta+\kappa_1\sin^2\theta=\kappa_1\), y por ende se tiene que \(\kappa\geq\min(\abs{\kappa_1},\abs{\kappa_2})\)
+\end{sol}
+
+
+\begin{prob}
+    \begin{enumerate}
+        \item Defina la curvatura Gaussiana para una superficie no orientable.
+        \item ¿Se puede definir la curvatura media para una superficie no orientable?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Como la curvatura Gaussiana no depende de la orientación, se toma una orientación local \(N\) y se calcula la curvatura Gaussiana con ella.
+        \item Como la curvatura media depende de la orientación, y no hay forma de tomar una orientación para toda la superficie, no se puede definir de forma diferenciable la curvatura media de la superficie, pero si de forma local, tomando alguna orientación local.
+    \end{enumerate}
+\end{sol}
+
+\end{document}

@@ -1,0 +1,84 @@
+\documentclass{homework}
+
+\title{Control 1}
+\date{2020-09-07}
+\gdate{2do Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Teoría de Autómatas y Lenguajes Formales --- IIC2223}
+
+
+% Comment for final compile
+%\ifx\condition\undefined
+%\def\condition{2}
+%\fi
+
+\ifx\condition\undefined
+\immediate\write18{ pdflatex -synctex=1 --jobname="P1\jobname" "\gdef\string\condition{0} \string\input\space\jobname"} 
+\immediate\write18{ pdflatex -synctex=1 --jobname="P2\jobname" "\gdef\string\condition{1} \string\input\space\jobname"} 
+
+\immediate\write18{rm *.aux *.log *.out}
+
+\expandafter\stop
+\fi
+
+\ifcase\condition
+\includecomment{p1}
+\excludecomment{p2}
+\or
+\excludecomment{p1}
+\includecomment{p2}
+\or
+\includecomment{p1}
+\includecomment{p2}
+\fi
+
+\newcommand{\ddarrow}{\ensuremath{{\downarrow\downarrow}}}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+\begin{p1}
+    \begin{prob}
+        Un autómata finito no determinista (NFA) \(\mathcal{A}=(Q,\Sigma,\Delta,I,F)\) se dice no-ambiguo, si para toda palabra \(w\in\mathcal{L}(\mathcal{A})\) existe exactamente una ejecución de aceptación de \(\mathcal{A}\) sobre \(w\). Por ejemplo, un autómata finito determinista es un NFA no-ambiguo, pero existen autómatas que no son deterministas, pero si no ambiguos.
+        \begin{enumerate}
+            \item Para \(i\geq0\), considere el lenguaje \(L_i\) de todas las palabras \(w=a_1\dots a_n\) sobre \(\{a,b\}\) con \(n>i\) tal que \(a_{n-i}=b\). Demuestre que para cada \(L_i\) existe un NFA no-ambiguo \(\mathcal{A}\) con menor o igual a \(i+2\).
+            \item Demuestre que para todo lenguaje regular \(L\) con \(\varepsilon\notin L\), existe un \(NFA\) no-ambiguo \(\mathcal{A}=(Q,\Sigma,\Delta,I,F)\) tal que \(\abs{I}=\abs{F}=1\) y \(\mathcal{L}(\mathcal{A})=L\).
+        \end{enumerate}
+    \end{prob}
+
+    \begin{sol}
+        \textit{Doy mi palabra que la siguiente solución de la pregunta 1 fue desarrollada y escrita individualmente por mi persona según el código de honor de la Universidad}
+        \begin{flushright}
+            ---Nicholas Mc-Donnell
+        \end{flushright}
+        \begin{enumerate}
+            \item Sea \(q_1\) estado `prefijo', \(q_2\) estado `b' y \(q_j\) con \(3\leq j\leq i+2\)\footnote{Si \(i=0\), se usa el estado \(q_2\)} como estados `sufijo'. Se tiene que \(q_{i+2}\in F\) y \(q_1\in I\), además se tiene que \(\Delta(q_1,c,q_1)\) y \(\Delta(q_j,c,q_{j+1})\) para \(c\in\Sigma\) y \(2\leq j<i+2\)\footnotetext{Ver 1}, por último se tiene \(\Delta(q_1,b,q_2)\). Lo anterior define \(\mathcal{A}_i\). Ahora, sea \(w\in L_i\), se tiene que \(w=a_1\dots a_n\) para algún \(n>i\), se ve la siguiente ejecución \(\rho:q_1\xrightarrow{a_1}q_1\xrightarrow{a_2}\dots\xrightarrow{a_{n-i-1}}q_1\xrightarrow{b}q_2\xrightarrow{a_{n-i+1}}q_3\xrightarrow{a_{n-i+2}}\dots\xrightarrow{a_{n-1}}q_{i+1}\xrightarrow{a_n}q_{i+2}\), como \(q_{i+2}\in F\) \(\mathcal{A}_i\) acepta \(w\), por lo que se tiene que \(\mathcal{L}(\mathcal{A}_i)\subseteq L_i\). Ahora, sea \(w\in\mathcal{L}(\mathcal{A}_i)\), tal que \(w=a_1\dots a_n\), se tiene que existe una ejecución \(\rho\) que acepta \(w\), se nota que \(n> i\) ya que toda palabra aceptada por \(\mathcal{A}_i\) tiene que pasar por los estados \(q_1\) a \(q_{i+2}\), que son \(i+1\) estados, más aún como toda ejecución que acepta tiene que pasar por esos estados, en especifico tiene que pasar por la transición \(\Delta(q_1,b,q_2)\) y como después de \(q_2\) las transiciones son `únicas'\footnote{Para cada \(q_k\) hay solo un \(q_j\) tal que \(\Delta(q_k,c,q_j)\) para algún \(c\in\Sigma\)}, se tiene que hay exactamente \(i-1\)\footnote{Si \(i=0\) el autómata es de \(2\) estados y \(q_2\) es de aceptación, por lo que una vez se llega al estado \(q_2\) no hay más transiciones.} estados por los que va a pasar para ser aceptada. Con lo anterior se tiene que \(a_{n-i}=b\), viendo ambas condiciones sobre \(w\), se tiene que \(w\in L_i\). Completando la demostración.
+            \item Sea \(\mathcal{A}\) un DFA tal que \(\mathcal{L}(\mathcal{A})=L\), se tiene que visto como NFA \(\abs{Q}=1\). Ahora, se construye un NFA \(\mathcal{A}'\) en base a \(\mathcal{A}\) de la siguiente manera, se crea un estado extra \(q_{final}\) que es de aceptación, y para todo otro estado de aceptación \(q_i\)\footnote{Se nota que como \(\varepsilon\notin L\) se tiene que \(q_0\) no es estado de aceptación.} se usa el siguiente proceso, para todo estado \(q_j\) y carácter \(a\in\Sigma\)  tal que \(\delta_{\mathcal{A}}(q_j,a)=q_i\) se agrega \(\Delta_{\mathcal{A}'}(q_j,a,q_{final})\), y una vez que toda transición que llegue al estado \(q_j\) se haya procesado se tiene que \(q_j\notin F\). Este NFA cumple que \(\mathcal{L}(\mathcal{A})=\mathcal{L}(\mathcal{A}')\) ya que para toda ejecución de aceptación \(\rho\) de \(\mathcal{A}\) sobre \(w\) se tiene una ejecución de aceptación \(\rho'\) con la diferencia que la última transición desde el estado correspondiente \(p_j\xrightarrow{w_k}p_i\) es \(p_j\xrightarrow{w_k}q_{final}\)\footnote{Para la otra implicania, es claro que por construcción tiene que existir un estado de aceptación \(p_i\in Q_\mathcal{A}\) tal que \(p_j\xrightarrow{w_k}p_i\)}, más aún esta transición es única por construcción y como \(\rho\) es única se tiene que la ejecución hasta \(p_i\) es única, con lo que se tiene que \(\rho'\) es única en su totalidad. Con lo anterior, se tiene que el NFA \(\mathcal{A}'\) cumple lo pedido.
+        \end{enumerate}
+    \end{sol}
+\end{p1}
+
+\begin{p2}
+    \begin{prob}
+        Sea \(\Sigma\) un alfabeto finito y sea \(R\) una expresión regular sobre \(Sigma\). Se define el operador:
+        \begin{equation*}
+            R^{\ddarrow}
+        \end{equation*}
+        tal que \(w\in\mathcal{L}(R^{\ddarrow})\) si, y solo si, existe una palabra \(w'\in\mathcal{L}(R)\) que se puede descomponer como \(w'=u_1v_1\dots u_kv_k\) para algún \(k\geq 1\) y con \(u_i,v_i\Sigma^*\), y tal que \(w=u_1\dots u_k\).
+
+
+        \noindent Demuestre que para toda expresión regular \(R\), el resultado \(R^{\ddarrow}\) define un lenguaje regular.
+    \end{prob}
+
+    \begin{sol}
+        \textit{Doy mi palabra que la siguiente solución de la pregunta 2 fue desarrollada y escrita individualmente por mi persona según el código de honor de la Universidad}
+        \begin{flushright}
+            ---Nicholas Mc-Donnell
+        \end{flushright}
+        Se ve que \(R^\ddarrow\) corresponde a todas las subsecuencias de carácteres\footnote{Incluida la secuencia vacia, i.e. la palabra vacia} de palabras aceptadas por \(R\). Sea \(w\in\mathcal{L}(R)\), entonces se tiene que \(w=w_1\dots w_k=u_1v_1\dots u_kv_k\) donde \(k=\abs{w}\) y se tiene \(\{u_i,v_i\}=\{\varepsilon,w_i\}\), por lo tanto \(u_1\dots u_k\in\mathcal{L}(R^\ddarrow)\), lo que nos dice que dado una palabra en \(\mathcal{L}(R)\) toda subsecuencia de carácteres pertenece a \(\mathcal{L}(R^\ddarrow)\). Para ver que \(\mathcal{L}(R^\ddarrow)\) es regular, se toma \(\mathcal{A}\) un DFA tal que \(\mathcal{L}(\mathcal{A})=\mathcal{L}(R)\), y se construye un NFA-\(\varepsilon\) \(\mathcal{A}'\) de la siguiente forma. Todo estado se vuelve estado de aceptación e iterativamente se hace el siguiente proceso, dados \(q_i,q_j\) tales que \(\delta(q_i,a)=q_j\) y \(a\in\Sigma\) se agrega \(\Delta(q_i,\varepsilon,q_j)\) Como hay finitos estados el proceso termina y nos define un NFA. Ahora, sea \(w\in\mathcal{L}(R)\) tal que \(w=u_1v_1\dots u_kv_k\) como se vio anteriormente, y \(\rho:p_1\xrightarrow{w_1}\dots \xrightarrow{w_k}p_{k+1}\) una ejecución de aceptación de \(\mathcal{A}\) sobre \(w\), sea \(i\) tal que \(u_i=\varepsilon\), entonces se puede ver la ejecución \(\rho':p_1\xrightarrow{w_1}\dots\xrightarrow{w_{i-1}}p_{i}\xrightarrow{\varepsilon}p_{i+1}\xrightarrow{w_{i+1}}p_{i+2}\xrightarrow{w_{i+2}}\dots\xrightarrow{w_k}p_{k+1}\), se ve entonces que toda subsecuencia de \(w\) es aceptada, pero se ve que toda palabra aceptada por \(\mathcal{A}'\) es una subsecuencia alguna palabra en \(\mathcal{A}\) por construcción\footnote{Las \(\varepsilon\)-transiciones nos garantizan eso.} Ahora, como cada NFA-\(\varepsilon\) define un lenguaje regular, se tiene que \(\mathcal{L}(R)\) es regular.
+    \end{sol}
+\end{p2}
+
+
+\end{document}

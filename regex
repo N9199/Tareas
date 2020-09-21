@@ -1,0 +1,2 @@
+Search: (\\begin\{prob\}\n)(.|\n)*?(\\end\{prob\})
+Replace: $1\n$3

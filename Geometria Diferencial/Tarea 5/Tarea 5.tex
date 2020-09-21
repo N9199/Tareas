@@ -1,0 +1,178 @@
+\documentclass{homework}
+
+\title{Tarea 5}
+\date{2020-06-25}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Geometría Diferencial - MAT2305}
+
+\setkeys{Gin}{width=.9\textwidth}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{sol}
+    Como \(\vec{x}_u\perp\vec{x}_v\) se tiene que \(F=\angled{\vec{x}_u,\vec{x}_v}=0\), ahora se calculan los símbolos de Christoffel:
+    \begin{align*}
+         & \begin{cases}
+            \Gamma^1_{1 1}\cdot E+\Gamma^2_{1 1}\cdot 0=\frac12E_u \\
+            \Gamma^1_{1 1}\cdot 0+\Gamma^2_{1 1}\cdot G=-\frac12E_v
+        \end{cases} \\
+         & \begin{cases}
+            \Gamma^1_{1 2}\cdot E+\Gamma^2_{1 2}\cdot 0=\frac12E_v \\
+            \Gamma^1_{1 2}\cdot 0+\Gamma^2_{1 2}\cdot G=\frac12G_u
+        \end{cases} \\
+         & \begin{cases}
+            \Gamma^1_{2 2}\cdot E+\Gamma^2_{2 2}\cdot 0=-\frac12G_u \\
+            \Gamma^1_{2 2}\cdot 0+\Gamma^2_{2 2}\cdot G=\frac12G_v
+        \end{cases} \\
+    \end{align*}
+    Con lo que se tiene
+    \begin{align*}
+         & \Gamma^1_{1 1}=\frac{E_u}{2E}  & \Gamma^2_{1 1}=-\frac{E_v}{2G} \\
+         & \Gamma^1_{1 2}=\frac{E_v}{2E}  & \Gamma^2_{1 2}=\frac{G_u}{2G}  \\
+         & \Gamma^1_{2 2}=-\frac{G_u}{2E} & \Gamma^2_{2 2}=\frac{G_v}{2G}
+    \end{align*}
+    Ahora, se recuerda que:
+    \begin{align*}
+        \vec{x}_{uu} & = \Gamma_{11}^1 \vec{x}_u + \Gamma_{11}^2 \vec{x}_v +eN \\
+        \vec{x}_{uv} & = \Gamma_{12}^1 \vec{x}_u + \Gamma_{12}^2 \vec{x}_v +fN \\
+        \vec{x}_{vv} & = \Gamma_{22}^1 \vec{x}_u + \Gamma_{22}^2 \vec{x}_v +gN
+    \end{align*}
+    Con lo que se vio más arriba se tiene que:
+    \begin{align*}
+        \vec{x}_{uu} & = \frac{E_u}{2E} \vec{x}_u - \frac{E_v}{2G} \vec{x}_v + eN  \\
+        \vec{x}_{uv} & = \frac{E_v}{2E} \vec{x}_u + \frac{G_u}{2G} \vec{x}_v + fN  \\
+        \vec{x}_{vv} & = -\frac{G_u}{2E} \vec{x}_u + \frac{G_v}{2G} \vec{x}_v + gN
+    \end{align*}
+    Además, sabemos que \(N_u=a_{11}\vec{x}_u+a_{21}\vec{x}_v\) y que \(N_v=a_{12}\vec{x}_u+a_{22}\vec{x}_v\), por lo que:
+    \begin{align*}
+        N_u &= \frac{fF-eG}{EG-F^2} \vec{x}_u + \frac{eF-fE}{EG-F^2} \vec{x}_v = - \frac{e}{E} \vec{x}_u - \frac{f}{G} \vec{x}_v \\
+        N_v &= \frac{gF - fG}{EG - F^2} \vec{x}_u + \frac{fF - gE}{EG - F^2} \vec{x}_v = - \frac{f}{E} \vec{x}_u - \frac{g}{G} \vec{x}_v
+    \end{align*}
+    Ahora, queremos desarrollar la expresión \(K=-\frac1{2\sqrt{EG}}\paren{\paren{\frac{E_v}{\sqrt{EG}}}_v+\paren{\frac{G_u}{\sqrt{EG}}}_u}\):
+    \begin{align*}
+        K&=-\frac1{2\sqrt{EG}}\paren{\paren{\frac{E_v}{\sqrt{EG}}}_v+\paren{\frac{G_u}{\sqrt{EG}}}_u}\\
+        &=-\frac1{2\sqrt{EG}}\paren{\frac{E_{vv}}{\sqrt{EG}}-\frac{E_v(E_vG+EG_v)}{2EG\sqrt{EG}}+\frac{G_{uu}}{\sqrt{EG}}-\frac{G_u(E_uG+EG_u)}{2EG\sqrt{EG}}}\\
+        &= - \, \frac{1}{2\sqrt{EG}} \paren{ - \, \frac{E_u G_u}{2E\sqrt{EG}} - \frac{E_v^2}{2E\sqrt{EG}} + \frac{2\sqrt{G}}{\sqrt{E}} \left( \frac{E_{vv}}{2G} - \frac{G_vE_v}{2G^2} \right) \right. \\
+        &{} \qquad {} \qquad {} \qquad {} \qquad \left. + \frac{E_vG_v}{2G\sqrt{EG}} + \frac{G_u^2}{2G\sqrt{EG}} + \frac{2\sqrt{G}}{\sqrt{E}} \paren{\frac{G_{uu}}{2G} - \frac{G_u^2}{2G^2}}}\\
+        &= - \, \frac{1}{2\sqrt{EG}} \paren{ - \, \frac{E_u G_u}{2E\sqrt{EG}} - \frac{E_v^2}{2E\sqrt{EG}} + \frac{2\sqrt{G}}{\sqrt{E}} \left( \frac{E_v}{2G} \right)_v \right. \\
+        &{} \qquad {} \qquad {} \qquad {} \qquad \left. + \frac{E_vG_v}{2G\sqrt{EG}} + \frac{G_u^2}{2G\sqrt{EG}} + \frac{2\sqrt{G}}{\sqrt{E}} \left( \frac{G_u}{2G} \right)_u} \\
+        &= \frac{1}{E} \paren{ \frac{E_u G_u}{4EG} + \frac{E_v^2}{4EG} - \left( \frac{E_v}{2G} \right)_v - \frac{E_vG_v}{4G^2} - \frac{G_u^2}{4G^2} - \left( \frac{G_u}{2G} \right)_u} \\
+    \end{align*}
+    Con todo lo anterior casi se tiene lo pedido, especificamente si \( \frac{E_u G_u}{4EG} + \frac{E_v^2}{4EG} - \left( \frac{E_v}{2G} \right)_v - \frac{E_vG_v}{4G^2} - \frac{G_u^2}{4G^2} - \left( \frac{G_u}{2G} \right)_u=\frac{eg-f^2}{G}\), tenemos lo pedido. Para esto veamos \(\vec{x}_{uuv}\) y \(\vec{x}_{uvu}\):
+    \begin{align*}
+        \vec{x}_{uuv}&=\paren{\frac{E_u}{2E} \vec{x}_u - \frac{E_v}{2G} \vec{x}_v + eN}_v\\
+        &=\paren{\frac{E_u}{2E}}_v \vec{x}_u+\frac{E_u}{2E}\vec{x}_{uv} - \paren{\frac{E_v}{2G}}_v \vec{x}_v+\frac{E_v}{2G}\vec{x}_{vv} + e_vN+eN_v\\
+        &=\paren{\frac{E_u}{2E}}_v \vec{x}_u+\frac{E_u}{2E}\paren{\frac{E_v}{2E} \vec{x}_u + \frac{G_u}{2G} \vec{x}_v + fN} \\
+        &{} \qquad {} \qquad {} \qquad {} \qquad - \paren{\frac{E_v}{2G}}_v \vec{x}_v+\frac{E_v}{2G}\paren{-\frac{G_u}{2E} \vec{x}_u + \frac{G_v}{2G} \vec{x}_v + gN} \\
+        &{} \qquad {} \qquad {} \qquad {} \qquad + e_vN+e\paren{ - \frac{f}{E} \vec{x}_u - \frac{g}{G} \vec{x}_v}\\
+        &=\vec{x}_u\paren{\paren{\frac{E_u}{2E}}_v+\frac{E_uE_v}{4E^2}-\frac{E_vG_u}{4EG}-\frac{ef}{E}}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad + \vec{x}_v\paren{-\paren{\frac{E_v}{2G}}_v+\frac{E_uG_u}{4EG}+\frac{E_vG_v}{4G^2}-\frac{eg}{G}}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad + N\paren{e_v+\frac{fE_v}{2E}+\frac{gE_v}{2G}}\\
+    \end{align*}
+    Para \(\vec{x}_{uvu}\):
+    \begin{align*}
+        \vec{x}_{uvu}&=\paren{\frac{E_v}{2E} \vec{x}_u + \frac{G_u}{2G} \vec{x}_v + fN}_u\\
+        &=\paren{\frac{E_v}{2E}}_u\vec{x}_u+\frac{E_v}{2E}\vec{x}_{uu}+\paren{\frac{G_u}{2G}}_u\vec{x}_v+\frac{G_u}{2G}\vec{x}_{vu}+f_uN+fN_u\\
+        &=\paren{\frac{E_v}{2E}}_u\vec{x}_u+\frac{E_v}{2E}\paren{\frac{E_u}{2E} \vec{x}_u - \frac{E_v}{2G} \vec{x}_v + eN}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad+\paren{\frac{G_u}{2G}}_u\vec{x}_v+\frac{G_u}{2G}\paren{\frac{E_v}{2E} \vec{x}_u + \frac{G_u}{2G} \vec{x}_v + fN}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad+f_uN+f\paren{- \frac{e}{E} \vec{x}_u - \frac{f}{G} \vec{x}_v}\\
+        &=\vec{x}_u\paren{\paren{\frac{E_v}{2E}}_u+\frac{E_uE_v}{4E^2}+\frac{E_vG_u}{4EG}-\frac{ef}{E}}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad+\vec{x}_v\paren{\paren{\frac{G_u}{2G}}_u-\frac{E_v^2}{4EG}+\frac{G_u^2}{4G^2}-\frac{f^2}{G}}\\
+        &{} \qquad {} \qquad {} \qquad {} \qquad+N\paren{f_u+\frac{eE_v}{2E}+\frac{fG_u}{2G}}
+    \end{align*}
+    Ahora, \(\vec{x}_{uuv}=\vec{x}_{uvu}\), por lo que \(\vec{x}_{uuv}-\vec{x}_{uvu}=0\), más aún como \(\{\vec{x}_u,\vec{x}_v,N\}\) es una base se tiene que los coeficientes son cero, específicamente se tiene que:
+    \begin{equation*}
+        \paren{-\paren{\frac{E_v}{2G}}_v+\frac{E_uG_u}{4EG}+\frac{E_vG_v}{4G^2}-\frac{eg}{G}}-\paren{\paren{\frac{G_u}{2G}}_u-\frac{E_v^2}{4EG}+\frac{G_u^2}{4G^2}-\frac{f^2}{G}}=0
+    \end{equation*}
+    Reescribiéndolo un poco:
+    \begin{equation*}
+        \frac{E_u G_u}{4EG} + \frac{E_v^2}{4EG} - \left( \frac{E_v}{2G} \right)_v - \frac{E_vG_v}{4G^2} - \frac{G_u^2}{4G^2} - \left( \frac{G_u}{2G} \right)_u=\frac{eg-f^2}{G}
+    \end{equation*}
+    Que es lo que queríamos, por lo que se tiene lo pedido.
+\end{sol}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Como \(K=\frac{eg-f^2}{EG-F^2}\), se tiene que \(K=-1\) y además como \(F=0\) se tiene que \(\vec{x}_u\perp\vec{x}_v\), por lo que \(K=-\frac1{2\sqrt{EG}}\paren{\paren{\frac{E_v}{\sqrt{EG}}}_v+\paren{\frac{G_u}{\sqrt{EG}}}_u}\), entonces se tendría que \(K=0\). Esto es una contradicción, por lo que no puede existir una superficie que cumpla eso.
+        \item Se calculan los símbolos de Christoffel:
+              \begin{align*}
+                   & \begin{cases}
+                      \Gamma^1_{1 1}\cdot 1+\Gamma^2_{1 1}\cdot 0=0 \\
+                      \Gamma^1_{1 1}\cdot 0+\Gamma^2_{1 1}\cdot \cos^2 u=0
+                  \end{cases}  \\
+                   & \begin{cases}
+                      \Gamma^1_{1 2}\cdot 1+\Gamma^2_{1 2}\cdot 0=0 \\
+                      \Gamma^1_{1 2}\cdot 0+\Gamma^2_{1 2}\cdot \cos^2 u=-\sin u\cos u
+                  \end{cases}  \\
+                   & \begin{cases}
+                      \Gamma^1_{2 2}\cdot 1+\Gamma^2_{2 2}\cdot 0=\sin u\cos u \\
+                      \Gamma^1_{2 2}\cdot 0+\Gamma^2_{2 2}\cdot \cos^2 u=0
+                  \end{cases} \\
+              \end{align*}
+              Por lo que \(\Gamma^1_{1 1}=\Gamma^2_{1 1}=\Gamma^1_{1 2}=\Gamma^2_{2 2}=0\), \(\Gamma^1_{2 2}=\sin u\cos u\) y \(\Gamma^2_{1 2}=-\tan u\). Se quiere que se cumplen las siguientes:
+              \begin{align*}
+                  (\Gamma^2_{1 2})_u-(\Gamma^2_{1 1})_v+\Gamma^1_{1 2}\Gamma^2_{1 1}+\Gamma^2_{1 2}\Gamma^2_{1 2}-\Gamma^2_{1 1}\Gamma^2_{2 2}-\Gamma^1_{1 1}\Gamma^2_{1 2}=-EK
+              \end{align*}
+              \begin{align*}
+                  e_v-f_u=e\Gamma^1_{1 2}+f(\Gamma^2_{1 2}-\Gamma^1_{1 1})-g\Gamma^2_{1 1} \\
+                  f_v-g_u=e\Gamma^1_{2 2}+f(\Gamma^2_{2 2}-\Gamma^1_{1 2})-g\Gamma^2_{1 2}
+              \end{align*}
+              Reemplazando se tiene lo siguiente:
+              \begin{align*}
+                  -\sec^2 u+\tan^2u=-1
+              \end{align*}
+              \begin{align*}
+                  0=\cos^2 u\cdot 0+0(\Gamma^2_{1 2}-\Gamma^1_{1 1}) \\
+                  0=\cos^2 u\cdot \cos u\sin u+0(\Gamma^2_{2 2}-\Gamma^1_{1 2})+\tan u
+              \end{align*}
+              Las primeras dos son trivialmente ciertas. Pero la última es falsa. Por lo que no existe tal superficie.
+    \end{enumerate}
+\end{sol}
+
+\begin{sol}
+    Se nota que la superficie se puede parametrizar con \(\vec{x}(r,\theta)=(r\cos\theta,r\sin\theta,r)\) con \(r>0\) y \(\theta\in(0,\frac\pi2)\), dado eso se tiene que:
+    \begin{align*}
+        \vec{x}_r      & =(\cos\theta,\sin\theta,1)    \\
+        \vec{x}_\theta & =(-r\sin\theta,r\cos\theta,0)
+    \end{align*}
+    Por lo que:
+    \begin{align*}
+        E & =\angled{\vec{x}_u,\vec{x}_u}=2   \\
+        F & =\angled{\vec{x}_u,\vec{x}_v}=0   \\
+        G & =\angled{\vec{x}_v,\vec{x}_v}=r^2
+    \end{align*}
+    Ahora, sea \(\vec{y}(r,\theta)=(\sqrt{2}r\cos\paren{\theta/\sqrt{2}},\sqrt{2}r\sin\paren{\theta/\sqrt{2}},0)\)
+    \begin{align*}
+        \vec{x}_r      & =(\sqrt{2}\cos\paren{\theta/\sqrt{2}},\sqrt{2}\sin\paren{\theta/\sqrt{2}},0) \\
+        \vec{x}_\theta & =(-r\sin\theta,r\cos\theta,0)
+    \end{align*}
+    Por lo que:
+    \begin{align*}
+        E & =\angled{\vec{x}_u,\vec{x}_u}=2   \\
+        F & =\angled{\vec{x}_u,\vec{x}_v}=0   \\
+        G & =\angled{\vec{x}_v,\vec{x}_v}=r^2
+    \end{align*}
+    Como los coeficientes de la primera forma fundamental son los mismos, el plano y el cono son localmente isométricos.
+\end{sol}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Sea \(\alpha\) la arcoparametrización de \(C\), ya que es una geodesica se tiene que \(n(t)=\pm N(t)\), donde \(n\) es la normal a la curva y \(N\) es la normal a la superficie. Ahora, como \(C\) es una linea de curvatura se tiene que cumple la siguiente ecuación \(N'=\lambda\alpha'\), además por Frenet se sabe que \(n'=-kt-\tau b\) y como \(N=\pm n\), se tiene que \(\pm\lambda\alpha'=-kt-\tau b\), como \(\alpha\) está arcoparametrizada \(\alpha'=t\), más aún como \(b\perp t\) se tiene que \(\tau=0\).
+        \item Similarmente al anterior, sea \(\alpha\) la arcoparametrización de \(C\), ya que es una geodesica se tiene que \(n(t)=\pm N(t)\), donde \(n\) es la normal a la curva y \(N\) es la normal a la superficie. Como es una curva plana no-recta se tiene que \(k\neq 0\) y \(\tau=0\). Usando Frenet y que \(n=\pm N\), se tiene que \(N'=\pm kt=\pm k\lambda\alpha'\).  Entonces por Olinde-Rodrigues se tiene que \(C\) es linea de curvatura.
+        \item Sea \(S\) el plano \(XY\), y sea \(\alpha\) una curva no recta, se sabe que una curva es linea de curvatura si y solo si cumple la siguiente ecuación:
+        \begin{equation*}
+            (fE-eF)(u')^2+(gE-eG)u'v'+(gF-fG)(v')^2=0
+        \end{equation*}
+        Ahora, como \(S\) es un plano se tiene que \(E=G=1\) y \(F=e=f=g=0\), por ende se tiene que toda curva dentro de \(S\) es linea de curvatura, especificamente \(\alpha\), por lo que tenemos lo pedido.
+    \end{enumerate}
+\end{sol}
+
+\begin{sol}
+
+\end{sol}
+
+\end{document}

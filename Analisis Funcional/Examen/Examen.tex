@@ -1,0 +1,115 @@
+\documentclass{homework}
+
+\title{Examen}
+\date{2019-12-19}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Analisis Funcional - MAT2555}
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{sol}
+    Sea \(\phi_0\in E^*\) tal que \(\norm{\phi_0}=1\) y \(\phi_0(x_0)=\norm{x_0}\), se nota que \(\norm{\phi_0(x_n)}\leq\norm{x_n}\), ahora es claro que \(\limsup_{n\rightarrow\infty}\norm{\phi_0(x_n)}\leq\liminf_{n\rightarrow\infty}\norm{x_n}\), pero se sabe que \(x_n\rightharpoonup x_0\) por lo que \(\limsup_{n\rightarrow\infty}\norm{\phi_0(x_n)}=\norm{\phi_0(x_0)}=\norm{x_0}\), con lo que se tiene que \(\norm{x_0}\leq\liminf_{n\rightarrow\infty}\norm{x_n}\).
+\end{sol}
+
+\begin{sol}
+    Dado que \(\angled{x,Tx}\geq0\) entonces \(\lambda\geq0\), luego por Cauchy-Schwartz se tiene que \(\angled{x,Tx}\leq\norm{x}\cdot\norm{Tx}\leq\norm{x}^2\norm{T}=\norm{T}\), por lo que \(\lambda\leq\norm{T}<\infty \). Ahora, para la desigualdad se recuerdan las siguientes identidades:
+    \begin{equation*}
+        \angled{x\pm y,Tx\pm Ty}=\angled{x,Tx}+\angled{y,Ty}\pm2\Re\angled{x,Ty}
+    \end{equation*}
+    Restando estas se tiene lo siguiente
+    \begin{equation*}
+        4\Re\angled{x,Ty}=\angled{x+y,Tx+Ty}-\angled{x-y,Tx-Ty}
+    \end{equation*}
+    Sea \(\omega_{x,y}\in\set{C}\) tal que \(\abs{\omega_{x,y}}=1\) y \(\abs{\angled{x,Ty}}=\angled{x,Ty}\cdot\omega_{x,y}\), con eso y lo anterior se tienen las siguientes desigualdades.
+    \begin{align*}
+        2\abs{\angled{x,Ty}}&=\frac12\abs{\angled{x+y,Tx+Ty}-\angled{x-y,Tx-Ty}}\\
+        &\leq\frac12\paren{\abs{\angled{x+y,T(x+y)}}+\abs{x-y,T(x-y)}}\\
+        &\leq\frac12\paren{\norm{x+y}^2\abs{\angled{\frac{x+y}{\norm{x+y}},T\frac{x+y}{\norm{x+y}}}}+\norm{x-y}^2\abs{\angled{\frac{x-y}{\norm{x-y}},T\frac{x-y}{\norm{x-y}}}}}\\
+        &\leq\frac12\abs{\norm{x+y}^2\lambda+\norm{x-y}^2\lambda}=\frac12\lambda\paren{2\norm{x}^2+2\norm{y}^2}\\
+        &\leq\lambda\paren{\norm{x}^2+\norm{y}^2}
+    \end{align*}
+    Con lo que se tiene lo pedido.
+\end{sol}
+
+\begin{sol}
+    Sea \(t>0\), luego por la pregunta anterior se tiene lo siguiente:
+    \begin{equation*}
+        2\abs{\angled{\frac1tx,Ty}}\leq\lambda\paren{\norm{\frac1tx}^2+\norm{y}^2}
+    \end{equation*}
+    Y al multiplicar por \(t\) se deduce que
+    \begin{equation}
+        2\abs{\angled{x,Ty}}\leq\lambda\paren{\frac1t\norm{x}^2+t\norm{y}^2}\label{eq1}
+    \end{equation}
+    Dado lo anterior, sea \(y_n\) una sucesión tal que \(\frac{\norm{Ty_n}}{\norm{T}\norm{y_n}}\geq1-\frac1n\), y sea \(x_n=Ty_n\) luego se tiene lo siguiente:
+    \begin{align*}
+        \paren{1-\frac1n}^2&\leq\frac{2\norm{Ty_n}^2}{2\norm{T}^2\norm{y_n}^2}=\frac{2\abs{\angled{Ty_n,Ty_n}}}{(\norm{T}\norm{y_n})^2+\norm{T}^2\norm{y_n}^2}\\
+        &\leq\frac{2\abs{\angled{x_n,Ty_n}}}{\norm{x_n}^2+\norm{T}^2\norm{y_n}^2}
+    \end{align*}
+    Dado la anterior y tomando \(t=\norm{T},x=x_n,y=y_n\) en \eqref{eq1} se tiene lo siguiente
+    \begin{equation*}
+        \paren{1-\frac1n}^2\leq\frac{2\abs{\angled{x_n,Ty_n}}}{\norm{x_n}^2+\norm{T}^2\norm{y_n}^2}\leq\frac\lambda{\norm{T}}
+    \end{equation*}
+    Tomando el limite se tiene que \(\lambda\geq\norm{T}\), por lo que junto con la desigualdad vista en la pregunta 2, se tiene que \(\lambda=\norm{T}\).
+\end{sol}
+
+\begin{sol}
+    Ya que \(T\) es un operador compacto se tiene que \(Tx_n\rightarrow Tx_0\) en norma, además ya que \(x_n\rightharpoonup x_0\) se tiene que \(\angled{x_n,Tx_0}\rightarrow\angled{x_0,Tx_0}\), por último se quiere que la sucesión \(x_n\) sea acotada. Para esto se define el siguiente funcional lineal \(T_n(y)=\angled{y,x_n}\), para un \(y\in E\) fijo se tiene que \(T_ny\rightarrow <y,x_0>\) en norma, por lo que la sucesión es acotada por alguna constante \(c_y\), con lo que por Banach-Steinhaus se tiene que la sucesión \(\norm{T_n}\) es acotada, pero es claro que \(\norm{T_n}=\norm{x_n}\), por lo que \(x_n\) es acotada con cota \(C\). Juntando todo lo anterior, se llega a la siguiente desigualdad:
+    \begin{equation*}
+        \norm{\angled{x_n,Tx_n}-\angled{x_0,Tx_0}}\leq\norm{\angled{x_n,Tx_n-Tx_0}}+\norm{\angled{x_n,Tx_0}-\angled{x_0,Tx_0}}
+    \end{equation*}
+    Se nota que existe \(n_1\) tal que para \(n\geq n_1\) se tiene que \(\norm{Tx_n-Tx_0}<\frac\varepsilon{2C}\), y que existe \(n_2\) tal que para \(n\geq n_2\) se tiene que \(\norm{\angled{x_n,Tx_0}-\angled{x_0,Tx_0}}<\frac\varepsilon2\), tomando \(n_3=\min(n_1,n_2)\) se tiene que:
+    \begin{align*}
+        \norm{\angled{x_n,Tx_n}-\angled{x_0,Tx_0}}&\leq\norm{Tx_n-Tx_0}C+\norm{\angled{x_n,Tx_0}-\angled{x_0,Tx_0}}\\
+        &\leq\frac\varepsilon2+\frac\varepsilon2=\varepsilon
+    \end{align*}
+    Por lo que \(\angled{x_n,Tx_n}\rightarrow\angled{x_0,Tx_0}\).
+\end{sol}
+
+\begin{sol}
+    Se nota que si \(\lambda=0\), se tiene trivialmente lo pedido al tomar \(x_0=0\). Se asume que \(\lambda>0\), como \(\lambda=\sup_{\norm{x}=1}\angled{x,Tx}\) existe una sucesión \(x_n\) tal que \(\angled{x_n,Tx_n}\rightarrow\lambda\) y que \(\norm{x_n}=1\). Ahora como \(H\) es Hilbert, especificamente es Banach reflexivo y \(x_n\) es acotada, por lo que tiene una subsucesión tal que \(x_{n_k}\rightharpoonup x_0\). Recordamos que \(T\) es compacto y que por la pregunta 4 se tiene que \(\angled{x_{n_k},Tx_{n_k}}\rightarrow\angled{x_0,Tx_0}\), pero se tiene que \(\angled{x_n,Tx_n}\rightarrow \angled{x_0,Tx_0}\) por lo que \(\lambda=\angled{x_0,Tx_0}\). Para ver que \(\norm{x_0}=1\), se recuerda que \(x_{n_k}\rightharpoonup x_0\) entonces de la pregunta 1 se tiene que \(\norm{x_0}\leq\liminf_{k\rightarrow\infty}\norm{x_{n_k}}\), pero \(\norm{x_{n_k}}=1\), por lo que \(\norm{x_0}\leq1\). Se ve que \(\abs{\angled{x_0,Tx_0}}\leq\norm{x_0}\norm{T}\norm{x_0}\), por lo que si \(\norm{x_0}<1\) se tiene que \(\norm{T}=\lambda=\angled{x_0,Tx_0}\leq\norm{x_0}^2\norm{T}<\norm{T}\) lo que es una contradicción. Por lo que \(\norm{x_0}=1\).
+\end{sol}
+
+\begin{sol}
+    Para demostrar que \(f_y(0)\) es un máximo local, se nota que que \(f_y(0)=\lambda\), y como \(\norm{x(t)}=1\) se tiene que \(\angled{x(t),Tx(t)}\leq\lambda\), con lo que se tiene lo pedido. Por lo que se tiene que \(f_y'(0)=0\), ahora para calcular este último se verán las siguientes expresiones:
+    \begin{align}
+        (\angled{f(t),g(t)})'&=\angled{f'(t),g(t)}+\angled{f(t),g'(t)}\label{eq2}\footnotemark\\
+        \paren{\norm{f(t)}}&=\frac{\Re\angled{f'(t),f(t)}}{\norm{f(t)}}\label{eq3}\\
+        x'(t)&=\frac{y\norm{x_0+ty}^2-\paren{x_0+ty}\Re\angled{y,x_0+ty}}{\norm{x_0+ty}^3}\label{eq4}
+    \end{align}
+    \footnotetext{Esta y la expresión siguiente serán demostradas al final en el \hyperlink{apartado}{apartado}.}
+    Se nota que la expresión en \eqref{eq4} aparece por el uso la expresión en \eqref{eq3}. Ahora, usando \eqref{eq2} y \eqref{eq4} se puede calcular \(f_y'(0)\) fácilmente:
+    \begin{align*}
+        0&=f_y'(0)\\
+        &=\angled{x'(0),Tx(0)}+\angled{x(0),Tx'(0)}\\
+        &=\angled{y-x_0\Re\angled{y,x_0},Tx_0}+\angled{x_0,Ty-\Re\angled{y,x_0}Tx_0}\\
+        &=\angled{y,Tx_0}-\Re\angled{y,x_0}\angled{x_0,Tx_0}+\angled{x_0,Ty}-\angled{x_0,Tx_0}\Re\angled{y,x_0}\\
+        &=2\Re\angled{y,Tx_0}-2\lambda\Re\angled{y,x_0}\\
+        &=2\paren{\Re\angled{y,Tx_0}-\Re\angled{y,\lambda x_0}}\\
+        &=2\Re\angled{y,Tx_0-\lambda x_0}
+    \end{align*}
+    Tomando \(y=Tx_0-\lambda x_0\) se tiene que \(\Re\angled{y,y}=\angled{y,y}=0\), por lo que \(Tx_0=\lambda x_0\).
+\end{sol}
+
+\section*{\hypertarget{apartado}{Apartado}}
+Aquí se demostraran las siguientes afirmaciones:
+\begin{align*}
+    &\paren{\angled{f(t),g(t)}}'=\angled{f'(t),g'(t)} +\angled{f(t),g'(t)} & \paren{\norm{f(t)}}'=\frac{\Re\angled{f'(t),f(t)}}{\norm{f(t)}}
+\end{align*}
+\begin{proof}
+    Sean \(g,f\) funciones diferenciables en H, sea \(h(t)=\angled{f(t),g(t)}\). Se ve la siguiente identidad:
+    \begin{equation*}
+        {\angled{f(t+h),g(t+h)}-\angled{f(t),g(t)}}={\angled{f(t+h),g(t+h)}-\angled{f(t),g(t+h)}+\angled{f(t),g(t+h)}-\angled{f(t),g(t)}}
+    \end{equation*}
+    Por lo que se nota que
+    \begin{equation*}
+        \lim_{h\rightarrow0}\frac{h(t+h)-h(t)}h=\lim_{h\rightarrow0}\frac{\angled{f(t+h),g(t+h)}-\angled{f(t),g(t+h)}}h+\frac{\angled{f(t),g(t+h)}-\angled{f(t),g(t)}}h
+    \end{equation*}
+    Ahora por la linealidad del producto interno se tiene que \(h'(t)=\angled{f'(t),g(t)}+\angled{f(t),g'(t)}\).\\
+    Ahora se nota que \(\norm{f(t)}=\sqrt{\angled{f(t),f(t)}}\), por lo que usando la regla de la cadena y desarrollando se llega que \(\paren{\norm{(f(t))}}'=\frac{\Re\angled{f'(t),f(t)}}{\norm{f(t)}}\).
+\end{proof}
+
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass{homework}
+
+\title{I2}
+\date{2020-06-05}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Topología - MAT2545}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Demuestre que \(\set{R}\) con la topología del complemento finito tiene la propiedad que todo subespacio es compacto.
+\end{prob}
+
+\begin{sol}
+    Sea \(U_\alpha\) un cubrimiento abierto de \(Y\subset\set{R}\), se fija algún \(U_{\alpha_0}\). Se recuerda que los \(U_\alpha=\set{R}\setminus\{a_1,\dots,a_n\}\), s.p.d.g. los \(a_i\in Y\), en caso de que alguno no este se ignora el \(U_{\alpha_i}\) correspondiente. Dado lo anterior, para que los \(U_\alpha\) cubran \(Y\) tienen que existir \(U_{\alpha_1},\dots,U_{\alpha_n}\) tal que \(a_i\in U_{\alpha_i}\), por lo tanto se ve que \(Y\subset\bigcup_{i=0}^nU_{\alpha_i}\), como \(U_{\alpha_i}\) es un subcubrimiento finito se tiene que \(Y\) es un subespacio compacto.
+\end{sol}
+
+\begin{prob}
+    Considere el espacio métrico \(l^2\) cuyos elementos son sucesiones reales \(a=(a_n)_{n\geq0}\) tales que \(\sum a_n^2<\infty\), con la métrica inducida por la norma \(\norm{a}_2=\sqrt{\sum a_n^2}\). Demuestre que \(l^2\) no es localmente compacto.
+\end{prob}
+
+\begin{sol}
+    Se asume que \(l^2\) es localmente compacto. Sea \(\vec{0}=(0,0,0,\dots)\), todo vecindad de \(\vec{0}\) contiene a \(B(\vec{0},\varepsilon)\) para algún \(\varepsilon>0\), se nota que \(\{\varepsilon/2\cdot e_n\}_{n\geq0}\in B(\vec{0},\varepsilon)\) donde \(e_n\) es la sucesión \(a_k\) que cumple que \(a_k=1\) ssi \(k=n\) y que \(a_k=0\) ssi \(k\neq n\). Ahora, como \(l^2\) es localmente compacto, para algún \(\varepsilon>0\) \(B(\vec{0},\varepsilon)\) tiene que estar contenido en un subespacio compacto de \(l^2\), por ende toda sucesión en \(B(\vec{0},\varepsilon)\) tiene que tener una subsucesión convergente, pero \(\{\varepsilon/2\cdot e_n\}_{n\geq0}\) está en \(B(\vec{0},\varepsilon)\) y no tiene subsucesiones convergentes, lo que es una contradicción, por ende \(l^2\) no es localemente compacto.
+\end{sol}
+
+\begin{prob}
+    Muestre que si \(X\) es un e.t. regular (T3), todo par de puntos de \(X\) tiene vecindades cuyas clausuras son disjuntas.
+\end{prob}
+
+\begin{sol}
+    Por lema visto en clase se tiene que si \(X\) es regular para todo \(x\in X\) y \(V\) abierto tal que \(x\in V\), existe un abierto \(U\) tal que \(x\in U\subset\overline{U}\subset V\). Ahora, sean \(x,y\in X\), se nota que \(X\setminus\{y\}\) es un abierto\footnote{Para cada punto \(x\in X\) tiene que existir un abierto \(U_x\) tal que \(y\notin U_x\), por lo que \(X\setminus\{y\}=\bigcup_{x\neq y}U_x\)}, y que \(x\in X\setminus\{y\}\) por lo que existe \(V\) abierto tal que \(x\in V\subset\overline{V}\subset X\setminus\{y\}\), ahora \(X\setminus\overline{V}\) es abierto, más aún \(y\in X\setminus\overline{V}\), por lo que existe un \(U\) tal que \(y\in U\subset\overline{U}\subset X\setminus\overline{V}\), con lo que se tiene que \(\overline{U}\cap\overline{V}=\emptyset\). Como \(x\in V, y\in U\), \(U,V\) son abiertos y \(\overline{U}\cap\overline{V}=\emptyset\), se tiene lo pedido.
+\end{sol}
+
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass{homework}
+
+\title{I1}
+\date{2020-04-15}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Geometría Diferencial - MAT2305}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Sea \(\alpha(t)=\paren{e^t\cos t,e^t \sin t, e^t}\) con \(t\in\set{R}\).
+    \begin{enumerate}
+        \item Describala, y calcule el largo del segmento de curva correspondiente a \(t\in(-\infty,0]\).
+        \item Calcule el vector tangente unitario \(\hat{t}\), y úselo para encontrar la curvatura \(\kappa\) y el vector normal unitario \(\hat{n}\).
+        \item Demuestre que los vectores \(\hat{t},\hat{n}\) y \(\hat{b}\) son periódicos, pero \(\kappa\) tiende a \(\infty\) cuando \(t\rightarrow -\infty\). ¿Cómo se explica esto?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item La curva se ve como un espiral que se aleja muy rápido del \(\paren{0,0,0}\), pero que además nunca toca el \(\paren{0,0,0}\), esto se debe a que su norma se comporta como una función exponencial con respecto a \(t\). Para el cálculo del largo de segmento hay que considerar la integral \(\int_{-\infty}^0\norm{\alpha'(t)}\d{t}\), esto se desarrollará aquí:
+        \begin{align*}
+            \int_{-\infty}^0\norm{\alpha'(t)}\d{t}&=\int_{-\infty}^0\norm{(e^t\paren{\cos t,\sin t, 1})'}\d{t}\\
+            &=\int_{-\infty}^0\norm{(e^t)'\paren{\cos t,\sin t, 1}+e^t\paren{\cos t, \sin t, 1}'}\d{t}\\
+            &=\int_{-\infty}^0\norm{e^t\paren{\paren{\cos t,\sin t, 1}+\paren{(\cos t)', (\sin t)', (1)'}}}\d{t}\\
+            &=\int_{-\infty}^0\norm{e^t\paren{\paren{\cos t+\sin t,\sin t-\cos t, 1}}}\d{t}\\
+            &=\int_{-\infty}^0e^t\norm{\paren{\cos t+\sin t,\sin t-\cos t, 1}}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{\paren{\cos t+\sin t}^2+\paren{\sin t-\cos t}^2+1}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{(\cos t)^2+2\cos t\sin t+(\sin t)^2+(\sin t)^2-2\cos t\sin t+(\cos t)^2+1}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{2(\cos t)^2+2(\sin t)^2+1}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{2\paren{(\cos t)^2+(\sin t)^2}+1}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{2\cdot 1+1}\d{t}\\
+            &=\int_{-\infty}^0e^t\sqrt{3}\d{t}\\
+        \end{align*}
+            Por temas de espacio se divide el desarrollo en dos partes:
+        \begin{align*}
+            \int_{-\infty}^0\norm{\alpha'(t)}\d{t}
+            &=\sqrt{3}\int_{-\infty}^0e^t\d{t}\\
+            &=\sqrt{3}\paren{e^t\mid_{-\infty}^0}\\
+            &=\sqrt{3}\paren{e^0-\lim_{t\rightarrow -\infty}e^t}\\
+            &=\sqrt{3}\paren{1-0}\\
+            &=\sqrt{3}\cdot1\\
+            &=\sqrt{3}
+        \end{align*}
+        Con lo que se tiene que el largo de la curva es \(\sqrt{3}\).
+        \item Reusando parte de los cálculos de la parte anterior, se sabe que \(\alpha'(t)=e^t(\cos t+\sin t,\sin t-\cos t, 1)\), y que su norma es \(e^t\sqrt{3}\), por lo que \(\hat{t}=\frac{\alpha'(t)}{\norm{\alpha'(t)}}=\frac{e^t(\cos t+\sin t,\sin t-\cos t, 1)}{e^t\sqrt{3}}=\frac1{\sqrt{3}}\paren{\cos t+\sin t, \sin t-\cos t, 1}\). Ahora se recuerda que la derivada de \(\hat{t}\) respecto a su longitud de arco \(s\) es \(\frac{\d{}}{\d{s}}\hat{t}(s)=\kappa(s)\hat{n}(s)\), por lo que usando que \(\frac{\d{}}{\d{s}}t=\frac1{\norm{\alpha'}}\)\footnote{Demostrado en Tarea 1} y la regla de la cadena se puede llegar a
+        \begin{align*}
+            \frac{\d{}}{\d{s}}\hat{t}(t(s))&=\frac{\d{}}{\d{t}}\hat{t}(t)\cdot\frac{\d{}}{\d{s}}t\\
+            &=\frac{\d{}}{\d{t}}\paren{\frac1{\sqrt{3}}\paren{\cos t+\sin t,\sin t-\cos t, 1}}\cdot\frac1{\norm{\alpha'(t)}}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\paren{-\sin t+\cos t,\cos t+\sin t, 0}
+        \end{align*}
+        Dado eso, se nota que la norma de este último vector corresponde a \(\kappa\), ahora calculando esa norma:
+        \begin{align*}
+            \kappa(t)&=\norm{\frac1{\norm{\alpha'(t)}\sqrt{3}}\paren{-\sin t+\cos t,\cos t+\sin t, 0}}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\norm{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\paren{(-\sin t+\cos t)^2+(\cos t+\sin t)^2+0^2}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\sqrt{(\sin t)^2-2\sin t\cos t+(\cos t)^2+(\cos t)^2+2\cos t\sin t+(\sin t)^2+0^2}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\sqrt{2(\sin t)^2+2(\cos t)^2}\\
+            &=\frac1{\norm{\alpha'(t)}\sqrt{3}}\sqrt{2}\\
+            &=\frac{\sqrt{2}}{\norm{\alpha'(t)}\sqrt{3}}\\
+            &=\frac{\sqrt{2}}{e^t\sqrt{3}\sqrt{3}}\\
+            &=\frac{\sqrt{2}}{3e^t}\\
+            &=\frac{\sqrt{2}}3e^{-t}\\
+        \end{align*}
+        Ahora, se reusa parte de los cálculos anteriores para llegar a lo siguiente:
+        \begin{align*}
+            \hat{n}(t)&=\frac{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}{\norm{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}}\\
+            &=\frac{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}{\sqrt{(-\sin t+\cos t)^2+(\cos t+\sin t)^2+ 0^2}}\\
+            &=\frac{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}{\sqrt{(-\sin t)^2-2\sin t\cos t+(\cos t)^2+(\cos t)^2+2\cos t\sin t+(\sin t)^2+ 0}}\\
+            &=\frac{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}{\sqrt{2(\sin t)^2+2(\cos t)^2}}\\
+            &=\frac{\paren{-\sin t+\cos t,\cos t+\sin t, 0}}{\sqrt{2}}\\
+        \end{align*}
+        Con esto se consigue \(\hat{n}\) y \(\kappa\).
+        \item Usando los cálculos anteriores se recuerda que \(\hat{t}=\frac1{\sqrt{3}}\paren{\cos t+\sin t, \sin t-\cos t, 1}\) y que \(\hat{n}=\frac1{\sqrt{2}}\paren{-\sin t+\cos t,\cos t+\sin t, 0}\), se nota que cada componente de \(\hat{t}\) es periódico, ya que, o es constante, o es la combinación lineal de funciones trigonométricas con el mismo periodo, por lo que \(\hat{t}\) es periódico, igualmente \(\hat{n}\) es periódico bajo el mismo argumento. Ahora, dado dos funciones periódicas  \(f,g\) con el mismo periodo \(T\), se define una tercera función \(h(t)=f(t)\wedge g(t)\), se tiene que \(h\) es periódica con periodo \(T\) ya que \(h(t+T)=f(t+T)\wedge g(t+T)=f(t)\wedge g(t)=h(t)\). Dado que \(\hat{b}=\hat{t}\wedge \hat{n}\) y que \(\hat{t}\) y \(\hat{n}\) son ambas periódicas con periodo \(2\pi\), se tiene que \(\hat{b}\) es periódica con periodo \(2\pi\). Por último, recordamos que \(\kappa(t)=\frac{\sqrt{2}}3e^{-t}\), por lo que \(\kappa\rightarrow\infty\) cuando \(t\rightarrow-\infty\). Esto último se explica por como la curva \(\alpha\) se comporta cerca del \(0\), como \(alpha\) se acerca a \(\paren{0,0,0}\) y \(\alpha/\norm{\alpha}\) se comporta como un círculo (i.e. rota alrededor del origen con una rapidez constante) se tiene que la curvatura tiene que ir aumentando cada vez más rápido para poder mantener la rotación mientras que \(\alpha\) se acerca al \((0,0,0)\).
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    ¿Puede una curva\dots? Demuestre que no, o determine en que casos se cumple (si y solo si).
+    \begin{enumerate}
+        \item ¿Puede una curva sin singularidades de orden 1 estar contenida en su plano osculador?
+        \item ¿Puede una curva sin singularidades de orden 1 estar contenida en su plano normal? ¿en su plano rectificante?
+        \item ¿Puede ser una curva regular tener vector tangente unitario constante?
+        \item ¿Puede ser una curva regular tener vector normal unitario constante?
+        \item ¿Puede ser una curva regular tener vector binormal unitario constante?
+        \item ¿Puede una curva diferenciable, con vector tangente definido en todo punto, tener un punto \(p\) donde la traza no tiene vector tangente unitario bien definido?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Si, se nota que esto se cumple si y solo si \(\hat{b}\) es constante\footnote{Esto se debe a que el plano osculador tiene que ser único, y por ende el vector normal al plano osculador tiene que ser único.}. Ahora, al derivar \(b\) respecto a \(s\) se tiene que \(b'=\tau n\), pero \(b=\norm{b}\hat{b}\), por lo que \(b'=\hat{b}'\norm{b}+\hat{b}\norm{b}'=\hat{b}\norm{b}'\), ahora \(\hat{b}\) y \(\hat{n}\) son linealmente independientes por definición, por lo que \(\tau=0\) y \(\norm{b}'=0\). Para la reciproca, si \(\tau=0\) entonces se tiene que \(b'=0\), por lo que \(b\) es constante, y específicamente \(\hat{b}\) es constante.
+        \item No a ambas. Sea \(\alpha\) una curva tal que este contenida en su plano normal, se tiene que el plano normal tiene que ser único, y por ende \(\hat{t}\) tiene que ser constante, dado esto y usando las formulas de Frenet, se llega a que \(t'=\hat{t}'\norm{t}+\hat{t}\norm{t}'=\hat{t}\norm{t}'=\kappa \hat{n}\), pero \(\hat{t}\) y \(\hat{n}\) son linealmente independientes por lo que \(\kappa=0\). Con lo que \(\alpha\) tendría singularidades de orden 1, de esto se concluye que una curva sin singularidades de orden 1 no puede estar contenida en su plano normal. En el caso del plano rectificante, se tiene que \(\hat{n}\) es constante, por lo que al usar las formulas de Frenet se tiene que \(-\kappa \hat{t}-\tau \hat{b}=n'=\hat{n}'\norm{n}+\hat{n}\norm{n}'=\hat{n}\norm{n}'\), como \(\hat{t},\hat{b}\) y \(\hat{n}\) son linealmente independientes se tiene que \(\tau=\kappa=\norm{n}'=0\), por lo que la curva tiene singularidades de orden 1.
+        \item Si, como se vio antes se tendría que \(\kappa=0\), por lo que correspondería a una recta, o parte de una recta.
+        \item No, 
+        \item Si, como se respondió en la pregunta 2(a), se cumple si y solo si \(\kappa=0\).
+        \item Si, si una curva parametrizada \(\alpha(t)\) se auto-intersecta, se cumple que en ese punto la tangente de la traza no está bien definida, pero la tangente de la parametrización si lo está. 
+    \end{enumerate}
+\end{sol}
+
+
+\begin{prob}
+    Sea \(M\) la imagen de \(\vec{x}(u,v)=\paren{u^2+v,u^2-v,u^4+v^2}\), para \((u,v)\in\set{R}^2\).
+    \begin{enumerate}
+        \item Encuentre el\/los conjunto(s) más grande(s) \(U\) en el plano \(uv\) tal que \(\vec{x}:U\rightarrow\set{R}^3\) es un parche coordenado. (Demuéstrelo) (Obs: los conjuntos \(U\) pueden ser disconexos.)
+        \item Describa el conjunto \(M\) y determine si \(M\) es una superficie regular.
+        \item Calcule los coeficientes de la primera forma fundamental de \(S=\vec{x}(U)\), y úselos para calcular el ángulo entre las curvas coordenadas \(u=\)constante y \(v=\)constante. ¿Cuando son perpendiculares?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+
+\begin{prob}
+    Demuestre la siguiente proposición:\\
+    Sean \(S_1\) y \(S_2\) superficies regulares, \(U\) un abierto de \(S_1,p\in U\) y \(\varphi:U\rightarrow S_2\) diferenciable. Si \(\d{\varphi_p}\) es un isomorfismo, entonces \(\varphi\) es un difeomorfismo local en \(p\).
+\end{prob}
+
+\begin{sol}
+    Sean \((u,v)\) coordenadas locales de \(S_1\) y \((x,y)\) de \(S_2\), luego \(\varphi(u,v)=(x,y)\), luego se tiene lo siguiente:
+    \[\ds\d{\varphi_p}=\begin{pmatrix}
+        \frac{\partial x}{\partial u} &\frac{\partial x}{\partial v}\\
+        \frac{\partial y}{\partial u} &\frac{\partial y}{\partial v}
+    \end{pmatrix}\]
+    Como este es un isomorfismo, su determinante es no cero, pero usando el teorema de la función implícita se tiene que \(\varphi\) tiene inversa local y esta es diferenciable, por ende \(\varphi\) es difeomorfismo local.
+\end{sol}
+
+
+\begin{prob}
+    Sea \(T\) el toro de rotación con radios 2 y 1 (como en clases/libro), y \(S^2\) la esfera unitaria. Sea \(F:T\rightarrow S^2\) la función que a cada punto del toro le asigna su normal unitaria exterior.
+    \begin{enumerate}
+        \item \,[3 puntos] Demuestre que \(F\) es diferenciable.
+        \item \,[1 punto] Demuestre que \(F\) no es un difeomorfismo.
+        \item \,[2 puntos] Determine para que puntos \(p\in T\) la función \(F\) es un difeomorfismo local en \(p\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item \(F\) se puede expresar como la siguiente función \(F(p)=\frac{p}{\norm{p}}\) donde \(p\in T\). 
+        \item Si \(F\) fuera difeomorfismo, este sería biyectivo, pero se toma el punto \((3,0,0)\) y el punto \((1,0,0)\), ambos pertenecen a \(T\) y ambos se mapean a \((1,0,0)\) en \(S^2\).
+    \end{enumerate}
+\end{sol}
+
+\end{document}

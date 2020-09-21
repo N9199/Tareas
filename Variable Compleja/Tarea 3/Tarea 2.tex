@@ -1,0 +1,159 @@
+\documentclass{homework}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{multicol}
+
+\title{Tarea 2}
+\date{2019-09-06}
+\gdate{2do Semestre 2019}
+\author{Nicholas Mc-Donnell}
+\course{Variable Compleja - MAT2705}
+
+\begin{document}
+\maketitle
+\pagenumbering{roman}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\begin{prob}
+    Integrando la función \(\exp(\frac{-x^2}2)\) sobre el rectángulo de vértices \(\pm R,it\pm R\) y tomando límite, demuestre que
+    \begin{equation*}
+        \frac1{\sqrt{2\pi}}\int_{-\infty}^\infty\exp\paren{\frac{-x^2}2}\exp(-itx)\d{x}=\exp\paren{\frac{-t^2}2},-\infty<t<\infty
+    \end{equation*}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Calcule las siguientes integrales
+    \begin{enumerate}
+        \item \(\int_{\abs{z}=2}\frac{z^n}{z-1}\d{z}\) con \(n>0\).
+        \item \(\int_{\abs{z-1-i}=\frac54}\frac{\log(z)}{(z-1)^2}\d{z}\), donde \(\log\) es la rama principal de logaritmo.
+        \item \(\int_{\abs{z}=1}\frac1{z^2(z^2-4)\exp(z)}\d{z}\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    Notemos que por teorema visto en clase dado una función analítica \(f\), si \(a\) está dentro del disco de radio \(r\) centrado en \(z_0\), entonces \(f(a)=\frac1{2\pi i}\int_{\abs{z-z_0}=r}\frac{f(z)}{z-a}\d{z}\). Más aún, \(f'(a)=\frac1{2\pi i}\int_{\abs{z-z_0}=r}\frac{f(z)}{(z-a)^2}\d{z}\). Usando lo anterior se calculan las siguientes integrales:
+    \begin{enumerate}
+        \item \(\int_{\abs{z}=2}\frac{z^n}{z-1}\d{z}=2\pi i\cdot 1^n=2\pi i\)
+        \item \(\int_{\abs{z-1-i}=\frac54}\frac{\log(z)}{(z-1)^2}\d{z}=2\pi i\cdot\frac11=2\pi i\)
+        \item \(\int_{\abs{z}=1}\frac1{z^2(z^2-4)\exp(z)}\d{z}=2\pi i\cdot\frac{-\exp(-1)\cdot(1^2-4)-\exp(-1)\cdot(2)}{(1^2-4)^2}=\frac{2\pi i}{9e}\)
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Sea \(h:[a,b]\rightarrow\set{R}\) continua. Se define la función
+    \[H(z)=\int_a^bh(t)\exp(-itz)\d{t}.\]
+    Demuestre que \(H\) es analítica.
+\end{prob}
+
+\begin{sol}
+    Sea \(g(t)=\frac{\exp(-itz)-\exp(-itz_0)}{z-z_0}-(-it\exp(-itz_0))\), con \(z,z_0\in\set{C}\) distintos entre sí, se nota que para \(z\rightarrow z_0\) se tiene que \(g\rightarrow 0\) uniformemente con \(t\in[a,b]\), más aún como \(g\) es continua en \([a,b]\) esta alcanza su máximo y su mínimo por teorema de valor extremo. Usando lo anterior se ven las siguientes expresiones:
+    \begin{align*}
+        \abs{\frac{H(z)-H(z_0)}{z-z_0}-\int_a^bh(t)(-itz_0\exp(-itz_0)\d{t})}&=\abs{\int_a^bh(t)\cdot g(t)\d{t}}\\
+        &\leq\int_a^b\abs{h(t)}\abs{g(t)}\d{t}\\
+        &\leq\int_a^b\abs{h(t)}\abs{g(\gamma)}\d{t}\\
+        &\leq c_h\cdot\abs{g(\gamma)}
+    \end{align*}
+    Donde \(\gamma\) es el valor que maximiza \(\abs{g}\) y \(c_h\) es una constante que depende de la función \(h\), como \(g\rightarrow 0\) con \(z\rightarrow z_0\), se tiene que \(H\) es analítica y se tiene su derivada.
+\end{sol}
+
+\begin{prob}
+    Encuentre los radios de convergencia de las expansiones asociadas a las funciones.
+    \begin{enumerate}
+        \item \(\frac1{\cos z}\) en torno a \(z_0=0\).
+        \item \(\frac1{\cosh z}\) en torno a \(z_0=0\).
+        \item \(z^{\frac32}\) en torno a \(z_0=3\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}
+        \item Se nota que \(\cos z=\frac{\exp(iz)+\exp(-iz)}2\), por lo que \(\cos z=0\) ssi \(\exp(2iz)=-1\), y esto ultimo solo pasa cuando \(2iz=\pi i+2\pi i k\), por lo que \(z=\frac\pi2+\pi k\), y con esto se ve que el \(z\) más cercano al 0 es \(\frac\pi2\), por lo que el radio de convergencia de la expansión asociada a \(\frac1{\cos z}\) en torno a 0 es \(\frac\pi2\).
+        \item Similarmente al anterior se recuerda que \(\cosh z=\frac{\exp(z)+\exp(-z)}2\), por lo que \(\cosh z=0\) ssi \(\exp(2z)=-1\), con lo que \(z=\frac{\pi i}2+\pi i k\), y se tiene que el radio de convergencia en torno al 0 es \(\frac\pi2\).
+        \item Se nota que \(z^\frac32\) no es analítica en el 0, más aún es el punto más cercano donde no es analítica, por ende el radio de convergencia es \(3\).
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Calcule la expansión en serie de potencias en torno a \(z_0\) de las siguientes funciones
+    \begin{enumerate}
+        \item \(\frac1{2i}\log\paren{\frac{1+iz}{1-iz}}\) en torno a \(z_0=0\).
+        \item \(\frac1{z^2+1}\) en torno a \(\infty\).
+        \item \(z\sinh(\frac1z)\) en torno a \(\infty\).
+        \item \(\cosh z\) en torno a \(z_0=0\)
+        \item \(\frac1{\cosh z}\) en torno a \(z_0=0\) (calcule solo los 3 primeros términos utilizando la parte anterior).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Demuestre que si \(f,g\) son analíticas, \(f(z_0)=g(z_0)=0, g'(z_0)\neq0\) y \(g\) no es idénticamente 0, entonces
+    \begin{equation*}
+        \lim_{z\rightarrow z_0}\frac{f(z)}{g(z)}=\lim_{z\rightarrow z_0}\frac{f'(z)}{g'(z)}
+    \end{equation*}
+    ¿Qué se puede decir si \(g'(z_0)=0\)?
+\end{prob}
+
+\begin{sol}
+    Se nota que ya que \(g'(z_0)\neq0\) entonces el límite \(\lim_{z\rightarrow z_0}\frac{f'(z)}{g'(z)}\) existe, más aún por continuidad y por álgebra de límites se tienen las siguientes igualdades:
+    \begin{align*}
+        \lim_{z\rightarrow z_0}\frac{f'(z)}{g'(z)}&=\frac{\lim_{z\rightarrow z_0}f'(z)}{\lim_{z\rightarrow z_0}g'(z)}\\
+        &=\frac{\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}}{\lim_{z\rightarrow z_0}\frac{g(z)-g(z_0)}{z-z_0}}\\
+        &=\lim_{z\rightarrow z_0}\frac{\frac{f(z)-f(z_0)}{z-z_0}}{\frac{g(z)-g(z_0)}{z-z_0}}\\
+        &=\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{g(z)-g(z_0)}\\
+        &=\lim_{z\rightarrow z_0}\frac{f(z)}{g(z)}
+    \end{align*}
+    Con lo que se tiene lo pedido. Ahora, en el caso donde \(g'(z_0)=0\), se puede repetir el análisis con \(g''(z_0)\) y con \(f''(z_0)\) y así sucesivamente hasta que alguno, \(g^n(z_0)\) o \(f^n(z_0)\), no sea 0. En caso de que ninguno sea cero se tiene que límite existe y su valor es la división de los valores. En caso de que \(f^n(z_0)=0\), el límite existe y es 0. En caso de que \(g^n(z_0)=0\) el límite no existe.
+\end{sol}
+
+\begin{prob}
+    Encuentre todas las posibles expansiones de serie de Laurent en torno a cero para las siguientes funciones
+    \begin{enumerate}
+        \item \(\frac1{z^2-z}\)
+        \item \(\frac{z-1}{z+1}\)
+        \item \(\frac1{(z^2-1)(z^2-4)}\).
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Encuentre las singularidades aisladas de las siguientes funciones, determine que tipo de singularidades son, calcule los residous asociadas y, si son polos, su orden.
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item \(\frac{z}{(z^2-1)^2}\)
+            \item \(\tan z\)
+            \item \(\frac{z\exp(z)}{z^2-1}\)
+            \item \(\log(1-\frac1z)\)
+            \item \(\frac{\log z}{(z-1)^3}\)
+            \item \(\frac{\exp(2z)-1}z\)
+            \item \(\exp(\frac1z)\)
+        \end{enumerate}
+    \end{multicols}
+\end{prob}
+
+\begin{sol}
+    
+\end{sol}
+
+\begin{prob}
+    Demuestre que \(z_0\) es una singularidad de \(f(z)\) no removible, entonces es singularidad esencial de \(\exp(f(z))\).
+\end{prob}
+
+\begin{sol}
+    Usando la contrapositiva, si \(z_0\) es singularidad removible de \(\exp(f(z))\), entonces \(\abs{\exp(f(z))}<K\) en una vecindad de \(z_0\) sin \(z_0\), que ahora se llamará \(\dot{D}_\varepsilon(z_0)\). Ahora como \(\abs{\exp(f(z))}=\exp(\Re(f(z)))\), se tiene que \(\Re(f(z))<K'=\log K\). Ahora, si \(z_0\) fuera un polo de \(f\), entonces \(f(\dot{D}_\varepsilon(z_0))\) contiene el complemento de algún disco centrado en \(0\), entonces especificamente contiene a \(\{z:\Im z>k\}\), ahora como la función \(\exp(z)\) tiene periodo \(2\pi i\) entonces la imagén de este conjunto es todo el plano sin el \(0\), lo que es una contradicción, por lo que \(z_0\) no puede ser un polo de \(f\). Si \(z_0\) es una singularidad esencial, se tiene que \(f(\dot{D}_\varepsilon(z_0))\) es denso en \(\set{C}\) por Casorati-Weierstrass, de nuevo una contradicción. En el caso de que \(z_0\) fuera un polo de \(\exp(f(z))\) entonces es una singularidad removible de \(\exp(-f(z))\) y se sigue el analisis anterior, por ende \(z_0\) tiene que ser singularidad removible de \(f\), más aún si \(z_0\) es singularidad no removible de \(f\) se tiene que es singularidad esencial de \(\exp(f(z))\).
+\end{sol}
+
+\end{document}

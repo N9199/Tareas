@@ -1,0 +1,82 @@
+\documentclass[12pt,letterpaper]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage[document]{ragged2e}
+\usepackage{apacite}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newcommand{\course}[1]{\def\thecourse{#1}}
+\newcommand{\gdate}[1]{\def\thegdate{#1}}
+\renewcommand{\thanks}[1]{\begin{flushleft}
+    \large Agradecimientos a las siguientes personas:\\ #1
+\end{flushleft}}
+
+
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \begin{minipage}{2.5cm}
+            \includegraphics[scale=0.25]{img/puc}
+        \end{minipage}
+        \begin{minipage}{13cm}
+            \begin{flushleft}
+                \raggedright
+                {\noindent
+                    {\sc Pontificia Universidad Católica de Chile\\
+                        Facultad de Matemáticas\\
+                        Departamento de Matemática}\smallskip \\
+                    %\thegdate\\
+                }
+            \end{flushleft}
+        \end{minipage}
+        \vspace{2ex}
+
+        {\centering\noindent\Large{\bf \thetitle}\par}
+        {\centering\noindent\large {\thecourse}\par}
+        \centerline{Fecha de Entrega: \thedate}
+        \vfill
+
+        \begin{flushright}
+            {\Large\theauthor}
+        \end{flushright}
+
+    \end{titlepage}
+}
+
+\title{Actividad 3}
+\date{2020-01-10}
+\gdate{TAV 2020}
+\author{Nicholas Mc-Donnell}
+\course{Programa de Habilidades Comunicativas Escritas\\ para Ciencias Naturales y Matemáticas - LET172E}
+
+\begin{document}
+\maketitle
+\justify
+
+
+El objetivo de la revisión de literatura será ``Comparar distintas arquitecturas de Redes Neuronales para el problema de mapeo multilingüe''.
+
+\begin{enumerate}
+    \item \cite{artetxe2018robust}
+    \item \cite{rashid2019bilingualgan}
+          Este artículo propone una nueva arquitectura usando dos módulos, una unidad de traducción la cual es un modelo secuencia-a-secuencia con un codificador y un decodificador, y una unidad de generación de texto usando una GAN entrenada para aprender la variedad de estado latente del codificador de la unidad de traducción. Los autores creen que esto podría dar una ventaja sobre otros métodos al acercarse a lograr codificar conceptos e ideas de una forma que es independiente del lenguaje, y con esto mejorando la calidad de las traducciones.
+    \item \cite{vaswani2017attention}
+          Este artículo propone una nueva arquitectura para el problema de mapeo multilingüe, la cual llama el ``Transformador''. Está arquitectura tiene como principales características ser auto-regresiva (i.e. en cada paso el modelo consume los símbolos previamente generados) y su uso de ``Multi-Head Attention'' (i.e. una función fácilmente paralelizable que mapea un conjunto pares llave-valor y una consulta a una salida). Lo anterior logra hacer que tenga un rendimiento superior a otros modelos anteriores con menor tiempo de entrenamiento y una complejidad aceptable.
+\end{enumerate}
+
+Cada artículo propone una arquitecturas para resolver el problema de mapeo multilingüe, el primero da una arquitectura iterativa de auto-aprendizaje la cual logra generar diccionarios en base una pequeña semilla y aún así obtener buenos resultados, el segundo intenta juntar dos problemas y solucionarlos
+
+\bibliographystyle{apacite}
+\bibliography{Actividad_3}
+\end{document}

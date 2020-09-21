@@ -1,0 +1,40 @@
+\documentclass{homework}
+
+\title{I1}
+\date{2020-04-17}
+\gdate{1er Semestre 2020}
+\author{Nicholas Mc-Donnell}
+\course{Topología - MAT2545}
+
+
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+\begin{sol}
+    Sea \(x_n\) una sucesión acotada, se sabe que toda sucesión acotada tiene una subsucesión convergente, por lo tanto, se genera el siguiente proceso, dado una sucesión acotada \(x_n\) se sabe que existe una subsucesión convergente \(x_{n_k}\), s.p.d.g. se tiene que \(n_1=1\), sea \(x_{n,1}\) la sucesión \(x_n\) sin los indices de \(x_{n_k}\). Ahora por inducción en \(j\), \(x_{n,j-1}\) es una sucesión acotada, por lo que tiene una subsucesión convergente \(x_{n_k,j-1}\), s.p.d.g. \(x_{n_1}=x_i\), donde \(i\) es el menor indice que sigue libre de \(x_n\), se define \(x_{n,j}\) como \(x_{n,j-1}\) sin los indices de \(x_{n_k,j-1}\). Ahora, se define \(p\lim x_n=\lim_{n\rightarrow\infty}\sum_{j=1}^n\frac{\lim x_{n_k,j}}{2^j}\), esta función esta definida para toda sucesión de \(B\). Para que cumpla las propiedades pedidas se nota lo siguiente,
+    \begin{equation*}
+        \inf x_n\leq \lim x_{n_k}\leq \sup x_n
+    \end{equation*}
+    para toda subsucesión \(x_{n_k}\). Por lo que \(p\lim x_n=\lim_{n\rightarrow\infty}\sum_{j=1}^n\frac{\lim x_{n_k,j}}{2^j}\leq\lim_{n\rightarrow\infty}\sum_{j=1}^n\frac{\sup x_n}{2^j}=\sup x_n\), análogamente para el infimo. Usando esto, se tiene que \(p\lim 1=1\)\footnote{\(\sup 1=\inf 1=1\)}, más aún 
+    \begin{align*}
+        p\lim cx_n&=\lim_{n\rightarrow\infty}\sum_{j=1}^n\frac{\lim cx_{n_k,j}}{2^j}\\
+        &=\lim_{n\rightarrow\infty}\sum_{j=1}^nc\frac{\lim x_{n_k,j}}{2^j}\\
+        &=\lim_{n\rightarrow\infty}c\sum_{j=1}^n\frac{\lim x_{n_k,j}}{2^j}\\
+        &=c\lim_{n\rightarrow\infty}\sum_{j=1}^n\frac{\lim x_{n_k,j}}{2^j}\\
+        &=c(p\lim x_n),
+    \end{align*}
+    análogamente \(p\lim (x_n+y_n)=p\lim x_n+p\lim y_n\) y \(p\lim (x_n\cdot y_n)=p\lim x_n\cdot p\lim y_n\). Para la propiedad (c), sean \(x_n\) y \(y_n\) dos sucesiones acotadas con finitos términos distintos, luego sean \(x_{n_k}\) e \(y_{n_k}\) subsucesiones con los mismos indices, si \(x_{n_k}\) es convergente se tiene que \(y_{n_k}\) es convergente, y convergen a lo mismo, ya que tienen a lo más finitos términos distintos, por lo tanto se tiene que \(p\lim x_n=p\lim y_n\).
+\end{sol}
+
+\begin{sol}
+    Sea \(Y\subset X\) un subespacio cerrado de un e.t. normal (T4), luego sean \(A,B\) cerrados disjuntos en \(Y\). Como \(A\) es cerrado en \(Y\), se tiene que \(Y\setminus A=Y\cap U\) donde \(U\) es un abierto en \(X\), entonces \(Y\setminus(Y\setminus A)=Y\setminus(Y\cap U)\), por lo que \(A=Y\setminus U=Y\cap (X\setminus U)\), como \(Y\) y \(X\setminus U\) son cerrados, se tiene que \(A\) es cerrado en \(X\). Análogamente se tiene que \(B\) es cerrado en \(X\) y es disjunto de \(A\), por lo que usando que \(X\) es T4, se tiene que existen dos abiertos \(U,V\) en \(X\) tal que \(U\cap V=\emptyset\), \(A\subset U\) y \(B\subset V\). Ahora se nota que \(A\subset U\cap Y\), \(B\subset U\cap Y\) y que \(Y\cap(U\cap V)=(U\cap Y)\cap(V\cap Y)=\emptyset\), por lo que por definición de topología del subespacio se tiene que \(U\cap Y\) y \(V\cap Y\) son abiertos en \(Y\), como cada uno contiene a \(A\) y \(B\) respectivamente, son disjuntos, y \(A\) y \(B\) son cerrados disjuntos arbitrarios, se tiene que \(Y\) con la topología del subespacio es normal (T4).
+\end{sol}
+
+\begin{sol}
+    Sea \(f:[0,1]^2\rightarrow\set{R}^2\) definida por \(f(t,x)=((1-x)\cos(2\pi t)+x,(1-x)\sin(2\pi t))\), se nota que es una función continua al ser composición de funciones continuas\footnote{Se puede revisar esto usando materia de Cálculo III, ya que la función es multivariada.}, además se nota que \(f(t,0)=(\cos(2\pi t),\sin(2\pi t))\) y que \(f(t,1)=((1-1)\cos(2\pi t)+1,(1-1)\sin(2\pi t))=(0\cos(2\pi t)+1,0\sin(2\pi t))=(1,0)=g(t)\). Demostrando que \(h\) y \(g\) son homotópicos.
+\end{sol}
+
+
+\end{document}
